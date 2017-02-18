@@ -936,7 +936,6 @@
 				B7AA931A1B3172740005972E /* Sources */,
 				B7AA931B1B3172740005972E /* Frameworks */,
 				B7AA931C1B3172740005972E /* Resources */,
-				B7D6F0A61B37F0610070C36A /* ShellScript */,
 				72D654AF96B9770A560C6C08 /* [CP] Embed Pods Frameworks */,
 				85142D9CCE23179EAA146919 /* [CP] Copy Pods Resources */,
 				B67448611E2CBF830049890F /* Embed Frameworks */,
@@ -1078,19 +1077,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamini/Pods-Streamini-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B7D6F0A61B37F0610070C36A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 045816855082a3e279dce318bf145ea695ffd58d 2ef49487b5fd9e702d2a73e3ce7aee27470eb3b1e0a6da2bca356093860a2812";
 		};
 /* End PBXShellScriptBuildPhase section */
 

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import TwitterKit
+//import TwitterKit
+
 
 class TwitterTool: SocialTool {
     func post(username: String, live: NSURL) {
