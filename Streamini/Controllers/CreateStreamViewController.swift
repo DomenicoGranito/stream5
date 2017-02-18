@@ -118,18 +118,12 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         
     }
     
-    @IBAction func closeButtonPressed() {
+    @IBAction func closeButtonPressed()
+    {
+        self.tabBarController?.selectedIndex=NSUserDefaults.standardUserDefaults().integerForKey("previousTab")
         
-        self.tabBarController?.selectedIndex=0
-        navigationController?.popViewControllerAnimated(true)
-        
-         LocationManager.shared.stopMonitoringLocation()
-         self.nameTextView.resignFirstResponder()
-         self.navigationController?.popViewControllerAnimated(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion:nil )
+        LocationManager.shared.stopMonitoringLocation()
     }
-   
     
     // MARK: - Network responses
     

@@ -87,6 +87,15 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         
     }
 
+    func tabBarController(tabBarController:UITabBarController, shouldSelectViewController viewController:UIViewController)->Bool
+    {
+        let tabViewControllers=tabBarController.viewControllers
+        let fromIndex=tabViewControllers?.indexOf(tabBarController.selectedViewController!)
+        
+        NSUserDefaults.standardUserDefaults().setInteger(fromIndex!, forKey:"previousTab")
+        
+        return true
+    }
     
     @IBAction func recButtonPressed(sender:AnyObject)
     {
