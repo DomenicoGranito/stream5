@@ -120,7 +120,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBAction func closeButtonPressed() {
         
-        
+        self.tabBarController?.selectedIndex=0
         navigationController?.popViewControllerAnimated(true)
         
          LocationManager.shared.stopMonitoringLocation()
@@ -249,7 +249,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         LocationManager.shared.delegate = self
         LocationManager.shared.startMonitoringLocation()
         
-        nameTextView.becomeFirstResponder()
+        //nameTextView.becomeFirstResponder()
         
         StreamConnector().categories(categoriesSuccess, failure: categoriesFailure)
         
