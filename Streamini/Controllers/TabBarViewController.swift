@@ -75,18 +75,6 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         modalVC.transitioningDelegate=animator
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        print("Selected item")
-        //let tabBarC = self.window.mTBViewController as UITabBarController
-        
-        //let tabBarIndex = tabBar.didSelectItem.item
-        if item.tag == 2 {
-            //do your stuff
-             self.performSegueWithIdentifier("RootToCreate", sender:self)
-        }
-        
-    }
-
     func tabBarController(tabBarController:UITabBarController, shouldSelectViewController viewController:UIViewController)->Bool
     {
         let tabViewControllers=tabBarController.viewControllers
