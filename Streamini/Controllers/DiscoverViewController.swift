@@ -56,8 +56,6 @@ class MenuCell: UITableViewCell
 
 class DiscoverViewController:BaseTableViewController
 {
-    @IBOutlet var itemsTbl:UITableView?
-    
     var allCategoriesArray=NSMutableArray()
     var recentStreamsArray=NSMutableArray()
     
@@ -68,10 +66,6 @@ class DiscoverViewController:BaseTableViewController
     override func viewDidLoad()
     {
         self.title=NSLocalizedString("Discover", comment:"")
-        
-        //let layer : Gradient
-        //self.tableView.backgroundColor = layer
-        
         
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
@@ -118,7 +112,7 @@ class DiscoverViewController:BaseTableViewController
             menuItemTitlesArray=["Charts", "New Releases", "Videos", "Podcasts", "Discover", "Concerts"]
             menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
             
-            itemsTbl?.reloadData()
+            tableView.reloadData()
             
             timer!.invalidate()
         }
@@ -287,4 +281,3 @@ class DiscoverViewController:BaseTableViewController
         handleError(error)
     }
 }
-
