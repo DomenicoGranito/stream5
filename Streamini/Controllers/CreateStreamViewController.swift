@@ -80,42 +80,18 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func showModal() {
-    
-    let alert = SCLAlertView()
-    alert.addTextField("Want live streaming?")
-   // alert.addButton("First Button", target:closeButtonPressed(sender: AnyObject), selector:Selector("firstButton"))
-       // let evenField = alert.addButton("Login"){}
-       // let alertView = SCLAlertView()
-       // alert.checkCircleIconImage(<#T##circleIconImage: UIImage?##UIImage?#>, defaultImage: <#T##UIImage#>)
+    func showModal()
+    {
+        let alert=SCLAlertView()
+        alert.addTextField("Want live streaming?")
         alert.addButton("First Button", target:self, selector:Selector("firstButton"))
-        alert.addButton("Second Button") {
-            print("Second button tapped")
+        alert.addButton("Second Button")
+        {
+            self.tabBarController?.selectedIndex=NSUserDefaults.standardUserDefaults().integerForKey("previousTab")
             LocationManager.shared.stopMonitoringLocation()
-            self.nameTextView.resignFirstResponder()
-            self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-
         }
-    //    alert.showSuccess("Button View", subTitle: "This alert view has buttons")
-
         
-       // if evenField.
-        //{
-          //  LocationManager.shared.stopMonitoringLocation()
-           // self.nameTextView.resignFirstResponder()
-           // self.navigationController?.popViewControllerAnimated(true)
-           // self.dismissViewControllerAnimated(true, completion: nil)
-
-        //}
-
-    alert.showSuccess("PREMIUM FEATURE", subTitle: "Get unlimited live streams with BEINIT.")
-    
-        // Upon displaying, change/close view
-      //  alertViewResponder.setTitle("New Title") // Rename title
-       // alertViewResponder.setSubTitle("New description") // Rename subtitle
-        //alertViewResponder.close() // Close view
-        
-        
+        alert.showSuccess("PREMIUM FEATURE", subTitle:"Get unlimited live streams with BEINIT.")
     }
     
     @IBAction func closeButtonPressed()
