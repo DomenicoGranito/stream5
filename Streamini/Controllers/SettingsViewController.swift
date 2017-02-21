@@ -173,7 +173,16 @@ class SettingsViewController: UITableViewController {
     
 
     
-    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+      
+        
+        if indexPath.section == 7 && indexPath.row == 1 { // logout
+            logout()
+        }
+    }
+
        
    
     

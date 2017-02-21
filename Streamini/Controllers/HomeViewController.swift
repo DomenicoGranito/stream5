@@ -68,7 +68,7 @@ class HomeViewController: BaseViewController
         navigationController?.navigationBarHidden=false
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         
-        timer=NSTimer(timeInterval:NSTimeInterval(10.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=NSTimer(timeInterval:NSTimeInterval(1000.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
     }
     
