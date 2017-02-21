@@ -33,6 +33,15 @@ class ModalViewController: UIViewController
     
     var stream: Stream?
     
+    override func viewWillAppear(animated:Bool)
+    {
+        
+        
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+    }
+
+    
+    
     override func viewDidLoad()
     {
         

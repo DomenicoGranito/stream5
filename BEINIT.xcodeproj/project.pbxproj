@@ -15,7 +15,6 @@
 		3E2674DC1D7530BA00E33DCD /* lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2674D81D7530BA00E33DCD /* lock.png */; };
 		3E2674DD1D7530BA00E33DCD /* msg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2674D91D7530BA00E33DCD /* msg.png */; };
 		3E2674DE1D7530BA00E33DCD /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2674DA1D7530BA00E33DCD /* user.png */; };
-		3E43B22BB8E6CD9EBE4097A8 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 251968F20DFFC1F60FF3D7E8 /* libPods-Streamini.a */; };
 		3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */; };
 		3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */; };
 		3EF1F02C1D7197310055A372 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */; };
@@ -31,6 +30,7 @@
 		3EF535B41E0921430049B2E9 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B31E0921430049B2E9 /* LineView.swift */; };
 		3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */; };
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
+		4F36BD874D9D16F282B368E9 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */; };
 		86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86564ECE1E540BA300584405 /* SeriesViewController.swift */; };
 		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
 		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
@@ -228,7 +228,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		251968F20DFFC1F60FF3D7E8 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27BA8F7BE253BA8E13E1AD0C /* Pods-Streamini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.debug.xcconfig"; sourceTree = "<group>"; };
+		3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.release.xcconfig"; sourceTree = "<group>"; };
 		3E20216C1D81A6530058DAAD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E20216E1D81AB440058DAAD /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		3E2021701D81ACFE0058DAAD /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -253,7 +254,7 @@
 		3EF535B31E0921430049B2E9 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		3EF535B71E092A330049B2E9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		5DD5935F30978718BDF832C9 /* Pods-Streamini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.debug.xcconfig"; sourceTree = "<group>"; };
+		6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
@@ -443,7 +444,6 @@
 		B7EAD94F1B4D1F100009C698 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B7EAD9521B4D72A40009C698 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		B7EB82B61B6746500022C76A /* NotificationsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsDelegate.swift; sourceTree = "<group>"; };
-		D65C4761E698023EB81062D0 /* Pods-Streamini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,7 +464,7 @@
 				B70FAA031B539BC000607EA9 /* SystemConfiguration.framework in Frameworks */,
 				B70FAA011B539BB300607EA9 /* CFNetwork.framework in Frameworks */,
 				B7EAD9531B4D72A40009C698 /* QuickLook.framework in Frameworks */,
-				3E43B22BB8E6CD9EBE4097A8 /* libPods-Streamini.a in Frameworks */,
+				4F36BD874D9D16F282B368E9 /* libPods-Streamini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,18 +503,9 @@
 				B70FAA021B539BC000607EA9 /* SystemConfiguration.framework */,
 				B70FAA001B539BB300607EA9 /* CFNetwork.framework */,
 				B7EAD9521B4D72A40009C698 /* QuickLook.framework */,
-				251968F20DFFC1F60FF3D7E8 /* libPods-Streamini.a */,
+				6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		93E6A71F22762A9CB1D95B65 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5DD5935F30978718BDF832C9 /* Pods-Streamini.debug.xcconfig */,
-				D65C4761E698023EB81062D0 /* Pods-Streamini.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		B63C1A481E2DE98C00EF2F7C /* SCLAlertView */ = {
@@ -742,7 +733,7 @@
 				B7AA93201B3172740005972E /* Streamini */,
 				B7AA931F1B3172740005972E /* Products */,
 				786304F139CBAD59E4F652FD /* Frameworks */,
-				93E6A71F22762A9CB1D95B65 /* Pods */,
+				DDFFCF58D985C294AB921389 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -925,6 +916,15 @@
 			path = Keyboard;
 			sourceTree = "<group>";
 		};
+		DDFFCF58D985C294AB921389 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27BA8F7BE253BA8E13E1AD0C /* Pods-Streamini.debug.xcconfig */,
+				3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -932,13 +932,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7AA933F1B3172740005972E /* Build configuration list for PBXNativeTarget "Streamini" */;
 			buildPhases = (
-				0C34B9CEACF00C7116F0CE78 /* [CP] Check Pods Manifest.lock */,
+				C31697201ED08A8EBA8F3D00 /* [CP] Check Pods Manifest.lock */,
 				B7AA931A1B3172740005972E /* Sources */,
 				B7AA931B1B3172740005972E /* Frameworks */,
 				B7AA931C1B3172740005972E /* Resources */,
-				72D654AF96B9770A560C6C08 /* [CP] Embed Pods Frameworks */,
-				85142D9CCE23179EAA146919 /* [CP] Copy Pods Resources */,
 				B67448611E2CBF830049890F /* Embed Frameworks */,
+				4AA963DD0F507EA451C95217 /* [CP] Embed Pods Frameworks */,
+				13B8E493A4DAF2D7FAC7B003 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -964,7 +964,7 @@
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = G88EVHJ24D;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.GameCenter = {
 								enabled = 1;
@@ -1034,22 +1034,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0C34B9CEACF00C7116F0CE78 /* [CP] Check Pods Manifest.lock */ = {
+		13B8E493A4DAF2D7FAC7B003 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamini/Pods-Streamini-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		72D654AF96B9770A560C6C08 /* [CP] Embed Pods Frameworks */ = {
+		4AA963DD0F507EA451C95217 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1064,19 +1064,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamini/Pods-Streamini-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		85142D9CCE23179EAA146919 /* [CP] Copy Pods Resources */ = {
+		C31697201ED08A8EBA8F3D00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Streamini/Pods-Streamini-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1370,14 +1370,14 @@
 		};
 		B7AA93401B3172740005972E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DD5935F30978718BDF832C9 /* Pods-Streamini.debug.xcconfig */;
+			baseConfigurationReference = 27BA8F7BE253BA8E13E1AD0C /* Pods-Streamini.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Streamini/Streamini.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				DEVELOPMENT_TEAM = G88EVHJ24D;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1418,8 +1418,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
-				PROVISIONING_PROFILE = "aae76422-2ef0-4c19-884f-740e038fb033";
-				PROVISIONING_PROFILE_SPECIFIER = "Be Init Development";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Streamini/Streamini-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1429,14 +1429,14 @@
 		};
 		B7AA93411B3172740005972E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D65C4761E698023EB81062D0 /* Pods-Streamini.release.xcconfig */;
+			baseConfigurationReference = 3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Streamini/Streamini.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_HEADERS_RUN_UNIFDEF = NO;
-				DEVELOPMENT_TEAM = G88EVHJ24D;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1475,8 +1475,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.uniprogy.dominic;
 				PRODUCT_NAME = Streamini;
-				PROVISIONING_PROFILE = "4e8bcc88-c3df-4c8c-af7e-b591443f7af7";
-				PROVISIONING_PROFILE_SPECIFIER = "XC iOS: com.uniprogy.dominic";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Streamini/Streamini-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;

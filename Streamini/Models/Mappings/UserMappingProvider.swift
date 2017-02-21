@@ -41,7 +41,8 @@ class UserMappingProvider: NSObject {
             "desc"      : "description",
             "isLive"    : "islive",
             "isFollowed": "isfollowed",
-            "isBlocked" : "isblocked"
+            "isBlocked" : "isblocked",
+            "subscription" : "subscription"
         ])
         
         return mapping
@@ -63,7 +64,8 @@ class UserMappingProvider: NSObject {
             "description" : "desc",
             "islive"    : "isLive",
             "isfollowed": "isFollowed",
-            "isblocked" : "isBlocked"
+            "isblocked" : "isBlocked",
+            "subscription" : "subscription"
             ])
                 
         return mapping

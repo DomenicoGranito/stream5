@@ -23,4 +23,5 @@ class User: NSObject {
     var isLive = false
     var isFollowed = false
     var isBlocked = false
+    var subscription = ""
 }

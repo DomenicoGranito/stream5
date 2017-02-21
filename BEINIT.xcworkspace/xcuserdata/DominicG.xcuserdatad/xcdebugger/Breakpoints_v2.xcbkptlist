@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/CreateStreamViewController.swift"
-            timestampString = "509026192.259459"
+            timestampString = "509266389.980294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "showModal()"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "createStreamSuccess(stream:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,13 +26,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/CreateStreamViewController.swift"
-            timestampString = "509026192.259459"
+            timestampString = "509266389.980294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "closeButtonPressed()"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "createStreamFailure(error:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.CreateStreamViewController.createStreamFailure (__ObjC.NSError) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/CreateStreamViewController.swift"
+                  timestampString = "509278686.852273"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.CreateStreamViewController.createStreamFailure (__ObjC.NSError) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/CreateStreamViewController.swift"
+                  timestampString = "509278686.857497"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "416">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -313,8 +345,8 @@
                   symbolName = "Streamini.Playlist.setupPlayerQueue () -&gt; ()"
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DominicG/Documents/BEINIT/Streamini/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509039296.19047"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
+                  timestampString = "509278687.027148"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
@@ -328,8 +360,8 @@
                   symbolName = "Streamini.Playlist.setupPlayerQueue () -&gt; ()"
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DominicG/Documents/BEINIT/Streamini/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509039296.193307"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
+                  timestampString = "509278687.030538"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
@@ -618,12 +650,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/DiscoverViewController.swift"
-            timestampString = "509020108.314753"
+            timestampString = "509279398.447272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "tableView(tableView:didSelectRowAtIndexPath:)"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -634,45 +666,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/DiscoverViewController.swift"
-            timestampString = "509020929.249038"
+            timestampString = "509279398.447272"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "prepareForSegue(segue:sender:)"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "prepareForSegue(_:sender:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Streamini.DiscoverViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
-                  moduleName = "Streamini"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DominicG/Documents/BEINIT/Streamini/Streamini/Controllers/DiscoverViewController.swift"
-                  timestampString = "509039296.315631"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "36">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Streamini.DiscoverViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
-                  moduleName = "Streamini"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/DominicG/Documents/BEINIT/Streamini/Streamini/Controllers/DiscoverViewController.swift"
-                  timestampString = "509039296.318636"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "220">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -730,11 +730,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/ModalViewController.swift"
-            timestampString = "509024154.194513"
+            timestampString = "509279718.630461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,11 +746,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/ModalViewController.swift"
-            timestampString = "509024156.524295"
+            timestampString = "509279718.630461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -762,11 +762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/ModalViewController.swift"
-            timestampString = "509024157.293292"
+            timestampString = "509279718.630461"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -778,11 +778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/CreateStreamViewController.swift"
-            timestampString = "509039002.856774"
+            timestampString = "509266389.980294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "showModal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -794,11 +794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/CreateStreamViewController.swift"
-            timestampString = "509039003.73829"
+            timestampString = "509266389.980294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "showModal()"
             landmarkType = "7">
          </BreakpointContent>
@@ -810,12 +810,156 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/CreateStreamViewController.swift"
-            timestampString = "509039005.352188"
+            timestampString = "509266389.980294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "CreateStreamViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/CreateStreamViewController.swift"
+            timestampString = "509266389.980294"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "showModal()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509272065.754582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509272065.754582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509272065.754582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509272065.754582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509272065.754582"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/DiscoverViewController.swift"
+            timestampString = "509279398.447272"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "categoriesSuccess(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/CreateStreamViewController.swift"
+            timestampString = "509276539.143333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "viewWillAppear(animated:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/CreateStreamViewController.swift"
+            timestampString = "509276539.143333"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
+            landmarkName = "viewWillAppear(animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

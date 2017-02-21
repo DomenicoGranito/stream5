@@ -23,6 +23,14 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
     @IBOutlet var miniPlayerButton : UIButton!
 
     
+    override func viewWillAppear(animated:Bool)
+    {
+        
+       
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+    }
+    
+    
     func tapMiniPlayer()
     {
         presentViewController(modalVC, animated:true, completion:nil)
@@ -199,6 +207,9 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
     
     override func viewDidLoad()
     {
+        
+        
+        
         self.delegate = self
         self.tabBarController?.delegate = self
         let storyboard=UIStoryboard(name:"Main", bundle:nil)

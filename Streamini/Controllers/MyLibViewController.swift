@@ -50,6 +50,13 @@ class MyLibViewController: UITableViewController {
      //   self.performSegueWithIdentifier("MyProfile", sender:self)
    // }
     
+    override func viewWillAppear(animated:Bool)
+    {
+        self.tabBarController!.navigationItem.hidesBackButton = true
+        navigationController?.navigationBarHidden=false
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+    }
+    
     @IBAction func myaccount(user:User)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)

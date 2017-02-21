@@ -7,38 +7,65 @@
 //
 import UIKit
 
-class Gradient: UIView  {
+//
+//  UILoadingView.swift
+//
+//  Created by Ian McDowell on 6/6/14.
+//  Copyright (c) 2014 Ian McDowell. All rights reserved.
+//
+import UIKit
+
+class UILoadingView : UIView {
     
-    // Default Colors
-    var colors:[UIColor] = [UIColor.redColor(), UIColor.blueColor()]
-    
-    override func drawRect(rect: CGRect) {
+    init(frame rect: CGRect, text: NSString = "Loading...") {
+        super.init(frame: rect)
+        self.backgroundColor = UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+        self.label.text = text as String
+        self.label.textColor = self.spinner.color
+        self.spinner.startAnimating()
         
-        // Must be set when the rect is drawn
-        setGradient(colors[0], color2: colors[1])
+        self.addSubview(self.label)
+        self.addSubview(self.spinner)
+        
+        //self.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+        
+        self.setNeedsLayout()
+        
     }
     
-    func setGradient(color1: UIColor, color2: UIColor) {
-        
-        let context = UIGraphicsGetCurrentContext()
-        let gradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [color1.CGColor, color2.CGColor], [0, 1])!
-        
-        // Draw Path
-        let path = UIBezierPath(rect: CGRectMake(0, 0, frame.width, frame.height))
-        CGContextSaveGState(context!)
-        path.addClip()
-        CGContextDrawLinearGradient(context!, gradient, CGPointMake(frame.width / 2, 0), CGPointMake(frame.width / 2, frame.height), CGGradientDrawingOptions())
-        CGContextRestoreGState(context!)
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
     }
+    
+    lazy var label : UILabel = {
+        var l = UILabel()
+        l.font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+        return l
+    }()
+    var spinner: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
     
     override func layoutSubviews() {
+        var labelString:NSString = self.label.text!
+        var labelSize: CGSize = labelString.sizeWithAttributes([NSFontAttributeName: self.label.font])
+        var labelFrame: CGRect = CGRect()
+        labelFrame.size = labelSize
+        self.label.frame = labelFrame
         
-        // Ensure view has a transparent background color (not required)
-        backgroundColor = UIColor.clearColor()
+        // center label and spinner
+        self.label.center = self.center
+        self.spinner.center = self.center
+        
+        // horizontally align
+        labelFrame = self.label.frame
+        var spinnerFrame: CGRect = self.spinner.frame
+        var totalWidth: CGFloat = spinnerFrame.size.width + 5 + labelSize.width
+        spinnerFrame.origin.x = self.bounds.origin.x + (self.bounds.size.width - totalWidth) / 2
+        labelFrame.origin.x = spinnerFrame.origin.x + spinnerFrame.size.width + 5
+        self.label.frame = labelFrame
+        self.spinner.frame = spinnerFrame
     }
     
 }
-
 
 class MenuCell: UITableViewCell
 {
@@ -65,6 +92,10 @@ class DiscoverViewController:BaseTableViewController
     
     override func viewDidLoad()
     {
+        // initialize the loading view
+        let loadingView = UILoadingView(frame: self.view.bounds)
+        // show the loading view
+        self.view.addSubview(loadingView)
         self.title=NSLocalizedString("Discover", comment:"")
         
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
@@ -73,8 +104,13 @@ class DiscoverViewController:BaseTableViewController
         timer=NSTimer(timeInterval:NSTimeInterval(2.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
     }
-    
-    
+  
+    override func viewWillAppear(animated:Bool)
+    {
+        self.tabBarController!.navigationItem.hidesBackButton = true
+        navigationController?.navigationBarHidden=false
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+    }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
@@ -115,7 +151,11 @@ class DiscoverViewController:BaseTableViewController
             tableView.reloadData()
             
             timer!.invalidate()
+            
+            
+           
         }
+         self.view.subviews[self.view.subviews.endIndex-1].removeFromSuperview()
     }
     
     override func numberOfSectionsInTableView(tableView:UITableView)->Int

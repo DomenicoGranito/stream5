@@ -82,16 +82,27 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func showModal()
     {
-        let alert=SCLAlertView()
-        alert.addTextField("Want live streaming?")
-        alert.addButton("First Button", target:self, selector:Selector("firstButton"))
-        alert.addButton("Second Button")
+        //let alert=SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "HelveticaNeue", size: 20)!,
+            kTextFont: UIFont(name: "HelveticaNeue", size: 14)!,
+            kButtonFont: UIFont(name: "HelveticaNeue-Bold", size: 14)!,
+            showCloseButton: false
+        )
+        
+        let alert = SCLAlertView(appearance: appearance)
+        //alert.addTextField("Want live streaming?")
+        alert.addButton("Upgrade", target:self, selector:Selector("firstButton"))
+        alert.addButton("Cancel")
         {
             self.tabBarController?.selectedIndex=NSUserDefaults.standardUserDefaults().integerForKey("previousTab")
             LocationManager.shared.stopMonitoringLocation()
         }
-        
+    
+        //alert.showCustom("PREMIUM FEATURE", subTitle:"Get unlimited live streams with BEINIT.")
         alert.showSuccess("PREMIUM FEATURE", subTitle:"Get unlimited live streams with BEINIT.")
+        
+       
     }
     
     @IBAction func closeButtonPressed()
@@ -234,8 +245,9 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         keyboardHandler!.register()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
         
-       showModal()
-       if  (self.user?.id == 463)
+      // showModal()
+      self.user  = UserContainer.shared.logged()
+       if  (self.user?.subscription == "free" || self.user?.subscription == "")
        {
             showModal()
        }
