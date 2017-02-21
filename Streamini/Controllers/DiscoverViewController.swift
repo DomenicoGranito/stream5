@@ -89,13 +89,13 @@ class DiscoverViewController:BaseTableViewController
     var menuItemTitlesArray=[]
     var menuItemIconsArray=[]
     var timer:NSTimer?
+    var loadingView:UIView?
     
     override func viewDidLoad()
     {
-        // initialize the loading view
-        let loadingView = UILoadingView(frame: self.view.bounds)
-        // show the loading view
-        self.view.addSubview(loadingView)
+        loadingView=UILoadingView(frame:view.bounds)
+        view.addSubview(loadingView!)
+        
         self.title=NSLocalizedString("Discover", comment:"")
         
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
@@ -107,10 +107,11 @@ class DiscoverViewController:BaseTableViewController
   
     override func viewWillAppear(animated:Bool)
     {
-        self.tabBarController!.navigationItem.hidesBackButton = true
+        self.tabBarController!.navigationItem.hidesBackButton=true
         navigationController?.navigationBarHidden=false
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
@@ -121,6 +122,7 @@ class DiscoverViewController:BaseTableViewController
             self.performSegueWithIdentifier("channels", sender: indexPath)
         }
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let sid = segue.identifier {
             if sid == "charts" {
@@ -133,14 +135,9 @@ class DiscoverViewController:BaseTableViewController
                 let index = (sender as! NSIndexPath).row
                 // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
             }
-            
-            
         }
     }
 
-    
-    
-    
     func reload()
     {
         if(allCategoriesArray.count>0&&recentStreamsArray.count>0)
@@ -152,10 +149,8 @@ class DiscoverViewController:BaseTableViewController
             
             timer!.invalidate()
             
-            
-           
+            loadingView?.removeFromSuperview()
         }
-         self.view.subviews[self.view.subviews.endIndex-1].removeFromSuperview()
     }
     
     override func numberOfSectionsInTableView(tableView:UITableView)->Int
