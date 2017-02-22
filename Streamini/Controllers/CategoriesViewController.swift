@@ -31,6 +31,7 @@ class CategoriesViewController: BaseViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+        
     }
 
     func fetchMore()

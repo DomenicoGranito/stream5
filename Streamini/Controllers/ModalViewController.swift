@@ -36,8 +36,8 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         
-        
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+      
     }
 
     
@@ -48,9 +48,10 @@ class ModalViewController: UIViewController
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
+        let vid = stream!.id
         let (host, port, application, _, _) = Config.shared.wowza()
        // let videoURL=NSURL(string:"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        let videoURL=NSURL(string:"http://\(host)/media/\(stream?.id).mp4")
+        let videoURL=NSURL(string:"http://\(host)/media/\(vid).mp4")
         player=AVPlayer(URL:videoURL!)
         
         let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
@@ -142,6 +143,7 @@ class ModalViewController: UIViewController
     
     @IBAction func close()
     {
+         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         dismissViewControllerAnimated(true, completion:nil)
     }
     

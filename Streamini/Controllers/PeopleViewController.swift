@@ -128,6 +128,8 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     
     func userDidSelected(user:User)
     {
+       //  let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user

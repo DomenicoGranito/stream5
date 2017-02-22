@@ -27,7 +27,7 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
     {
         
        
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+       // UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
     }
     
     

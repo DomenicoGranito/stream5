@@ -72,14 +72,24 @@ class UserViewController: BaseViewController, ProfileDelegate
         
         followButton.hidden=UserContainer.shared.logged().id==user!.id
     }
+    func userDidSelected(user:User)
+    {
+        //self.showUserInfo(user, userStatusDelegate: nil)
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        vc.user=user
+        navigationController?.pushViewController(vc, animated:true)
+        
+        
+    }
 
     @IBAction func more_dwnButtonPressed()
     {
        var stream: Stream
         var strurl:String
-            strurl = "Http://spectator.live/media/(stream.id)"
-            downloadManager.startDownloadVideoOrPlaylist(url: strurl)
-            self.navigationController?.popViewControllerAnimated(true)
+          //  strurl = "Http://spectator.live/media/\(stream.id)"
+          //  downloadManager.startDownloadVideoOrPlaylist(url: strurl)
+           // self.navigationController?.popViewControllerAnimated(true)
         
     }
     

@@ -32,7 +32,10 @@ class MyLibViewController: UITableViewController {
 
     
     override func viewDidLoad() {
-          
+        self.tabBarController!.navigationItem.hidesBackButton = true
+        navigationController?.navigationBarHidden=false
+        self.navigationController!.setNavigationBarHidden(false, animated: true)
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
 
    // @IBOutlet var MyProfile : UIButton!
@@ -54,6 +57,7 @@ class MyLibViewController: UITableViewController {
     {
         self.tabBarController!.navigationItem.hidesBackButton = true
         navigationController?.navigationBarHidden=false
+        self.navigationController!.setNavigationBarHidden(false, animated: true)
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
     

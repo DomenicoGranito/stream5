@@ -19,11 +19,11 @@ import Foundation
 //  Copyright (c) 2015 Manuel Costa. All rights reserved.
 //
 import UIKit
-class SeriesViewController: UITableViewController {
+class SeriesViewController:BaseViewController{
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tbleView: UITableView!
+   // @IBOutlet weak var tableView: UITableView!
     var blockingView: UIView!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class SeriesViewController: UITableViewController {
         self.navigationController!.navigationBar.shadowImage! = UIImage()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         // Starting with the table view a bit scrolled down to hide the search bar
-        tbleView.contentOffset = CGPointMake(0, 64)
+      //  tableView.contentOffset = CGPointMake(0, 64)
         // This blocking view is used to hide the tableview cells when they scroll too far up
         // you can comment this view to see what happens
         self.blockingView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))
@@ -55,11 +55,11 @@ class SeriesViewController: UITableViewController {
     
     // MARK: - TableViewCell Stuff
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+      func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
         headerView.backgroundColor = UIColor(white: 0.2, alpha: 1)
         var shuffle = UIButton(frame: CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width - 80, 30))
@@ -78,11 +78,11 @@ class SeriesViewController: UITableViewController {
     
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("songCell")!
         cell.textLabel!.text! = "Song Name"
         cell.detailTextLabel!.text! = "Artist Name"
@@ -93,7 +93,7 @@ class SeriesViewController: UITableViewController {
     //  Please Sign Up (Free!) to remove this limitation.
     
     
-   override func scrollViewDidScroll(scrollView: UIScrollView) {
+     func scrollViewDidScroll(scrollView: UIScrollView) {
         // This weird 44 - 64 is basically to mean:
         // Past 44 pixels (assuming the tableview starts at -64, which it does because of some automatic padding related to the status and nav bar)
         if scrollView.contentOffset.y > 44 - 64 {
