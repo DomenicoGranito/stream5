@@ -29,7 +29,7 @@ class AllCategoryRow: UITableViewCell
         
         let catname=sectionItemsArray[indexPath.row] as! Category
         cell.videoTitleLbl?.text=catname.name
-        cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://cedricm.cn/thumbs/\(catname.id).jpg"))
+        cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://spectator.live/thumbs/\(catname.id).jpg"))
         //cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://cedricm.cn/thumbs/\(catname.id).jpg"))
         
         cell.iconcategory?.image = UIImage(named: "\(catname.name).png")

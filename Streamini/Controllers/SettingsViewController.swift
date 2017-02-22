@@ -20,7 +20,7 @@ protocol ProfilesDelegate: class {
 
 //class SettingsViewController: UITableViewController, UIActionSheetDelegate,
   //  UINavigationControllerDelegate, ProfilesDelegate {
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UITableViewController, UIActionSheetDelegate,ProfilesDelegate {
     //@IBOutlet weak var userHeaderView: UserHeaderView!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var accountValueLabel: UILabel!
@@ -57,9 +57,9 @@ class SettingsViewController: UITableViewController {
     }
    
     func logout() {
- //       let actionSheet = UIActionSheet.confirmLogoutActionSheet(self)
-   //     actionSheet.tag = ProfilesActionSheetType.Logout.rawValue
-     //   actionSheet.showInView(self.view)
+       let actionSheet = UIActionSheet.confirmLogoutActionSheet(self)
+       actionSheet.tag = ProfilesActionSheetType.Logout.rawValue
+       actionSheet.showInView(self.view)
     }
 
     func successGetUser(user: User) {
@@ -176,9 +176,10 @@ class SettingsViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-      
+      print(indexPath.section)
+      print(indexPath.row)
         
-        if indexPath.section == 7 && indexPath.row == 1 { // logout
+        if indexPath.section == 2 && indexPath.row == 0 { // logout
             logout()
         }
     }
