@@ -24,8 +24,9 @@ class RootViewController: UIViewController
 
 import MessageUI
 
+
 //UIViewController
-class myProfileViewController: BaseTableViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate,
+class myProfileViewController: BaseViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
 UserSelecting, ProfileDelegate {
     @IBOutlet weak var userHeaderView: UserHeaderView!
@@ -242,7 +243,7 @@ UserSelecting, ProfileDelegate {
         print("failure", terminator: "")
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
         if indexPath.section == 1 { // following, followers, blocked, streams

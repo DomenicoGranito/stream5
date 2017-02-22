@@ -50,12 +50,41 @@ class LoginViewController: BaseViewController
         let req = SendAuthReq()
         req.scope = "snsapi_userinfo" //Important that this is the same
         req.state = "com.uniprogy.dominic_wx_login" //This can be any random value
-        WXApi.sendReq(req)
+        let lgg = WXApi.sendReq(req)
         
         
+        if lgg
+        {
         
         //end login weixin
+        let loginData=NSMutableDictionary()
         
+        loginData["id"]=appID
+        loginData["password"]="dotnetdev"
+        loginData["token"]="2"
+        loginData["type"]="signup"
+        
+        A0SimpleKeychain().setString(appID, forKey:"id")
+        A0SimpleKeychain().setString("dotnetdev", forKey:"password")
+        A0SimpleKeychain().setString("signup", forKey:"type")
+        
+        if let deviceToken=(UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
+        {
+            loginData["apn"]=deviceToken
+        }
+        else
+        {
+            loginData["apn"]=""
+        }
+        
+        let connector=UserConnector()
+        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+
+        }
+        else
+        {
+        
+        }
 
     }
     @IBAction func login()

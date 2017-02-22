@@ -60,7 +60,7 @@ class MyLibViewController: UITableViewController {
     @IBAction func myaccount(user:User)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        let vc=storyboard.instantiateViewControllerWithIdentifier("myProfileViewControllerId") as! myProfileViewController
         vc.user=UserContainer.shared.logged()
         navigationController?.pushViewController(vc, animated:true)
         

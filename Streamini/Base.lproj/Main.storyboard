@@ -645,7 +645,7 @@
                         <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="558" width="375" height="44"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="B1B8F32A-D62E-4DDD-BB38-90F65CA82096" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="43485E18-70B0-4E9F-837A-384FF4DB8F1F" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
                                     <rect key="frame" x="10" y="16" width="20" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="BYG-p1-viV"/>
@@ -672,7 +672,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="94F3C9E4-6780-4171-8410-1B4C0A5BB065" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="14A7A3C2-21D7-4D1B-88FA-EA02F39492AC" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
                                     <rect key="frame" x="339" y="9" width="26" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="TT8-ro-toq"/>
@@ -7938,7 +7938,7 @@
         <!--My Profile View Controller-->
         <scene sceneID="GcJ-Ze-eJD">
             <objects>
-                <viewController storyboardIdentifier="myProfileViewControllerID" id="v3e-Aj-M0t" customClass="myProfileViewController" customModule="Streamini" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myProfileViewControllerId" useStoryboardIdentifierAsRestorationIdentifier="YES" id="v3e-Aj-M0t" customClass="myProfileViewController" customModule="Streamini" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sqm-Ig-aKx"/>
                         <viewControllerLayoutGuide type="bottom" id="xLs-dn-oqA"/>
@@ -9944,7 +9944,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="94F3C9E4-6780-4171-8410-1B4C0A5BB065" width="60" height="60">
+        <image name="14A7A3C2-21D7-4D1B-88FA-EA02F39492AC" width="60" height="60">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -10235,7 +10235,7 @@ AMIA2QDbAN1Bv0HEQc9B2EHrQe9B+kIDQghCEEITQhhCJ0IrQjJCOkJHQkxCTkJQQlVCXUJgQmVCbUJw
 QoJChUKKAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAQow
 </mutableData>
         </image>
-        <image name="B1B8F32A-D62E-4DDD-BB38-90F65CA82096" width="45" height="27">
+        <image name="43485E18-70B0-4E9F-837A-384FF4DB8F1F" width="45" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -10427,11 +10427,11 @@ AAAAAAAhow
         <image name="youtube" width="56" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mCu-2a-R7w"/>
         <segue reference="ww0-S7-JBk"/>
         <segue reference="vko-lH-7pO"/>
         <segue reference="caL-Bv-nQi"/>
         <segue reference="WlC-av-lWT"/>
         <segue reference="AcD-60-gNs"/>
+        <segue reference="6Hk-YZ-xRN"/>
     </inferredMetricsTieBreakers>
 </document>

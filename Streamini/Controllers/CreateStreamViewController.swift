@@ -42,7 +42,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     var keep = 0
     
     var user: User?
-   
+    var usr: User?
     
     
     // MARK: - Actions
@@ -230,7 +230,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         LocationManager.shared.delegate = self
         LocationManager.shared.startMonitoringLocation()
         
-        //nameTextView.becomeFirstResponder()
+        nameTextView.becomeFirstResponder()
         
         StreamConnector().categories(categoriesSuccess, failure: categoriesFailure)
         
@@ -245,9 +245,11 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         keyboardHandler!.register()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
         
-      // showModal()
-      self.user  = UserContainer.shared.logged()
-       if  (self.user?.subscription == "free" || self.user?.subscription == "")
+      
+    // showModal()
+    
+        self.usr  = UserContainer.shared.logged()
+       if  (self.usr?.subscription == "free" || self.usr?.subscription == "")
        {
             showModal()
        }
