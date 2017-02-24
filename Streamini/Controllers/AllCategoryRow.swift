@@ -34,7 +34,7 @@ class AllCategoryRow: UITableViewCell
         
         cell.iconcategory?.image = UIImage(named: "\(catname.name).png")
         
-        
+      
         
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))

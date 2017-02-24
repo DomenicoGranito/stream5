@@ -18,7 +18,7 @@
 #import "MZFormSheetController.h"
 
 #import "WXApi.h"
-#import <SwiftFilePath/SwiftFilePath.h>
+//#import <SwiftFilePath/SwiftFilePath.h>
 
 //#import <SCLAlertView/SCLAlertView-Swift.h>
 

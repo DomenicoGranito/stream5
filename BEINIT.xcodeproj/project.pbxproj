@@ -94,8 +94,6 @@
 		B67448531E2C968B0049890F /* WebView.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B674484B1E2C968B0049890F /* WebView.PNG */; };
 		B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448561E2C96B90049890F /* AVAssetAudio.swift */; };
 		B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448571E2C96B90049890F /* UIViewController+Alert.swift */; };
-		B674485E1E2CBB7D0049890F /* SwiftFilePath.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B674485D1E2CBB7D0049890F /* SwiftFilePath.framework */; };
-		B67448601E2CBF830049890F /* SwiftFilePath.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B674485D1E2CBB7D0049890F /* SwiftFilePath.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B6782DDA1E1969F600289D8A /* ARNVTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */; };
 		B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */; };
 		B6A941D11E4AA98A003E2331 /* SubscriptionVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */; };
@@ -220,7 +218,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B67448601E2CBF830049890F /* SwiftFilePath.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,7 +319,6 @@
 		B674484B1E2C968B0049890F /* WebView.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WebView.PNG; path = MediaLibrary/Images/Screenshots/WebView.PNG; sourceTree = "<group>"; };
 		B67448561E2C96B90049890F /* AVAssetAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVAssetAudio.swift; path = MediaLibrary/helper/extensions/AVAssetAudio.swift; sourceTree = "<group>"; };
 		B67448571E2C96B90049890F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "MediaLibrary/helper/extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		B674485D1E2CBB7D0049890F /* SwiftFilePath.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftFilePath.framework; sourceTree = "<group>"; };
 		B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARNVTransitionAnimator.swift; path = ARNTransitionAnimator/ARNVTransitionAnimator.swift; sourceTree = "<group>"; };
 		B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionVewController.swift; sourceTree = "<group>"; };
@@ -452,7 +448,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */,
-				B674485E1E2CBB7D0049890F /* SwiftFilePath.framework in Frameworks */,
 				B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */,
 				B66561E31E09884100EDA684 /* libWeChatSDK.a in Frameworks */,
 				B66561EB1E09890600EDA684 /* libz.tbd in Frameworks */,
@@ -493,7 +488,6 @@
 			children = (
 				868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */,
 				865C333F1E520459008EA556 /* GameKit.framework */,
-				B674485D1E2CBB7D0049890F /* SwiftFilePath.framework */,
 				B67448311E2C7FB30049890F /* MobileCoreServices.framework */,
 				B66561EA1E09890600EDA684 /* libz.tbd */,
 				B66561E81E0988F800EDA684 /* libsqlite3.tbd */,
