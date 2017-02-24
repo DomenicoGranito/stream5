@@ -25,7 +25,7 @@ protocol UserStatusDelegate: class {
     func blockStatusDidChange(status: Bool, user: User)
 }
 
-class UserViewController: BaseViewController, ProfileDelegate
+class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
 {
     @IBOutlet var userHeaderView:UserHeaderView!
     @IBOutlet var recentCountLabel:UILabel!

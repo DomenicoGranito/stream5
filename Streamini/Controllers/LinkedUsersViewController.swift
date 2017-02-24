@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, StreamSelecting {
+class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, StreamSelecting,UserSelecting {
     @IBOutlet weak var selectorView: SelectorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyLabel: UILabel!
@@ -15,7 +15,18 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     var profileDelegate: ProfileDelegate?
     
     // MARK: - View life cycle
+    func userDidSelected(user:User)
+    {
+        //self.showUserInfo(user, userStatusDelegate: nil)
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        vc.user=user
+        navigationController?.pushViewController(vc, animated:true)
+        
+        
+    }
     
+
     func configureView()
     {
         tableView.tableFooterView=UIView()
@@ -44,6 +55,7 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        modalVC.stream=stream
         presentViewController(modalVC, animated:true, completion:nil)
     }
 

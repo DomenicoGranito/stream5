@@ -27,5 +27,7 @@ class FollowersDataSource: UserStatisticsDataSource {
         if let delegate = userSelectedDelegate {
             delegate.userDidSelected(user)
         }
+        
+        
     }
 }

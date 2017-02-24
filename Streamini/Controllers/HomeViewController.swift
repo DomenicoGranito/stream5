@@ -49,7 +49,7 @@ class HomeViewController: BaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-         (tabBarController as! mTBViewController).addCenterButton()
+         //(tabBarController as! mTBViewController).addCenterButton()
         
         
         reload()
@@ -79,7 +79,7 @@ class HomeViewController: BaseViewController
     
     override func viewWillDisappear(animated:Bool)
     {
-        timer!.invalidate()
+      //  timer!.invalidate()
         timer=nil
     }
 

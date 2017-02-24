@@ -642,7 +642,7 @@
                         <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="558" width="375" height="44"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C83D08B1-B33C-4A9D-96BC-CD0CD87343DE" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="192C8B8E-B274-46FB-BB92-C057E0D23705" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
                                     <rect key="frame" x="10" y="16" width="20" height="12"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="BYG-p1-viV"/>
@@ -669,7 +669,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EE42577E-E29A-4999-9FA3-5B882D034C7B" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3ECF6CAB-581E-4D60-B785-6133A92C23C9" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
                                     <rect key="frame" x="339" y="9" width="26" height="26"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="TT8-ro-toq"/>
@@ -9734,9 +9734,7 @@
                                         <color key="backgroundColor" red="0.14616465570000001" green="0.1395329535" blue="0.16039979460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <segue destination="plk-1K-f5C" kind="popoverPresentation" identifier="legal" popoverAnchorView="HKc-Ba-p7R" id="BaK-3f-L2V">
-                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                            </segue>
+                                            <segue destination="plk-1K-f5C" kind="show" identifier="legal" id="BaK-3f-L2V"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="flu-bh-lUc" style="IBUITableViewCellStyleDefault" id="Dd6-ge-X26">
@@ -9944,7 +9942,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="C83D08B1-B33C-4A9D-96BC-CD0CD87343DE" width="45" height="27">
+        <image name="192C8B8E-B274-46FB-BB92-C057E0D23705" width="45" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -10095,7 +10093,7 @@ LyE+IUIhSSFRIV4hYyFlIWchbCF0IXchfCGEIYchmSGcIaEAAAAAAAACAQAAAAAAAAA+AAAAAAAAAAAA
 AAAAAAAhow
 </mutableData>
         </image>
-        <image name="EE42577E-E29A-4999-9FA3-5B882D034C7B" width="60" height="60">
+        <image name="3ECF6CAB-581E-4D60-B785-6133A92C23C9" width="60" height="60">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -10429,7 +10427,7 @@ QoJChUKKAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAQow
     <inferredMetricsTieBreakers>
         <segue reference="mCu-2a-R7w"/>
         <segue reference="ww0-S7-JBk"/>
-        <segue reference="vko-lH-7pO"/>
+        <segue reference="BaK-3f-L2V"/>
         <segue reference="caL-Bv-nQi"/>
         <segue reference="WlC-av-lWT"/>
         <segue reference="AcD-60-gNs"/>

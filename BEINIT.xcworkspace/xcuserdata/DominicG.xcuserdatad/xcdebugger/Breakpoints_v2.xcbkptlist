@@ -314,7 +314,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509462929.329138"
+                  timestampString = "509508041.083327"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
@@ -329,7 +329,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509462929.333535"
+                  timestampString = "509508041.085493"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
@@ -938,11 +938,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/LinkedUsersViewController.swift"
-            timestampString = "509362477.487316"
+            timestampString = "509473071.471024"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "streamDidSelected(stream:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1306,7 +1306,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.648795"
+                  timestampString = "509508041.351229"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -1321,7 +1321,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.651419"
+                  timestampString = "509508041.354432"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
@@ -1370,7 +1370,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.659937"
+                  timestampString = "509508041.367972"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1385,7 +1385,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.662335"
+                  timestampString = "509508041.370414"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
@@ -1482,7 +1482,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.694281"
+                  timestampString = "509508041.392572"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1497,7 +1497,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.697478"
+                  timestampString = "509508041.395268"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1512,7 +1512,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.700592"
+                  timestampString = "509508041.397878"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1527,7 +1527,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.703311"
+                  timestampString = "509508041.400411"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1542,7 +1542,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509462929.706351"
+                  timestampString = "509508041.403431"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1591,7 +1591,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509462929.721734"
+                  timestampString = "509508041.417558"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1606,7 +1606,7 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509462929.725362"
+                  timestampString = "509508041.420722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1790,6 +1790,134 @@
             endingLineNumber = "184"
             landmarkName = "streamURL(_:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/LinkedUsersViewController.swift"
+            timestampString = "509473400.493184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "userDidSelected(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/UserViewController.swift"
+            timestampString = "509473660.15846"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "followingButtonPressed()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.UserViewController.followingButtonPressed () -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
+                  timestampString = "509508041.464711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "22">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.UserViewController.followingButtonPressed () -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
+                  timestampString = "509508041.467095"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "70">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/UserViewController.swift"
+            timestampString = "509473665.543242"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "followButtonPressed()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/UserViewController.swift"
+            timestampString = "509473693.299043"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.UserViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
+                  timestampString = "509508041.478813"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.UserViewController.prepareForSegue (__ObjC.UIStoryboardSegue, sender : Swift.Optional&lt;Swift.AnyObject&gt;) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
+                  timestampString = "509508041.481749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "146"
+                  endingLineNumber = "146"
+                  offsetFromSymbolStart = "227">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
