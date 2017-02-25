@@ -18,7 +18,7 @@ class CategoriesViewController: BaseViewController
     var page=0
     var categoryID:Int?
     let maxHeaderHeight:CGFloat=220.0
-    let minHeaderHeight:CGFloat=64.0
+    let minHeaderHeight:CGFloat=100.0
     var previousScrollOffset:CGFloat=0.0
     
     override func viewDidLoad()
@@ -46,19 +46,29 @@ class CategoriesViewController: BaseViewController
         
         if isScrollingDown
         {
-            newHeight=max(minHeaderHeight, headerHeightConstraint.constant-abs(scrollDiff))
+            newHeight=max(minHeaderHeight, newHeight-abs(scrollDiff))
         }
         else if isScrollingUp
         {
-            newHeight=min(maxHeaderHeight, headerHeightConstraint.constant+abs(scrollDiff))
+            newHeight=min(maxHeaderHeight, newHeight+abs(scrollDiff))
         }
         
         if newHeight != headerHeightConstraint.constant
         {
             headerHeightConstraint.constant=newHeight
+            updateHeader()
         }
         
         previousScrollOffset=scrollView.contentOffset.y
+    }
+    
+    func updateHeader()
+    {
+        let range=maxHeaderHeight-minHeaderHeight
+        let openAmount=headerHeightConstraint.constant-minHeaderHeight
+        let percentage=openAmount/range
+        
+        topImageView?.alpha=percentage
     }
     
     override func viewWillAppear(animated:Bool)
