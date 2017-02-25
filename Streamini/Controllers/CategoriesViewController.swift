@@ -11,11 +11,15 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var headerLbl:UILabel?
     @IBOutlet var topImageView:UIImageView?
+    @IBOutlet var headerHeightConstraint:NSLayoutConstraint!
     
     var allItemsArray=NSMutableArray()
     var categoryName:String?
     var page=0
     var categoryID:Int?
+    let maxHeaderHeight:CGFloat=220.0
+    let minHeaderHeight:CGFloat=64.0
+    var previousScrollOffset:CGFloat=0.0
     
     override func viewDidLoad()
     {
@@ -26,6 +30,35 @@ class CategoriesViewController: BaseViewController
         }
         
         StreamConnector().categoryStreams(categoryID!, pageID:page, success:successStreams, failure:failureStream)
+    }
+    
+    func scrollViewDidScroll(scrollView:UIScrollView)
+    {
+        let scrollDiff=scrollView.contentOffset.y-previousScrollOffset
+        
+        let absoluteTop:CGFloat=0
+        let absoluteBottom:CGFloat=scrollView.contentSize.height-scrollView.frame.size.height
+        
+        let isScrollingDown=scrollDiff>0&&scrollView.contentOffset.y>absoluteTop
+        let isScrollingUp=scrollDiff<0&&scrollView.contentOffset.y<absoluteBottom
+        
+        var newHeight=headerHeightConstraint.constant
+        
+        if isScrollingDown
+        {
+            newHeight=max(minHeaderHeight, headerHeightConstraint.constant-abs(scrollDiff))
+        }
+        else if isScrollingUp
+        {
+            newHeight=min(maxHeaderHeight, headerHeightConstraint.constant+abs(scrollDiff))
+        }
+        
+        if newHeight != headerHeightConstraint.constant
+        {
+            headerHeightConstraint.constant=newHeight
+        }
+        
+        previousScrollOffset=scrollView.contentOffset.y
     }
     
     override func viewWillAppear(animated:Bool)
