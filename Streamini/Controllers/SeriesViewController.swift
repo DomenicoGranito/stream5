@@ -19,11 +19,11 @@ import Foundation
 //  Copyright (c) 2015 Manuel Costa. All rights reserved.
 //
 import UIKit
-class SeriesViewController:BaseViewController{
+class SeriesViewController:UIViewController{
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
-   // @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     var blockingView: UIView!
     
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class SeriesViewController:BaseViewController{
         self.navigationController!.navigationBar.shadowImage! = UIImage()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         // Starting with the table view a bit scrolled down to hide the search bar
-      //  tableView.contentOffset = CGPointMake(0, 64)
+        tableView.contentOffset = CGPointMake(0, 64)
         // This blocking view is used to hide the tableview cells when they scroll too far up
         // you can comment this view to see what happens
         self.blockingView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))

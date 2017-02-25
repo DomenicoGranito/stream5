@@ -115,10 +115,16 @@ class DiscoverViewController:BaseTableViewController
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        if indexPath.section == 0 { // following, followers, blocked, streams
+        if indexPath.section == 1 && indexPath.row == 0 { // following, followers, blocked, streams
             self.performSegueWithIdentifier("charts", sender: indexPath)
         }
-        if indexPath.section == 1 { // following, followers, blocked, streams
+        if indexPath.section == 1 && indexPath.row == 1 { // following, followers, blocked, streams
+            self.performSegueWithIdentifier("channels", sender: indexPath)
+        }
+        if indexPath.section == 1 && indexPath.row == 2 { // following, followers, blocked, streams
+            self.performSegueWithIdentifier("series", sender: indexPath)
+        }
+        if indexPath.section == 1 && indexPath.row == 3 { // following, followers, blocked, streams
             self.performSegueWithIdentifier("channels", sender: indexPath)
         }
     }
@@ -132,9 +138,16 @@ class DiscoverViewController:BaseTableViewController
             }
             if sid == "channels" {
                 let controller = segue.destinationViewController as! PeopleViewController
+                
                 let index = (sender as! NSIndexPath).row
                 // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
             }
+            if sid == "series" {
+                let controller = segue.destinationViewController as! SeriesViewController
+                let index = (sender as! NSIndexPath).row
+                // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
+            }
+
         }
     }
 
