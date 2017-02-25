@@ -25,7 +25,7 @@ class ChartsViewController: BaseViewController
             self.fetchMore()
         }
         
-        StreamConnector().categoryStreams(categoryID!, pageID:page, success:successStreams, failure:failureStream)
+        StreamConnector().categoryStreams(7, pageID:page, success:successStreams, failure:failureStream)
     }
     
     override func viewWillAppear(animated:Bool)
@@ -36,7 +36,7 @@ class ChartsViewController: BaseViewController
     func fetchMore()
     {
         page+=1
-        StreamConnector().categoryStreams(categoryID!, pageID:page, success:fetchMoreSuccess, failure:failureStream)
+        StreamConnector().categoryStreams(7, pageID:page, success:fetchMoreSuccess, failure:failureStream)
     }
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
@@ -65,19 +65,19 @@ class ChartsViewController: BaseViewController
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCellWithIdentifier("cell") as! AllCategoriesRow
+        //let cell=tableView.dequeueReusableCellWithIdentifier("cell") as! AllCategoriesRow
         
-        cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
-        cell.navigationControllerReference=navigationController
+        //cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
+        //cell.navigationControllerReference=navigationController
         
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
     {
-        let cell=cell as! AllCategoriesRow
+        //let cell=cell as! AllCategoriesRow
         
-        cell.reloadCollectionView()
+        //cell.reloadCollectionView()
     }
     
     @IBAction func back()
