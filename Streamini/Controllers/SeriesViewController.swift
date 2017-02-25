@@ -6,30 +6,16 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import Foundation
-
-//  The converted code is limited by 1 KB.
-//  Please Sign Up (Free!) to remove this limitation.
-
-//
-//  ViewController.m
-//  SpotifyBehavior
-//
-//  Created by Manuel Costa on 17/08/15.
-//  Copyright (c) 2015 Manuel Costa. All rights reserved.
-//
-import UIKit
-class SeriesViewController:UIViewController{
+class SeriesViewController: UIViewController
+{
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     var blockingView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    override func viewDidLoad()
+    {
         self.tableHeader.clipsToBounds = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -43,23 +29,15 @@ class SeriesViewController:UIViewController{
         blockingView.backgroundColor = UIColor.blackColor()
         self.blockingView.hidden = true
         self.view!.addSubview(blockingView)
-        
-        
-        
     }
     
-    
-    
-    //  The converted code is limited by 1 KB.
-    //  Please Sign Up (Free!) to remove this limitation.
-    
-    // MARK: - TableViewCell Stuff
-    
-      func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
         return 80
     }
     
-      func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
         var headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
         headerView.backgroundColor = UIColor(white: 0.2, alpha: 1)
         var shuffle = UIButton(frame: CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width - 80, 30))
@@ -75,25 +53,21 @@ class SeriesViewController:UIViewController{
         return headerView
     }
     
-    
-    
-    
-      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
         return 20
     }
     
-      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("songCell")!
-        cell.textLabel!.text! = "Song Name"
-        cell.detailTextLabel!.text! = "Artist Name"
-        return cell
+    func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    {
+        //var cell = tableView.dequeueReusableCellWithIdentifier("songCell")!
+        //cell.textLabel!.text! = "Song Name"
+        //cell.detailTextLabel!.text! = "Artist Name"
+        return UITableViewCell()
     }
     
-    //  The converted code is limited by 1 KB.
-    //  Please Sign Up (Free!) to remove this limitation.
-    
-    
-     func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(scrollView:UIScrollView)
+    {
         // This weird 44 - 64 is basically to mean:
         // Past 44 pixels (assuming the tableview starts at -64, which it does because of some automatic padding related to the status and nav bar)
         if scrollView.contentOffset.y > 44 - 64 {
@@ -119,16 +93,3 @@ class SeriesViewController:UIViewController{
         }
     }
 }
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
