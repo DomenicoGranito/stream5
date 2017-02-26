@@ -35,12 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         return accessTokenPrefix + "appid=" + appID + "&secret=" + appSecret + "&code=" + code + "&grant_type=authorization_code"
         
     }
-    //end weixin login
-    
-    
-    
-    
-    
     
     var documentsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     
@@ -350,28 +344,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return WXApi.handleOpenURL(url, delegate: self)
-    }
-    
-    func onResp(resp: BaseResp!)
-    {
-        if let authResp = resp as? SendAuthResp {
-            
-            if authResp.code != nil {
-                
-                let dict = ["response": authResp.code]
-                NSNotificationCenter.defaultCenter().postNotificationName("WeChatAuthCodeResp", object: nil, userInfo: dict)
-                
-            } else {
-                
-                let dict = ["response": "Fail"]
-                NSNotificationCenter.defaultCenter().postNotificationName("WeChatAuthCodeResp", object: nil, userInfo: dict)
-                
-            }
-            
-        } else {
-            
-            let dict = ["response": "Fail"]
-            NSNotificationCenter.defaultCenter().postNotificationName("WeChatAuthCodeResp", object: nil, userInfo: dict)
-        }
-    }
+    }    
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class LoginViewController: BaseViewController
+class LoginViewController: BaseViewController, WXApiDelegate
 {
     @IBOutlet var usernameTxt:UITextField?
     @IBOutlet var passwordTxt:UITextField?
@@ -37,9 +37,42 @@ class LoginViewController: BaseViewController
     
     @IBAction func wechatLogin()
     {
+        WXApi.registerApp("wx5bd67c93b16ab684")
         
+        if(WXApi.isWXAppInstalled())
+        {
+            let req=SendAuthReq()
+            req.scope="snsapi_userinfo"
+            req.state="123"
+            
+            WXApi.sendReq(req)
+        }
+        else
+        {
+            let alert=SCLAlertView()
+            alert.showSuccess("MESSAGE", subTitle:"Please install WeChat application")
+        }
     }
     
+    func onResp(resp:BaseResp)
+    {
+        if let authResp=resp as? SendAuthResp
+        {
+            if authResp.code != nil
+            {
+                print("CORRECT")
+            }
+            else
+            {
+                print("CORRECT A")
+            }
+        }
+        else
+        {
+            print("CORRECT B")
+        }
+    }
+
     @IBAction func login()
     {
         let loginData=NSMutableDictionary()
