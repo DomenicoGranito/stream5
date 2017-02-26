@@ -16,7 +16,15 @@ class LoginViewController: BaseViewController, WXApiDelegate
     @IBOutlet var passwordBackgroundView:UIView?
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    let appID="wx5bd67c93b16ab684"
+    let appSecret="1710a218426502adfbf7352fdd451c9b"
+    let accessTokenPrefix="https://api.weixin.qq.com/sns/oauth2/access_token?"
     
+    func buildAccessTokenLink(code:String)->String
+    {
+        return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
+    }
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -37,7 +45,7 @@ class LoginViewController: BaseViewController, WXApiDelegate
     
     @IBAction func wechatLogin()
     {
-        WXApi.registerApp("wx5bd67c93b16ab684")
+        WXApi.registerApp(appID)
         
         if(WXApi.isWXAppInstalled())
         {
@@ -60,7 +68,8 @@ class LoginViewController: BaseViewController, WXApiDelegate
         {
             if authResp.code != nil
             {
-                print("CORRECT")
+                let accessTokenLinkString=buildAccessTokenLink(authResp.code)
+                UserConnector().getWeChatAccessToken(accessTokenLinkString, success:successAccessToken, failure:forgotFailure)
             }
             else
             {
@@ -71,6 +80,11 @@ class LoginViewController: BaseViewController, WXApiDelegate
         {
             errorAlert()
         }
+    }
+    
+    func successAccessToken(data:NSDictionary)
+    {
+        
     }
     
     func errorAlert()

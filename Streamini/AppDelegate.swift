@@ -22,18 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     //wx282a923ebe81d445 demo account
     //AppID：wx5bd67c93b16ab684 marie@cedricm.com account
     //wxa0bd27aed1120e15 testing account login
-    
-    private let appID = "wx5bd67c93b16ab684"
-    private let appSecret = "1710a218426502adfbf7352fdd451c9b"
-    
-    private let accessTokenPrefix = "https://api.weixin.qq.com/sns/oauth2/access_token?"
-    
-    private func buildAccessTokenLink(withCode code: String) -> String {
         
-        return accessTokenPrefix + "appid=" + appID + "&secret=" + appSecret + "&code=" + code + "&grant_type=authorization_code"
-        
-    }
-    
     var documentsDir = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0]
     
     // this will be used when opening Webview from playlist

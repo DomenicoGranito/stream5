@@ -8,8 +8,21 @@
 
 import UIKit
 
-class UserConnector: Connector {
-    
+class UserConnector: Connector
+{
+    func getWeChatAccessToken(path:String, success:(data:NSDictionary)->(), failure:(error:NSError)->())
+    {
+        manager.getObjectsAtPath(path, parameters:nil, success:{(operation, mappingResult)->Void in
+            
+            let json=try! NSJSONSerialization.JSONObjectWithData(operation.HTTPRequestOperation.responseData, options:.MutableLeaves) as! NSDictionary
+            
+            success(data:json)
+            })
+        {(operation, error)->Void in
+            failure(error:error)
+        }
+    }
+
     func logout(success: () -> (), failure: (error: NSError) -> ()) {
         let path = "user/logout"
         
