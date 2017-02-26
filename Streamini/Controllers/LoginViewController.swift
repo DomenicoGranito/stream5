@@ -35,58 +35,11 @@ class LoginViewController: BaseViewController
         }
     }
     
-    
-    
-    @IBAction func wechat_login()
+    @IBAction func wechatLogin()
     {
-        // WeChat: replace with your AppID
-        //        WXApi.registerApp("wx68aa08d12b601234")
-        let appID = "wx5bd67c93b16ab684"
-
-        WXApi.registerApp(appID);
         
-        
-        //weixin login
-        let req = SendAuthReq()
-        req.scope = "snsapi_userinfo" //Important that this is the same
-        req.state = "com.uniprogy.dominic_wx_login" //This can be any random value
-        let lgg = WXApi.sendReq(req)
-        
-        
-        if lgg
-        {
-        
-        //end login weixin
-        let loginData=NSMutableDictionary()
-        
-        loginData["id"]=appID
-        loginData["password"]="dotnetdev"
-        loginData["token"]="2"
-        loginData["type"]="signup"
-        
-        A0SimpleKeychain().setString(appID, forKey:"id")
-        A0SimpleKeychain().setString("dotnetdev", forKey:"password")
-        A0SimpleKeychain().setString("signup", forKey:"type")
-        
-        if let deviceToken=(UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
-        {
-            loginData["apn"]=deviceToken
-        }
-        else
-        {
-            loginData["apn"]=""
-        }
-        
-        let connector=UserConnector()
-        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
-
-        }
-        else
-        {
-        
-        }
-
     }
+    
     @IBAction func login()
     {
         let loginData=NSMutableDictionary()

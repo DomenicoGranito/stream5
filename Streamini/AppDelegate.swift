@@ -348,21 +348,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         NSLog("%@",error.localizedDescription)
     }
     
-    
-    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
-    }
-    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         return WXApi.handleOpenURL(url, delegate: self)
     }
     
-    func onReq(req: BaseReq!) {
-        // do optional stuff
-    }
-    
-    func onResp(resp: BaseResp!) {
-        
+    func onResp(resp: BaseResp!)
+    {
         if let authResp = resp as? SendAuthResp {
             
             if authResp.code != nil {
@@ -383,5 +374,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
             NSNotificationCenter.defaultCenter().postNotificationName("WeChatAuthCodeResp", object: nil, userInfo: dict)
         }
     }
-
 }
