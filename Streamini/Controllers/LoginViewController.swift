@@ -64,15 +64,21 @@ class LoginViewController: BaseViewController, WXApiDelegate
             }
             else
             {
-                print("CORRECT A")
+                errorAlert()
             }
         }
         else
         {
-            print("CORRECT B")
+            errorAlert()
         }
     }
-
+    
+    func errorAlert()
+    {
+        let alert=SCLAlertView()
+        alert.showSuccess("ERROR", subTitle:"Failed to get response")
+    }
+    
     @IBAction func login()
     {
         let loginData=NSMutableDictionary()

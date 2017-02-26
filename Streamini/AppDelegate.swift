@@ -6,12 +6,10 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
 
+class AppDelegate: UIResponder, UIApplicationDelegate
+{
     var window: UIWindow?
     var deviceToken: String?
     var notificationsDelegate = NotificationsDelegate()
@@ -342,7 +340,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,WXApiDelegate{
         NSLog("%@",error.localizedDescription)
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return WXApi.handleOpenURL(url, delegate: self)
+    func application(application:UIApplication, handleOpenURL url:NSURL)->Bool
+    {
+        return WXApi.handleOpenURL(url, delegate:LoginViewController())
     }    
 }
