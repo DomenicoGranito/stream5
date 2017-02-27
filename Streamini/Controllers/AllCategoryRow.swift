@@ -32,7 +32,7 @@ class AllCategoryRow: UITableViewCell
         cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://spectator.live/thumbs/\(catname.id).jpg"))
         //cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://cedricm.cn/thumbs/\(catname.id).jpg"))
         
-        cell.iconcategory?.image = UIImage(named: "\(catname.name).png")
+      //  cell.iconcategory?.image = UIImage(named: "\(catname.name).png")
         
       
         
