@@ -25,7 +25,7 @@ class ModalViewController: UIViewController
     
    // @IBOutlet weak var playerView: PlayerView!
     
-    
+    var context:NSManagedObjectContext!
     var liked=false
     var isPlaying=false
     var player:AVPlayer?
@@ -35,18 +35,16 @@ class ModalViewController: UIViewController
     
     override func viewWillAppear(animated:Bool)
     {
-        
-         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
-      
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
     }
 
-    
-    
     override func viewDidLoad()
     {
-     
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        context=appDelegate.managedObjectContext
+
+        addToRecentlyPlayed(stream!.title)
         
-       
         let streamName = "\(stream!.streamHash)-\(stream!.id)"
         let url: String
         
@@ -90,6 +88,23 @@ class ModalViewController: UIViewController
         playerController.view.frame=playerView!.frame
     }
     
+    func addToRecentlyPlayed(songName:String)
+    {
+        if(!SongManager.isRecentlyPlayed(songName))
+        {
+            let newRecentlyPlayed=NSEntityDescription.insertNewObjectForEntityForName("RecentlyPlayed", inManagedObjectContext:context)
+            newRecentlyPlayed.setValue(songName, forKey:"songName")
+            
+            do
+            {
+                try context.save()
+            }
+            catch _ as NSError
+            {
+            }
+        }
+    }
+
     override func viewDidAppear(animated:Bool)
     {
         timer?.invalidate()

@@ -41,6 +41,20 @@ public class SongManager{
         return false
     }
     
+    class func isRecentlyPlayed(songName:String)->Bool
+    {
+        let recentlyPlayedEntity=NSFetchRequest(entityName:"RecentlyPlayed")
+        recentlyPlayedEntity.predicate=NSPredicate(format:"songName=%@", songName)
+        let fetchedRecentlyPlayed=try! context.executeFetchRequest(recentlyPlayedEntity)
+        
+        if(fetchedRecentlyPlayed.count>0)
+        {
+            return true
+        }
+        
+        return false
+    }
+    
     public class func addToRelationships(identifier : String, playlistName : String){
         
         let selectedPlaylist = getPlaylist(playlistName)
