@@ -6,8 +6,6 @@
 //  Copyright © 2016 Sem. All rights reserved.
 //
 
-import UIKit
-
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {

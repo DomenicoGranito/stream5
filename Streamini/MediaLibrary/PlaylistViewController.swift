@@ -6,8 +6,6 @@
 //  Copyright © 2016 Sem. All rights reserved.
 //
 
-import UIKit
-
 //the View Controller that contains the Player and Playlist
 class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate {
     

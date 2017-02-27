@@ -67,12 +67,8 @@ class MyLibViewController: UITableViewController {
         let vc=storyboard.instantiateViewControllerWithIdentifier("myProfileViewControllerId") as! myProfileViewController
         vc.user=UserContainer.shared.logged()
         navigationController?.pushViewController(vc, animated:true)
-        
-       
     }
 
-    
-    
     func successGetUser(user: User) {
         self.user = user
          }
@@ -80,9 +76,4 @@ class MyLibViewController: UITableViewController {
     func successFailure(error: NSError) {
       //  handleError(error)
     }
-
-    
-       
-   
 }
-

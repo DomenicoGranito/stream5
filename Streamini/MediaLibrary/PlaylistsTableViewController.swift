@@ -6,7 +6,6 @@
 //  Copyright © 2016年 Sem. All rights reserved.
 //
 
-import UIKit
 //import SwiftFilePath
 import CoreData
 

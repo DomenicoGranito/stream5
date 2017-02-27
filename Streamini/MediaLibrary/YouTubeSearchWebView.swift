@@ -6,7 +6,6 @@
 //  Copyright © 2015年 Sem. All rights reserved.
 //
 
-import UIKit
 import WebKit
 //import SnapKit
 

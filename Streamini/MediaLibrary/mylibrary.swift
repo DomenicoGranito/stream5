@@ -20,6 +20,4 @@ class myLibrary : UIViewController
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    
 }

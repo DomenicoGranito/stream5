@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 xxxAIRINxxx. All rights reserved.
 //
 
-import UIKit
 import AVKit
 
 class ModalViewController: UIViewController
@@ -171,7 +170,7 @@ class ModalViewController: UIViewController
     
     @IBAction func close()
     {
-         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         dismissViewControllerAnimated(true, completion:nil)
     }
     
@@ -233,11 +232,8 @@ class ModalViewController: UIViewController
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
-        
-        
     }
 
-    
     @IBAction func more()
     {
         

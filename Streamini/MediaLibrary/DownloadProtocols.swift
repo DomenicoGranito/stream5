@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 protocol downloadTableViewControllerDelegate{
     func setProgressValue(dict : NSDictionary)
     func addCell(dict : NSDictionary)

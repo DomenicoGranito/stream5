@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Sem. All rights reserved.
 //
 //
-import UIKit
+
 import Foundation
 import CoreData
 //import XCDYouTubeKit

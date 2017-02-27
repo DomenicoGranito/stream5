@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Sem. All rights reserved.
 //
 
-import UIKit
-
 class downloadCell: UITableViewCell {
     
     @IBOutlet var durationLabel: UILabel!
