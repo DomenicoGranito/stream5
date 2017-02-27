@@ -616,6 +616,7 @@
                         <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6D7A3DBD-EC38-43E3-A777-103DCDBC02E2" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
+
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="BYG-p1-viV"/>
                                         <constraint firstAttribute="width" constant="20" id="agt-QP-2YF"/>
@@ -639,7 +640,9 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3886115B-8B35-4FA8-BC26-3D08122549E0" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
+
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="TT8-ro-toq"/>
                                         <constraint firstAttribute="width" constant="26" id="mnO-gk-SW7"/>
@@ -9139,9 +9142,12 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePi-kl-2tr">
                                             <subviews>
                                                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uQG-qo-F3E">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                                    <color key="backgroundColor" red="0.87321541879999998" green="0.87321541879999998" blue="0.87321541879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="WbK-da-E33"/>
                                                     </constraints>
+                                                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </searchBar>
                                             </subviews>
@@ -9160,8 +9166,8 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </pageControl>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1F-4H-HLt">
-                                                    <frame key="frameInset" minX="109" minY="46" width="160" height="160"/>
-                                                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="109" y="46" width="160" height="160"/>
+                                                    <color key="backgroundColor" red="0.87321541879999998" green="0.87321541879999998" blue="0.87321541879999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="160" id="Fmq-7J-dtv"/>
                                                         <constraint firstAttribute="width" constant="160" id="OpA-qW-aiF"/>
@@ -9193,7 +9199,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMW-Li-zza" id="tKu-8U-ZYJ">
                                             <frame key="frameInset" width="600" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.075923792200000007" green="0.081028042440000003" blue="0.095002254709999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
