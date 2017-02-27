@@ -23,11 +23,10 @@ public class SongManager{
         return fetchedSongs[0] as! NSManagedObject
     }
     
-    class func getRecentlyPlayed()->NSManagedObject
+    class func getRecentlyPlayed()->[NSManagedObject]
     {
         let recentlyPlayedRequest=NSFetchRequest(entityName:"RecentlyPlayed")
-        let fetchedRecentlyPlayed=try! context.executeFetchRequest(recentlyPlayedRequest)
-        return fetchedRecentlyPlayed[0] as! NSManagedObject
+        return try! context.executeFetchRequest(recentlyPlayedRequest) as! [NSManagedObject]
     }
 
     //gets playlist associated with (playlistName : String)

@@ -20,6 +20,7 @@ class MyLibViewController: UIViewController
     let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Series", "Channels", "Upcoming Events"]
     let menuItemIconsArray=["playlist", "youtube", "internet", "Series", "channels", "time"]
     
+    var recentlyPlayed:[NSManagedObject]?
     var user: User?
     var profileDelegate: ProfileDelegate?
     var selectedImage: UIImage?
@@ -43,7 +44,7 @@ class MyLibViewController: UIViewController
 
     override func viewDidLoad()
     {
-        let recentlyPlayed=SongManager.getRecentlyPlayed()
+        recentlyPlayed=SongManager.getRecentlyPlayed()
         
         self.tabBarController!.navigationItem.hidesBackButton=true
         navigationController?.navigationBarHidden=false
@@ -92,23 +93,43 @@ class MyLibViewController: UIViewController
       //  handleError(error)
     }
     
-    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 1
+        if(indexPath.row<6)
+        {
+            return 44
+        }
+        else
+        {
+            return 90
+        }
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 6
+        return recentlyPlayed!.count+6
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
+        if(indexPath.row<6)
+        {
+            let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
+            
+            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
+            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
+            
+            return cell
+        }
+        else
+        {
+            let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
+            
+            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-6].valueForKey("songName") as? String
+            
+            return cell
+        }
         
-        cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
-        cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
-        
-        return cell
+        return UITableViewCell()
     }
 }
