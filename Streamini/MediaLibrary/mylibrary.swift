@@ -6,18 +6,10 @@
 //  Copyright © 2017 Sem. All rights reserved.
 //
 
-import Foundation
-
-
-class myLibrary : UIViewController
+class myLibrary: UIViewController
 {
-
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-       
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

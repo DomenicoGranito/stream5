@@ -90,6 +90,5 @@ class Player: AVPlayerViewController {
             
         default: break
         }
-        
     }
 }

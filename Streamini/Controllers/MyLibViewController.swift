@@ -41,11 +41,13 @@ class MyLibViewController: UIViewController
      //   UserConnector().get(nil, success:successGetUser, failure:successFailure)
    // }
 
-    
-    override func viewDidLoad() {
-        self.tabBarController!.navigationItem.hidesBackButton = true
+    override func viewDidLoad()
+    {
+        let recentlyPlayed=SongManager.getRecentlyPlayed()
+        
+        self.tabBarController!.navigationItem.hidesBackButton=true
         navigationController?.navigationBarHidden=false
-        self.navigationController!.setNavigationBarHidden(false, animated: true)
+        self.navigationController!.setNavigationBarHidden(false, animated:true)
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
 
@@ -80,11 +82,33 @@ class MyLibViewController: UIViewController
         navigationController?.pushViewController(vc, animated:true)
     }
 
-    func successGetUser(user: User) {
-        self.user = user
-         }
+    func successGetUser(user:User)
+    {
+        self.user=user
+    }
     
-    func successFailure(error: NSError) {
+    func successFailure(error:NSError)
+    {
       //  handleError(error)
+    }
+    
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    {
+        return 1
+    }
+    
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
+        return 6
+    }
+    
+    func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    {
+        let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
+        
+        cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
+        cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
+        
+        return cell
     }
 }
