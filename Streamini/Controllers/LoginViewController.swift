@@ -22,7 +22,10 @@ class LoginViewController: BaseViewController, WXApiDelegate
     
     func buildAccessTokenLink(code:String)->String
     {
-        return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
+        //return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
+   
+        return accessTokenPrefix+"appid="+appID+"&code="+code+"&grant_type=authorization_code"
+        
     }
 
     override func viewDidLoad()

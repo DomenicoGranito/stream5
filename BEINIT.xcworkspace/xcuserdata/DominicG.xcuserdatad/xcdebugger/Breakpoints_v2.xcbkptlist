@@ -33,6 +33,38 @@
             endingLineNumber = "141"
             landmarkName = "createStreamFailure(error:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.CreateStreamViewController.createStreamFailure (__ObjC.NSError) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/CreateStreamViewController.swift"
+                  timestampString = "509861924.270633"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Streamini.CreateStreamViewController.createStreamFailure (__ObjC.NSError) -&gt; ()"
+                  moduleName = "Streamini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/CreateStreamViewController.swift"
+                  timestampString = "509861924.273913"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "416">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -314,12 +346,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509861101.922638"
+                  timestampString = "509861924.377774"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
                   endingLineNumber = "540"
-                  offsetFromSymbolStart = "653">
+                  offsetFromSymbolStart = "592">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -329,12 +361,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/MediaLibrary/Playlist.swift"
-                  timestampString = "509861101.927415"
+                  timestampString = "509861924.38165"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "540"
                   endingLineNumber = "540"
-                  offsetFromSymbolStart = "1835">
+                  offsetFromSymbolStart = "1708">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -650,28 +682,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/LoginViewController.swift"
-            timestampString = "509023177.970437"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "wechat_login()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Streamini/Controllers/LoginViewController.swift"
-            timestampString = "509023179.266264"
+            timestampString = "509861921.633785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
-            landmarkName = "wechat_login()"
+            landmarkName = "wechatLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -682,12 +698,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/LoginViewController.swift"
-            timestampString = "509023179.883543"
+            timestampString = "509861921.633785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "wechat_login()"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "wechatLogin()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Streamini/Controllers/LoginViewController.swift"
+            timestampString = "509861921.633785"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "wechatLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1050,12 +1082,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Streamini/Controllers/LoginViewController.swift"
-            timestampString = "509380322.890244"
+            timestampString = "509861921.633785"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "wechat_login()"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "wechatLogin()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1306,12 +1338,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.353717"
+                  timestampString = "509861924.706278"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
                   endingLineNumber = "24"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1321,12 +1353,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.360681"
+                  timestampString = "509861924.708849"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "24"
                   endingLineNumber = "24"
-                  offsetFromSymbolStart = "79">
+                  offsetFromSymbolStart = "84">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1370,12 +1402,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.376007"
+                  timestampString = "509861924.719092"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
                   endingLineNumber = "121"
-                  offsetFromSymbolStart = "426">
+                  offsetFromSymbolStart = "388">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1385,12 +1417,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.378943"
+                  timestampString = "509861924.721622"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "121"
                   endingLineNumber = "121"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1482,12 +1514,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.408643"
+                  timestampString = "509861924.74651"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1497,12 +1529,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.41119"
+                  timestampString = "509861924.749055"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1512,12 +1544,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.414442"
+                  timestampString = "509861924.75148"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "28">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1527,12 +1559,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.41698"
+                  timestampString = "509861924.753923"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "72">
+                  offsetFromSymbolStart = "76">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1542,12 +1574,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/FollowersViewController.swift"
-                  timestampString = "509861102.420134"
+                  timestampString = "509861924.75635"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "31">
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1591,12 +1623,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.441781"
+                  timestampString = "509861924.768533"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1606,12 +1638,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.445333"
+                  timestampString = "509861924.771071"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1831,12 +1863,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.494154"
+                  timestampString = "509861924.820307"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
                   endingLineNumber = "114"
-                  offsetFromSymbolStart = "22">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1846,12 +1878,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.497223"
+                  timestampString = "509861924.823486"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "114"
                   endingLineNumber = "114"
-                  offsetFromSymbolStart = "70">
+                  offsetFromSymbolStart = "80">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -1895,12 +1927,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.509572"
+                  timestampString = "509861924.834127"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
                   endingLineNumber = "146"
-                  offsetFromSymbolStart = "23">
+                  offsetFromSymbolStart = "36">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1910,12 +1942,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/UserViewController.swift"
-                  timestampString = "509861102.512248"
+                  timestampString = "509861924.836892"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
                   endingLineNumber = "146"
-                  offsetFromSymbolStart = "227">
+                  offsetFromSymbolStart = "224">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -2135,12 +2167,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/SeriesViewController.swift"
-                  timestampString = "509861102.574156"
+                  timestampString = "509861924.883619"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "88"
                   endingLineNumber = "88"
-                  offsetFromSymbolStart = "1648">
+                  offsetFromSymbolStart = "1552">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -2150,12 +2182,12 @@
                   moduleName = "Streamini"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/DominicG/Documents/stream5/Streamini/Controllers/SeriesViewController.swift"
-                  timestampString = "509861102.57806"
+                  timestampString = "509861924.886135"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "89"
                   endingLineNumber = "89"
-                  offsetFromSymbolStart = "19">
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>
