@@ -6,8 +6,20 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class SeriesViewController: UIViewController
-{
+import UIKit
+
+
+
+
+    class SeriesViewController: UIViewController, UIScrollViewDelegate {
+    
+    let scrollView = UIScrollView(frame: CGRectMake(0, 0, 320, 300))
+    var colors:[UIColor] = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor()]
+    var frame: CGRect = CGRectMake(0, 0, 0, 0)
+    var pageControl : UIPageControl = UIPageControl(frame: CGRectMake(50, 300, 200, 50))
+    
+
+
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
@@ -16,6 +28,30 @@ class SeriesViewController: UIViewController
     
     override func viewDidLoad()
     {
+        
+        
+        //
+        configurePageControl()
+        
+        scrollView.delegate = self
+        self.view.addSubview(scrollView)
+        for index in 0..<2 {
+            
+            frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
+            frame.size = self.scrollView.frame.size
+            self.scrollView.pagingEnabled = true
+            
+            var subView = UIView(frame: frame)
+            subView.backgroundColor = colors[index]
+            self.scrollView .addSubview(subView)
+        }
+        
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height)
+        pageControl.addTarget(self, action: Selector("changePage:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+
+        //
+        
         self.tableHeader.clipsToBounds = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -30,7 +66,37 @@ class SeriesViewController: UIViewController
         self.blockingView.hidden = true
         self.view!.addSubview(blockingView)
     }
-    
+    //
+        func configurePageControl() {
+            // The total number of pages that are available is based on how many available colors we have.
+            self.pageControl.numberOfPages = colors.count
+            self.pageControl.currentPage = 0
+            self.pageControl.tintColor = UIColor.redColor()
+            self.pageControl.pageIndicatorTintColor = UIColor.blackColor()
+            self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
+            self.view.addSubview(pageControl)
+            
+        }
+        
+        // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+        func changePage(sender: AnyObject) -> () {
+            let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
+            scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
+        }
+        
+        func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+            
+            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+            pageControl.currentPage = Int(pageNumber)
+        }
+        
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
+        }
+
+    //
+        
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 80
