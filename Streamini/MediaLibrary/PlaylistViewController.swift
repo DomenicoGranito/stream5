@@ -50,9 +50,6 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate {
         }
         
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         

@@ -63,8 +63,6 @@ class UserProfileViewController: BaseViewController, ProfileDelegate
         navigationController?.navigationBarHidden=true
     }
     
-       
-    
     func configureView()
     {
         let recentLabelText=NSLocalizedString("user_card_recent", comment:"")

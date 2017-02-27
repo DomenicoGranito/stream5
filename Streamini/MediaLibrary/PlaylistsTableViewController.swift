@@ -72,7 +72,6 @@ class PlaylistsTableViewController: UITableViewController {
         }
     }
     
-    
     func addPlaylist(name: String){
         if(!SongManager.isPlaylist(name)){
             let newPlaylist = NSEntityDescription.insertNewObjectForEntityForName("Playlist", inManagedObjectContext: self.context)
@@ -82,7 +81,6 @@ class PlaylistsTableViewController: UITableViewController {
                 try self.context.save()
             }catch _ as NSError{}
         }
-        
     }
     
     func refreshPlaylists(){

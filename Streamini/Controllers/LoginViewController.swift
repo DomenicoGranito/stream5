@@ -16,16 +16,13 @@ class LoginViewController: BaseViewController, WXApiDelegate
     @IBOutlet var passwordBackgroundView:UIView?
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
-    let appID="wx5bd67c93b16ab684"
-    let appSecret="1710a218426502adfbf7352fdd451c9b"
+    let appID="wxa0bd27aed1120e15"
+    let appSecret="0b816cd869076add75641aa53a9479e1"
     let accessTokenPrefix="https://api.weixin.qq.com/sns/oauth2/access_token?"
     
     func buildAccessTokenLink(code:String)->String
     {
-        //return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
-   
-        return accessTokenPrefix+"appid="+appID+"&code="+code+"&grant_type=authorization_code"
-        
+        return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
     }
 
     override func viewDidLoad()

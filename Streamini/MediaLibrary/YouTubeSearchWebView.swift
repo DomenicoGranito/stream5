@@ -109,8 +109,6 @@ class YouTubeSearchWebView: WKWebView {
     
 }
 
-
-
 // util
 extension YouTubeSearchWebView {
     

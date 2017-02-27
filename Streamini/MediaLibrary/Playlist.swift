@@ -118,10 +118,6 @@ class Playlist: UITableViewController, UISearchResultsUpdating, PlaylistDelegate
         resetX()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func updatePlaylist(notification: NSNotification){
         updatePlaylist()
     }

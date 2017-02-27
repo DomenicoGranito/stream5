@@ -35,11 +35,7 @@ class Player: AVPlayerViewController {
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         view.addGestureRecognizer(swipeLeft)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
+        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
