@@ -34,7 +34,8 @@ import UIKit
         configurePageControl()
         
         scrollView.delegate = self
-        self.view.addSubview(scrollView)
+       // self.view.addSubview(scrollView)
+       self.tableHeader.addSubview(scrollView)
         for index in 0..<2 {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
