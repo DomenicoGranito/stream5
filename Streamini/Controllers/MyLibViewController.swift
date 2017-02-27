@@ -6,9 +6,20 @@
 //  Copyright © 2017 UniProgy s.r.o. All rights reserved.
 //
 
-import Foundation
-class MyLibViewController: UITableViewController {
-    //UITableViewController  {
+class RecentlyPlayedCell:UITableViewCell
+{
+    @IBOutlet var videoTitleLbl:UILabel?
+    @IBOutlet var artistNameLbl:UILabel?
+    @IBOutlet var videoThumbnailImageView:UIImageView?
+}
+
+class MyLibViewController: UIViewController
+{
+    @IBOutlet var itemsTbl:UITableView?
+    
+    let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Series", "Channels", "Upcoming Events"]
+    let menuItemIconsArray=["playlist", "youtube", "internet", "Series", "channels", "time"]
+    
     var user: User?
     var profileDelegate: ProfileDelegate?
     var selectedImage: UIImage?
