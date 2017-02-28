@@ -6,21 +6,12 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
 import Photos
+
 class RootViewController: UIViewController
 {
    
 }
-
-
-//
-//  ProfileViewController.swift
-// Streamini
-//
-//  Created by Vasily Evreinov on 11/08/15.
-//  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
-//
 
 import MessageUI
 

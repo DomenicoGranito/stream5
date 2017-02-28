@@ -6,12 +6,20 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class UserConnector: Connector
 {
     func getWeChatAccessToken(path:String, success:(data:NSDictionary)->(), failure:(error:NSError)->())
     {
+        let manager=RKObjectManager(baseURL:NSURL(string:path))
+        RKMIMETypeSerialization.registerClass(RKNSJSONSerialization.self, forMIMEType:"text/plain")
+        
+        let responseMapping=UserMappingProvider.weChatLoginResponseMapping()
+        
+        let statusCode=RKStatusCodeIndexSetForClass(.Successful)
+        
+        let userResponseDescriptor=RKResponseDescriptor(mapping:responseMapping, method:.GET, pathPattern:nil, keyPath:"", statusCodes:statusCode)
+        manager.addResponseDescriptor(userResponseDescriptor)
+        
         manager.getObjectsAtPath(path, parameters:nil, success:{(operation, mappingResult)->Void in
             
             let json=try! NSJSONSerialization.JSONObjectWithData(operation.HTTPRequestOperation.responseData, options:.MutableLeaves) as! NSDictionary

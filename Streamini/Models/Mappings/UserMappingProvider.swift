@@ -24,6 +24,14 @@ class UserMappingProvider: NSObject {
         return mapping
     }
     
+    class func weChatLoginResponseMapping()->RKObjectMapping
+    {
+        let mapping=RKObjectMapping(forClass:NSMutableDictionary.self)
+        mapping.addAttributeMappingsFromArray(["access_token", "expires_in", "refresh_token", "openid", "scope", "unionid"])
+        
+        return mapping
+    }
+    
     class func userRequestMapping() -> RKObjectMapping {
         let mapping = RKObjectMapping.requestMapping()
         
