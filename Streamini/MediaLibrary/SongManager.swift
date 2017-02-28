@@ -61,6 +61,16 @@ public class SongManager{
         return false
     }
     
+    class func addToRecentlyPlayed(songName:String)
+    {
+        if(!SongManager.isRecentlyPlayed(songName))
+        {
+            let newRecentlyPlayed=NSEntityDescription.insertNewObjectForEntityForName("RecentlyPlayed", inManagedObjectContext:context)
+            newRecentlyPlayed.setValue(songName, forKey:"songName")
+            save()
+        }
+    }
+
     public class func addToRelationships(identifier : String, playlistName : String){
         
         let selectedPlaylist = getPlaylist(playlistName)
