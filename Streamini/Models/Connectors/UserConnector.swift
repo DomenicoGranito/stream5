@@ -10,8 +10,30 @@ class UserConnector: Connector
 {
     func getWeChatAccessToken(path:String, success:(data:NSDictionary)->(), failure:(error:NSError)->())
     {
-        let manager=RKObjectManager(baseURL:NSURL(string:path))
+        let manager=RKObjectManager(baseURL:NSURL(string:"https://api.weixin.qq.com/sns/"))
         RKMIMETypeSerialization.registerClass(RKNSJSONSerialization.self, forMIMEType:"text/plain")
+        
+        let responseMapping=UserMappingProvider.weChatLoginResponseMapping()
+        
+        let statusCode=RKStatusCodeIndexSetForClass(.Successful)
+        
+        let userResponseDescriptor=RKResponseDescriptor(mapping:responseMapping, method:.GET, pathPattern:nil, keyPath:"", statusCodes:statusCode)
+        manager.addResponseDescriptor(userResponseDescriptor)
+        
+        manager.getObjectsAtPath(path, parameters:nil, success:{(operation, mappingResult)->Void in
+            
+            let json=try! NSJSONSerialization.JSONObjectWithData(operation.HTTPRequestOperation.responseData, options:.MutableLeaves) as! NSDictionary
+            
+            success(data:json)
+            })
+        {(operation, error)->Void in
+            failure(error:error)
+        }
+    }
+    
+    func getWeChatUserProfile(path:String, success:(data:NSDictionary)->(), failure:(error:NSError)->())
+    {
+        let manager=RKObjectManager(baseURL:NSURL(string:"https://api.weixin.qq.com/sns/"))
         
         let responseMapping=UserMappingProvider.weChatLoginResponseMapping()
         

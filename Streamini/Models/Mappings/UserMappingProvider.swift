@@ -6,19 +6,19 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-class UserMappingProvider: NSObject {
-    
-    class func loginRequestMapping() -> RKObjectMapping {
-        let mapping = RKObjectMapping.requestMapping()
+class UserMappingProvider: NSObject
+{
+    class func loginRequestMapping()->RKObjectMapping
+    {
+        let mapping=RKObjectMapping.requestMapping()
         mapping.addAttributeMappingsFromArray(["id", "token", "secret", "type", "apn", "password", "username"])
         
         return mapping
     }
     
-    class func loginResponseMapping() -> RKObjectMapping {
-        let mapping = RKObjectMapping(forClass: NSMutableDictionary.self)
+    class func loginResponseMapping()->RKObjectMapping
+    {
+        let mapping=RKObjectMapping(forClass:NSMutableDictionary.self)
         mapping.addAttributeMappingsFromArray(["session"])
         
         return mapping

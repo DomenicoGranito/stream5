@@ -18,11 +18,10 @@ class LoginViewController: BaseViewController, WXApiDelegate
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     let appID="wx5bd67c93b16ab684"
     let appSecret="62034430e248fe934af273e7afe62196"
-    let accessTokenPrefix="https://api.weixin.qq.com/sns/oauth2/access_token?"
     
     func buildAccessTokenLink(code:String)->String
     {
-        return accessTokenPrefix+"appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
+        return "oauth2/access_token?appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
     }
 
     override func viewDidLoad()
@@ -84,10 +83,16 @@ class LoginViewController: BaseViewController, WXApiDelegate
     
     func successAccessToken(data:NSDictionary)
     {
-        let accessToken=data["access_token"]
-        let openID=data["openid"]
+        let accessToken=data["access_token"] as! String
+        let openID=data["openid"] as! String
         
-        print(data["access_token"])
+        let userProfileLinkString="userinfo?access_token="+accessToken+"&openid="+openID
+        UserConnector().getWeChatUserProfile(userProfileLinkString, success:successUserProfile, failure:forgotFailure)
+    }
+    
+    func successUserProfile(data:NSDictionary)
+    {
+        print(data)
     }
     
     func errorAlert()
