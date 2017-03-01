@@ -92,7 +92,12 @@ class LoginViewController: BaseViewController, WXApiDelegate
     
     func successUserProfile(data:NSDictionary)
     {
-        print(data)
+        let username=data["openid"] as! String
+        let password="beinitpass"
+        let email=username+"@WeChat.com"
+        
+        loginWithBEINIT(username, password:password)
+        signupWithBEINIT(username, email:email, password:password)
     }
     
     func errorAlert()
@@ -101,17 +106,18 @@ class LoginViewController: BaseViewController, WXApiDelegate
         alert.showSuccess("ERROR", subTitle:"Failed to get response")
     }
     
-    @IBAction func login()
+    func signupWithBEINIT(username:String, email:String, password:String)
     {
         let loginData=NSMutableDictionary()
         
-        loginData["id"]=usernameTxt!.text!
-        loginData["password"]=passwordTxt!.text!
-        loginData["token"]="2"
+        loginData["id"]=email
+        loginData["username"]=username
+        loginData["password"]=password
+        loginData["token"]="1"
         loginData["type"]="signup"
         
-        A0SimpleKeychain().setString(usernameTxt!.text!, forKey:"id")
-        A0SimpleKeychain().setString(passwordTxt!.text!, forKey:"password")
+        A0SimpleKeychain().setString(email, forKey:"id")
+        A0SimpleKeychain().setString(password, forKey:"password")
         A0SimpleKeychain().setString("signup", forKey:"type")
         
         if let deviceToken=(UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
@@ -125,6 +131,37 @@ class LoginViewController: BaseViewController, WXApiDelegate
         
         let connector=UserConnector()
         connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+    }
+    
+    func loginWithBEINIT(username:String, password:String)
+    {
+        let loginData=NSMutableDictionary()
+        
+        loginData["id"]=username
+        loginData["password"]=password
+        loginData["token"]="2"
+        loginData["type"]="signup"
+        
+        A0SimpleKeychain().setString(username, forKey:"id")
+        A0SimpleKeychain().setString(password, forKey:"password")
+        A0SimpleKeychain().setString("signup", forKey:"type")
+        
+        if let deviceToken=(UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
+        {
+            loginData["apn"]=deviceToken
+        }
+        else
+        {
+            loginData["apn"]=""
+        }
+        
+        let connector=UserConnector()
+        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+    }
+    
+    @IBAction func login()
+    {
+        loginWithBEINIT(usernameTxt!.text!, password:passwordTxt!.text!)
     }
     
     func loginSuccess(session:String)
