@@ -18,12 +18,15 @@ class LoginViewController: BaseViewController, WXApiDelegate
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     let appID="wx5bd67c93b16ab684"
     let appSecret="62034430e248fe934af273e7afe62196"
+    var username:String!
+    var password:String!
+    var email:String!
     
     func buildAccessTokenLink(code:String)->String
     {
         return "oauth2/access_token?appid="+appID+"&secret="+appSecret+"&code="+code+"&grant_type=authorization_code"
     }
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -56,8 +59,7 @@ class LoginViewController: BaseViewController, WXApiDelegate
         }
         else
         {
-            let alert=SCLAlertView()
-            alert.showSuccess("MESSAGE", subTitle:"Please install WeChat application")
+            SCLAlertView().showSuccess("MESSAGE", subTitle:"Please install WeChat application")
         }
     }
     
@@ -92,21 +94,19 @@ class LoginViewController: BaseViewController, WXApiDelegate
     
     func successUserProfile(data:NSDictionary)
     {
-        let username=data["openid"] as! String
-        let password="beinitpass"
-        let email=username+"@WeChat.com"
+        username=data["openid"] as! String
+        password="beinitpass"
+        email=username+"@WeChat.com"
         
-        loginWithBEINIT(username, password:password)
-        signupWithBEINIT(username, email:email, password:password)
+        signupWithBEINIT()
     }
     
     func errorAlert()
     {
-        let alert=SCLAlertView()
-        alert.showSuccess("ERROR", subTitle:"Failed to get response")
+        SCLAlertView().showSuccess("ERROR", subTitle:"Failed to get response")
     }
     
-    func signupWithBEINIT(username:String, email:String, password:String)
+    func signupWithBEINIT()
     {
         let loginData=NSMutableDictionary()
         
@@ -129,11 +129,20 @@ class LoginViewController: BaseViewController, WXApiDelegate
             loginData["apn"]=""
         }
         
-        let connector=UserConnector()
-        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+        UserConnector().login(loginData, success:loginSuccess, failure:signupFailure)
     }
     
-    func loginWithBEINIT(username:String, password:String)
+    func signupFailure(error:NSError)
+    {
+        let errorMessage=error.userInfo[NSLocalizedDescriptionKey] as! String
+        
+        if errorMessage=="Username is already taken."
+        {
+            loginWithBEINIT()
+        }
+    }
+    
+    func loginWithBEINIT()
     {
         let loginData=NSMutableDictionary()
         
@@ -155,13 +164,15 @@ class LoginViewController: BaseViewController, WXApiDelegate
             loginData["apn"]=""
         }
         
-        let connector=UserConnector()
-        connector.login(loginData, success:loginSuccess, failure:forgotFailure)
+        UserConnector().login(loginData, success:loginSuccess, failure:forgotFailure)
     }
     
     @IBAction func login()
     {
-        loginWithBEINIT(usernameTxt!.text!, password:passwordTxt!.text!)
+        username=usernameTxt!.text!
+        password=passwordTxt!.text!
+        
+        loginWithBEINIT()
     }
     
     func loginSuccess(session:String)
@@ -183,20 +194,17 @@ class LoginViewController: BaseViewController, WXApiDelegate
     {
         if(usernameTxt?.text=="")
         {
-            let alertView=UIAlertView.notAuthorizedAlert("Please enter your username")
-            alertView.show()
+            UIAlertView.notAuthorizedAlert("Please enter your username").show()
         }
         else
         {
-            let connector=UserConnector()
-            connector.forgot(usernameTxt!.text!, success:forgotSuccess, failure:forgotFailure)
+            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
         }
     }
     
     func forgotSuccess()
     {
-        let alertView=UIAlertView.notAuthorizedAlert("Password reset")
-        alertView.show()
+        UIAlertView.notAuthorizedAlert("Password reset").show()
     }
     
     func forgotFailure(error:NSError)
