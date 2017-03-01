@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class LoginViewController: BaseViewController, WXApiDelegate
+class LoginViewController: BaseViewController
 {
     @IBOutlet var usernameTxt:UITextField?
     @IBOutlet var passwordTxt:UITextField?
@@ -30,6 +30,8 @@ class LoginViewController: BaseViewController, WXApiDelegate
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onResp), name:"getCode", object:nil)
         
         usernameImageView?.image=usernameImageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
         passwordImageView?.image=passwordImageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
@@ -63,24 +65,12 @@ class LoginViewController: BaseViewController, WXApiDelegate
         }
     }
     
-    func onResp(resp:BaseResp)
+    func onResp(notification:NSNotification)
     {
-        if let authResp=resp as? SendAuthResp
-        {
-            if authResp.code != nil
-            {
-                let accessTokenLinkString=buildAccessTokenLink(authResp.code)
-                UserConnector().getWeChatAccessToken(accessTokenLinkString, success:successAccessToken, failure:forgotFailure)
-            }
-            else
-            {
-                errorAlert()
-            }
-        }
-        else
-        {
-            errorAlert()
-        }
+        let code=notification.object as! String
+        
+        let accessTokenLinkString=buildAccessTokenLink(code)
+        UserConnector().getWeChatAccessToken(accessTokenLinkString, success:successAccessToken, failure:forgotFailure)
     }
     
     func successAccessToken(data:NSDictionary)
@@ -99,11 +89,6 @@ class LoginViewController: BaseViewController, WXApiDelegate
         email=username+"@WeChat.com"
         
         signupWithBEINIT()
-    }
-    
-    func errorAlert()
-    {
-        SCLAlertView().showSuccess("ERROR", subTitle:"Failed to get response")
     }
     
     func signupWithBEINIT()

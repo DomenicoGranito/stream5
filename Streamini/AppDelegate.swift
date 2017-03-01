@@ -8,7 +8,7 @@
 
 @UIApplicationMain
 
-class AppDelegate: UIResponder, UIApplicationDelegate
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
 {
     var window: UIWindow?
     var deviceToken: String?
@@ -331,6 +331,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     
     func application(application:UIApplication, handleOpenURL url:NSURL)->Bool
     {
-        return WXApi.handleOpenURL(url, delegate:LoginViewController())
-    }    
+        return WXApi.handleOpenURL(url, delegate:self)
+    }
+    
+    func onResp(resp:BaseResp)
+    {
+        if let authResp=resp as? SendAuthResp
+        {
+            if authResp.code != nil
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName("getCode", object:authResp.code)
+            }
+            else
+            {
+                errorAlert()
+            }
+        }
+        else
+        {
+            errorAlert()
+        }
+    }
+    
+    func errorAlert()
+    {
+        SCLAlertView().showSuccess("ERROR", subTitle:"Failed to get response")
+    }
 }
