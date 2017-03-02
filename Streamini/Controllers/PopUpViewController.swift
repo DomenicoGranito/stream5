@@ -10,6 +10,7 @@ class PopUpViewController: UIViewController
 {
     var stream:Stream?
     let (host, port, _, _, _) = Config.shared.wowza()
+    var videoImage:UIImage!
     
     override func viewDidLoad()
     {
@@ -48,6 +49,8 @@ class PopUpViewController: UIViewController
             cell.artistNameLbl?.text=stream?.user.name
             cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
             
+            videoImage=cell.videoThumbnailImageView?.image
+            
             return cell
         }
         else
@@ -71,15 +74,14 @@ class PopUpViewController: UIViewController
     
     func shareOnWeChat()
     {
-        let streamName="\(stream!.streamHash)-\(stream!.id)"
+        let videoObject=WXVideoObject()
+        videoObject.videoUrl="http://cedricm.tv/beta/index.php?a=track&id=\(stream!.id)"
         
         let message=WXMediaMessage()
         message.title=stream?.title
         message.description=stream?.user.name
-        
-        let videoObject=WXVideoObject()
-        videoObject.videoUrl=stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1" ? "http://\(host)/media/\(stream!.id).mp4" : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
         message.mediaObject=videoObject
+        message.setThumbImage(videoImage)
         
         let req=SendMessageToWXReq()
         req.message=message

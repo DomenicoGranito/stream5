@@ -100,8 +100,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
         //alert.showCustom("PREMIUM FEATURE", subTitle:"Get unlimited live streams with BEINIT.")
         alert.showSuccess("PREMIUM FEATURE", subTitle:"Get unlimited live streams with BEINIT.")
-        
-       
     }
     
     @IBAction func closeButtonPressed()
