@@ -10,7 +10,6 @@ import AVFoundation
 import CoreLocation
 import SCLAlertView
 
-
 class CreateStreamViewController: BaseViewController, UITextFieldDelegate, LocationManagerDelegate,
 UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var previewView: UIView!

@@ -41,22 +41,16 @@ class ModalViewController: UIViewController
         SongManager.addToRecentlyPlayed(stream!.title)
         
         let streamName = "\(stream!.streamHash)-\(stream!.id)"
-        let url: String
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
-        let vid = stream!.id
-        let (host, port, application, _, _) = Config.shared.wowza()
-       // let videoURL=NSURL(string:"https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
         
-        url = stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1"
+        let (host, port, _, _, _) = Config.shared.wowza()
+        
+        let url = stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1"
             ? "http://\(host)/media/\(stream!.id).mp4"
             : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
-        
-        
-        //let videoURL=NSURL(string:"http://\(host)/media/\(vid).mp4")
-       // player=AVPlayer(URL:videoURL!)
         
         player=AVPlayer(URL:NSURL(string:url)!)
         
@@ -205,16 +199,11 @@ class ModalViewController: UIViewController
         
     }
     
-    func userDidSelected(user:User)
-    {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
-        vc.user=user
-        navigationController?.pushViewController(vc, animated:true)
-    }
-
     @IBAction func more()
     {
-        print("MORE")
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=stream
+        presentViewController(vc, animated:true, completion:nil)
     }
 }

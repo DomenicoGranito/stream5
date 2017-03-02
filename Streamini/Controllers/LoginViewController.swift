@@ -176,28 +176,14 @@ class LoginViewController: BaseViewController
     
     @IBAction func forgotPassword()
     {
-        //        if(usernameTxt?.text=="")
-        //        {
-        //            UIAlertView.notAuthorizedAlert("Please enter your username").show()
-        //        }
-        //        else
-        //        {
-        //            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
-        //        }
-        
-        let message=WXMediaMessage()
-        message.title="Belong"
-        message.description="Cary Brothers"
-        
-        let videoObject=WXVideoObject()
-        videoObject.videoUrl="https://www.youtube.com/watch?v=84CiT6r8grI"
-        message.mediaObject=videoObject
-        
-        let req=SendMessageToWXReq()
-        req.message=message
-        req.scene=0
-        
-        WXApi.sendReq(req)
+        if(usernameTxt?.text=="")
+        {
+            UIAlertView.notAuthorizedAlert("Please enter your username").show()
+        }
+        else
+        {
+            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
+        }
     }
     
     func forgotSuccess()

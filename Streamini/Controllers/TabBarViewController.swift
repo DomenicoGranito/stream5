@@ -6,30 +6,16 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
 import Photos
-
-//class RootViewController: UITabBarController
 
 class mTBViewController: UITabBarController , UITabBarControllerDelegate
 {
-    
-    
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
   
     @IBOutlet var containerView:UIView!
     @IBOutlet var playView:UIView!
     @IBOutlet var miniPlayerButton : UIButton!
-
-    
-    override func viewWillAppear(animated:Bool)
-    {
-        
-       
-       // UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
-    }
-    
     
     func tapMiniPlayer()
     {
@@ -276,5 +262,4 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         
       //  self.playView.bounds.origin.y = 100
     }
-
 }

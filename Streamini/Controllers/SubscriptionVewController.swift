@@ -6,16 +6,10 @@
 //  Copyright © 2017 UniProgy s.r.o. All rights reserved.
 //
 
-import Foundation
-import UIKit
-import MessageUI
 class SubscriptionViewController: UITableViewController
 {
-
-     var profileDelegate: ProfileDelegate?
-    override func viewDidLoad() {
-        
-    }
+    var profileDelegate: ProfileDelegate?
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let sid = segue.identifier {
             if sid == "ProfileToLegal" {
@@ -32,5 +26,4 @@ class SubscriptionViewController: UITableViewController
             }
         }
     }
-
 }

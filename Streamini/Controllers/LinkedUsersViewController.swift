@@ -26,7 +26,6 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         
     }
     
-
     func configureView()
     {
         tableView.tableFooterView=UIView()
