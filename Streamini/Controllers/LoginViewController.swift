@@ -186,10 +186,12 @@ class LoginViewController: BaseViewController
         //        }
         
         let message=WXMediaMessage()
+        message.title="Belong"
+        message.description="Cary Brothers"
         
-        let webpageObject=WXWebpageObject()
-        webpageObject.webpageUrl="www.google.com"
-        message.mediaObject=webpageObject
+        let videoObject=WXVideoObject()
+        videoObject.videoUrl="https://www.youtube.com/watch?v=84CiT6r8grI"
+        message.mediaObject=videoObject
         
         let req=SendMessageToWXReq()
         req.message=message
