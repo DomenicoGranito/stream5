@@ -101,4 +101,14 @@ class Config: NSObject {
         let privacyPolicy: String   = legalData["privacyPolicy"] as! String
         return (termsOfService, privacyPolicy)
     }
+    
+    func weChat()->(appID:String, appSecret:String)
+    {
+        let weChatData=data!["WeChat"] as! NSDictionary
+        
+        let appID=weChatData["appID"] as! String
+        let appSecret=weChatData["appSecret"] as! String
+        
+        return (appID, appSecret)
+    }
 }

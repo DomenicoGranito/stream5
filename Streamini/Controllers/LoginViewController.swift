@@ -16,11 +16,10 @@ class LoginViewController: BaseViewController
     @IBOutlet var passwordBackgroundView:UIView?
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
-    let appID="wx5bd67c93b16ab684"
-    let appSecret="62034430e248fe934af273e7afe62196"
     var username:String!
     var password:String!
     var email:String!
+    let (appID, appSecret)=Config.shared.weChat()
     
     func buildAccessTokenLink(code:String)->String
     {
@@ -30,6 +29,8 @@ class LoginViewController: BaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        WXApi.registerApp(appID)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onResp), name:"getCode", object:nil)
         
@@ -49,8 +50,6 @@ class LoginViewController: BaseViewController
     
     @IBAction func wechatLogin()
     {
-        WXApi.registerApp(appID)
-        
         if(WXApi.isWXAppInstalled())
         {
             let req=SendAuthReq()
@@ -177,14 +176,26 @@ class LoginViewController: BaseViewController
     
     @IBAction func forgotPassword()
     {
-        if(usernameTxt?.text=="")
-        {
-            UIAlertView.notAuthorizedAlert("Please enter your username").show()
-        }
-        else
-        {
-            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
-        }
+        //        if(usernameTxt?.text=="")
+        //        {
+        //            UIAlertView.notAuthorizedAlert("Please enter your username").show()
+        //        }
+        //        else
+        //        {
+        //            UserConnector().forgot(username, success:forgotSuccess, failure:forgotFailure)
+        //        }
+        
+        let message=WXMediaMessage()
+        
+        let webpageObject=WXWebpageObject()
+        webpageObject.webpageUrl="www.google.com"
+        message.mediaObject=webpageObject
+        
+        let req=SendMessageToWXReq()
+        req.message=message
+        req.scene=0
+        
+        WXApi.sendReq(req)
     }
     
     func forgotSuccess()

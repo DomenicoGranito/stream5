@@ -2,6 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>WeChat</key>
+	<dict>
+		<key>appID</key>
+		<string>wx5bd67c93b16ab684</string>
+		<key>appSecret</key>
+		<string>62034430e248fe934af273e7afe62196</string>
+	</dict>
 	<key>PubNub</key>
 	<dict>
 		<key>publishKey</key>
