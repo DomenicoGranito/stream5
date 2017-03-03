@@ -35,7 +35,7 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if(indexPath.row<7)
+        if indexPath.row<7
         {
             return 44
         }
@@ -52,7 +52,7 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if(indexPath.row<6)
+        if indexPath.row<6
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
             
@@ -61,7 +61,7 @@ class MyLibViewController: UIViewController
             
             return cell
         }
-        else if(indexPath.row==6)
+        else if indexPath.row==6
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Cell")!
             

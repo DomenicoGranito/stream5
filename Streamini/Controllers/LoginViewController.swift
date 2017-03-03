@@ -50,7 +50,7 @@ class LoginViewController: BaseViewController
     
     @IBAction func wechatLogin()
     {
-        if(WXApi.isWXAppInstalled())
+        if WXApi.isWXAppInstalled()
         {
             let req=SendAuthReq()
             req.scope="snsapi_userinfo"

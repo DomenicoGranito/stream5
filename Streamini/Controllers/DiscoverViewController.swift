@@ -1,20 +1,3 @@
-//
-//  MenuCell.swift
-//  BEINIT
-//
-//  Created by Ankit Garg on 2/14/17.
-//  Copyright © 2017 UniProgy s.r.o. All rights reserved.
-//
-import UIKit
-
-//
-//  UILoadingView.swift
-//
-//  Created by Ian McDowell on 6/6/14.
-//  Copyright (c) 2014 Ian McDowell. All rights reserved.
-//
-import UIKit
-
 class UILoadingView : UIView {
     
     init(frame rect: CGRect, text: NSString = "Loading...") {
@@ -153,7 +136,7 @@ class DiscoverViewController:BaseTableViewController
 
     func reload()
     {
-        if(allCategoriesArray.count>0&&recentStreamsArray.count>0)
+        if allCategoriesArray.count>0&&recentStreamsArray.count>0
         {
             menuItemTitlesArray=["Charts", "New Releases", "Videos", "Podcasts", "Discover", "Concerts"]
             menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
@@ -173,11 +156,11 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if(section==0)
+        if section==0
         {
             return 1
         }
-        else if(section==1)
+        else if section==1
         {
             return 6
         }
@@ -189,11 +172,11 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if(indexPath.section==0)
+        if indexPath.section==0
         {
             return 270
         }
-        else if(indexPath.section==1)
+        else if indexPath.section==1
         {
             return 50
         }
@@ -205,7 +188,7 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if(indexPath.section==0&&recentStreamsArray.count>0)
+        if indexPath.section==0&&recentStreamsArray.count>0
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Recent") as! CategoryRow
             
@@ -214,7 +197,7 @@ class DiscoverViewController:BaseTableViewController
             
             return cell
         }
-        if(indexPath.section==1&&menuItemTitlesArray.count>0)
+        if indexPath.section==1&&menuItemTitlesArray.count>0
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Menu") as! MenuCell
             
@@ -223,7 +206,7 @@ class DiscoverViewController:BaseTableViewController
             
             return cell
         }
-        if(indexPath.section==2)
+        if indexPath.section==2
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Category") as! AllCategoryRow
             
@@ -315,7 +298,7 @@ class DiscoverViewController:BaseTableViewController
             
             count+=1
             
-            if(count==2||(count==1&&i==cats.count-1))
+            if count==2||(count==1&&i==cats.count-1)
             {
                 count=0
                 allCategoriesArray.addObject(sectionItemsArray)

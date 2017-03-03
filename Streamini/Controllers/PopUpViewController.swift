@@ -9,13 +9,8 @@
 class PopUpViewController: UIViewController
 {
     var stream:Stream?
-    let (host, port, _, _, _) = Config.shared.wowza()
+    let (host, port, _, _, _)=Config.shared.wowza()
     var videoImage:UIImage!
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
     
     @IBAction func closeButtonPressed()
     {
@@ -29,7 +24,7 @@ class PopUpViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if(indexPath.row==0)
+        if indexPath.row==0
         {
             return 80
         }
@@ -41,7 +36,7 @@ class PopUpViewController: UIViewController
 
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if(indexPath.row==0)
+        if indexPath.row==0
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
             
@@ -66,7 +61,7 @@ class PopUpViewController: UIViewController
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        if(indexPath.row==1)
+        if indexPath.row==1
         {
             shareOnWeChat()
         }
@@ -74,19 +69,26 @@ class PopUpViewController: UIViewController
     
     func shareOnWeChat()
     {
-        let videoObject=WXVideoObject()
-        videoObject.videoUrl="http://cedricm.tv/beta/index.php?a=track&id=\(stream!.id)"
-        
-        let message=WXMediaMessage()
-        message.title=stream?.title
-        message.description=stream?.user.name
-        message.mediaObject=videoObject
-        message.setThumbImage(videoImage)
-        
-        let req=SendMessageToWXReq()
-        req.message=message
-        req.scene=0
-        
-        WXApi.sendReq(req)
+        if WXApi.isWXAppInstalled()
+        {
+            let videoObject=WXVideoObject()
+            videoObject.videoUrl="http://cedricm.tv/beta/index.php?a=track&id=\(stream!.id)"
+            
+            let message=WXMediaMessage()
+            message.title=stream?.title
+            message.description=stream?.user.name
+            message.mediaObject=videoObject
+            message.setThumbImage(videoImage)
+            
+            let req=SendMessageToWXReq()
+            req.message=message
+            req.scene=0
+            
+            WXApi.sendReq(req)
+        }
+        else
+        {
+            SCLAlertView().showSuccess("MESSAGE", subTitle:"Please install WeChat application")
+        }
     }
 }

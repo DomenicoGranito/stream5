@@ -15,7 +15,6 @@ class RootViewController: UIViewController
 
 import MessageUI
 
-
 //UIViewController
 class myProfileViewController: BaseViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate,
     UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
