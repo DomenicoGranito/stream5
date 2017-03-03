@@ -10,7 +10,6 @@ class CategoryRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
     var oneCategoryItemsArray:NSArray!
-    var navigationControllerReference:UINavigationController?
     let (host, _, _, _, _)=Config.shared.wowza()
     
     func reloadCollectionView()

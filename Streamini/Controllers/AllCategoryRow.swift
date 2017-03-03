@@ -46,8 +46,8 @@ class AllCategoryRow: UITableViewCell
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("CategoriesViewController") as! CategoriesViewController
         vc.categoryName=category.name
-        vc.categoryID=category.id
-        navigationControllerReference?.pushViewController(modalVC, animated:true)
+        vc.categoryID=Int(category.id)
+        navigationControllerReference?.pushViewController(vc, animated:true)
     }
     
     func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize

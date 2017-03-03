@@ -12,7 +12,6 @@ class AllCategoriesRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
     var sectionItemsArray:NSArray!
-    var navigationControllerReference:UINavigationController?
     let (host, _, _, _, _)=Config.shared.wowza()
     
     func reloadCollectionView()

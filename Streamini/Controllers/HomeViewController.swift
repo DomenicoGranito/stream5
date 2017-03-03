@@ -159,7 +159,6 @@ class HomeViewController: BaseViewController
         if(allCategoryItemsArray.count>0)
         {
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
-            cell.navigationControllerReference=navigationController
         }
         
         return cell

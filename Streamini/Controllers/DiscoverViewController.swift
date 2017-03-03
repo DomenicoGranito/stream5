@@ -193,7 +193,6 @@ class DiscoverViewController:BaseTableViewController
             let cell=tableView.dequeueReusableCellWithIdentifier("Recent") as! CategoryRow
             
             cell.oneCategoryItemsArray=recentStreamsArray[1] as! NSArray
-            cell.navigationControllerReference=navigationController
             
             return cell
         }
