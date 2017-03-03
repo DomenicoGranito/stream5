@@ -15,6 +15,8 @@ class RecentlyPlayedCell:UITableViewCell
 
 class MyLibViewController: UIViewController
 {
+    @IBOutlet var itemsTbl:UITableView?
+    
     let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Series", "Channels", "Upcoming Events"]
     let menuItemIconsArray=["playlist", "youtube", "internet", "Series", "channels", "time"]
     
@@ -23,6 +25,8 @@ class MyLibViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         recentlyPlayed=SongManager.getRecentlyPlayed()
+        
+        itemsTbl?.reloadData()
     }
     
     @IBAction func myaccount()
@@ -74,6 +78,42 @@ class MyLibViewController: UIViewController
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("songName") as? String
             
             return cell
+        }
+    }
+    
+    func tableView(tableView:UITableView, canEditRowAtIndexPath indexPath:NSIndexPath)->Bool
+    {
+        if indexPath.row<7
+        {
+            return false
+        }
+        else
+        {
+            return true
+        }
+    }
+    
+    func tableView(tableView:UITableView, editActionsForRowAtIndexPath indexPath:NSIndexPath)->[UITableViewRowAction]?
+    {
+        let clearButton=UITableViewRowAction(style:.Default, title:"Clear")
+        {action, indexPath in
+            self.recentlyPlayed?.removeAtIndex(indexPath.row-7)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
+        }
+        clearButton.backgroundColor=UIColor.darkGrayColor()
+        
+        return [clearButton]
+    }
+    
+    @IBAction func editButtonPressed(_ sender:UIButton)
+    {
+        if itemsTbl!.editing
+        {
+            itemsTbl?.setEditing(false, animated:true)
+        }
+        else
+        {
+            itemsTbl?.setEditing(true, animated:true)
         }
     }
 }
