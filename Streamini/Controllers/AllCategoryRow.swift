@@ -117,7 +117,6 @@ class bkAllCategoryRow: UITableViewCell
      //   self.root.presentViewController(vc, animated:true, completion:nil)
     }
     
-    
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
@@ -126,14 +125,10 @@ class bkAllCategoryRow: UITableViewCell
         
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         
-        
         //
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("SeriesViewController") as! SeriesViewController
         navigationControllerReference?.pushViewController(modalVC, animated:true)
 
-
-        
-        
        //here let modalVC=storyboard.instantiateViewControllerWithIdentifier("CategoriesViewController") as! CategoriesViewController
         
         
@@ -149,13 +144,7 @@ class bkAllCategoryRow: UITableViewCell
         navigationControllerReference?.pushViewController(modalVC, animated:true)
         
        // root.presentViewController(modalVC, animated:true, completion:nil)
-        
-        
-        
     }
-    
-
-    
     
     func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
     {

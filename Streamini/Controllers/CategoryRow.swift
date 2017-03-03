@@ -26,7 +26,7 @@ class CategoryRow: UITableViewCell
     
     func collectionView(collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)->UICollectionViewCell
     {
-        let (host, port, application, _, _) = Config.shared.wowza()
+        let (host, _, _, _, _) = Config.shared.wowza()
         
         let cell=collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath:indexPath) as! VideoCell
         
@@ -44,7 +44,6 @@ class CategoryRow: UITableViewCell
     
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        
         let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
         
         let storyboardn=UIStoryboard(name:"Main", bundle:nil)

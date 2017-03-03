@@ -14,10 +14,6 @@ class AllCategoriesRow: UITableViewCell
     var sectionItemsArray:NSArray!
     var navigationControllerReference:UINavigationController?
     
-    
-    
-    
-    
     func reloadCollectionView()
     {
         collectionView!.reloadData()
@@ -30,8 +26,8 @@ class AllCategoriesRow: UITableViewCell
     
     func collectionView(collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)->UICollectionViewCell
     {
-        let (host, port, application, _, _) = Config.shared.wowza()
-       
+        let (host, _, _, _, _)=Config.shared.wowza()
+        
         let cell=collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath:indexPath) as! VideoCell
         
         let video=sectionItemsArray[indexPath.row] as! Stream
@@ -52,9 +48,6 @@ class AllCategoriesRow: UITableViewCell
         
         let video=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
-        
-        
-        
         let storyboardn=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
@@ -62,16 +55,9 @@ class AllCategoriesRow: UITableViewCell
         
         modalVC.stream=video
         
-        
         root.presentViewController(modalVC, animated:true, completion:nil)
-        
-        
-     
     }
 
-    
-    
-    
     func bkcellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
