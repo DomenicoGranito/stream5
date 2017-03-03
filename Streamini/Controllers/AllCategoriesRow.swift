@@ -13,6 +13,7 @@ class AllCategoriesRow: UITableViewCell
     @IBOutlet var collectionView:UICollectionView?
     var sectionItemsArray:NSArray!
     var navigationControllerReference:UINavigationController?
+    let (host, _, _, _, _)=Config.shared.wowza()
     
     func reloadCollectionView()
     {
@@ -26,12 +27,11 @@ class AllCategoriesRow: UITableViewCell
     
     func collectionView(collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)->UICollectionViewCell
     {
-        let (host, _, _, _, _)=Config.shared.wowza()
-        
         let cell=collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath:indexPath) as! VideoCell
         
         let video=sectionItemsArray[indexPath.row] as! Stream
-        cell.followersCountLbl?.text=video.user.name 
+        
+        cell.followersCountLbl?.text=video.user.name
         cell.videoTitleLbl?.text=video.title
         cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(video.id).jpg"))
         
@@ -46,30 +46,14 @@ class AllCategoriesRow: UITableViewCell
     {
         let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
         
-        let video=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
+        let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
         let storyboardn=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
-       // let video=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream
-        
-        modalVC.stream=video
+        modalVC.stream=stream
         
         root.presentViewController(modalVC, animated:true, completion:nil)
-    }
-
-    func bkcellTapped(gestureRecognizer:UITapGestureRecognizer)
-    {
-        let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
-        
-        let video=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
-        
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let joinNavController=storyboard.instantiateViewControllerWithIdentifier("JoinStreamNavigationControllerId") as! UINavigationController
-        let joinController=joinNavController.viewControllers[0] as! JoinStreamViewController
-        joinController.stream=video
-        joinController.isRecent=(video.ended != nil)
-        root.presentViewController(joinNavController, animated:true, completion:nil)
     }
     
     func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
