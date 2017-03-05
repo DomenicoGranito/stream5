@@ -75,6 +75,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         } else {
             let filename = "screenshot.jpg"
             let screenshotData = UIImageJPEGRepresentation(camera.captureStillImage()!, 1.0)!
+          
             StreamConnector().createWithFile(filename, fileData: screenshotData, data: data, success: createStreamSuccess, failure: createStreamFailure)
         }
     }
@@ -123,7 +124,27 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
             let filename = "\(UserContainer.shared.logged().id)-\(stream.id)-screenshot.jpg"
             AmazonTool.shared.uploadImage(screenshot, name: filename)
         }
-        
+        //let imageView =  UIImage(named: filename)
+        if WXApi.isWXAppInstalled()
+        {
+            let screenshot = camera.captureStillImage()!
+            let filename = "\(UserContainer.shared.logged().id)-\(stream.id)-screenshot.jpg"
+            let videoObject=WXVideoObject()
+            videoObject.videoUrl="http://conf.cedricm.com/\(stream.streamHash)/\(stream.id)"
+            
+            let message=WXMediaMessage()
+            message.title=stream.title
+            message.description=stream.user.name
+            message.mediaObject=videoObject
+            message.setThumbImage(screenshot)
+            
+            let req=SendMessageToWXReq()
+            req.message=message
+            req.scene=1
+            
+            WXApi.sendReq(req)
+        }
+
         let twitter = SocialToolFactory.getSocial("Twitter")!
         let url = "\(Config.shared.twitter().tweetURL)/\(stream.streamHash)/\(stream.id)"
         twitter.post(UserContainer.shared.logged().name, live: NSURL(string: url)!)
@@ -279,6 +300,9 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
+    
+ 
+    
     
     // MARK: - TextViewDelegate
     

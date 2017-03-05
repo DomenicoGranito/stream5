@@ -5,6 +5,10 @@ class UILoadingView : UIView {
         self.backgroundColor = UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
         self.label.text = text as String
         self.label.textColor = self.spinner.color
+        
+        
+        
+        
         self.spinner.startAnimating()
         
         self.addSubview(self.label)

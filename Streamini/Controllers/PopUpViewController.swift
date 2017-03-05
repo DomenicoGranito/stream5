@@ -48,31 +48,51 @@ class PopUpViewController: UIViewController
             
             return cell
         }
-        else
+        if indexPath.row==1
         {
+
             let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
             
-            cell.menuItemTitleLbl?.text="Share"
+            cell.menuItemTitleLbl?.text="Share with friends"
             cell.menuItemIconImageView?.image=UIImage(named:"video.png")
             
             return cell
         }
+        else
+        {
+                    let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
+                    
+                    cell.menuItemTitleLbl?.text="Share on timeline"
+                    cell.menuItemIconImageView?.image=UIImage(named:"video.png")
+                    
+                    return cell
+        }
+        
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
+        
+      //  let sceneID as Int
         if indexPath.row==1
         {
-            shareOnWeChat()
+           // sceneID=0
+            shareOnWeChat(0)
         }
+        if indexPath.row==2
+        {
+           // sceneID=1
+            shareOnWeChat(1)
+        }
+
     }
     
-    func shareOnWeChat()
+    func shareOnWeChat(sceneID:UInt)
     {
         if WXApi.isWXAppInstalled()
         {
             let videoObject=WXVideoObject()
-            videoObject.videoUrl="http://cedricm.tv/beta/index.php?a=track&id=\(stream!.id)"
+            videoObject.videoUrl="http://conf.cedricm.com/\(stream!.streamHash)/\(stream!.id)"
             
             let message=WXMediaMessage()
             message.title=stream?.title
@@ -82,7 +102,15 @@ class PopUpViewController: UIViewController
             
             let req=SendMessageToWXReq()
             req.message=message
+            if(sceneID == 0)
+            {
             req.scene=0
+            }
+            else
+            {
+            req.scene=1
+            }
+            
             
             WXApi.sendReq(req)
         }
