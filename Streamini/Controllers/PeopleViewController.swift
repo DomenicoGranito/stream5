@@ -112,8 +112,6 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         
     }    
     
-    // MARK: - UserStatusDelegate
-    
     func followStatusDidChange(status: Bool, user: User)
     {
         dataSource!.updateUser(user, isFollowed: status, isBlocked: user.isBlocked)
@@ -124,12 +122,8 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         dataSource!.updateUser(user, isFollowed: user.isFollowed, isBlocked: status)
     }
     
-    // MARK: - UserSelecting protocol
-    
     func userDidSelected(user:User)
     {
-       //  let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
-        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user

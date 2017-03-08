@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class PopUpViewController: UIViewController
+class PopUpViewController: BaseViewController
 {
     let menuItemTitlesArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Save video"]
     let menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
@@ -74,16 +74,30 @@ class PopUpViewController: UIViewController
         }
         if indexPath.row==3
         {
+            view.window?.rootViewController?.dismissViewControllerAnimated(true, completion:nil)
             
+            let storyboard=UIStoryboard(name:"Main", bundle:nil)
+            let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+            vc.user=stream?.user
         }
         if indexPath.row==4
         {
-            
+            StreamConnector().report(stream!.id, success:successWithoutAction, failure:failureWithoutAction)
         }
         if indexPath.row==5
         {
             
         }
+    }
+    
+    func successWithoutAction()
+    {
+        
+    }
+    
+    func failureWithoutAction(error:NSError)
+    {
+        handleError(error)
     }
     
     func shareOnWeChat(sceneID:Int32)
