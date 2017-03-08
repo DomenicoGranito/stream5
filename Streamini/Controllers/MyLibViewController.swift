@@ -97,6 +97,7 @@ class MyLibViewController: UIViewController
     {
         let clearButton=UITableViewRowAction(style:.Default, title:"Clear")
         {action, indexPath in
+            SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-7])
             self.recentlyPlayed?.removeAtIndex(indexPath.row-7)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
         }
@@ -105,7 +106,7 @@ class MyLibViewController: UIViewController
         return [clearButton]
     }
     
-    @IBAction func editButtonPressed(_ sender:UIButton)
+    @IBAction func editButtonPressed()
     {
         if itemsTbl!.editing
         {
