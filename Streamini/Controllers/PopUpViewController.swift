@@ -8,6 +8,9 @@
 
 class PopUpViewController: UIViewController
 {
+    let menuItemTitlesArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Save video"]
+    let menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
+    
     var stream:Stream?
     let (host, port, _, _, _)=Config.shared.wowza()
     var videoImage:UIImage!
@@ -19,7 +22,7 @@ class PopUpViewController: UIViewController
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 2
+        return 6
     }
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
@@ -33,7 +36,7 @@ class PopUpViewController: UIViewController
             return 44
         }
     }
-
+    
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         if indexPath.row==0
@@ -48,46 +51,42 @@ class PopUpViewController: UIViewController
             
             return cell
         }
-        if indexPath.row==1
+        else
         {
-
             let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
             
-            cell.menuItemTitleLbl?.text="Share with friends"
-            cell.menuItemIconImageView?.image=UIImage(named:"video.png")
+            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row-1]
+            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row-1])
             
             return cell
         }
-        else
-        {
-                    let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
-                    
-                    cell.menuItemTitleLbl?.text="Share on timeline"
-                    cell.menuItemIconImageView?.image=UIImage(named:"video.png")
-                    
-                    return cell
-        }
-        
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        
-      //  let sceneID as Int
         if indexPath.row==1
         {
-           // sceneID=0
             shareOnWeChat(0)
         }
         if indexPath.row==2
         {
-           // sceneID=1
             shareOnWeChat(1)
         }
-
+        if indexPath.row==3
+        {
+            
+        }
+        if indexPath.row==4
+        {
+            
+        }
+        if indexPath.row==5
+        {
+            
+        }
     }
     
-    func shareOnWeChat(sceneID:UInt)
+    func shareOnWeChat(sceneID:Int32)
     {
         if WXApi.isWXAppInstalled()
         {
@@ -102,15 +101,7 @@ class PopUpViewController: UIViewController
             
             let req=SendMessageToWXReq()
             req.message=message
-            if(sceneID == 0)
-            {
-            req.scene=0
-            }
-            else
-            {
-            req.scene=1
-            }
-            
+            req.scene=sceneID
             
             WXApi.sendReq(req)
         }
