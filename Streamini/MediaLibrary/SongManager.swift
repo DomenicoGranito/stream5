@@ -47,10 +47,10 @@ public class SongManager{
         return false
     }
     
-    class func isRecentlyPlayed(songName:String)->Bool
+    class func isRecentlyPlayed(streamID:UInt)->Bool
     {
         let recentlyPlayedEntity=NSFetchRequest(entityName:"RecentlyPlayed")
-        recentlyPlayedEntity.predicate=NSPredicate(format:"songName=%@", songName)
+        recentlyPlayedEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
         let fetchedRecentlyPlayed=try! context.executeFetchRequest(recentlyPlayedEntity)
         
         if(fetchedRecentlyPlayed.count>0)
@@ -61,14 +61,15 @@ public class SongManager{
         return false
     }
     
-    class func addToRecentlyPlayed(songName:String, songURL:String, thumbnailURL:String)
+    class func addToRecentlyPlayed(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
     {
-        if(!SongManager.isRecentlyPlayed(songName))
+        if(!SongManager.isRecentlyPlayed(streamID))
         {
             let newRecentlyPlayed=NSEntityDescription.insertNewObjectForEntityForName("RecentlyPlayed", inManagedObjectContext:context)
-            newRecentlyPlayed.setValue(songName, forKey:"songName")
-            newRecentlyPlayed.setValue(songURL, forKey:"songURL")
-            newRecentlyPlayed.setValue(thumbnailURL, forKey:"thumbnailURL")
+            newRecentlyPlayed.setValue(streamTitle, forKey:"streamTitle")
+            newRecentlyPlayed.setValue(streamHash, forKey:"streamHash")
+            newRecentlyPlayed.setValue(streamUserName, forKey:"streamUserName")
+            newRecentlyPlayed.setValue(streamID, forKey:"streamID")
             save()
         }
     }

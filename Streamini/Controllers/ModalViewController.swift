@@ -46,7 +46,7 @@ class ModalViewController: UIViewController
             ? "http://\(host)/media/\(stream!.id).mp4"
             : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
         
-        SongManager.addToRecentlyPlayed(stream!.title, songURL:url, thumbnailURL:"http://\(host)/thumbs/\(stream!.id).jpg")
+        SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
         
         player=AVPlayer(URL:NSURL(string:url)!)
         

@@ -21,6 +21,7 @@ class MyLibViewController: UIViewController
     let menuItemIconsArray=["playlist", "youtube", "internet", "Series", "channels", "time"]
     
     var recentlyPlayed:[NSManagedObject]?
+    let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewWillAppear(animated:Bool)
     {
@@ -75,8 +76,8 @@ class MyLibViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
             
-            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("songName") as? String
-            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:recentlyPlayed![indexPath.row-7].valueForKey("thumbnailURL") as! String))
+            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("streamTitle") as? String
+            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(recentlyPlayed![indexPath.row-7].valueForKey("streamID") as! Int).jpg"))
             
             return cell
         }
@@ -107,6 +108,11 @@ class MyLibViewController: UIViewController
         return [clearButton]
     }
     
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        
+    }
+
     @IBAction func editButtonPressed()
     {
         if itemsTbl!.editing
@@ -117,5 +123,12 @@ class MyLibViewController: UIViewController
         {
             itemsTbl?.setEditing(true, animated:true)
         }
+    }
+    
+    func makeStreamClassObject(row:Int)->Stream
+    {
+        let stream=Stream()
+        
+        return stream
     }
 }
