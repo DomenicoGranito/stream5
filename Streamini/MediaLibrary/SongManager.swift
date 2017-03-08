@@ -28,7 +28,7 @@ public class SongManager{
         let recentlyPlayedRequest=NSFetchRequest(entityName:"RecentlyPlayed")
         return try! context.executeFetchRequest(recentlyPlayedRequest) as! [NSManagedObject]
     }
-
+    
     //gets playlist associated with (playlistName : String)
     class func getPlaylist(playlistName : String) -> NSManagedObject {
         let playlistRequest = NSFetchRequest(entityName: "Playlist")
@@ -71,9 +71,16 @@ public class SongManager{
             newRecentlyPlayed.setValue(streamUserName, forKey:"streamUserName")
             newRecentlyPlayed.setValue(streamID, forKey:"streamID")
             save()
+            
+            if(getRecentlyPlayed().count>25)
+            {
+                let objectToBeDelete=getRecentlyPlayed().first
+                
+                deleteRecentlyPlayed(objectToBeDelete!)
+            }
         }
     }
-
+    
     class func deleteRecentlyPlayed(objectToBeDelete:NSManagedObject)
     {
         context.deleteObject(objectToBeDelete)
@@ -133,8 +140,8 @@ public class SongManager{
         newSong.setValue(durationStr, forKey: "durationStr")
         
         var streamURLs = video.streamURLs
-      //  let desiredURL = (streamURLs![22] != nil ? streamURLs[22] : (streamURLs[18] != nil ? streamURLs[18] : streamURLs[36]))! as NSURL
-      //  newSong.setValue("\(desiredURL)", forKey: "streamURL")
+        //  let desiredURL = (streamURLs![22] != nil ? streamURLs[22] : (streamURLs[18] != nil ? streamURLs[18] : streamURLs[36]))! as NSURL
+        //  newSong.setValue("\(desiredURL)", forKey: "streamURL")
         
         let large = video.largeThumbnailURL
         let medium = video.mediumThumbnailURL
@@ -168,7 +175,7 @@ public class SongManager{
             if isDownloaded {
                 let filePath0 = MiscFuncs.grabFilePath("\(identifier).mp4")
                 let filePath1 = MiscFuncs.grabFilePath("\(identifier).m4a")
-
+                
                 do {
                     try fileManager.removeItemAtPath(filePath0)
                 } catch _ {
