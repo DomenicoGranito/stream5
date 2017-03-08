@@ -27,7 +27,6 @@ extension UIFont {
     
 }
 
-
 class HomeViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView?
@@ -36,21 +35,10 @@ class HomeViewController: BaseViewController
     var categoryIDsArray=NSMutableArray()
     var allCategoryItemsArray=NSMutableArray()
     var timer:NSTimer?
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        //(tabBarController as! mTBViewController).showButton()
-    }
-    
-   // override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    //    return UIStatusBarStyle.LightContent
-   // }
-    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-         //(tabBarController as! mTBViewController).addCenterButton()
-        
         
         reload()
         
@@ -79,10 +67,10 @@ class HomeViewController: BaseViewController
     
     override func viewWillDisappear(animated:Bool)
     {
-      //  timer!.invalidate()
+        //  timer!.invalidate()
         timer=nil
     }
-
+    
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, 60, tableView.frame.size.width))
@@ -96,20 +84,14 @@ class HomeViewController: BaseViewController
         }
         
         titleLbl.font=UIFont.systemFontOfSize(24)
-       // titleLbl.font=UIFont.boldSystemFontOfSize(<#T##fontSize: CGFloat##CGFloat#>)
-        titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1) //UIColor.lightGrayColor()
+        titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
         
         let accessoryLbl=UILabel(frame:CGRectMake(tableView.frame.size.width-25, 20, 20, 20))
-       // accessoryLbl.text=">"
         accessoryLbl.font=UIFont.systemFontOfSize(22)
-        accessoryLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)   ////lightGrayColor()
-        
-        
-        
+        accessoryLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
         
         let lineView=UIView(frame:CGRectMake(5, 45, tableView.frame.size.width-10, 1))
         lineView.backgroundColor=UIColor.darkGrayColor()
-        
         
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))
         headerView.addGestureRecognizer(tapGesture)
@@ -129,17 +111,6 @@ class HomeViewController: BaseViewController
         vc.categoryName=categoryNamesArray[gestureRecognizer.view!.tag] as? String
         vc.categoryID=categoryIDsArray[gestureRecognizer.view!.tag] as? Int
         navigationController?.pushViewController(vc, animated:true)
-       
-        
-        
-        
-       // navigationController?.pu(vc, animated:true, completion:nil)
-        
-       // DetailViewController *detailViewController = [[CategoriesViewController alloc] init]
-        //detailViewController.hidesBottomBarWhenPushed = true
-       // [[self navigationController] pushViewController:detailViewController animated:YES]
-       // [detailViewController release]
-       // detailViewController.hidesBottomBarWhenPushed = true
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -176,7 +147,7 @@ class HomeViewController: BaseViewController
         categoryNamesArray=NSMutableArray()
         categoryIDsArray=NSMutableArray()
         allCategoryItemsArray=NSMutableArray()
-
+        
         itemsTbl?.pullToRefreshView.stopAnimating()
         
         let data=data["data"]!

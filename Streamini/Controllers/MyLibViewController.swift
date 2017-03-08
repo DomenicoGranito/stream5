@@ -76,6 +76,7 @@ class MyLibViewController: UIViewController
             let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
             
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("songName") as? String
+            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:recentlyPlayed![indexPath.row-7].valueForKey("thumbnailURL") as! String))
             
             return cell
         }

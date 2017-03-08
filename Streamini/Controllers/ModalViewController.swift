@@ -21,43 +21,39 @@ class ModalViewController: UIViewController
     @IBOutlet var controlsView:UIView?
     @IBOutlet var seekBar:UISlider?
     
-    
-   // @IBOutlet weak var playerView: PlayerView!
-    
     var liked=false
     var isPlaying=false
     var player:AVPlayer?
     var timer:NSTimer?
-    
-    var stream: Stream?
+    var stream:Stream?
     
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
     }
-
+    
     override func viewDidLoad()
     {
-        SongManager.addToRecentlyPlayed(stream!.title)
-        
-        let streamName = "\(stream!.streamHash)-\(stream!.id)"
+        let streamName="\(stream!.streamHash)-\(stream!.id)"
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        let (host, port, _, _, _) = Config.shared.wowza()
+        let (host, port, _, _, _)=Config.shared.wowza()
         
         let url = stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1"
             ? "http://\(host)/media/\(stream!.id).mp4"
             : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
+        
+        SongManager.addToRecentlyPlayed(stream!.title, songURL:url, thumbnailURL:"http://\(host)/thumbs/\(stream!.id).jpg")
         
         player=AVPlayer(URL:NSURL(string:url)!)
         
         let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
         videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
         seekBar!.maximumValue=Float(durationSeconds)
-
+        
         player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
         {_ in
             if self.player!.currentItem!.status == .ReadyToPlay
@@ -108,7 +104,7 @@ class ModalViewController: UIViewController
     
     func hideControls()
     {
-       // controlsView?.hidden=true
+        controlsView?.hidden=true
     }
     
     func secondsToReadableTime(durationSeconds:Int)->String
@@ -151,7 +147,7 @@ class ModalViewController: UIViewController
     {
         
     }
-
+    
     @IBAction func like()
     {
         if liked
@@ -175,7 +171,7 @@ class ModalViewController: UIViewController
     {
         
     }
-
+    
     @IBAction func play()
     {
         if isPlaying
