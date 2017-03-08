@@ -77,6 +77,7 @@ class MyLibViewController: UIViewController
             let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
             
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("streamTitle") as? String
+            cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("streamUserName") as? String
             cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(recentlyPlayed![indexPath.row-7].valueForKey("streamID") as! Int).jpg"))
             
             return cell
@@ -110,9 +111,16 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
+        let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
         
+        let storyboardn=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        
+        modalVC.stream=makeStreamClassObject(indexPath.row-7)
+        
+        root.presentViewController(modalVC, animated:true, completion:nil)
     }
-
+    
     @IBAction func editButtonPressed()
     {
         if itemsTbl!.editing
@@ -127,7 +135,16 @@ class MyLibViewController: UIViewController
     
     func makeStreamClassObject(row:Int)->Stream
     {
+        let user=User()
+        
+        user.name=recentlyPlayed![row].valueForKey("streamUserName") as! String
+        
         let stream=Stream()
+        
+        stream.id=recentlyPlayed![row].valueForKey("streamID") as! UInt
+        stream.title=recentlyPlayed![row].valueForKey("streamTitle") as! String
+        stream.streamHash=recentlyPlayed![row].valueForKey("streamHash") as! String
+        stream.user=user
         
         return stream
     }
