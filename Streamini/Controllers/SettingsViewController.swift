@@ -18,10 +18,8 @@ protocol ProfilesDelegate: class {
     func close()
 }
 
-//class SettingsViewController: UITableViewController, UIActionSheetDelegate,
-  //  UINavigationControllerDelegate, ProfilesDelegate {
-class SettingsViewController: UITableViewController, UIActionSheetDelegate,ProfilesDelegate {
-    //@IBOutlet weak var userHeaderView: UserHeaderView!
+class SettingsViewController: UITableViewController, UIActionSheetDelegate,ProfilesDelegate
+{
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var accountValueLabel: UILabel!
     @IBOutlet weak var followersLabel: UILabel!
@@ -30,8 +28,8 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
     @IBOutlet weak var blockedValueLabel: UILabel!
     @IBOutlet weak var streamsLabel: UILabel!
     @IBOutlet weak var streamsValueLabel: UILabel!
-     @IBOutlet weak var aboutLabel: UILabel!
-     @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var shareLabel: UILabel!
     @IBOutlet weak var logoutLabel: UILabel!
     
@@ -39,8 +37,6 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
     var profilesDelegate: ProfilesDelegate?
     var selectedImage: UIImage?
     
-    
-       
     func configureView()
     {
         self.title = "Settings"
@@ -52,8 +48,6 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
         aboutLabel.text = "About"
         shareLabel.text     = "Devices"
         logoutLabel.text    = NSLocalizedString("profile_logout", comment: "")
-         
-      
     }
    
     func logout() {
@@ -64,9 +58,6 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
 
     func successGetUser(user: User) {
         self.user = user
-       
-        
-       // self.navigationItem.rightBarButtonItem = nil
     }
     
     func successFailure(error: NSError) {
@@ -82,14 +73,10 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
         super.viewDidLoad()
         self.configureView()
         UserConnector().get(nil, success:successGetUser, failure:successFailure)
-       // let activator=UIActivityIndicatorView(activityIndicatorStyle:.White)
-        //activator.startAnimating()
-        
-       // self.navigationItem.rightBarButtonItem=UIBarButtonItem(customView:activator)
-       
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool)
+    {
         self.navigationController!.setNavigationBarHidden(false, animated: false)
         super.viewWillAppear(animated)
         
@@ -97,12 +84,6 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
         UINavigationBar.setCustomAppereance()
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-        
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         
         if actionSheet.tag == ProfilesActionSheetType.Logout.rawValue {
@@ -112,9 +93,6 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
         }
     }
 
-   
-    
- 
     func logoutSuccess()
     {
         if A0SimpleKeychain().stringForKey("PHPSESSID") != nil
@@ -150,41 +128,19 @@ class SettingsViewController: UITableViewController, UIActionSheetDelegate,Profi
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
     
-    
     func reload() {
         UserConnector().get(nil, success: successGetUser, failure: successFailure)
     }
     
     func close() {
     }
-
-   
     
-   
-   // override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-     //   tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        
-                     
-    
-       // if indexPath.section == 1 && indexPath.row == 1 { // logout
-         //   logout()
-       // }
-   // }
-    
-
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        
-      print(indexPath.section)
-      print(indexPath.row)
         
         if indexPath.section == 2 && indexPath.row == 0 { // logout
             logout()
         }
     }
-
-       
-   
-    
    }
