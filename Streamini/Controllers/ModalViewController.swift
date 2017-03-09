@@ -21,7 +21,6 @@ class ModalViewController: UIViewController
     @IBOutlet var controlsView:UIView?
     @IBOutlet var seekBar:UISlider?
     
-    var liked=false
     var isPlaying=false
     var player:AVPlayer?
     var timer:NSTimer?
@@ -30,6 +29,11 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+        
+        if SongManager.isAlreadyFavourited(stream!.id)
+        {
+            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
+        }
     }
     
     override func viewDidLoad()
@@ -150,15 +154,15 @@ class ModalViewController: UIViewController
     
     @IBAction func like()
     {
-        if liked
+        if SongManager.isAlreadyFavourited(stream!.id)
         {
             likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
-            liked=false
+            SongManager.removeFromFavourite(stream!.id)
         }
         else
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-            liked=true
+            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
         }
     }
     

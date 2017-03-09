@@ -89,24 +89,22 @@ public class SongManager{
     
     class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
     {
-        if(isAlreadyFavourited(streamID))
-        {
-            let favouriteEntity=NSFetchRequest(entityName:"Favourites")
-            favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
-            let fetchedFavourites=try! context.executeFetchRequest(favouriteEntity)
-            
-            context.deleteObject(fetchedFavourites[0] as! NSManagedObject)
-            save()
-        }
-        else
-        {
-            let newFavourite=NSEntityDescription.insertNewObjectForEntityForName("Favourites", inManagedObjectContext:context)
-            newFavourite.setValue(streamTitle, forKey:"streamTitle")
-            newFavourite.setValue(streamHash, forKey:"streamHash")
-            newFavourite.setValue(streamUserName, forKey:"streamUserName")
-            newFavourite.setValue(streamID, forKey:"streamID")
-            save()
-        }
+        let newFavourite=NSEntityDescription.insertNewObjectForEntityForName("Favourites", inManagedObjectContext:context)
+        newFavourite.setValue(streamTitle, forKey:"streamTitle")
+        newFavourite.setValue(streamHash, forKey:"streamHash")
+        newFavourite.setValue(streamUserName, forKey:"streamUserName")
+        newFavourite.setValue(streamID, forKey:"streamID")
+        save()
+    }
+    
+    class func removeFromFavourite(streamID:UInt)
+    {
+        let favouriteEntity=NSFetchRequest(entityName:"Favourites")
+        favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
+        let fetchedFavourites=try! context.executeFetchRequest(favouriteEntity)
+        
+        context.deleteObject(fetchedFavourites[0] as! NSManagedObject)
+        save()
     }
     
     class func isAlreadyFavourited(streamID:UInt)->Bool
