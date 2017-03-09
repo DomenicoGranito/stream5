@@ -115,8 +115,8 @@ class MyLibViewController: UIViewController
         {
             let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
             
-            let storyboardn=UIStoryboard(name:"Main", bundle:nil)
-            let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+            let storyboard=UIStoryboard(name:"Main", bundle:nil)
+            let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
             modalVC.stream=makeStreamClassObject(indexPath.row-7)
             
@@ -126,7 +126,7 @@ class MyLibViewController: UIViewController
         {
             if indexPath.row==2
             {
-                performSegueWithIdentifier("Followers", sender:nil)
+                performSegueWithIdentifier("Videos", sender:nil)
             }
         }
     }

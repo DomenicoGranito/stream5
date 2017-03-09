@@ -29,7 +29,7 @@ class RecentStreamCell: StreamCell {
     
     override func update(stream: Stream) {
       
-        let (host, port, application, _, _) = Config.shared.wowza()
+        let (host, _, _, _, _) = Config.shared.wowza()
         
         super.update(stream)
         playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
