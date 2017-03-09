@@ -75,7 +75,7 @@ class CategoriesViewController: BaseViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
-
+    
     func fetchMore()
     {
         page+=1
@@ -100,7 +100,7 @@ class CategoriesViewController: BaseViewController
         
         return headerView
     }
-
+    
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return allItemsArray.count
@@ -121,7 +121,7 @@ class CategoriesViewController: BaseViewController
         
         cell.reloadCollectionView()
     }
-
+    
     @IBAction func back()
     {
         navigationController?.popViewControllerAnimated(true)
