@@ -111,14 +111,24 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
-        
-        let storyboardn=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
-        
-        modalVC.stream=makeStreamClassObject(indexPath.row-7)
-        
-        root.presentViewController(modalVC, animated:true, completion:nil)
+        if indexPath.row>6
+        {
+            let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
+            
+            let storyboardn=UIStoryboard(name:"Main", bundle:nil)
+            let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+            
+            modalVC.stream=makeStreamClassObject(indexPath.row-7)
+            
+            root.presentViewController(modalVC, animated:true, completion:nil)
+        }
+        else if indexPath.row<6
+        {
+            if indexPath.row==2
+            {
+                performSegueWithIdentifier("Followers", sender:nil)
+            }
+        }
     }
     
     @IBAction func editButtonPressed()

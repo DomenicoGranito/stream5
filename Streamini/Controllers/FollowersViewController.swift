@@ -50,17 +50,12 @@ class FollowersViewController: BaseTableViewController, UISearchBarDelegate, Use
         tableView.infiniteScrollingView.stopAnimating()
     }
     
-    // MARK: - UserSelecting protocol
-    
     func userDidSelected(user:User)
     {
-        //self.showUserInfo(user, userStatusDelegate: nil)
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
-        
-
     }
     
     // MARK: - View life cycle
