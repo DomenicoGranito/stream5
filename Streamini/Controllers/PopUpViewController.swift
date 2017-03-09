@@ -76,9 +76,7 @@ class PopUpViewController: BaseViewController
         {
             view.window?.rootViewController?.dismissViewControllerAnimated(true, completion:nil)
             
-            let storyboard=UIStoryboard(name:"Main", bundle:nil)
-            let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
-            vc.user=stream?.user
+            NSNotificationCenter.defaultCenter().postNotificationName("goToChannels", object:stream?.user)
         }
         if indexPath.row==4
         {

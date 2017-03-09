@@ -24,9 +24,17 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
 
     override func viewWillAppear(animated:Bool)
     {
-        let index=self.selectedIndex
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
+    }
+    
+    func goToChannels(notification:NSNotification)
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:"goToChannels", object:nil)
         
-        print(index)
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        vc.user=notification.object as? User
+        navigationController?.pushViewController(vc, animated:true)
     }
     
     func hideButton()
