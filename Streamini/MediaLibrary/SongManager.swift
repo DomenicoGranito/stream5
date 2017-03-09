@@ -63,7 +63,7 @@ public class SongManager{
     
     class func addToRecentlyPlayed(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
     {
-        if(!SongManager.isRecentlyPlayed(streamID))
+        if(!isRecentlyPlayed(streamID))
         {
             let newRecentlyPlayed=NSEntityDescription.insertNewObjectForEntityForName("RecentlyPlayed", inManagedObjectContext:context)
             newRecentlyPlayed.setValue(streamTitle, forKey:"streamTitle")
@@ -85,6 +85,42 @@ public class SongManager{
     {
         context.deleteObject(objectToBeDelete)
         save()
+    }
+    
+    class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
+    {
+        if(isAlreadyFavourited(streamID))
+        {
+            let favouriteEntity=NSFetchRequest(entityName:"Favourites")
+            favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
+            let fetchedFavourites=try! context.executeFetchRequest(favouriteEntity)
+            
+            context.deleteObject(fetchedFavourites[0] as! NSManagedObject)
+            save()
+        }
+        else
+        {
+            let newFavourite=NSEntityDescription.insertNewObjectForEntityForName("Favourites", inManagedObjectContext:context)
+            newFavourite.setValue(streamTitle, forKey:"streamTitle")
+            newFavourite.setValue(streamHash, forKey:"streamHash")
+            newFavourite.setValue(streamUserName, forKey:"streamUserName")
+            newFavourite.setValue(streamID, forKey:"streamID")
+            save()
+        }
+    }
+    
+    class func isAlreadyFavourited(streamID:UInt)->Bool
+    {
+        let favouriteEntity=NSFetchRequest(entityName:"Favourites")
+        favouriteEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
+        let fetchedFavourites=try! context.executeFetchRequest(favouriteEntity)
+        
+        if(fetchedFavourites.count>0)
+        {
+            return true
+        }
+        
+        return false
     }
     
     class func addToRelationships(identifier : String, playlistName : String){
