@@ -84,7 +84,7 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==5
         {
-            
+            SongManager.saveStream(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
         }
     }
     
