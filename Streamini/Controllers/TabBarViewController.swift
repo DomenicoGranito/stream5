@@ -22,14 +22,22 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         presentViewController(modalVC, animated:true, completion:nil)
     }
 
-    
-    func hideButton() {
-             playView.hidden = true
+    override func viewWillAppear(animated:Bool)
+    {
+        let index=self.selectedIndex
+        
+        print(index)
     }
     
-    func showButton() {
-            playView.hidden = false
-        //   view.bringSubviewToFront(playView)
+    func hideButton()
+    {
+        playView.hidden=true
+    }
+    
+    func showButton()
+    {
+        playView.hidden=false
+        //  view.bringSubviewToFront(playView)
     }
     
     var animator:ARNTransitionAnimator!
@@ -84,63 +92,6 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         self.performSegueWithIdentifier("RootToCreate", sender:self)
     }
     
-    //  @IBAction func peopleButtonPressed(sender:AnyObject)
-    // {
-    //   containerViewController!.peopleViewController()
-    //  homeButton.selected=false
-    // peopleButton.selected=true
-    // setupPeopleNavigationItems()
-    //}
-    
-    //  @IBAction func mainButtonPressed(sender:AnyObject)
-    // {
-    //   containerViewController!.mainViewController()
-    // homeButton.selected=true
-    // peopleButton.selected=false
-    // setupMainNavigationItems()
-    //}
-    
-    // func profileButtonItemPressed()
-    //{
-    //  self.performSegueWithIdentifier("RootToProfile", sender:nil)
-    //}
-    
-    //func searchButtonItemPressed()
-    // {
-    //   let peopleController=containerViewController!.childViewControllers[0] as! PeopleViewController
-    // if peopleController.isSearchMode
-    //{
-    //  peopleController.hideSearch(true)
-    //  peopleController.dataSource!.reload()
-    //}
-    //else
-    //{
-    //  peopleController.showSearch(true)
-    // }
-    //}
-    
-    //  func setupPeopleNavigationItems()
-    //{
-    //  self.title=NSLocalizedString("people_title", comment:"")
-    
-    //     let leftButton=UIButton(frame:CGRectMake(0, 0, 25, 25))
-    //   leftButton.setImage(UIImage(named:"search"), forState:.Normal)
-    // leftButton.addTarget(self, action:#selector(searchButtonItemPressed), forControlEvents:.TouchUpInside)
-    // leftButton.setImageTintColor(UIColor(white:1, alpha:0.5), forState:.Normal)
-    // leftButton.setImageTintColor(UIColor(white:1, alpha:1), forState:.Highlighted)
-    // let leftBarButtonItem=UIBarButtonItem(customView:leftButton)
-    
-    // let rightButton=UIButton(frame:CGRectMake(0, 0, 25, 25))
-    // rightButton.setImage(UIImage(named:"profile"), forState:.Normal)
-    // rightButton.addTarget(self, action:#selector(profileButtonItemPressed), forControlEvents:.TouchUpInside)
-    // rightButton.setImageTintColor(UIColor(white:1, alpha:0.5), forState:.Normal)
-    // rightButton.setImageTintColor(UIColor(white:1, alpha:1), forState:.Highlighted)
-    // let rightBarButtonItem=UIBarButtonItem(customView:rightButton)
-    
-    //self.navigationItem.leftBarButtonItem=leftBarButtonItem
-    //self.navigationItem.rightBarButtonItem=rightBarButtonItem
-    //}
-    
     func setupMainNavigationItems()
     {
         self.title=""
@@ -151,15 +102,7 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         button.setImageTintColor(UIColor(white:1, alpha:1), forState:.Highlighted)
         let item=UIBarButtonItem(customView:button)
         
-       // let leftButton=UIButton(frame:CGRectMake(0, 0, 25, 25))
-       // leftButton.setImage(UIImage(named:"search"), forState:.Normal)
-       // leftButton.addTarget(self, action:#selector(searchTapped), forControlEvents:.TouchUpInside)
-        //leftButton.setImageTintColor(UIColor(white:1, alpha:0.5), forState:.Normal)
-        //leftButton.setImageTintColor(UIColor(white:1, alpha:1), forState:.Highlighted)
-        //let leftBarButtonItem=UIBarButtonItem(customView:leftButton)
-        
         self.navigationItem.rightBarButtonItem=item
-       // self.navigationItem.leftBarButtonItem=leftBarButtonItem
     }
     
     func searchTapped()
@@ -169,33 +112,8 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         self.presentViewController(controller, animated:true, completion:nil)
     }
     
-    func configureView()
-    {
-        //   self.navigationController!.navigationBarHidden=false
-        // self.navigationItem.hidesBackButton=true
-        // self.navigationController!.navigationBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.whiteColor()]
-        
-        let normalStateColor=UIColor.buttonNormalColor()
-        let highlightedStateColor=UIColor.buttonHighlightedColor()
-        
-        //  homeButton.setImageTintColor(normalStateColor, forState:.Normal)
-        //  homeButton.setImageTintColor(highlightedStateColor, forState:.Highlighted)
-        //  homeButton.setImageTintColor(highlightedStateColor, forState:.Selected)
-        // homeButton.selected=true
-        
-        // peopleButton.setImageTintColor(normalStateColor, forState:.Normal)
-        // peopleButton.setImageTintColor(highlightedStateColor, forState:.Highlighted)
-        // peopleButton.setImageTintColor(highlightedStateColor, forState:.Selected)
-        //
-        // recButton.setImage(UIImage(named:"rec-off"), forState:.Normal)
-        // recButton.setImage(UIImage(named:"rec-on"), forState:.Highlighted)
-    }
-    
     override func viewDidLoad()
     {
-        
-        
-        
         self.delegate = self
         self.tabBarController?.delegate = self
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -203,7 +121,6 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         
         setupAnimator()
         
-        configureView()
         setupMainNavigationItems()
         
         // Ask for use Camera
