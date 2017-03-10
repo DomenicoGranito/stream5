@@ -33,7 +33,7 @@ class MyLibViewController: UIViewController
     @IBAction func myaccount()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("myProfileViewControllerId") as! myProfileViewController
+        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=UserContainer.shared.logged()
         navigationController?.pushViewController(vc, animated:true)
     }
