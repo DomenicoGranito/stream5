@@ -17,8 +17,8 @@ class MyLibViewController: UIViewController
 {
     @IBOutlet var itemsTbl:UITableView?
     
-    let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Series", "Channels", "Upcoming Events"]
-    let menuItemIconsArray=["playlist", "youtube", "internet", "Series", "channels", "time"]
+    let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Channels"]
+    let menuItemIconsArray=["playlist", "youtube", "internet", "channels"]
     
     var recentlyPlayed:[NSManagedObject]?
     let (host, _, _, _, _)=Config.shared.wowza()
@@ -40,7 +40,7 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if indexPath.row<7
+        if indexPath.row<5
         {
             return 44
         }
@@ -52,12 +52,12 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return recentlyPlayed!.count+7
+        return recentlyPlayed!.count+5
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if indexPath.row<6
+        if indexPath.row<4
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
             
@@ -66,7 +66,7 @@ class MyLibViewController: UIViewController
             
             return cell
         }
-        else if indexPath.row==6
+        else if indexPath.row==4
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Cell")!
             
@@ -76,9 +76,9 @@ class MyLibViewController: UIViewController
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("RecentlyPlayedCell") as! RecentlyPlayedCell
             
-            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("streamTitle") as? String
-            cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-7].valueForKey("streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(recentlyPlayed![indexPath.row-7].valueForKey("streamID") as! Int).jpg"))
+            cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-5].valueForKey("streamTitle") as? String
+            cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-5].valueForKey("streamUserName") as? String
+            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(recentlyPlayed![indexPath.row-5].valueForKey("streamID") as! Int).jpg"))
             
             return cell
         }
@@ -86,7 +86,7 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, canEditRowAtIndexPath indexPath:NSIndexPath)->Bool
     {
-        if indexPath.row<7
+        if indexPath.row<5
         {
             return false
         }
@@ -100,8 +100,8 @@ class MyLibViewController: UIViewController
     {
         let clearButton=UITableViewRowAction(style:.Default, title:"Clear")
         {action, indexPath in
-            SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-7])
-            self.recentlyPlayed?.removeAtIndex(indexPath.row-7)
+            SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-5])
+            self.recentlyPlayed?.removeAtIndex(indexPath.row-5)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
         }
         clearButton.backgroundColor=UIColor.darkGrayColor()
@@ -111,18 +111,18 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        if indexPath.row>6
+        if indexPath.row>4
         {
             let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
             
             let storyboard=UIStoryboard(name:"Main", bundle:nil)
             let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
-            modalVC.stream=makeStreamClassObject(indexPath.row-7)
+            modalVC.stream=makeStreamClassObject(indexPath.row-5)
             
             root.presentViewController(modalVC, animated:true, completion:nil)
         }
-        else if indexPath.row<6
+        else if indexPath.row<4
         {
             if indexPath.row==2
             {
