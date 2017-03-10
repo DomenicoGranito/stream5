@@ -91,7 +91,7 @@ class DiscoverViewController:BaseTableViewController
         timer=NSTimer(timeInterval:NSTimeInterval(2.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
         NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
     }
-  
+    
     override func viewWillAppear(animated:Bool)
     {
         self.tabBarController!.navigationItem.hidesBackButton=true
@@ -99,51 +99,20 @@ class DiscoverViewController:BaseTableViewController
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        
-        if indexPath.section == 1 && indexPath.row == 0 { // following, followers, blocked, streams
-            self.performSegueWithIdentifier("charts", sender: indexPath)
-        }
-        if indexPath.section == 1 && indexPath.row == 1 { // following, followers, blocked, streams
-            self.performSegueWithIdentifier("channels", sender: indexPath)
-        }
-        if indexPath.section == 1 && indexPath.row == 2 { // following, followers, blocked, streams
-            self.performSegueWithIdentifier("series", sender: indexPath)
-        }
-        if indexPath.section == 1 && indexPath.row == 3 { // following, followers, blocked, streams
-            self.performSegueWithIdentifier("channels", sender: indexPath)
+    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        if indexPath.section==1&&indexPath.row==0
+        {
+            performSegueWithIdentifier("Channels", sender:nil)
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let sid = segue.identifier {
-            if sid == "charts" {
-                let controller = segue.destinationViewController as! ChartsViewController
-                let index = (sender as! NSIndexPath).row
-               // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
-            }
-            if sid == "channels" {
-                let controller = segue.destinationViewController as! PeopleViewController
-                
-                let index = (sender as! NSIndexPath).row
-                // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
-            }
-            if sid == "series" {
-                let controller = segue.destinationViewController as! SeriesViewController
-                let index = (sender as! NSIndexPath).row
-                // controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
-            }
-
-        }
-    }
-
     func reload()
     {
         if allCategoriesArray.count>0&&recentStreamsArray.count>0
         {
-            menuItemTitlesArray=["Charts", "New Releases", "Videos", "Podcasts", "Discover", "Concerts"]
-            menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
+            menuItemTitlesArray=["Channels"]
+            menuItemIconsArray=["user.png"]
             
             tableView.reloadData()
             
@@ -166,7 +135,7 @@ class DiscoverViewController:BaseTableViewController
         }
         else if section==1
         {
-            return 6
+            return 1
         }
         else
         {
