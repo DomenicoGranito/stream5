@@ -82,10 +82,6 @@ class PopUpViewController: BaseViewController
         {
             StreamConnector().report(stream!.id, success:successWithoutAction, failure:failureWithoutAction)
         }
-        if indexPath.row==5
-        {
-            SongManager.saveStream(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
-        }
     }
     
     func successWithoutAction()

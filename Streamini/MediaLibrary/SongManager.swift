@@ -121,37 +121,10 @@ public class SongManager{
         return false
     }
     
-    class func getSavedStreams()->[NSManagedObject]
+    class func getFavourites()->[NSManagedObject]
     {
-        let savedRequest=NSFetchRequest(entityName:"Saved")
-        return try! context.executeFetchRequest(savedRequest) as! [NSManagedObject]
-    }
-    
-    class func saveStream(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
-    {
-        if(!isAlreadySaved(streamID))
-        {
-            let newSave=NSEntityDescription.insertNewObjectForEntityForName("Saved", inManagedObjectContext:context)
-            newSave.setValue(streamTitle, forKey:"streamTitle")
-            newSave.setValue(streamHash, forKey:"streamHash")
-            newSave.setValue(streamUserName, forKey:"streamUserName")
-            newSave.setValue(streamID, forKey:"streamID")
-            save()
-        }
-    }
-    
-    class func isAlreadySaved(streamID:UInt)->Bool
-    {
-        let savedEntity=NSFetchRequest(entityName:"Saved")
-        savedEntity.predicate=NSPredicate(format:"streamID=%d", streamID)
-        let fetchedSaved=try! context.executeFetchRequest(savedEntity)
-        
-        if(fetchedSaved.count>0)
-        {
-            return true
-        }
-        
-        return false
+        let favouritesRequest=NSFetchRequest(entityName:"Favourites")
+        return try! context.executeFetchRequest(favouritesRequest) as! [NSManagedObject]
     }
     
     class func addToRelationships(identifier : String, playlistName : String){

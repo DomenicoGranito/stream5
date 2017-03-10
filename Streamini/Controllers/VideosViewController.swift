@@ -8,26 +8,26 @@
 
 class VideosViewController: UIViewController
 {
-    var savedStreams:[NSManagedObject]?
+    var favouriteStreams:[NSManagedObject]?
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
     {
-        savedStreams=SongManager.getSavedStreams()
+        favouriteStreams=SongManager.getFavourites()
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return savedStreams!.count
+        return favouriteStreams!.count
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCellWithIdentifier("RecentStreamCell") as! RecentStreamCell
         
-        cell.streamNameLabel?.text=savedStreams![indexPath.row].valueForKey("streamTitle") as? String
-        cell.userLabel?.text=savedStreams![indexPath.row].valueForKey("streamUserName") as? String
-        cell.playImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(savedStreams![indexPath.row].valueForKey("streamID") as! Int).jpg"))
+        cell.streamNameLabel?.text=favouriteStreams![indexPath.row].valueForKey("streamTitle") as? String
+        cell.userLabel?.text=favouriteStreams![indexPath.row].valueForKey("streamUserName") as? String
+        cell.playImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(favouriteStreams![indexPath.row].valueForKey("streamID") as! Int).jpg"))
         
         return cell
     }
@@ -48,13 +48,13 @@ class VideosViewController: UIViewController
     {
         let user=User()
         
-        user.name=savedStreams![row].valueForKey("streamUserName") as! String
+        user.name=favouriteStreams![row].valueForKey("streamUserName") as! String
         
         let stream=Stream()
         
-        stream.id=savedStreams![row].valueForKey("streamID") as! UInt
-        stream.title=savedStreams![row].valueForKey("streamTitle") as! String
-        stream.streamHash=savedStreams![row].valueForKey("streamHash") as! String
+        stream.id=favouriteStreams![row].valueForKey("streamID") as! UInt
+        stream.title=favouriteStreams![row].valueForKey("streamTitle") as! String
+        stream.streamHash=favouriteStreams![row].valueForKey("streamHash") as! String
         stream.user=user
         
         return stream
