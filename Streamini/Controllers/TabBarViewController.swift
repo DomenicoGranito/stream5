@@ -50,7 +50,6 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
-    var containerViewController:ContainerViewController?
     
     @IBAction func tapMiniPlayerButton()
     {
