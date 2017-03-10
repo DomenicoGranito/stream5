@@ -124,9 +124,17 @@ class MyLibViewController: UIViewController
         }
         else if indexPath.row<4
         {
+            if indexPath.row==0
+            {
+                performSegueWithIdentifier("Playlists", sender:nil)
+            }
             if indexPath.row==2||indexPath.row==1
             {
                 performSegueWithIdentifier("Videos", sender:indexPath)
+            }
+            if indexPath.row==3
+            {
+                performSegueWithIdentifier("Channels", sender:nil)
             }
         }
     }

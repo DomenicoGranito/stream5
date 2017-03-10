@@ -181,7 +181,6 @@
 		B7A6BB991B7A0CFE0080497F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */; };
 		B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */; };
 		B7AA45581B79CAC8001D293A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA45571B79CAC8001D293A /* RootViewController.swift */; };
-		B7AA455A1B79F766001D293A /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA45591B79F766001D293A /* ContainerViewController.swift */; };
 		B7AA93241B3172740005972E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA93231B3172740005972E /* AppDelegate.swift */; };
 		B7AA932B1B3172740005972E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AA93291B3172740005972E /* Main.storyboard */; };
 		B7AA932D1B3172740005972E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AA932C1B3172740005972E /* Images.xcassets */; };
@@ -408,7 +407,6 @@
 		B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		B7AA45571B79CAC8001D293A /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		B7AA45591B79F766001D293A /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		B7AA931E1B3172740005972E /* Streamini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7AA93221B3172740005972E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B7AA93231B3172740005972E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -878,7 +876,6 @@
 				B7AA45571B79CAC8001D293A /* RootViewController.swift */,
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
 				B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */,
-				B7AA45591B79F766001D293A /* ContainerViewController.swift */,
 				B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */,
 				86564ECE1E540BA300584405 /* SeriesViewController.swift */,
 				B6D4134E1E156829001E8108 /* DiscoverViewController.swift */,
@@ -1083,7 +1080,6 @@
 				B733B1F71B78D5A1002FEAB6 /* PeopleCell.swift in Sources */,
 				B70AB1381B73839C00BAD62A /* UserHeaderView.swift in Sources */,
 				B794AD9C1B5930200069C2A8 /* DisconnectedMessageController.swift in Sources */,
-				B7AA455A1B79F766001D293A /* ContainerViewController.swift in Sources */,
 				B7E15E531B6A629B000C8C69 /* CreateStreamKeyboardHandler.swift in Sources */,
 				B791879A1B4437FC002DFAB4 /* SocialTool.swift in Sources */,
 				B7A6BB991B7A0CFE0080497F /* ProfileViewController.swift in Sources */,
