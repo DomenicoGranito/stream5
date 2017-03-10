@@ -8,12 +8,13 @@
 
 class VideosViewController: UIViewController
 {
+    var vType:Int!
     var favouriteStreams:[NSManagedObject]?
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
     {
-        favouriteStreams=SongManager.getFavourites()
+        favouriteStreams=SongManager.getFavourites(vType)
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int

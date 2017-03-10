@@ -162,7 +162,7 @@ class ModalViewController: UIViewController
         else
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
+            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
         }
     }
     

@@ -87,13 +87,14 @@ public class SongManager{
         save()
     }
     
-    class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String)
+    class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String, vType:Int)
     {
         let newFavourite=NSEntityDescription.insertNewObjectForEntityForName("Favourites", inManagedObjectContext:context)
         newFavourite.setValue(streamTitle, forKey:"streamTitle")
         newFavourite.setValue(streamHash, forKey:"streamHash")
         newFavourite.setValue(streamUserName, forKey:"streamUserName")
         newFavourite.setValue(streamID, forKey:"streamID")
+        newFavourite.setValue(vType, forKey:"vType")
         save()
     }
     
@@ -121,9 +122,10 @@ public class SongManager{
         return false
     }
     
-    class func getFavourites()->[NSManagedObject]
+    class func getFavourites(vType:Int)->[NSManagedObject]
     {
         let favouritesRequest=NSFetchRequest(entityName:"Favourites")
+        favouritesRequest.predicate=NSPredicate(format:"vType=%d", vType)
         return try! context.executeFetchRequest(favouritesRequest) as! [NSManagedObject]
     }
     

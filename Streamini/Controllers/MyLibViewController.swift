@@ -124,10 +124,19 @@ class MyLibViewController: UIViewController
         }
         else if indexPath.row<4
         {
-            if indexPath.row==2
+            if indexPath.row==2||indexPath.row==1
             {
-                performSegueWithIdentifier("Videos", sender:nil)
+                performSegueWithIdentifier("Videos", sender:indexPath)
             }
+        }
+    }
+    
+    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?)
+    {
+        if segue.identifier=="Videos"
+        {
+            let controller=segue.destinationViewController as! VideosViewController
+            controller.vType=(sender as! NSIndexPath).row-1
         }
     }
     
