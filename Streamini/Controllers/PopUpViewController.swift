@@ -8,12 +8,21 @@
 
 class PopUpViewController: BaseViewController
 {
-    let menuItemTitlesArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Save video"]
-    let menuItemIconsArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
+    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite"]
+    let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
     
     var stream:Stream?
     let (host, port, _, _, _)=Config.shared.wowza()
     var videoImage:UIImage!
+    
+    override func viewDidLoad()
+    {
+        if SongManager.isAlreadyFavourited(stream!.id)
+        {
+            menuItemTitlesArray.replaceObjectAtIndex(4, withObject:"Remove from favourite")
+            menuItemIconsArray.replaceObjectAtIndex(4, withObject:"time.png")
+        }
+    }
     
     @IBAction func closeButtonPressed()
     {
@@ -55,8 +64,8 @@ class PopUpViewController: BaseViewController
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("MenuCell") as! MenuCell
             
-            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row-1]
-            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row-1])
+            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row-1] as? String
+            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row-1] as! String)
             
             return cell
         }
@@ -81,6 +90,19 @@ class PopUpViewController: BaseViewController
         if indexPath.row==4
         {
             StreamConnector().report(stream!.id, success:successWithoutAction, failure:failureWithoutAction)
+        }
+        if indexPath.row==5
+        {
+            dismissViewControllerAnimated(true, completion:nil)
+            
+            if SongManager.isAlreadyFavourited(stream!.id)
+            {
+                SongManager.removeFromFavourite(stream!.id)
+            }
+            else
+            {
+                SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
+            }
         }
     }
     

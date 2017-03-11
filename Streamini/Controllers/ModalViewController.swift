@@ -34,6 +34,10 @@ class ModalViewController: UIViewController
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
         }
+        else
+        {
+            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
+        }
     }
     
     override func viewDidLoad()
