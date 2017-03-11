@@ -25,8 +25,9 @@ protocol UserStatusDelegate: class {
     func blockStatusDidChange(status: Bool, user: User)
 }
 
-class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
+class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
 {
+    @IBOutlet var changeAvatarButton:UIButton?
     @IBOutlet var userHeaderView:UserHeaderView!
     @IBOutlet var recentCountLabel:UILabel!
     @IBOutlet var recentLabel:UILabel!
@@ -41,16 +42,17 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
     var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
     var downloadManager: DownloadManager!
+    var selectedImage: UIImage?
+    var profileDelegate: ProfileDelegate?
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
+        if UserContainer.shared.logged().id==user!.id
+        {
+            changeAvatarButton?.enabled=true
+        }
         
         configureView()
-        
-        //testing
-       //  userHeaderView.delegate = self
-        //end test
         
         update(user!.id)
         
@@ -59,6 +61,81 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
         navigationController?.navigationBarHidden=true
     }
     
+    @IBAction func avatarButtonPressed()
+    {
+        let actionSheet=UIActionSheet.changeUserpicActionSheet(self)
+        actionSheet.showInView(self.view)
+    }
+
+    func actionSheet(actionSheet:UIActionSheet, clickedButtonAtIndex buttonIndex:Int)
+    {
+        if buttonIndex==1
+        {
+            let controller=UIImagePickerController()
+            controller.sourceType = .PhotoLibrary
+            controller.allowsEditing=true
+            controller.delegate=self
+            self.presentViewController(controller, animated:true, completion:nil)
+        }
+        if buttonIndex==2
+        {
+            let controller=UIImagePickerController()
+            controller.sourceType = .Camera
+            controller.allowsEditing=true
+            controller.delegate=self
+            self.presentViewController(controller, animated:true, completion:nil)
+        }
+    }
+
+    func imagePickerController(picker:UIImagePickerController, didFinishPickingImage image:UIImage!, editingInfo:[NSObject:AnyObject]!)
+    {
+        picker.dismissViewControllerAnimated(true, completion:
+            {()->Void in
+                self.selectedImage=image.fixOrientation().imageScaledToFitToSize(CGSizeMake(100, 100))
+                self.uploadImage(self.selectedImage!)
+        })
+    }
+
+    func uploadImage(image: UIImage)
+    {
+        let filename = "\(UserContainer.shared.logged().id)-avatar.jpg"
+        
+        if AmazonTool.isAmazonSupported() {
+            AmazonTool.shared.uploadImage(image, name: filename) { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
+                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+                    let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
+                    self.userHeaderView.progressView.setProgress(progress, animated: true)
+                })
+            }
+        } else {
+            let data = UIImageJPEGRepresentation(image, 1.0)!
+            UserConnector().uploadAvatar(filename, data: data, success: uploadAvatarSuccess, failure: uploadAvatarFailure, progress: { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
+                //let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
+                //self.userHeaderView.progressView.setProgress(progress, animated: true)
+            })
+        }
+    }
+
+    func uploadAvatarSuccess() {
+        //userHeaderView.progressView.setProgress(0.0, animated: false)
+        userHeaderView.updateAvatar(user!, placeholder: selectedImage!)
+        if let delegate = profileDelegate {
+            delegate.reload()
+        }
+    }
+    
+    func uploadAvatarFailure(error: NSError) {
+        handleError(error)
+    }
+    
+    func imageDidUpload() {
+        UserConnector().avatar(uploadAvatarSuccess, failure: uploadAvatarFailure)
+    }
+
+    func imageUploadFailed(error: NSError) {
+        handleError(error)
+    }
+
     func configureView()
     {
         let recentLabelText=NSLocalizedString("user_card_recent", comment:"")
@@ -72,15 +149,13 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
         
         followButton.hidden=UserContainer.shared.logged().id==user!.id
     }
+    
     func userDidSelected(user:User)
     {
-        //self.showUserInfo(user, userStatusDelegate: nil)
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
-        
-        
     }
 
     @IBAction func more_dwnButtonPressed()
@@ -90,7 +165,6 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting
           //  strurl = "Http://spectator.live/media/\(stream.id)"
           //  downloadManager.startDownloadVideoOrPlaylist(url: strurl)
            // self.navigationController?.popViewControllerAnimated(true)
-        
     }
     
     @IBAction func recentButtonPressed()

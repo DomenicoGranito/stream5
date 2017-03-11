@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
                 root.topViewController!.presentedViewController!.dismissViewControllerAnimated(false, completion: nil)
             }
             
-            let controllers = root.viewControllers.filter({ ($0 is LoginViewController) || ($0 is RootViewController) })
+            let controllers = root.viewControllers.filter({ ($0 is LoginViewController)})
             root.setViewControllers(controllers, animated: false)
             
             self.bgTask = application.beginBackgroundTaskWithName("Disconnect Live Stream", expirationHandler: { () -> Void in
