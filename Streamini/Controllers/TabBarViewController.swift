@@ -34,7 +34,9 @@ class mTBViewController: UITabBarController , UITabBarControllerDelegate
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=notification.object as? User
-        navigationController?.pushViewController(vc, animated:true)
+        
+        let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
+        navigationController.pushViewController(vc, animated:true)
     }
     
     func hideButton()
