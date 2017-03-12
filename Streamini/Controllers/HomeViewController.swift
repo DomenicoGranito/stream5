@@ -38,7 +38,9 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        let activityIndicatorView=NVActivityIndicatorView(frame:CGRectMake(0, 0, 30, 30), type:.lineScalePulseOut, color:.white, padding:CGFloat(0))
+        let activityIndicatorView=DGActivityIndicatorView(type:.LineScalePulseOut, tintColor:UIColor.whiteColor())
+        activityIndicatorView.frame=CGRectMake(70, 70, 50, 50)
+        view.addSubview(activityIndicatorView)
         activityIndicatorView.startAnimating()
         
         reload()

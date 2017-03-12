@@ -42,7 +42,7 @@ import UIKit
             frame.size = self.scrollView.frame.size
             self.scrollView.pagingEnabled = true
             
-            var subView = UIView(frame: frame)
+            let subView = UIView(frame: frame)
             subView.backgroundColor = colors[index]
             self.scrollView .addSubview(subView)
         }
@@ -105,13 +105,13 @@ import UIKit
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
     {
-        var headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
+        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
         headerView.backgroundColor = UIColor(white: 0.2, alpha: 1)
-        var shuffle = UIButton(frame: CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width - 80, 30))
+        let shuffle = UIButton(frame: CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width - 80, 30))
         shuffle.setTitle("Shuffle Play", forState: .Normal)
         shuffle.backgroundColor = UIColor.greenColor()
         headerView.addSubview(shuffle)
-        var headerTitle = UILabel(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 30))
+        let headerTitle = UILabel(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 30))
         headerTitle.text = "Section Title"
         headerTitle.textColor = UIColor.whiteColor()
         headerTitle.backgroundColor = UIColor.clearColor()

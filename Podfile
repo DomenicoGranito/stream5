@@ -11,6 +11,6 @@ target "Streamini" do
 	pod 'SVPullToRefresh'
 	pod 'PubNub', '~> 3.7.11'
 	pod 'MZFormSheetController'
-    
+    pod 'DGActivityIndicatorView'
     
 end

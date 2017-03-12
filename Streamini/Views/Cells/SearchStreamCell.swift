@@ -29,7 +29,7 @@ class SearchStreamCell: StreamCell {
     
     override func update(stream: Stream) {
         super.update(stream)
-        let (host, port, application, _, _) = Config.shared.wowza()
+        let (host, _, _, _, _) = Config.shared.wowza()
         
         self.backgroundColor = UIColor.blackColor()
         userLabel.text = stream.user.name
