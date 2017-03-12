@@ -25,6 +25,8 @@ class MyLibViewController: UIViewController
     
     override func viewWillAppear(animated:Bool)
     {
+        navigationController?.setNavigationBarHidden(false, animated:true)
+        
         recentlyPlayed=SongManager.getRecentlyPlayed()
         
         itemsTbl?.reloadData()

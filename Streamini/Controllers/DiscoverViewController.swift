@@ -83,8 +83,6 @@ class DiscoverViewController:BaseTableViewController
         loadingView=UILoadingView(frame:view.bounds)
         view.addSubview(loadingView!)
         
-        self.title=NSLocalizedString("Discover", comment:"")
-        
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
         
@@ -94,9 +92,7 @@ class DiscoverViewController:BaseTableViewController
     
     override func viewWillAppear(animated:Bool)
     {
-        self.tabBarController!.navigationItem.hidesBackButton=true
-        navigationController?.navigationBarHidden=false
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+        navigationController?.setNavigationBarHidden(false, animated:true)
     }
     
     override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
