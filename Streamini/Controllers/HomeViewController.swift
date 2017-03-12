@@ -43,8 +43,6 @@ class HomeViewController: BaseViewController
         itemsTbl!.addPullToRefreshWithActionHandler{()->Void in
             self.reload()
         }
-        
-        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     override func viewWillAppear(animated:Bool)
@@ -52,7 +50,7 @@ class HomeViewController: BaseViewController
         navigationController?.navigationBarHidden=false
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(1000, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     func reload()
@@ -62,8 +60,19 @@ class HomeViewController: BaseViewController
     
     override func viewWillDisappear(animated:Bool)
     {
-        //  timer!.invalidate()
-        timer=nil
+        timer!.invalidate()
+    }
+    
+    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
+        if section==0
+        {
+            return 0
+        }
+        else
+        {
+            return 60
+        }
     }
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
@@ -81,10 +90,6 @@ class HomeViewController: BaseViewController
         titleLbl.font=UIFont.systemFontOfSize(24)
         titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
         
-        let accessoryLbl=UILabel(frame:CGRectMake(tableView.frame.size.width-25, 20, 20, 20))
-        accessoryLbl.font=UIFont.systemFontOfSize(22)
-        accessoryLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
-        
         let lineView=UIView(frame:CGRectMake(5, 45, tableView.frame.size.width-10, 1))
         lineView.backgroundColor=UIColor.darkGrayColor()
         
@@ -93,7 +98,6 @@ class HomeViewController: BaseViewController
         headerView.tag=section
         
         headerView.addSubview(lineView)
-        headerView.addSubview(accessoryLbl)
         headerView.addSubview(titleLbl)
         
         return headerView
@@ -125,6 +129,15 @@ class HomeViewController: BaseViewController
         if(allCategoryItemsArray.count>0)
         {
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
+            
+            if indexPath.section==0
+            {
+                cell.cellIdentifier="weeklyCell"
+            }
+            else
+            {
+                cell.cellIdentifier="videoCell"
+            }
         }
         
         return cell
