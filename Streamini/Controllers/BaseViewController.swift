@@ -6,37 +6,37 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-class BaseViewController: UIViewController {
-
+class BaseViewController: UIViewController
+{
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
     
-    func handleError(error: NSError) {
-        if let userInfo = error.userInfo as? [NSObject: NSObject] {
-            // modify and assign values as necessary
-            if userInfo["code"] == Error.kLoginExpiredCode {
+    func handleError(error:NSError)
+    {
+        if let userInfo=error.userInfo as? [NSObject:NSObject]
+        {
+            if userInfo["code"]==Error.kLoginExpiredCode
+            {
+                let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
                 
-                // Open login screen
-                let root = UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
-                
-                if root.topViewController!.presentedViewController != nil {
-                    root.topViewController!.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+                if root.topViewController!.presentedViewController != nil
+                {
+                    root.topViewController!.presentedViewController!.dismissViewControllerAnimated(true, completion:nil)
                 }
                 
-                let controllers = root.viewControllers.filter({ ($0 is LoginViewController) })
-                root.setViewControllers(controllers, animated: true)
+                let controllers=root.viewControllers.filter({($0 is LoginViewController)})
+                root.setViewControllers(controllers, animated:true)
                 
-                // Show alert
-                let message = userInfo[NSLocalizedDescriptionKey] as! String
-                let alertView = UIAlertView.notAuthorizedAlert(message)
+                let message=userInfo[NSLocalizedDescriptionKey] as! String
+                let alertView=UIAlertView.notAuthorizedAlert(message)
                 alertView.show()
-            } else {
-                let message = userInfo[NSLocalizedDescriptionKey] as! String
-                let alertView = UIAlertView.notAuthorizedAlert(message)
+            }
+            else
+            {
+                let message=userInfo[NSLocalizedDescriptionKey] as! String
+                let alertView=UIAlertView.notAuthorizedAlert(message)
                 alertView.show()
             }
         }
