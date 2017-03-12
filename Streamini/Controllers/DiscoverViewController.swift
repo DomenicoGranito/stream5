@@ -92,7 +92,7 @@ class DiscoverViewController:BaseTableViewController
     
     override func viewWillAppear(animated:Bool)
     {
-        navigationController?.setNavigationBarHidden(false, animated:true)
+        navigationController?.navigationBarHidden=false
     }
     
     override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)

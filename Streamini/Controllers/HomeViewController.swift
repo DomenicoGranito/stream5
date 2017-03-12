@@ -38,26 +38,21 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        
         reload()
         
         itemsTbl!.addPullToRefreshWithActionHandler{()->Void in
             self.reload()
         }
         
-        timer=NSTimer(timeInterval:NSTimeInterval(10.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
+        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     override func viewWillAppear(animated:Bool)
     {
-        self.tabBarController!.navigationItem.hidesBackButton = true
         navigationController?.navigationBarHidden=false
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         
-        timer=NSTimer(timeInterval:NSTimeInterval(1000.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
+        timer=NSTimer.scheduledTimerWithTimeInterval(1000, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     func reload()
