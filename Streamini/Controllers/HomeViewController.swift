@@ -38,6 +38,9 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        let activityIndicatorView=NVActivityIndicatorView(frame:CGRectMake(0, 0, 30, 30), type:.lineScalePulseOut, color:.white, padding:CGFloat(0))
+        activityIndicatorView.startAnimating()
+        
         reload()
         
         itemsTbl!.addPullToRefreshWithActionHandler{()->Void in

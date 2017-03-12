@@ -32,10 +32,10 @@
 		3EF535B41E0921430049B2E9 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B31E0921430049B2E9 /* LineView.swift */; };
 		3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */; };
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
-		4F36BD874D9D16F282B368E9 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */; };
 		86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86564ECE1E540BA300584405 /* SeriesViewController.swift */; };
 		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
 		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
+		96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */; };
 		A60F82E91D490F4D002E2CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82E81D490F4D002E2CEA /* Category.swift */; };
 		A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */; };
 		A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */; };
@@ -252,7 +252,7 @@
 		3EF535B31E0921430049B2E9 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		3EF535B71E092A330049B2E9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
-		6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
@@ -457,7 +457,7 @@
 				B70FAA031B539BC000607EA9 /* SystemConfiguration.framework in Frameworks */,
 				B70FAA011B539BB300607EA9 /* CFNetwork.framework in Frameworks */,
 				B7EAD9531B4D72A40009C698 /* QuickLook.framework in Frameworks */,
-				4F36BD874D9D16F282B368E9 /* libPods-Streamini.a in Frameworks */,
+				96E9F7207AFA69CAF92AEE58 /* libPods-Streamini.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +495,7 @@
 				B70FAA021B539BC000607EA9 /* SystemConfiguration.framework */,
 				B70FAA001B539BB300607EA9 /* CFNetwork.framework */,
 				B7EAD9521B4D72A40009C698 /* QuickLook.framework */,
-				6C391A282CD40EE01AEF41B4 /* libPods-Streamini.a */,
+				6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

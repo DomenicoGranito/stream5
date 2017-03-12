@@ -20,13 +20,9 @@ class DiscoverViewController:BaseTableViewController
     var menuItemTitlesArray=[]
     var menuItemIconsArray=[]
     var timer:NSTimer?
-    var loadingView:UIView?
     
     override func viewDidLoad()
     {
-        loadingView=UILoadingView(frame:view.bounds)
-        view.addSubview(loadingView!)
-        
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
         
@@ -56,8 +52,6 @@ class DiscoverViewController:BaseTableViewController
             tableView.reloadData()
             
             timer!.invalidate()
-            
-            loadingView?.removeFromSuperview()
         }
     }
     
