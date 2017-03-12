@@ -48,7 +48,6 @@ class HomeViewController: BaseViewController
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=false
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         
         timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }

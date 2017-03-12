@@ -71,34 +71,10 @@ class CategoriesViewController: BaseViewController
         topImageView?.alpha=percentage
     }
     
-    override func viewWillAppear(animated:Bool)
-    {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
-    }
-    
     func fetchMore()
     {
         page+=1
         StreamConnector().categoryStreams(categoryID!, pageID:page, success:fetchMoreSuccess, failure:failureStream)
-    }
-    
-    func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
-    {
-        let headerView=UIView(frame:CGRectMake(0, 0, 60, tableView.frame.size.width))
-        headerView.backgroundColor=UIColor.clearColor()
-        
-        let titleLbl=UILabel(frame:CGRectMake(10, 20, 150, 20))
-        titleLbl.text=categoryName?.uppercaseString
-        titleLbl.font=UIFont.systemFontOfSize(14)
-        titleLbl.textColor=UIColor.lightGrayColor()
-        
-        let lineView=UIView(frame:CGRectMake(10, 59, tableView.frame.size.width-20, 1))
-        lineView.backgroundColor=UIColor.darkGrayColor()
-        
-        headerView.addSubview(lineView)
-        headerView.addSubview(titleLbl)
-        
-        return headerView
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int

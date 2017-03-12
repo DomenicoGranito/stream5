@@ -11,6 +11,5 @@ class CategoryCell: UICollectionViewCell
     @IBOutlet var videoTitleLbl:UILabel?
     @IBOutlet var followersCountLbl:UILabel?
     @IBOutlet var videoThumbnailImageView:UIImageView?
-    
     @IBOutlet var iconcategory:UIImageView?
 }

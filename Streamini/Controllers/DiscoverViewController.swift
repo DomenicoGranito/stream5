@@ -86,8 +86,7 @@ class DiscoverViewController:BaseTableViewController
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
         
-        timer=NSTimer(timeInterval:NSTimeInterval(2.0), target:self, selector:#selector(reload), userInfo:nil, repeats:true)
-        NSRunLoop.mainRunLoop().addTimer(timer!, forMode:NSRunLoopCommonModes)
+        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     override func viewWillAppear(animated:Bool)
