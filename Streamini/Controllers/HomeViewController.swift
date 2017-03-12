@@ -38,11 +38,6 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        let activityIndicatorView=DGActivityIndicatorView(type:.LineScalePulseOut, tintColor:UIColor.whiteColor())
-        activityIndicatorView.frame=CGRectMake(70, 70, 50, 50)
-        view.addSubview(activityIndicatorView)
-        activityIndicatorView.startAnimating()
-        
         reload()
         
         itemsTbl!.addPullToRefreshWithActionHandler{()->Void in
@@ -59,6 +54,7 @@ class HomeViewController: BaseViewController
     
     func reload()
     {
+        ActivityIndicatorView.addActivityIndictorView(view)
         StreamConnector().homeStreams(successStreams, failure:failureStream)
     }
     
@@ -156,6 +152,8 @@ class HomeViewController: BaseViewController
     
     func successStreams(data:NSDictionary)
     {
+        ActivityIndicatorView.removeActivityIndicatorView()
+        
         categoryNamesArray=NSMutableArray()
         categoryIDsArray=NSMutableArray()
         allCategoryItemsArray=NSMutableArray()
