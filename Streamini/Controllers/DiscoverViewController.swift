@@ -23,6 +23,8 @@ class DiscoverViewController:BaseTableViewController
     
     override func viewDidLoad()
     {
+        ActivityIndicatorView.addActivityIndictorView(view)
+        
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
         
@@ -46,6 +48,8 @@ class DiscoverViewController:BaseTableViewController
     {
         if allCategoriesArray.count>0&&recentStreamsArray.count>0
         {
+            ActivityIndicatorView.removeActivityIndicatorView()
+            
             menuItemTitlesArray=["Channels"]
             menuItemIconsArray=["user.png"]
             
@@ -126,6 +130,8 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
     {
+        cell.backgroundColor=UIColor.blackColor()
+        
         if cell is AllCategoryRow
         {
             (cell as! AllCategoryRow).reloadCollectionView()

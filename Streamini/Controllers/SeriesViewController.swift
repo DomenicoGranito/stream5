@@ -48,11 +48,8 @@ import UIKit
         }
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height)
-        pageControl.addTarget(self, action: Selector("changePage:"), forControlEvents: UIControlEvents.ValueChanged)
-        
+        pageControl.addTarget(self, action:#selector(changePage), forControlEvents:.ValueChanged)
 
-        //
-        
         self.tableHeader.clipsToBounds = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -90,14 +87,7 @@ import UIKit
             let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
             pageControl.currentPage = Int(pageNumber)
         }
-        
-        override func didReceiveMemoryWarning() {
-            super.didReceiveMemoryWarning()
-            // Dispose of any resources that can be recreated.
-        }
-
-    //
-        
+                
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 80
