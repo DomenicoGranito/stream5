@@ -91,7 +91,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         )
         
         let alert = SCLAlertView(appearance: appearance)
-        //alert.addTextField("Want live streaming?")
         alert.addButton("Upgrade", target:self, selector:Selector("firstButton"))
         alert.addButton("Cancel")
         {
@@ -125,25 +124,25 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
             AmazonTool.shared.uploadImage(screenshot, name: filename)
         }
         //let imageView =  UIImage(named: filename)
-        if WXApi.isWXAppInstalled()
-        {
-            let screenshot = camera.captureStillImage()!
-            let filename = "\(UserContainer.shared.logged().id)-\(stream.id)-screenshot.jpg"
-            let videoObject=WXVideoObject()
-            videoObject.videoUrl="http://conf.cedricm.com/\(stream.streamHash)/\(stream.id)"
-            
-            let message=WXMediaMessage()
-            message.title=stream.title
-            message.description=stream.user.name
-            message.mediaObject=videoObject
-            message.setThumbImage(screenshot)
-            
-            let req=SendMessageToWXReq()
-            req.message=message
-            req.scene=1
-            
-            WXApi.sendReq(req)
-        }
+//        if WXApi.isWXAppInstalled()
+//        {
+//            let screenshot = camera.captureStillImage()!
+//            let filename = "\(UserContainer.shared.logged().id)-\(stream.id)-screenshot.jpg"
+//            let videoObject=WXVideoObject()
+//            videoObject.videoUrl="http://conf.cedricm.com/\(stream.streamHash)/\(stream.id)"
+//            
+//            let message=WXMediaMessage()
+//            message.title=stream.title
+//            message.description=stream.user.name
+//            message.mediaObject=videoObject
+//            message.setThumbImage(screenshot)
+//            
+//            let req=SendMessageToWXReq()
+//            req.message=message
+//            req.scene=1
+//            
+//            WXApi.sendReq(req)
+//        }
 
         let twitter = SocialToolFactory.getSocial("Twitter")!
         let url = "\(Config.shared.twitter().tweetURL)/\(stream.streamHash)/\(stream.id)"
@@ -251,8 +250,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
         nameTextView.becomeFirstResponder()
         
         StreamConnector().categories(categoriesSuccess, failure: categoriesFailure)
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -271,7 +268,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
        {
             showModal()
        }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -300,9 +296,6 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
-    
- 
-    
     
     // MARK: - TextViewDelegate
     

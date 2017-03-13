@@ -80,8 +80,10 @@ class Camera {
     
     private func getConnectionData(hash: String, streamId: UInt) -> (String, String) {
         let (host, port, application, username, password) = Config.shared.wowza()
-        let url = "rtmp://\(username):\(password)@\(host):\(port)/\(application)"
-        let streamName = "\(hash)-\(streamId)"
+        //let url = "rtmp://\(username):\(password)@\(host):\(port)/\(application)"
+        //let streamName = "\(hash)-\(streamId)"
+        let url="rtmp://139.196.33.50/src"
+        let streamName="ED929683A25348679C33DC5901307461?token=AlhyEruK"
         return (url, streamName)
     }
     
