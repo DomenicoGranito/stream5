@@ -54,6 +54,11 @@ class HomeViewController: BaseViewController
     
     func reload()
     {
+        if ErrorView.errorView != nil
+        {
+            ErrorView.removeErrorView()
+        }
+        
         ActivityIndicatorView.addActivityIndictorView(view)
         StreamConnector().homeStreams(successStreams, failure:failureStream)
     }
@@ -228,7 +233,9 @@ class HomeViewController: BaseViewController
     
     func failureStream(error:NSError)
     {
+        ActivityIndicatorView.removeActivityIndicatorView()
+        ErrorView.addErrorView(view)
+        
         itemsTbl?.pullToRefreshView.stopAnimating()
-        handleError(error)
     }
 }
