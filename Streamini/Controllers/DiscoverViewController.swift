@@ -21,18 +21,23 @@ class DiscoverViewController:BaseTableViewController
     var menuItemIconsArray=[]
     var timer:NSTimer?
     
-    override func viewDidLoad()
+    override func viewWillAppear(animated:Bool)
     {
+        allCategoriesArray=NSMutableArray()
+        recentStreamsArray=NSMutableArray()
+        
+        if ErrorView.errorView != nil
+        {
+            ErrorView.removeErrorView()
+        }
+        
         ActivityIndicatorView.addActivityIndictorView(view)
         
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
         
         timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
-    }
-    
-    override func viewWillAppear(animated:Bool)
-    {
+        
         navigationController?.navigationBarHidden=false
     }
     
@@ -66,17 +71,24 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if section==0
+        if allCategoriesArray.count>0&&recentStreamsArray.count>0
         {
-            return 1
-        }
-        else if section==1
-        {
-            return 1
+            if section==0
+            {
+                return 1
+            }
+            else if section==1
+            {
+                return 1
+            }
+            else
+            {
+                return allCategoriesArray.count
+            }
         }
         else
         {
-            return allCategoriesArray.count
+            return 0
         }
     }
     
@@ -130,8 +142,6 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
     {
-        cell.backgroundColor=UIColor.blackColor()
-        
         if cell is AllCategoryRow
         {
             (cell as! AllCategoryRow).reloadCollectionView()
@@ -220,6 +230,7 @@ class DiscoverViewController:BaseTableViewController
     
     func categoriesFailure(error:NSError)
     {
-        handleError(error)
+        ActivityIndicatorView.removeActivityIndicatorView()
+        ErrorView.addErrorView(view)
     }
 }
