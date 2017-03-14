@@ -8,7 +8,7 @@
 
 import Photos
 
-class mTBViewController: UITabBarController , UITabBarControllerDelegate
+class TabBarViewController: UITabBarController , UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!

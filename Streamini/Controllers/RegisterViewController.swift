@@ -60,7 +60,7 @@ class RegisterViewController: BaseViewController
     {
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("RootViewControllerId")
+        let vc=storyboard.instantiateViewControllerWithIdentifier("TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
     }
     

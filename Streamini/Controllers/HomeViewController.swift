@@ -39,17 +39,13 @@ class HomeViewController: BaseViewController
     override func viewDidLoad()
     {
         reload()
-        
-        itemsTbl!.addPullToRefreshWithActionHandler{()->Void in
-            self.reload()
-        }
     }
     
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=false
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     func reload()
@@ -163,8 +159,6 @@ class HomeViewController: BaseViewController
         categoryIDsArray=NSMutableArray()
         allCategoryItemsArray=NSMutableArray()
         
-        itemsTbl?.pullToRefreshView.stopAnimating()
-        
         let data=data["data"]!
         
         for i in 0 ..< data.count
@@ -235,7 +229,5 @@ class HomeViewController: BaseViewController
     {
         ActivityIndicatorView.removeActivityIndicatorView()
         ErrorView.addErrorView(view)
-        
-        itemsTbl?.pullToRefreshView.stopAnimating()
     }
 }

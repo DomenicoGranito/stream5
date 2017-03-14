@@ -43,7 +43,7 @@ class LoginViewController: BaseViewController
         {
             UserConnector().get(nil, success:successUser, failure:forgotFailure)
             
-            let vc=storyBoard.instantiateViewControllerWithIdentifier("RootViewControllerId")
+            let vc=storyBoard.instantiateViewControllerWithIdentifier("TabBarViewController")
             navigationController?.pushViewController(vc, animated:false)
         }
     }
@@ -165,7 +165,7 @@ class LoginViewController: BaseViewController
         
         UserConnector().get(nil, success:successUser, failure:forgotFailure)
         
-        let vc=storyBoard.instantiateViewControllerWithIdentifier("RootViewControllerId")
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)
     }
     

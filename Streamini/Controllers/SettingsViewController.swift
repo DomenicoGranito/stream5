@@ -1,146 +1,48 @@
 //
 //  ProfileViewController.swift
-// Streamini
+//  Streamini
 //
 //  Created by Vasily Evreinov on 11/08/15.
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import MessageUI
-
-enum ProfilesActionSheetType: Int {
-    case ChangeAvatar
-    case Logout
-}
-
-protocol ProfilesDelegate: class {
-    func reload()
-    func close()
-}
-
-class SettingsViewController: UITableViewController, UIActionSheetDelegate,ProfilesDelegate
+class SettingsViewController:UITableViewController, UIActionSheetDelegate
 {
-    @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var accountValueLabel: UILabel!
-    @IBOutlet weak var followersLabel: UILabel!
-    @IBOutlet weak var followersValueLabel: UILabel!
-    @IBOutlet weak var blockedLabel: UILabel!
-    @IBOutlet weak var blockedValueLabel: UILabel!
-    @IBOutlet weak var streamsLabel: UILabel!
-    @IBOutlet weak var streamsValueLabel: UILabel!
-    @IBOutlet weak var aboutLabel: UILabel!
-    @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var shareLabel: UILabel!
-    @IBOutlet weak var logoutLabel: UILabel!
-    
-    var user: User?
-    var profilesDelegate: ProfilesDelegate?
-    var selectedImage: UIImage?
-    
-    func configureView()
+    func logout()
     {
-        self.title = "Settings"
-        accountLabel.text = "Account"
-        followersLabel.text = "Playback"
-        blockedLabel.text   = "Streaming Quality"
-        streamsLabel.text   = "Social"
-        notificationLabel.text = "Notifications"
-        aboutLabel.text = "About"
-        shareLabel.text     = "Devices"
-        logoutLabel.text    = NSLocalizedString("profile_logout", comment: "")
-    }
-   
-    func logout() {
-       let actionSheet = UIActionSheet.confirmLogoutActionSheet(self)
-       actionSheet.tag = ProfilesActionSheetType.Logout.rawValue
-       actionSheet.showInView(self.view)
-    }
-
-    func successGetUser(user: User) {
-        self.user = user
+        let actionSheet=UIActionSheet.confirmLogoutActionSheet(self)
+        actionSheet.showInView(view)
     }
     
-    func successFailure(error: NSError) {
-   //     handleError(error)
-    }
-
-    func logoutFailure(error: NSError) {
-        print("failure", terminator: "")
-    }
-    
-    override func viewDidLoad()
+    func logoutFailure(error:NSError)
     {
-        super.viewDidLoad()
-        self.configureView()
-        UserConnector().get(nil, success:successGetUser, failure:successFailure)
-    }
-    
-    override func viewWillAppear(animated: Bool)
-    {
-        self.navigationController!.setNavigationBarHidden(false, animated: false)
-        super.viewWillAppear(animated)
         
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-        UINavigationBar.setCustomAppereance()
     }
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        
-        if actionSheet.tag == ProfilesActionSheetType.Logout.rawValue {
-            if buttonIndex != actionSheet.cancelButtonIndex {
-                UserConnector().logout(logoutSuccess, failure: logoutFailure)
-            }
+    func actionSheet(actionSheet:UIActionSheet, clickedButtonAtIndex buttonIndex:Int)
+    {
+        if buttonIndex != actionSheet.cancelButtonIndex
+        {
+            UserConnector().logout(logoutSuccess, failure:logoutFailure)
         }
     }
-
+    
     func logoutSuccess()
     {
-        if A0SimpleKeychain().stringForKey("PHPSESSID") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("PHPSESSID")
-        }
-        if A0SimpleKeychain().stringForKey("id") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("id")
-        }
-        if A0SimpleKeychain().stringForKey("password") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("password")
-        }
-        if A0SimpleKeychain().stringForKey("secret") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("secret")
-        }
-        if A0SimpleKeychain().stringForKey("type") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("type")
-        }
+        A0SimpleKeychain().clearAll()
         
-        // deprecated Twitter.sharedInstance().logOut()
-        
-        /*let store = Twitter.sharedInstance().sessionStore
-         
-         if let userID = store.session()?.userID {
-         store.logOutUserID(userID)
-         }*/
-        
-        self.navigationController!.setNavigationBarHidden(true, animated: true)
-        self.navigationController!.popToRootViewControllerAnimated(true)
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        let navController=appDelegate.window!.rootViewController as! UINavigationController
+        navController.popToRootViewControllerAnimated(true)
     }
     
-    func reload() {
-        UserConnector().get(nil, success: successGetUser, failure: successFailure)
-    }
-    
-    func close() {
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRowAtIndexPath(indexPath, animated:true)
         
-        if indexPath.section == 2 && indexPath.row == 0 { // logout
+        if indexPath.section==2&&indexPath.row==0
+        {
             logout()
         }
     }
-   }
+}
