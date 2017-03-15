@@ -12,7 +12,7 @@ class PopUpViewController: BaseViewController
     let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
     
     var stream:Stream?
-    let (host, port, _, _, _)=Config.shared.wowza()
+    let (host, _, _, _, _)=Config.shared.wowza()
     var videoImage:UIImage!
     
     override func viewDidLoad()
@@ -108,7 +108,7 @@ class PopUpViewController: BaseViewController
     
     func successWithoutAction()
     {
-        
+        SCLAlertView().showSuccess("MESSAGE", subTitle:"Video has been reported")
     }
     
     func failureWithoutAction(error:NSError)
