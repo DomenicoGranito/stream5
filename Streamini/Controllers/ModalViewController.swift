@@ -195,7 +195,9 @@ class ModalViewController: UIViewController
     
     @IBAction func previous()
     {
-        
+        let indexOfObject=streamsArray!.indexOfObject(stream!)
+        stream=streamsArray![indexOfObject-1] as? Stream
+        updatePlayerWithStream()
     }
     
     @IBAction func play()
@@ -218,7 +220,9 @@ class ModalViewController: UIViewController
     
     @IBAction func next()
     {
-        
+        let indexOfObject=streamsArray!.indexOfObject(stream!)
+        stream=streamsArray![indexOfObject+1] as? Stream
+        updatePlayerWithStream()
     }
     
     @IBAction func more()
