@@ -33,6 +33,14 @@ class VideosViewController: UIViewController
         return cell
     }
     
+    func DotsButtonTapped(sender:UIButton)
+    {
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=makeStreamClassObject(0)
+        presentViewController(vc, animated:true, completion:nil)
+    }
+    
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
