@@ -8,8 +8,8 @@
 
 class PopUpViewController: BaseViewController
 {
-    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite"]
-    let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png"]
+    let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite", "Block content from this channel"]
+    let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
     
     var stream:Stream?
     let (host, _, _, _, _)=Config.shared.wowza()
@@ -31,7 +31,7 @@ class PopUpViewController: BaseViewController
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 6
+        return 7
     }
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
@@ -89,7 +89,7 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==4
         {
-            StreamConnector().report(stream!.id, success:successWithoutAction, failure:failureWithoutAction)
+            StreamConnector().report(stream!.id, success:reportSuccess, failure:failureWithoutAction)
         }
         if indexPath.row==5
         {
@@ -104,11 +104,20 @@ class PopUpViewController: BaseViewController
                 SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
             }
         }
+        if indexPath.row==6
+        {
+            SocialConnector().block(stream!.user.id, success:blockSuccess, failure:failureWithoutAction)
+        }
     }
     
-    func successWithoutAction()
+    func reportSuccess()
     {
         SCLAlertView().showSuccess("MESSAGE", subTitle:"Video has been reported")
+    }
+    
+    func blockSuccess()
+    {
+        SCLAlertView().showSuccess("MESSAGE", subTitle:"Channel has been blocked")
     }
     
     func failureWithoutAction(error:NSError)
