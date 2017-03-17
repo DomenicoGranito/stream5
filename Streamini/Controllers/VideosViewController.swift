@@ -30,14 +30,17 @@ class VideosViewController: UIViewController
         cell.userLabel?.text=favouriteStreams![indexPath.row].valueForKey("streamUserName") as? String
         cell.playImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(favouriteStreams![indexPath.row].valueForKey("streamID") as! Int).jpg"))
         
+        cell.dotsButton?.tag=indexPath.row
+        cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
+        
         return cell
     }
     
-    func DotsButtonTapped(sender:UIButton)
+    func dotsButtonTapped(sender:UIButton)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
-        vc.stream=makeStreamClassObject(0)
+        vc.stream=makeStreamClassObject(sender.tag)
         presentViewController(vc, animated:true, completion:nil)
     }
     

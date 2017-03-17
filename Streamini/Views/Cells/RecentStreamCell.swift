@@ -6,30 +6,18 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-import UIKit
-
-class RecentStreamCell: StreamCell {
-    @IBOutlet weak var streamNameLabel: UILabel!
-    @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var streamEndedLabel: UILabel!
-    @IBOutlet weak var playImageView: UIImageView!
-    @IBOutlet weak var playWidthConstraint: NSLayoutConstraint!
+class RecentStreamCell: StreamCell
+{
+    @IBOutlet var streamNameLabel: UILabel!
+    @IBOutlet var userLabel: UILabel!
+    @IBOutlet var streamEndedLabel: UILabel!
+    @IBOutlet var playImageView: UIImageView!
+    @IBOutlet var playWidthConstraint: NSLayoutConstraint!
+    @IBOutlet var dotsButton:UIButton?
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    override func update(stream: Stream) {
-      
-        let (host, _, _, _, _) = Config.shared.wowza()
+    override func update(stream:Stream)
+    {
+        let (host, _, _, _, _)=Config.shared.wowza()
         
         super.update(stream)
         playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
@@ -38,7 +26,8 @@ class RecentStreamCell: StreamCell {
         streamEndedLabel.text = stream.ended!.timeAgoSimple
     }
     
-    func updateMyStream(stream: Stream) {
+    func updateMyStream(stream:Stream)
+    {
         super.update(stream)
         
         userLabel.text = UserContainer.shared.logged().name
@@ -58,12 +47,12 @@ class RecentStreamCell: StreamCell {
             streamEndedLabel.text = ""
         }
 
-        
         playWidthConstraint.constant = (isLessThan24Hours) ? 24.0 : 0.0
         self.layoutIfNeeded()
     }
     
-    func calculateHeight() -> CGFloat {
+    func calculateHeight() -> CGFloat
+    {
         streamNameLabel.sizeToFit()
         return streamNameLabel.frame.size.height
     }
