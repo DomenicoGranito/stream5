@@ -28,7 +28,7 @@ class ModalViewController: UIViewController
     var player:AVPlayer?
     var timer:NSTimer?
     var stream:Stream?
-    var streamIDsArray:NSArray?
+    var streamsArray:NSArray?
     
     override func viewWillAppear(animated:Bool)
     {
@@ -83,6 +83,13 @@ class ModalViewController: UIViewController
         addChildViewController(playerController)
         playerView!.addSubview(playerController.view)
         playerController.view.frame=playerView!.frame
+
+        if let _=streamsArray
+        {
+            shuffleButton?.enabled=true
+            previousButton?.enabled=true
+            nextButton?.enabled=true
+        }
     }
     
     override func viewDidAppear(animated:Bool)

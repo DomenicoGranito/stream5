@@ -14,6 +14,7 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var headerHeightConstraint:NSLayoutConstraint!
     
     var allItemsArray=NSMutableArray()
+    var streamsArray=NSMutableArray()
     var categoryName:String?
     var page=0
     var categoryID:Int?
@@ -168,7 +169,7 @@ class CategoriesViewController: BaseViewController
             video.user=user
             
             sectionItemsArray.addObject(video)
-            
+            streamsArray.addObject(video)
             count+=1
             
             if(count==2||(count==1&&i==data.count-1))
