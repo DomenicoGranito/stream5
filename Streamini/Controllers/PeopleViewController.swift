@@ -88,7 +88,6 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
         configureView()
         
         dataSource!.reload()
@@ -97,7 +96,6 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=false
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
     }
     
     // MARK: - ProfileDelegate
