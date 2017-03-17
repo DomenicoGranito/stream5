@@ -19,15 +19,15 @@ class FollowersDataSource: UserStatisticsDataSource {
         UserConnector().followers(dictionary, success: moreStatisticsDataSuccess, failure: statisticsDataFailure)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        tableView.deselectRowAtIndexPath(indexPath, animated:true)
         
         let user = users[indexPath.row]
         
-        if let delegate = userSelectedDelegate {
+        if let delegate=userSelectedDelegate
+        {
             delegate.userDidSelected(user)
         }
-        
-        
     }
 }

@@ -14,16 +14,12 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     var dataSource: UserStatisticsDataSource?
     var profileDelegate: ProfileDelegate?
     
-    // MARK: - View life cycle
     func userDidSelected(user:User)
     {
-        //self.showUserInfo(user, userStatusDelegate: nil)
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=user
         navigationController?.pushViewController(vc, animated:true)
-        
-        
     }
     
     func configureView()
@@ -57,16 +53,12 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         modalVC.stream=stream
         presentViewController(modalVC, animated:true, completion:nil)
     }
-
-    // MARK: - ProfileDelegate
     
     func reload()
     {
         
     }
-    
-    // MARK: - UserStatisticsDelegate
-    
+
     func recentStreamsDidSelected(userId: UInt) {
         tableView.showsPullToRefresh     = false
         tableView.showsInfiniteScrolling = false
@@ -84,16 +76,19 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         selectorView.selectSection(1)
         self.dataSource = FollowersDataSource(userId: userId, tableView: tableView)
         dataSource!.profileDelegate = profileDelegate
+        dataSource!.userSelectedDelegate=self
         dataSource!.clean()
         dataSource!.reload()
     }
     
-    func followingDidSelected(userId: UInt) {
+    func followingDidSelected(userId:UInt)
+    {
         tableView.showsPullToRefresh     = true
         tableView.showsInfiniteScrolling = true
         selectorView.selectSection(2)
         self.dataSource = FollowingDataSource(userId: userId, tableView: tableView)
         dataSource!.profileDelegate = profileDelegate
+        dataSource!.userSelectedDelegate=self
         dataSource!.clean()        
         dataSource!.reload()
     }

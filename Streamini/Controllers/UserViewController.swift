@@ -25,7 +25,7 @@ protocol UserStatusDelegate: class {
     func blockStatusDidChange(status: Bool, user: User)
 }
 
-class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
+class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
 {
     @IBOutlet var changeAvatarButton:UIButton?
     @IBOutlet var userHeaderView:UserHeaderView!
@@ -37,10 +37,11 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting, UI
     @IBOutlet var followingLabel:UILabel!
     @IBOutlet var followButton:UIButton!
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
-    @IBOutlet var more_dwn:UIButton!
+    
     var user:User?
     var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
+    var userSelectedDelegate:UserSelecting?
     var downloadManager: DownloadManager!
     var selectedImage: UIImage?
     var profileDelegate: ProfileDelegate?
@@ -150,14 +151,6 @@ class UserViewController: BaseViewController, ProfileDelegate ,UserSelecting, UI
         followButton.hidden=UserContainer.shared.logged().id==user!.id
     }
     
-    func userDidSelected(user:User)
-    {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
-        vc.user=user
-        navigationController?.pushViewController(vc, animated:true)
-    }
-
     @IBAction func more_dwnButtonPressed()
     {
        var stream: Stream
