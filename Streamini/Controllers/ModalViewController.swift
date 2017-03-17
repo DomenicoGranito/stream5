@@ -37,6 +37,18 @@ class ModalViewController: UIViewController
             shuffleButton?.enabled=true
             previousButton?.enabled=true
             nextButton?.enabled=true
+            
+            let indexOfObject=streamsArray!.indexOfObject(stream!)
+            
+            if indexOfObject==0
+            {
+                previousButton?.enabled=false
+            }
+            
+            if indexOfObject==streamsArray!.count-1
+            {
+                nextButton?.enabled=false
+            }
         }
     }
     
@@ -197,6 +209,12 @@ class ModalViewController: UIViewController
     {
         let indexOfObject=streamsArray!.indexOfObject(stream!)
         stream=streamsArray![indexOfObject-1] as? Stream
+        
+        if indexOfObject==0
+        {
+            previousButton?.enabled=false
+        }
+        
         updatePlayerWithStream()
     }
     
@@ -222,6 +240,12 @@ class ModalViewController: UIViewController
     {
         let indexOfObject=streamsArray!.indexOfObject(stream!)
         stream=streamsArray![indexOfObject+1] as? Stream
+        
+        if indexOfObject==streamsArray!.count-1
+        {
+            nextButton?.enabled=false
+        }
+        
         updatePlayerWithStream()
     }
     
