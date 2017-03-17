@@ -192,7 +192,8 @@ class CategoriesViewController: BaseViewController
     {
         let root=UIApplication.sharedApplication().delegate?.window!!.rootViewController as! UINavigationController
         
-        let stream=streamsArray[0] as! Stream
+        let random=Int(arc4random_uniform(UInt32(streamsArray.count)))
+        let stream=streamsArray[random] as! Stream
         
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController

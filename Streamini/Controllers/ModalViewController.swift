@@ -30,21 +30,44 @@ class ModalViewController: UIViewController
     var stream:Stream?
     var streamsArray:NSArray?
     
+    override func viewDidLoad()
+    {
+        if let _=streamsArray
+        {
+            shuffleButton?.enabled=true
+            previousButton?.enabled=true
+            nextButton?.enabled=true
+        }
+    }
+    
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
-        if SongManager.isAlreadyFavourited(stream!.id)
-        {
-            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-        }
-        else
-        {
-            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
-        }
+        updatePlayerWithStream()
     }
     
-    override func viewDidLoad()
+    override func viewDidAppear(animated:Bool)
+    {
+        timer?.invalidate()
+        
+        playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
+        controlsView?.hidden=false
+        
+        isPlaying=false
+        
+        timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(hideControls), userInfo:nil, repeats:true)
+        
+        let tapGesture=UITapGestureRecognizer(target:self, action:#selector(showControls))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewDidDisappear(animated:Bool)
+    {
+        player?.pause()
+    }
+
+    func updatePlayerWithStream()
     {
         let streamName="\(stream!.streamHash)-\(stream!.id)"
         
@@ -83,33 +106,15 @@ class ModalViewController: UIViewController
         addChildViewController(playerController)
         playerView!.addSubview(playerController.view)
         playerController.view.frame=playerView!.frame
-
-        if let _=streamsArray
+        
+        if SongManager.isAlreadyFavourited(stream!.id)
         {
-            shuffleButton?.enabled=true
-            previousButton?.enabled=true
-            nextButton?.enabled=true
+            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
         }
-    }
-    
-    override func viewDidAppear(animated:Bool)
-    {
-        timer?.invalidate()
-        
-        playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
-        controlsView?.hidden=false
-        
-        isPlaying=false
-        
-        timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(hideControls), userInfo:nil, repeats:true)
-        
-        let tapGesture=UITapGestureRecognizer(target:self, action:#selector(showControls))
-        view.addGestureRecognizer(tapGesture)
-    }
-    
-    override func viewDidDisappear(animated:Bool)
-    {
-        player?.pause()
+        else
+        {
+            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
+        }
     }
     
     func showControls()
