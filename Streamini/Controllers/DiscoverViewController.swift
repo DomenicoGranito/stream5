@@ -71,7 +71,7 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if allCategoriesArray.count>0&&recentStreamsArray.count>0
+        if allCategoriesArray.count==0&&recentStreamsArray.count==0
         {
             if section==0
             {
