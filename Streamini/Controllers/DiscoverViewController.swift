@@ -51,7 +51,7 @@ class DiscoverViewController:BaseTableViewController
     
     func reload()
     {
-        if allCategoriesArray.count>0&&recentStreamsArray.count>0
+        if allCategoriesArray.count==0&&recentStreamsArray.count==0
         {
             ActivityIndicatorView.removeActivityIndicatorView()
             

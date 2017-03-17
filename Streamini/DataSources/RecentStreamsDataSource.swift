@@ -74,7 +74,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         tableView.reloadSections(indexSet, withRowAnimation:UITableViewRowAnimation.Automatic)
     }
 
-    func recentaFailure(error:NSError)
+    func recentFailure(error:NSError)
     {
         if let pullToRefreshView=tableView.pullToRefreshView
         {
@@ -84,7 +84,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     
     override func reload()
     {
-        StreamConnector().recent(userId, success:recentSuccess, failure:recentaFailure)
+        StreamConnector().recent(userId, success:recentSuccess, failure:recentFailure)
     }
     
     override func fetchMore()

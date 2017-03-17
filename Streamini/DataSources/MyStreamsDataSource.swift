@@ -23,16 +23,12 @@ class MyStreamsDataSource: RecentStreamsDataSource {
     }
         
     override func reload() {
-        StreamConnector().my(myRecentSuccess, failure: recentaFailure)
+        StreamConnector().my(myRecentSuccess, failure: recentFailure)
     }
     
     override func fetchMore() {
     }
-    
-    /*func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
-        return UITableViewCellEditingStyle.Delete
-    }*/
-    
+        
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true

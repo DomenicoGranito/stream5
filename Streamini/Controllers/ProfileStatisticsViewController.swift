@@ -41,7 +41,8 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         }
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         configureView()
 
@@ -52,14 +53,17 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         dataSource!.reload()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+    override func viewWillAppear(animated:Bool)
+    {
+        navigationController?.navigationBarHidden=false
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let sid = segue.identifier {
-            if sid == "ProfileStatisticsToJoinStream" {
+    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?)
+    {
+        if let sid=segue.identifier
+        {
+            if sid=="ProfileStatisticsToJoinStream"
+            {
                 let navigationController = segue.destinationViewController as! UINavigationController
                 let controller = navigationController.viewControllers[0] as! JoinStreamViewController
                 controller.stream = (sender as! StreamCell).stream
@@ -68,14 +72,13 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         }
     }
     
-    // MARK: - UserSelecting
-    
     func userDidSelected(user:User)
     {
-        //self.showUserInfo(user, userStatusDelegate: self)
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
+        vc.user=user
+        navigationController!.pushViewController(vc, animated:true)
     }
-    
-    // MARK: - UserStatusDelegate
     
     func followStatusDidChange(status: Bool, user: User) {
         dataSource!.updateFollowedStatus(user, status: status)
