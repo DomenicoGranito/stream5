@@ -20,11 +20,15 @@ class ModalViewController: UIViewController
     @IBOutlet var playerView:UIView?
     @IBOutlet var controlsView:UIView?
     @IBOutlet var seekBar:UISlider?
+    @IBOutlet var previousButton:UIButton?
+    @IBOutlet var nextButton:UIButton?
+    @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=false
     var player:AVPlayer?
     var timer:NSTimer?
     var stream:Stream?
+    var streamIDsArray:NSArray?
     
     override func viewWillAppear(animated:Bool)
     {
