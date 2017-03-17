@@ -187,4 +187,18 @@ class CategoriesViewController: BaseViewController
     {
         handleError(error)
     }
+    
+    @IBAction func shufflePlay()
+    {
+        let root=UIApplication.sharedApplication().delegate?.window!!.rootViewController as! UINavigationController
+        
+        let stream=streamsArray[0] as! Stream
+        
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        
+        modalVC.stream=stream
+        modalVC.streamsArray=streamsArray
+        root.presentViewController(modalVC, animated:true, completion:nil)
+    }
 }

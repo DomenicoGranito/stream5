@@ -47,8 +47,8 @@ class AllCategoriesRow: UITableViewCell
         
         let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
-        let storyboardn=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
         modalVC.stream=stream
         
