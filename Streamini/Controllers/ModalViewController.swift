@@ -66,7 +66,7 @@ class ModalViewController: UIViewController
     {
         player?.pause()
     }
-
+    
     func updatePlayerWithStream()
     {
         let streamName="\(stream!.streamHash)-\(stream!.id)"
@@ -188,7 +188,9 @@ class ModalViewController: UIViewController
     
     @IBAction func shuffle()
     {
-        
+        let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
+        stream=streamsArray![random] as? Stream
+        updatePlayerWithStream()
     }
     
     @IBAction func previous()
