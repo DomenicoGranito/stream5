@@ -15,26 +15,19 @@ class MenuCell: UITableViewCell
 class DiscoverViewController:BaseTableViewController
 {
     var allCategoriesArray=NSMutableArray()
-    var recentStreamsArray=NSMutableArray()
+    var featuredStreamsArray=NSMutableArray()
     
-    var menuItemTitlesArray=[]
-    var menuItemIconsArray=[]
+    var menuItemTitlesArray=["Channels"]
+    var menuItemIconsArray=["user.png"]
+    
+    override func viewDidLoad()
+    {
+        ActivityIndicatorView.addActivityIndictorView(view)
+        StreamConnector().discover(discoverSuccess, failure:discoverFailure)
+    }
     
     override func viewWillAppear(animated:Bool)
     {
-        allCategoriesArray=NSMutableArray()
-        recentStreamsArray=NSMutableArray()
-        
-        if ErrorView.errorView != nil
-        {
-            ErrorView.removeErrorView()
-        }
-        
-        ActivityIndicatorView.addActivityIndictorView(view)
-        
-        StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
-        StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
-        
         navigationController?.navigationBarHidden=false
     }
     
@@ -46,19 +39,6 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    func reload()
-    {
-        if allCategoriesArray.count==0&&recentStreamsArray.count==0
-        {
-            ActivityIndicatorView.removeActivityIndicatorView()
-            
-            menuItemTitlesArray=["Channels"]
-            menuItemIconsArray=["user.png"]
-            
-            tableView.reloadData()
-        }
-    }
-    
     override func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
         return 3
@@ -66,7 +46,7 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if allCategoriesArray.count==0&&recentStreamsArray.count==0
+        if allCategoriesArray.count>0&&featuredStreamsArray.count>0
         {
             if section==0
             {
@@ -105,20 +85,21 @@ class DiscoverViewController:BaseTableViewController
     
     override func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if indexPath.section==0&&recentStreamsArray.count>0
+        if indexPath.section==0&&featuredStreamsArray.count>0
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Recent") as! CategoryRow
             
-            cell.oneCategoryItemsArray=recentStreamsArray[1] as! NSArray
+            cell.oneCategoryItemsArray=featuredStreamsArray
+            cell.cellIdentifier="videoCell"
             
             return cell
         }
-        if indexPath.section==1&&menuItemTitlesArray.count>0
+        if indexPath.section==1
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("Menu") as! MenuCell
             
-            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row] as? String
-            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row] as! String)
+            cell.menuItemTitleLbl?.text=menuItemTitlesArray[indexPath.row]
+            cell.menuItemIconImageView?.image=UIImage(named:menuItemIconsArray[indexPath.row])
             
             return cell
         }
@@ -143,74 +124,83 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    func successStreams(data:NSDictionary)
+    func discoverSuccess(data:NSDictionary)
     {
-        let data=data["data"]!
+        ActivityIndicatorView.removeActivityIndicatorView()
         
-        for i in 0 ..< data.count
+        let videos=data["data"]!["feat"] as! NSArray
+        let categories=data["data"]!["cat"] as! NSArray
+        
+        parseFeaturedStreams(videos)
+        parseCategories(categories)
+        
+        tableView.reloadData()
+    }
+    
+    func parseFeaturedStreams(videos:NSArray)
+    {
+        for j in 0 ..< videos.count
         {
-            let videos=data[i]["videos"] as! NSArray
+            let videoID=videos[j]["id"] as! String
+            let videoTitle=videos[j]["title"] as! String
+            let videoHash=videos[j]["hash"] as! String
+            let lon=videos[j]["lon"]!.doubleValue
+            let lat=videos[j]["lat"]!.doubleValue
+            let city=videos[j]["city"] as! String
+            let ended=videos[j]["ended"] as? String
+            let viewers=videos[j]["viewers"] as! String
+            let tviewers=videos[j]["tviewers"] as! String
+            let rviewers=videos[j]["rviewers"] as! String
+            let likes=videos[j]["likes"] as! String
+            let rlikes=videos[j]["rlikes"] as! String
+            let userID=videos[j]["user"]!["id"] as! String
+            let userName=videos[j]["user"]!["name"] as! String
+            let userAvatar=videos[j]["user"]!["avatar"] as? String
             
-            let oneCategoryItemsArray=NSMutableArray()
+            let user=User()
+            user.id=UInt(userID)!
+            user.name=userName
+            user.avatar=userAvatar
             
-            for j in 0 ..< videos.count
+            let video=Stream()
+            video.id=UInt(videoID)!
+            video.title=videoTitle
+            video.streamHash=videoHash
+            video.lon=lon
+            video.lat=lat
+            video.city=city
+            
+            if let e=ended
             {
-                let videoID=videos[j]["id"] as! String
-                let videoTitle=videos[j]["title"] as! String
-                let videoHash=videos[j]["hash"] as! String
-                let lon=videos[j]["lon"]!.doubleValue
-                let lat=videos[j]["lat"]!.doubleValue
-                let city=videos[j]["city"] as! String
-                let ended=videos[j]["ended"] as? String
-                let viewers=videos[j]["viewers"] as! String
-                let tviewers=videos[j]["tviewers"] as! String
-                let rviewers=videos[j]["rviewers"] as! String
-                let likes=videos[j]["likes"] as! String
-                let rlikes=videos[j]["rlikes"] as! String
-                let userID=videos[j]["user"]!["id"] as! String
-                let userName=videos[j]["user"]!["name"] as! String
-                let userAvatar=videos[j]["user"]!["avatar"] as? String
-                
-                let user=User()
-                user.id=UInt(userID)!
-                user.name=userName
-                user.avatar=userAvatar
-                
-                let video=Stream()
-                video.id=UInt(videoID)!
-                video.title=videoTitle
-                video.streamHash=videoHash
-                video.lon=lon
-                video.lat=lat
-                video.city=city
-                
-                if let e=ended
-                {
-                    video.ended=NSDate(timeIntervalSince1970:Double(e)!)
-                }
-                
-                video.viewers=UInt(viewers)!
-                video.tviewers=UInt(tviewers)!
-                video.rviewers=UInt(rviewers)!
-                video.likes=UInt(likes)!
-                video.rlikes=UInt(rlikes)!
-                video.user=user
-                
-                oneCategoryItemsArray.addObject(video)
+                video.ended=NSDate(timeIntervalSince1970:Double(e)!)
             }
             
-            recentStreamsArray.addObject(oneCategoryItemsArray)
+            video.viewers=UInt(viewers)!
+            video.tviewers=UInt(tviewers)!
+            video.rviewers=UInt(rviewers)!
+            video.likes=UInt(likes)!
+            video.rlikes=UInt(rlikes)!
+            video.user=user
+            
+            featuredStreamsArray.addObject(video)
         }
     }
     
-    func categoriesSuccess(cats:[Category])
+    func parseCategories(cats:NSArray)
     {
         var sectionItemsArray=NSMutableArray()
         var count=0
         
         for i in 0 ..< cats.count
         {
-            sectionItemsArray.addObject(cats[i])
+            let categoryID=cats[i]["id"] as! String
+            let categoryName=cats[i]["name"] as! String
+            
+            let category=Category()
+            category.id=UInt(categoryID)!
+            category.name=categoryName
+            
+            sectionItemsArray.addObject(category)
             
             count+=1
             
@@ -223,7 +213,7 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    func categoriesFailure(error:NSError)
+    func discoverFailure(error:NSError)
     {
         ActivityIndicatorView.removeActivityIndicatorView()
         ErrorView.addErrorView(view)
