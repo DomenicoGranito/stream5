@@ -54,6 +54,14 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         presentViewController(modalVC, animated:true, completion:nil)
     }
     
+    func openPopUpForSelectedStream(stream:Stream)
+    {
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=stream
+        presentViewController(vc, animated:true, completion:nil)
+    }
+
     func reload()
     {
         

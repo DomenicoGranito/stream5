@@ -10,8 +10,10 @@ protocol UserSelecting: class {
     func userDidSelected(user: User)
 }
 
-protocol StreamSelecting: class {
-    func streamDidSelected(stream: Stream)
+protocol StreamSelecting:class
+{
+    func streamDidSelected(stream:Stream)
+    func openPopUpForSelectedStream(stream:Stream)
 }
 
 protocol UserStatisticsDelegate: class {

@@ -45,9 +45,6 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
-   
-    
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         var barButton = UIBarButtonItem(title: "Button Title", style: UIBarButtonItemStyle.Done, target: self, action: "here")
         searchBar.showsCancelButton = true
@@ -55,12 +52,8 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         
     }
     
-    
     // called when text changes (including clear)
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
-        
         
         if searchText.characters.count > 0 && (dataSource!.mode == "streams" || dataSource!.mode == "people") {
             dataSource!.search(searchText)
@@ -86,13 +79,8 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         
         //self.edgesForExtendedLayout = UIRectEdgeNone;
         
-        //
-        
         searchTypeSegment.layer.cornerRadius = 0.0;
         searchTypeSegment.layer.borderWidth = 1.5;
-      
-        //
-
     }
     
     override func viewDidLoad()
@@ -104,7 +92,8 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         dataSource!.reload()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool)
+    {
         super.viewWillAppear(animated)
          self.navigationController?.navigationBarHidden=true
          (tabBarController as! TabBarViewController).hideButton()
@@ -130,36 +119,28 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         dataSource!.updateUser(user, isFollowed: user.isFollowed, isBlocked: status)
     }
     
-    // MARK: - SearchSelecting protocol
-    
-    func userDidSelected(user: User) {
-        //self.showUserInfo(user, userStatusDelegate: self)
+    func userDidSelected(user:User)
+    {
         searchBar.resignFirstResponder()
     }
     
-    
-    
-    
-    func streamDidSelected(stream: Stream) {
-    let storyboardn=UIStoryboard(name:"Main", bundle:nil)
-    let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
-    
-    
-    modalVC.stream=stream
-    
-    
-    self.presentViewController(modalVC, animated:true, completion:nil)
-
+    func streamDidSelected(stream:Stream)
+    {
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        
+        modalVC.stream=stream
+        
+        presentViewController(modalVC, animated:true, completion:nil)
     }
     
+    func openPopUpForSelectedStream(stream:Stream)
+    {
+        
+    }
     
-    func bkstreamDidSelected(stream: Stream) {
-        
-        
-        
-        
-        
-        
+    func bkstreamDidSelected(stream: Stream)
+    {
         // Load join controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let joinNavController = storyboard.instantiateViewControllerWithIdentifier("JoinStreamNavigationControllerId") as! UINavigationController

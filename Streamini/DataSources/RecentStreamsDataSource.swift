@@ -47,8 +47,20 @@ class RecentStreamsDataSource:UserStatisticsDataSource
     {
         let stream=streams[indexPath.row]
         let cell=tableView.dequeueReusableCellWithIdentifier("RecentStreamCell", forIndexPath:indexPath) as! RecentStreamCell
+        
+        cell.dotsButton?.tag=indexPath.row
+        cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
+        
         cell.update(stream)
         return cell
+    }
+    
+    func dotsButtonTapped(sender:UIButton)
+    {
+        if let delegate=streamSelectedDelegate
+        {
+            delegate.openPopUpForSelectedStream(streams[sender.tag])
+        }
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
