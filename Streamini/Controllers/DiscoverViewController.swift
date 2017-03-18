@@ -19,7 +19,6 @@ class DiscoverViewController:BaseTableViewController
     
     var menuItemTitlesArray=[]
     var menuItemIconsArray=[]
-    var timer:NSTimer?
     
     override func viewWillAppear(animated:Bool)
     {
@@ -35,8 +34,6 @@ class DiscoverViewController:BaseTableViewController
         
         StreamConnector().categories(categoriesSuccess, failure:categoriesFailure)
         StreamConnector().homeStreams(successStreams, failure:categoriesFailure)
-        
-        timer=NSTimer.scheduledTimerWithTimeInterval(10, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
         
         navigationController?.navigationBarHidden=false
     }
@@ -59,8 +56,6 @@ class DiscoverViewController:BaseTableViewController
             menuItemIconsArray=["user.png"]
             
             tableView.reloadData()
-            
-            timer!.invalidate()
         }
     }
     

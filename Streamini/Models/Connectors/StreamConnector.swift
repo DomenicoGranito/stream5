@@ -83,8 +83,6 @@ class StreamConnector: Connector {
         }
     }
     
-    
-    
     func streams(getGlobal: Bool, success: (live: [Stream], recent: [Stream]) -> (), failure: (error: NSError) -> ()) {
         let path = (getGlobal) ? "stream/global" : "stream/followed"
         
@@ -132,6 +130,42 @@ class StreamConnector: Connector {
     
     /*** WRITTEN BY ANKIT GARG ***/
     
+    func discover(success:(data:NSDictionary)->(), failure:(error:NSError)->())
+    {
+        let path="category/discover"
+        
+        manager.getObjectsAtPath(path, parameters:self.sessionParams(), success:{ (operation, mappingResult)->Void in
+            
+            let error=self.findErrorObject(mappingResult:mappingResult)!
+            
+            if !error.status
+            {
+                if error.code==Error.kLoginExpiredCode
+                {
+                    self.relogin({()->() in
+                        self.discover(success, failure:failure)
+                        },
+                        failure:{()->() in
+                            failure(error:error.toNSError())
+                    })
+                }
+                else
+                {
+                    failure(error:error.toNSError())
+                }
+            }
+            else
+            {
+                let json=try! NSJSONSerialization.JSONObjectWithData(operation.HTTPRequestOperation.responseData, options:.MutableLeaves) as! NSDictionary
+                
+                success(data:json)
+            }
+            })
+        {(operation, error)->Void in
+            failure(error:error)
+        }
+    }
+
     func homeStreams(success:(data:NSDictionary)->(), failure:(error:NSError)->())
     {
         let path="category/streams"
