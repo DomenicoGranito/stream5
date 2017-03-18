@@ -27,6 +27,7 @@ protocol UserStatusDelegate: class {
 
 class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
 {
+    @IBOutlet var backgroundImageView:UIImageView?
     @IBOutlet var changeAvatarButton:UIButton?
     @IBOutlet var userHeaderView:UserHeaderView!
     @IBOutlet var recentCountLabel:UILabel!
@@ -97,43 +98,54 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         })
     }
 
-    func uploadImage(image: UIImage)
+    func uploadImage(image:UIImage)
     {
-        let filename = "\(UserContainer.shared.logged().id)-avatar.jpg"
+        let filename="\(UserContainer.shared.logged().id)-avatar.jpg"
         
-        if AmazonTool.isAmazonSupported() {
-            AmazonTool.shared.uploadImage(image, name: filename) { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
-                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                    let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
-                    self.userHeaderView.progressView.setProgress(progress, animated: true)
+        if AmazonTool.isAmazonSupported()
+        {
+            AmazonTool.shared.uploadImage(image, name:filename)
+            {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
+                dispatch_sync(dispatch_get_main_queue(),
+                              {()->Void in
+                                let progress: Float=Float(totalBytesSent)/Float(totalBytesExpectedToSend)
+                                self.userHeaderView.progressView.setProgress(progress, animated:true)
                 })
             }
-        } else {
-            let data = UIImageJPEGRepresentation(image, 1.0)!
-            UserConnector().uploadAvatar(filename, data: data, success: uploadAvatarSuccess, failure: uploadAvatarFailure, progress: { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
-                //let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
-                //self.userHeaderView.progressView.setProgress(progress, animated: true)
+        }
+        else
+        {
+            let data=UIImageJPEGRepresentation(image, 1.0)!
+            UserConnector().uploadAvatar(filename, data:data, success:uploadAvatarSuccess, failure:uploadAvatarFailure, progress:
+                {(bytesSent, totalBytesSent, totalBytesExpectedToSend)->Void in
+                    //let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
+                    //self.userHeaderView.progressView.setProgress(progress, animated: true)
             })
         }
     }
 
-    func uploadAvatarSuccess() {
-        //userHeaderView.progressView.setProgress(0.0, animated: false)
-        userHeaderView.updateAvatar(user!, placeholder: selectedImage!)
-        if let delegate = profileDelegate {
+    func uploadAvatarSuccess()
+    {
+        //userHeaderView.progressView.setProgress(0.0, animated:false)
+        userHeaderView.updateAvatar(user!, placeholder:selectedImage!)
+        if let delegate=profileDelegate
+        {
             delegate.reload()
         }
     }
     
-    func uploadAvatarFailure(error: NSError) {
+    func uploadAvatarFailure(error:NSError)
+    {
         handleError(error)
     }
     
-    func imageDidUpload() {
-        UserConnector().avatar(uploadAvatarSuccess, failure: uploadAvatarFailure)
+    func imageDidUpload()
+    {
+        UserConnector().avatar(uploadAvatarSuccess, failure:uploadAvatarFailure)
     }
 
-    func imageUploadFailed(error: NSError) {
+    func imageUploadFailed(error:NSError)
+    {
         handleError(error)
     }
 
@@ -149,15 +161,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followingLabel.text=followingLabelText
         
         followButton.hidden=UserContainer.shared.logged().id==user!.id
-    }
-    
-    @IBAction func more_dwnButtonPressed()
-    {
-       var stream: Stream
-        var strurl:String
-          //  strurl = "Http://spectator.live/media/\(stream.id)"
-          //  downloadManager.startDownloadVideoOrPlaylist(url: strurl)
-           // self.navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func recentButtonPressed()
@@ -284,7 +287,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
             let buttonTitle=NSLocalizedString("user_card_follow", comment:"")
             followButton.setTitle(buttonTitle, forState:.Normal)
         }
-        
+        backgroundImageView?.image=renderImageFromView()
         activityIndicator.stopAnimating()
     }
     
@@ -303,5 +306,19 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBAction func back()
     {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func renderImageFromView()->UIImage?
+    {
+        UIGraphicsBeginImageContextWithOptions(userHeaderView.frame.size, true, 0)
+        let context=UIGraphicsGetCurrentContext()
+        
+        userHeaderView.layer.renderInContext(context!)
+        
+        let renderedImage=UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return renderedImage
     }
 }
