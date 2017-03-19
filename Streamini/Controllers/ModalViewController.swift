@@ -29,9 +29,13 @@ class ModalViewController: UIViewController
     var timer:NSTimer?
     var stream:Stream?
     var streamsArray:NSArray?
+    let (host, port, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
     {
+        updatePlayerWithStream()
+        addPlayer()
+        
         if let _=streamsArray
         {
             shuffleButton?.enabled=true
@@ -55,8 +59,6 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
-        
-        updatePlayerWithStream()
     }
     
     override func viewDidAppear(animated:Bool)
@@ -87,15 +89,27 @@ class ModalViewController: UIViewController
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        let (host, port, _, _, _)=Config.shared.wowza()
-        
         let url = stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1"
             ? "http://\(host)/media/\(stream!.id).mp4"
             : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
         
         SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
         
-        player=AVPlayer(URL:NSURL(string:url)!)
+        createPlayerWithURL(url)
+        
+        if SongManager.isAlreadyFavourited(stream!.id)
+        {
+            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
+        }
+        else
+        {
+            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
+        }
+    }
+    
+    func createPlayerWithURL(url:String)
+    {
+        player=AVPlayer(URL:NSURL(string:"http://45781641eecb6cd60749-f791b41f39d35aa8e6b060bff269f650.r20.cf6.rackcdn.com/12.mp4")!)
         
         let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
         videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
@@ -111,22 +125,16 @@ class ModalViewController: UIViewController
                 self.seekBar!.value=Float(time)
             }
         }
-        
+    }
+    
+    func addPlayer()
+    {
         let playerController=AVPlayerViewController()
         playerController.showsPlaybackControls=false
         playerController.player=player
         addChildViewController(playerController)
         playerView!.addSubview(playerController.view)
         playerController.view.frame=playerView!.frame
-        
-        if SongManager.isAlreadyFavourited(stream!.id)
-        {
-            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-        }
-        else
-        {
-            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
-        }
     }
     
     func showControls()
@@ -210,10 +218,7 @@ class ModalViewController: UIViewController
         let indexOfObject=streamsArray!.indexOfObject(stream!)
         stream=streamsArray![indexOfObject-1] as? Stream
         
-        if indexOfObject==0
-        {
-            previousButton?.enabled=false
-        }
+        changePreviousStatus(indexOfObject)
         
         updatePlayerWithStream()
     }
@@ -241,12 +246,31 @@ class ModalViewController: UIViewController
         let indexOfObject=streamsArray!.indexOfObject(stream!)
         stream=streamsArray![indexOfObject+1] as? Stream
         
-        if indexOfObject==streamsArray!.count-1
+        changeNextStatus(indexOfObject)
+        
+        updatePlayerWithStream()
+    }
+    
+    func changeNextStatus(index:Int)
+    {
+        nextButton?.enabled=true
+        previousButton?.enabled=true
+        
+        if index==streamsArray!.count-1
         {
             nextButton?.enabled=false
         }
+    }
+    
+    func changePreviousStatus(index:Int)
+    {
+        nextButton?.enabled=true
+        previousButton?.enabled=true
         
-        updatePlayerWithStream()
+        if index==0
+        {
+            previousButton?.enabled=false
+        }
     }
     
     @IBAction func more()
