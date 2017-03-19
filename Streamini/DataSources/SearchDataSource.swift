@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-import UIKit
-
-class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate {
+class SearchDataSource: UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
+{
     var users: [User] = []
     var streams: [Stream] = []
     var cities: [String] = []
@@ -29,7 +28,8 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
     var city: String = ""
     var query: String = ""
     
-    init(tableView: UITableView) {
+    init(tableView:UITableView)
+    {
         self.tableView   = tableView
         super.init()
         tableView.dataSource = self
@@ -40,9 +40,8 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         l.lineBreakMode = NSLineBreakMode.ByWordWrapping
     }
     
-    // MARK: - UITableViewDatasource
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    {
         return 1
     }
     
@@ -97,8 +96,6 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         return cell
     }
     
-    // MARK: - UITableViewDelegate
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if mode == "streams" {
@@ -152,8 +149,6 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
     }
     
-    // MARK: - LinkedCellDelegate
-    
     func willStatusChanged(cell: UITableViewCell) {
         let selectedCell = cell as! PeopleCell
         self.selectedCells.append(selectedCell)
@@ -171,8 +166,6 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
             connector.follow(userId, success: followSuccess, failure: followActionFailure)
         }
     }
-    
-    // MARK: - Network communication
     
     func unfollowSuccess() {
         if mode != "people" {
@@ -245,8 +238,7 @@ class SearchDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         tableView.hidden = self.streams.isEmpty
         tableView.reloadData()
     }
-    
-    
+
     func actionFailure(error: NSError) {
         //tableView.pullToRefreshView.stopAnimating()
         print("get user failed: \(error.localizedDescription)")
