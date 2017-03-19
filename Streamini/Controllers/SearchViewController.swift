@@ -6,117 +6,106 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate {
-    var dataSource: SearchDataSource?
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchTypeSegment: UISegmentedControl!
+class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
+{
+    var dataSource:SearchDataSource?
+    var isSearchMode=true
     
-    var isSearchMode = true
+    @IBOutlet var searchBar:UISearchBar!
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var searchTypeSegment:UISegmentedControl!
     
-    @IBAction func changeMode(sender: AnyObject) {
+    @IBAction func changeMode()
+    {
         switch searchTypeSegment.selectedSegmentIndex
         {
         case 0:
             searchBar.resignFirstResponder()
             dataSource?.changeMode("categories")
-            break;
+            break
         case 1:
             searchBar.resignFirstResponder()
             dataSource?.changeMode("places")
-            break;
+            break
         default:
             dataSource?.changeMode("people")
-            break; 
+            break
         }
     }
-
-    // MARK: - UISearchBarDelegate
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(searchBar:UISearchBar)
+    {
         searchBar.resignFirstResponder()
-       // self.view.endEditing(<#T##force: Bool##Bool#>)
     }
     
-    // called when cancel button pressed
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
+    func searchBarCancelButtonClicked(searchBar:UISearchBar)
+    {
+        searchBar.showsCancelButton=false
         searchBar.resignFirstResponder()
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        var barButton = UIBarButtonItem(title: "Button Title", style: UIBarButtonItemStyle.Done, target: self, action: "here")
-        searchBar.showsCancelButton = true
-        navigationItem.rightBarButtonItem = barButton
-        
+    func searchBarTextDidBeginEditing(searchBar:UISearchBar)
+    {
+        searchBar.showsCancelButton=true
     }
     
-    // called when text changes (including clear)
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        if searchText.characters.count > 0 && (dataSource!.mode == "streams" || dataSource!.mode == "people") {
+    func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
+    {
+        if searchText.characters.count>0&&(dataSource!.mode=="streams"||dataSource!.mode=="people")
+        {
             dataSource!.search(searchText)
         }
     }
     
-    // MARK: - View life cycle
-    
-    func configureView() {
-        self.navigationController!.setNavigationBarHidden(true, animated: true)
-        tableView.tableFooterView = UIView()
-        tableView.addInfiniteScrollingWithActionHandler { () -> Void in
-            self.dataSource!.fetchMore()
+    func configureView()
+    {
+        tableView.addInfiniteScrollingWithActionHandler
+            {()->Void in
+                self.dataSource!.fetchMore()
         }
         
-        self.dataSource = SearchDataSource(tableView: tableView)
-        dataSource!.userSelectedDelegate = self
-        dataSource!.streamSelectedDelegate = self
+        dataSource=SearchDataSource(tableView:tableView)
+        dataSource!.userSelectedDelegate=self
+        dataSource!.streamSelectedDelegate=self
         
-        searchTypeSegment.setTitle(NSLocalizedString("broadcasts", comment: ""), forSegmentAtIndex: 0)
-        searchTypeSegment.setTitle(NSLocalizedString("places", comment: ""), forSegmentAtIndex: 1)
-        searchTypeSegment.setTitle(NSLocalizedString("people", comment: ""), forSegmentAtIndex: 2)
+        searchTypeSegment.setTitle(NSLocalizedString("broadcasts", comment:""), forSegmentAtIndex:0)
+        searchTypeSegment.setTitle(NSLocalizedString("places", comment:""), forSegmentAtIndex:1)
+        searchTypeSegment.setTitle(NSLocalizedString("people", comment:""), forSegmentAtIndex:2)
         
-        //self.edgesForExtendedLayout = UIRectEdgeNone;
-        
-        searchTypeSegment.layer.cornerRadius = 0.0;
-        searchTypeSegment.layer.borderWidth = 1.5;
+        searchTypeSegment.layer.cornerRadius=0.0
+        searchTypeSegment.layer.borderWidth=1.5
     }
     
     override func viewDidLoad()
     {
-        self.navigationController!.setNavigationBarHidden(true, animated: true)
-        super.viewDidLoad()
         configureView()
         
         dataSource!.reload()
     }
     
-    override func viewWillAppear(animated: Bool)
+    override func viewWillAppear(animated:Bool)
     {
-        super.viewWillAppear(animated)
-         self.navigationController?.navigationBarHidden=true
-         (tabBarController as! TabBarViewController).hideButton()
-        //UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+        self.navigationController?.navigationBarHidden=true
     }
     
-    // MARK: - ProfileDelegate
-    
-    func reload() {
+    func reload()
+    {
         dataSource!.reload()
     }
     
-    func close() {
+    func close()
+    {
+        
     }
     
-    // MARK: - UserStatusDelegate
-    
-    func followStatusDidChange(status: Bool, user: User) {
-        dataSource!.updateUser(user, isFollowed: status, isBlocked: user.isBlocked)
+    func followStatusDidChange(status:Bool, user:User)
+    {
+        dataSource!.updateUser(user, isFollowed:status, isBlocked:user.isBlocked)
     }
     
-    func blockStatusDidChange(status: Bool, user: User) {
-        dataSource!.updateUser(user, isFollowed: user.isFollowed, isBlocked: status)
+    func blockStatusDidChange(status:Bool, user:User)
+    {
+        dataSource!.updateUser(user, isFollowed:user.isFollowed, isBlocked:status)
     }
     
     func userDidSelected(user:User)
@@ -137,20 +126,5 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
     func openPopUpForSelectedStream(stream:Stream)
     {
         
-    }
-    
-    func bkstreamDidSelected(stream: Stream)
-    {
-        // Load join controller
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let joinNavController = storyboard.instantiateViewControllerWithIdentifier("JoinStreamNavigationControllerId") as! UINavigationController
-        let joinController = joinNavController.viewControllers[0] as! JoinStreamViewController
-        
-        // Setup joinController
-        joinController.stream   = stream
-        joinController.isRecent = (stream.ended != nil)
-        
-        // Show JoinController
-        self.presentViewController(joinNavController, animated: true, completion: nil)
     }
 }
