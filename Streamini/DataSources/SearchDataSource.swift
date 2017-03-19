@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-class SearchDataSource: UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
+class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
 {
     var users: [User] = []
     var streams: [Stream] = []
