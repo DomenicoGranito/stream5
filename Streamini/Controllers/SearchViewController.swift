@@ -9,7 +9,6 @@
 class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
 {
     var dataSource:SearchDataSource?
-    var isSearchMode=true
     
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
