@@ -19,7 +19,6 @@ class ModalViewController: UIViewController
     @IBOutlet var videoDurationLbl:UILabel?
     @IBOutlet var likeButton:UIButton?
     @IBOutlet var playButton:UIButton?
-    @IBOutlet var controlsView:UIView?
     @IBOutlet var seekBar:UISlider?
     @IBOutlet var previousButton:UIButton?
     @IBOutlet var nextButton:UIButton?
@@ -27,7 +26,6 @@ class ModalViewController: UIViewController
     
     var isPlaying=false
     var player:AVPlayer?
-    var timer:NSTimer?
     var stream:Stream?
     var streamsArray:NSArray?
     let (host, port, _, _, _)=Config.shared.wowza()
@@ -63,17 +61,9 @@ class ModalViewController: UIViewController
     
     override func viewDidAppear(animated:Bool)
     {
-        timer?.invalidate()
-        
         playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
-        controlsView?.hidden=false
         
         isPlaying=false
-        
-        timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(hideControls), userInfo:nil, repeats:true)
-        
-        let tapGesture=UITapGestureRecognizer(target:self, action:#selector(showControls))
-        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidDisappear(animated:Bool)
@@ -140,20 +130,6 @@ class ModalViewController: UIViewController
         //playerController.view.backgroundColor=UIColor.clearColor()
     }
     
-    func showControls()
-    {
-        controlsView?.hidden=false
-        
-        timer?.invalidate()
-        
-        timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(hideControls), userInfo:nil, repeats:true)
-    }
-    
-    func hideControls()
-    {
-        controlsView?.hidden=true
-    }
-    
     func secondsToReadableTime(durationSeconds:Int)->String
     {
         var readableDuration=""
@@ -214,6 +190,7 @@ class ModalViewController: UIViewController
         let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         stream=streamsArray![random] as? Stream
         updatePlayerWithStream()
+        changeCarouselItem(random)
     }
     
     @IBAction func previous()
@@ -224,6 +201,7 @@ class ModalViewController: UIViewController
         changePreviousStatus(indexOfObject)
         
         updatePlayerWithStream()
+        changeCarouselItem(indexOfObject)
     }
     
     @IBAction func play()
@@ -252,6 +230,7 @@ class ModalViewController: UIViewController
         changeNextStatus(indexOfObject)
         
         updatePlayerWithStream()
+        changeCarouselItem(indexOfObject)
     }
     
     func changeNextStatus(index:Int)
@@ -274,6 +253,11 @@ class ModalViewController: UIViewController
         {
             previousButton?.enabled=false
         }
+    }
+    
+    func changeCarouselItem(index:Int)
+    {
+        carousel?.scrollToItemAtIndex(index, animated:true)
     }
     
     @IBAction func more()
