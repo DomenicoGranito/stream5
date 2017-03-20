@@ -10,6 +10,7 @@ import AVKit
 
 class ModalViewController: UIViewController
 {
+    @IBOutlet var backgroundImageView:UIImageView?
     @IBOutlet var headerTitleLbl:UILabel?
     @IBOutlet var videoTitleLbl:UILabel?
     @IBOutlet var videoArtistNameLbl:UILabel?
@@ -83,6 +84,8 @@ class ModalViewController: UIViewController
     
     func updatePlayerWithStream()
     {
+        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+        
         let streamName="\(stream!.streamHash)-\(stream!.id)"
         
         headerTitleLbl?.text=stream?.title
@@ -109,7 +112,7 @@ class ModalViewController: UIViewController
     
     func createPlayerWithURL(url:String)
     {
-        player=AVPlayer(URL:NSURL(string:"http://45781641eecb6cd60749-f791b41f39d35aa8e6b060bff269f650.r20.cf6.rackcdn.com/12.mp4")!)
+        player=AVPlayer(URL:NSURL(string:"http://45781641eecb6cd60749-f791b41f39d35aa8e6b060bff269f650.r20.cf6.rackcdn.com/4d641cac9ef69613935894ee13974a4a.mp4")!)
         
         let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
         videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
@@ -135,6 +138,7 @@ class ModalViewController: UIViewController
         addChildViewController(playerController)
         playerView!.addSubview(playerController.view)
         playerController.view.frame=playerView!.frame
+        playerController.view.backgroundColor=UIColor.clearColor()
     }
     
     func showControls()

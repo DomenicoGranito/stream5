@@ -8,6 +8,8 @@
 
 class PopUpViewController: BaseViewController
 {
+    @IBOutlet var backgroundImageView:UIImageView?
+    
     let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite", "Block content from this channel"]
     let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
     
@@ -22,6 +24,8 @@ class PopUpViewController: BaseViewController
             menuItemTitlesArray.replaceObjectAtIndex(4, withObject:"Remove from favourite")
             menuItemIconsArray.replaceObjectAtIndex(4, withObject:"time.png")
         }
+        
+        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
     }
     
     @IBAction func closeButtonPressed()
