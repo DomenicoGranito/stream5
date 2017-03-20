@@ -208,7 +208,7 @@ class ModalViewController: UIViewController
         changePreviousStatus(indexOfObject)
         
         updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
+        carousel?.scrollToItemAtIndex(indexOfObject-1, animated:true)
     }
     
     @IBAction func play()
@@ -237,7 +237,7 @@ class ModalViewController: UIViewController
         changeNextStatus(indexOfObject)
         
         updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
+        carousel?.scrollToItemAtIndex(indexOfObject+1, animated:true)
     }
     
     func changeNextStatus(index:Int)
