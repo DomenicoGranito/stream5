@@ -42,6 +42,8 @@ class ModalViewController: UIViewController
             
             let indexOfObject=streamsArray!.indexOfObject(stream!)
             
+            carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
+            
             if indexOfObject==0
             {
                 previousButton?.enabled=false
@@ -50,6 +52,11 @@ class ModalViewController: UIViewController
             if indexOfObject==streamsArray!.count-1
             {
                 nextButton?.enabled=false
+            }
+            
+            if streamsArray!.count==1
+            {
+                shuffleButton?.enabled=false
             }
         }
     }
@@ -190,7 +197,7 @@ class ModalViewController: UIViewController
         let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         stream=streamsArray![random] as? Stream
         updatePlayerWithStream()
-        changeCarouselItem(random)
+        carousel?.scrollToItemAtIndex(random, animated:true)
     }
     
     @IBAction func previous()
@@ -201,7 +208,7 @@ class ModalViewController: UIViewController
         changePreviousStatus(indexOfObject)
         
         updatePlayerWithStream()
-        changeCarouselItem(indexOfObject)
+        carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
     }
     
     @IBAction func play()
@@ -230,7 +237,7 @@ class ModalViewController: UIViewController
         changeNextStatus(indexOfObject)
         
         updatePlayerWithStream()
-        changeCarouselItem(indexOfObject)
+        carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
     }
     
     func changeNextStatus(index:Int)
@@ -253,11 +260,6 @@ class ModalViewController: UIViewController
         {
             previousButton?.enabled=false
         }
-    }
-    
-    func changeCarouselItem(index:Int)
-    {
-        carousel?.scrollToItemAtIndex(index, animated:true)
     }
     
     @IBAction func more()
@@ -305,7 +307,7 @@ class ModalViewController: UIViewController
         {
             stream=streamsArray![aCarousel.currentItemIndex] as? Stream
             
-            backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+            updatePlayerWithStream()
         }
     }
 }
