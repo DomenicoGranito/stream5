@@ -10,6 +10,7 @@ import AVKit
 
 class ModalViewController: UIViewController
 {
+    @IBOutlet var carousel:iCarousel?
     @IBOutlet var backgroundImageView:UIImageView?
     @IBOutlet var headerTitleLbl:UILabel?
     @IBOutlet var videoTitleLbl:UILabel?
@@ -18,7 +19,6 @@ class ModalViewController: UIViewController
     @IBOutlet var videoDurationLbl:UILabel?
     @IBOutlet var likeButton:UIButton?
     @IBOutlet var playButton:UIButton?
-    @IBOutlet var playerView:UIView?
     @IBOutlet var controlsView:UIView?
     @IBOutlet var seekBar:UISlider?
     @IBOutlet var previousButton:UIButton?
@@ -35,7 +35,6 @@ class ModalViewController: UIViewController
     override func viewDidLoad()
     {
         updatePlayerWithStream()
-        addPlayer()
         
         if let _=streamsArray
         {
@@ -132,13 +131,13 @@ class ModalViewController: UIViewController
     
     func addPlayer()
     {
-        let playerController=AVPlayerViewController()
-        playerController.showsPlaybackControls=false
-        playerController.player=player
-        addChildViewController(playerController)
-        playerView!.addSubview(playerController.view)
-        playerController.view.frame=playerView!.frame
-        playerController.view.backgroundColor=UIColor.clearColor()
+        //let playerController=AVPlayerViewController()
+        //playerController.showsPlaybackControls=false
+        //playerController.player=player
+        //addChildViewController(playerController)
+        //playerView!.addSubview(playerController.view)
+        //playerController.view.frame=playerView!.frame
+        //playerController.view.backgroundColor=UIColor.clearColor()
     }
     
     func showControls()
@@ -283,5 +282,43 @@ class ModalViewController: UIViewController
         let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
         vc.stream=stream
         presentViewController(vc, animated:true, completion:nil)
+    }
+    
+    func numberOfItemsInCarousel(carousel:iCarousel)->Int
+    {
+        if let _=streamsArray
+        {
+            return streamsArray!.count
+        }
+        else
+        {
+            return 1
+        }
+    }
+    
+    func carouselItemWidth(carousel:iCarousel)->CGFloat
+    {
+        return view.frame.size.width-40
+    }
+    
+    func carousel(carousel:iCarousel, viewForItemAtIndex index:Int, reusingView view:UIView?)->UIView
+    {
+        var stream=self.stream!
+        
+        if let _=streamsArray
+        {
+            stream=streamsArray![index] as! Stream
+        }
+        
+        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-60, carousel.frame.size.height-40))
+        imageView.backgroundColor=UIColor.darkGrayColor()
+        imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
+        
+        return imageView
+    }
+    
+    func carouselDidEndScrollingAnimation(aCarousel:iCarousel)
+    {
+        
     }
 }

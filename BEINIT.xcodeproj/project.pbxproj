@@ -19,6 +19,7 @@
 		3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
+		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
 		3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */; };
 		3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */; };
 		3EF1F02C1D7197310055A372 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */; };
@@ -240,6 +241,8 @@
 		3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		3E79060B1E7FBD6100257C5B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
+		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
 		3EB1AB3F1DBBCFBB0047726D /* Streamini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamini.entitlements; sourceTree = "<group>"; };
 		3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesRow.swift; sourceTree = "<group>"; };
@@ -468,6 +471,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E79060A1E7FBC8E00257C5B /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				3E79060B1E7FBD6100257C5B /* iCarousel.h */,
+				3E79060C1E7FBD6200257C5B /* iCarousel.m */,
+			);
+			name = iCarousel;
+			sourceTree = "<group>";
+		};
 		3EF535A61E0920920049B2E9 /* ARNTransitionAnimator */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +758,7 @@
 		B7AA93201B3172740005972E /* Streamini */ = {
 			isa = PBXGroup;
 			children = (
+				3E79060A1E7FBC8E00257C5B /* iCarousel */,
 				B63C1A481E2DE98C00EF2F7C /* SCLAlertView */,
 				B67447C71E2BD89C0049890F /* New Group */,
 				3EF535A61E0920920049B2E9 /* ARNTransitionAnimator */,
@@ -1200,6 +1213,7 @@
 				3EF535B01E0920B90049B2E9 /* TransitionAnimatable.swift in Sources */,
 				86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */,
 				B71BA5DD1B84A9580055F427 /* BlockedDataSource.swift in Sources */,
+				3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */,
 				B7D5EA921B564BAA003EE25D /* Message.swift in Sources */,
 				B6D4134D1E141DBE001E8108 /* TabBarViewController.swift in Sources */,
 				B67448251E2C63CC0049890F /* SongCell.swift in Sources */,

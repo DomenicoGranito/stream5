@@ -18,6 +18,7 @@
 #import "MZFormSheetController.h"
 #import "DGActivityIndicatorView.h"
 #import "WXApi.h"
+#import "iCarousel.h"
 //#import <SwiftFilePath/SwiftFilePath.h>
 
 //#import <SCLAlertView/SCLAlertView-Swift.h>
