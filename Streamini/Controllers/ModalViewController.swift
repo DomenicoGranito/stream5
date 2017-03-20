@@ -303,22 +303,25 @@ class ModalViewController: UIViewController
     
     func carousel(carousel:iCarousel, viewForItemAtIndex index:Int, reusingView view:UIView?)->UIView
     {
-        var stream=self.stream!
-        
         if let _=streamsArray
         {
-            stream=streamsArray![index] as! Stream
+            stream=streamsArray![index] as? Stream
         }
         
-        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-60, carousel.frame.size.height-40))
+        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-60, carousel.frame.size.height-60))
         imageView.backgroundColor=UIColor.darkGrayColor()
-        imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
+        imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
         
         return imageView
     }
     
     func carouselDidEndScrollingAnimation(aCarousel:iCarousel)
     {
-        
+        if let _=streamsArray
+        {
+            stream=streamsArray![aCarousel.currentItemIndex] as? Stream
+            
+            backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+        }
     }
 }
