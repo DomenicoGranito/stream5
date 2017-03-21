@@ -36,28 +36,9 @@ class ModalViewController: UIViewController
         
         if let _=streamsArray
         {
-            shuffleButton?.enabled=true
-            previousButton?.enabled=true
-            nextButton?.enabled=true
+            let index=streamsArray!.indexOfObject(stream!)
             
-            let indexOfObject=streamsArray!.indexOfObject(stream!)
-            
-            carousel?.scrollToItemAtIndex(indexOfObject, animated:true)
-            
-            if indexOfObject==0
-            {
-                previousButton?.enabled=false
-            }
-            
-            if indexOfObject==streamsArray!.count-1
-            {
-                nextButton?.enabled=false
-            }
-            
-            if streamsArray!.count==1
-            {
-                shuffleButton?.enabled=false
-            }
+            carousel?.scrollToItemAtIndex(index, animated:true)
         }
     }
     
@@ -196,19 +177,20 @@ class ModalViewController: UIViewController
     {
         let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         stream=streamsArray![random] as? Stream
+        
+        updateButtons(random)
         updatePlayerWithStream()
         carousel?.scrollToItemAtIndex(random, animated:true)
     }
     
     @IBAction func previous()
     {
-        let indexOfObject=streamsArray!.indexOfObject(stream!)
-        stream=streamsArray![indexOfObject-1] as? Stream
+        let index=streamsArray!.indexOfObject(stream!)
+        stream=streamsArray![index-1] as? Stream
         
-        changePreviousStatus(indexOfObject)
-        
+        updateButtons(index-1)
         updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(indexOfObject-1, animated:true)
+        carousel?.scrollToItemAtIndex(index-1, animated:true)
     }
     
     @IBAction func play()
@@ -231,34 +213,33 @@ class ModalViewController: UIViewController
     
     @IBAction func next()
     {
-        let indexOfObject=streamsArray!.indexOfObject(stream!)
-        stream=streamsArray![indexOfObject+1] as? Stream
+        let index=streamsArray!.indexOfObject(stream!)
+        stream=streamsArray![index+1] as? Stream
         
-        changeNextStatus(indexOfObject)
-        
+        updateButtons(index+1)
         updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(indexOfObject+1, animated:true)
+        carousel?.scrollToItemAtIndex(index+1, animated:true)
     }
     
-    func changeNextStatus(index:Int)
+    func updateButtons(index:Int)
     {
         nextButton?.enabled=true
         previousButton?.enabled=true
+        shuffleButton?.enabled=true
+        
+        if index==0
+        {
+            previousButton?.enabled=false
+        }
         
         if index==streamsArray!.count-1
         {
             nextButton?.enabled=false
         }
-    }
-    
-    func changePreviousStatus(index:Int)
-    {
-        nextButton?.enabled=true
-        previousButton?.enabled=true
         
-        if index==0
+        if streamsArray!.count==1
         {
-            previousButton?.enabled=false
+            shuffleButton?.enabled=false
         }
     }
     
@@ -294,7 +275,7 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-60, carousel.frame.size.height-60))
+        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, carousel.frame.size.height-50))
         imageView.backgroundColor=UIColor.darkGrayColor()
         imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
         
@@ -307,6 +288,7 @@ class ModalViewController: UIViewController
         {
             stream=streamsArray![aCarousel.currentItemIndex] as? Stream
             
+            updateButtons(aCarousel.currentItemIndex)
             updatePlayerWithStream()
         }
     }
