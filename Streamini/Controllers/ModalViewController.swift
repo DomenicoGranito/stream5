@@ -32,6 +32,8 @@ class ModalViewController: UIViewController
     
     override func viewDidLoad()
     {
+        carousel?.pagingEnabled=true
+        
         updatePlayerWithStream()
         
         if let _=streamsArray
@@ -267,7 +269,7 @@ class ModalViewController: UIViewController
     {
         return view.frame.size.width-40
     }
-    
+        
     func carousel(carousel:iCarousel, viewForItemAtIndex index:Int, reusingView view:UIView?)->UIView
     {
         if let _=streamsArray
