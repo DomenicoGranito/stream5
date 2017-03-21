@@ -111,10 +111,10 @@ class ModalViewController: UIViewController
     
     func addPlayer()
     {
-        //let playerController=AVPlayerViewController()
-        //playerController.showsPlaybackControls=false
-        //playerController.player=player
-        //addChildViewController(playerController)
+        let playerController=AVPlayerViewController()
+        playerController.showsPlaybackControls=false
+        playerController.player=player
+        addChildViewController(playerController)
         //playerView!.addSubview(playerController.view)
         //playerController.view.frame=playerView!.frame
         //playerController.view.backgroundColor=UIColor.clearColor()
@@ -277,7 +277,7 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, carousel.frame.size.height-50))
+        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
         imageView.backgroundColor=UIColor.darkGrayColor()
         imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
         
