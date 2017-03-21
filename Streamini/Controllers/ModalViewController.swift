@@ -65,15 +65,11 @@ class ModalViewController: UIViewController
     {
         backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
         
-        let streamName="\(stream!.streamHash)-\(stream!.id)"
-        
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        let url = stream!.streamHash == "e5446fb6e576e69132ae32f4d01d52a1"
-            ? "http://\(host)/media/\(stream!.id).mp4"
-            : "http://\(host):\(port)/vod/_definist_/mp4:\(streamName).mp4/playlist.m3u8"
+        let url="http://\(host)/media/\(stream!.id).mp4"
         
         SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
         
@@ -93,31 +89,20 @@ class ModalViewController: UIViewController
     {
         player=AVPlayer(URL:NSURL(string:"http://45781641eecb6cd60749-f791b41f39d35aa8e6b060bff269f650.r20.cf6.rackcdn.com/4d641cac9ef69613935894ee13974a4a.mp4")!)
         
-        let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
-        videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
-        seekBar!.maximumValue=Float(durationSeconds)
+        //let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
+        //videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
+        //seekBar!.maximumValue=Float(durationSeconds)
         
         player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
         {_ in
             if self.player!.currentItem!.status == .ReadyToPlay
             {
-                let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
-                self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
-                self.videoDurationLbl!.text="-\(self.secondsToReadableTime(durationSeconds-time))"
-                self.seekBar!.value=Float(time)
+                //let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
+                //self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
+                //self.videoDurationLbl!.text="-\(self.secondsToReadableTime(durationSeconds-time))"
+                //self.seekBar!.value=Float(time)
             }
         }
-    }
-    
-    func addPlayer()
-    {
-        let playerController=AVPlayerViewController()
-        playerController.showsPlaybackControls=false
-        playerController.player=player
-        addChildViewController(playerController)
-        //playerView!.addSubview(playerController.view)
-        //playerController.view.frame=playerView!.frame
-        //playerController.view.backgroundColor=UIColor.clearColor()
     }
     
     func secondsToReadableTime(durationSeconds:Int)->String
@@ -269,7 +254,7 @@ class ModalViewController: UIViewController
     {
         return view.frame.size.width-40
     }
-        
+    
     func carousel(carousel:iCarousel, viewForItemAtIndex index:Int, reusingView view:UIView?)->UIView
     {
         if let _=streamsArray
@@ -277,11 +262,14 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        let imageView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
-        imageView.backgroundColor=UIColor.darkGrayColor()
-        imageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+        createPlayerWithURL("http://\(host)/media/\(stream!.id).mp4")
         
-        return imageView
+        let playerController=AVPlayerViewController()
+        playerController.showsPlaybackControls=false
+        playerController.player=player
+        playerController.view.frame=CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50)
+        
+        return playerController.view
     }
     
     func carouselDidEndScrollingAnimation(aCarousel:iCarousel)
