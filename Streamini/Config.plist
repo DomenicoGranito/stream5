@@ -41,7 +41,7 @@
 	<key>Wowza</key>
 	<dict>
 		<key>host</key>
-		<string>spectator.live</string>
+		<string>112.64.52.207</string>
 		<key>port</key>
 		<string>1935</string>
 		<key>application</key>

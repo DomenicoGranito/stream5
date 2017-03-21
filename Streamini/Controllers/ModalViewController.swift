@@ -69,11 +69,7 @@ class ModalViewController: UIViewController
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        let url="http://\(host)/media/\(stream!.id).mp4"
-        
         SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
-        
-        createPlayerWithURL(url)
         
         if SongManager.isAlreadyFavourited(stream!.id)
         {
@@ -82,26 +78,6 @@ class ModalViewController: UIViewController
         else
         {
             likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
-        }
-    }
-    
-    func createPlayerWithURL(url:String)
-    {
-        player=AVPlayer(URL:NSURL(string:"http://45781641eecb6cd60749-f791b41f39d35aa8e6b060bff269f650.r20.cf6.rackcdn.com/4d641cac9ef69613935894ee13974a4a.mp4")!)
-        
-        //let durationSeconds=Int(CMTimeGetSeconds(player!.currentItem!.asset.duration))
-        //videoDurationLbl?.text="-\(secondsToReadableTime(durationSeconds))"
-        //seekBar!.maximumValue=Float(durationSeconds)
-        
-        player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
-        {_ in
-            if self.player!.currentItem!.status == .ReadyToPlay
-            {
-                //let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
-                //self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
-                //self.videoDurationLbl!.text="-\(self.secondsToReadableTime(durationSeconds-time))"
-                //self.seekBar!.value=Float(time)
-            }
         }
     }
     
@@ -262,14 +238,21 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        createPlayerWithURL("http://\(host)/media/\(stream!.id).mp4")
+        player=AVPlayer(URL:NSURL(string:"http://\(host)/media/\(stream!.id).mp4")!)
+        
+        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
+        thumbnailView.backgroundColor=UIColor.darkGrayColor()
+        thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
         let playerController=AVPlayerViewController()
         playerController.showsPlaybackControls=false
         playerController.player=player
-        playerController.view.frame=CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50)
+        playerController.view.frame=thumbnailView.frame
+        playerController.view.backgroundColor=UIColor.clearColor()
         
-        return playerController.view
+        thumbnailView.addSubview(playerController.view)
+        
+        return thumbnailView
     }
     
     func carouselDidEndScrollingAnimation(aCarousel:iCarousel)
