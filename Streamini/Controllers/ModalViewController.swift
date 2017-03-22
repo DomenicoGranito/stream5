@@ -166,17 +166,28 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
-        thumbnailView.backgroundColor=UIColor.darkGrayColor()
-        thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+        let thumbnailView:UIImageView!
+        let playerController:AVPlayerViewController!
         
-        let playerController=AVPlayerViewController()
-        playerController.showsPlaybackControls=false
-        playerController.player=player
-        playerController.view.frame=thumbnailView.frame
-        playerController.view.backgroundColor=UIColor.clearColor()
-        
-        thumbnailView.addSubview(playerController.view)
+        if let v=view
+        {
+            thumbnailView=v.viewWithTag(1) as! UIImageView
+            thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
+        }
+        else
+        {
+            thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
+            thumbnailView.tag=1
+            thumbnailView.backgroundColor=UIColor.darkGrayColor()
+            
+            playerController=AVPlayerViewController()
+            playerController.showsPlaybackControls=false
+            playerController.player=player
+            playerController.view.frame=thumbnailView.frame
+            playerController.view.backgroundColor=UIColor.clearColor()
+            
+            thumbnailView.addSubview(playerController.view)
+        }
         
         return thumbnailView
     }
@@ -193,7 +204,7 @@ class ModalViewController: UIViewController
         
         playAtIndex(aCarousel.currentItemIndex)
     }
-        
+    
     func playAtIndex(index:Int)
     {
         player?.removeAllItems()
