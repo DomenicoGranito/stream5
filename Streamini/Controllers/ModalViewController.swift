@@ -25,15 +25,17 @@ class ModalViewController: UIViewController
     @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=false
-    var player:AVPlayer?
+    var player:AVQueuePlayer?
     var stream:Stream?
     var streamsArray:NSArray?
     let (host, port, _, _, _)=Config.shared.wowza()
+    var queue:[AVPlayerItem]=[]
     
     override func viewDidLoad()
     {
         carousel?.pagingEnabled=true
         
+        createPlayerWithPlaylist()
         updatePlayerWithStream()
         
         if let _=streamsArray
@@ -47,18 +49,6 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
-    }
-    
-    override func viewDidAppear(animated:Bool)
-    {
-        playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
-        
-        isPlaying=false
-    }
-    
-    override func viewDidDisappear(animated:Bool)
-    {
-        player?.pause()
     }
     
     func updatePlayerWithStream()
@@ -81,79 +71,57 @@ class ModalViewController: UIViewController
         }
     }
     
-    func secondsToReadableTime(durationSeconds:Int)->String
+    func createPlayerWithPlaylist()
     {
-        var readableDuration=""
-        
-        let hours=durationSeconds/3600
-        var minutes=String(format:"%02d", durationSeconds%3600/60)
-        let seconds=String(format:"%02d", durationSeconds%3600%60)
-        
-        if(hours>0)
+        if let _=streamsArray
         {
-            readableDuration="\(hours):"
+            for i in 0 ..< streamsArray!.count
+            {
+                let stream=streamsArray![i] as! Stream
+                
+                let item=AVPlayerItem(URL:NSURL(string:"http://\(host)/media/\(stream.id).mp4")!)
+                
+                queue.append(item)
+            }
         }
         else
         {
-            minutes="\(Int(minutes)!)"
+            let item=AVPlayerItem(URL:NSURL(string:"http://\(host)/media/\(stream!.id).mp4")!)
+            
+            queue.append(item)
         }
         
-        readableDuration+="\(minutes):\(seconds)"
+        player=AVQueuePlayer(items:queue)
+    }
+    
+    func helperFunction(index:Int)
+    {
+        stream=streamsArray![index] as? Stream
         
-        return readableDuration
-    }
-    
-    @IBAction func seekBarValueChanged()
-    {
-        let seconds=Int64(seekBar!.value)
-        let targetTime=CMTimeMake(seconds, 1)
-        
-        player!.seekToTime(targetTime)
-    }
-    
-    @IBAction func close()
-    {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
-        dismissViewControllerAnimated(true, completion:nil)
-    }
-    
-    @IBAction func menu()
-    {
-        
-    }
-    
-    @IBAction func like()
-    {
-        if SongManager.isAlreadyFavourited(stream!.id)
-        {
-            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
-            SongManager.removeFromFavourite(stream!.id)
-        }
-        else
-        {
-            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
-        }
+        updateButtons(index)
+        updatePlayerWithStream()
+        carousel?.scrollToItemAtIndex(index, animated:true)
     }
     
     @IBAction func shuffle()
     {
         let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
-        stream=streamsArray![random] as? Stream
         
-        updateButtons(random)
-        updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(random, animated:true)
+        helperFunction(random)
     }
     
     @IBAction func previous()
     {
         let index=streamsArray!.indexOfObject(stream!)
-        stream=streamsArray![index-1] as? Stream
         
-        updateButtons(index-1)
-        updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(index-1, animated:true)
+        helperFunction(index-1)
+    }
+    
+    @IBAction func next()
+    {
+        let index=streamsArray!.indexOfObject(stream!)
+        
+        helperFunction(index+1)
     }
     
     @IBAction func play()
@@ -172,46 +140,6 @@ class ModalViewController: UIViewController
             playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
             isPlaying=true
         }
-    }
-    
-    @IBAction func next()
-    {
-        let index=streamsArray!.indexOfObject(stream!)
-        stream=streamsArray![index+1] as? Stream
-        
-        updateButtons(index+1)
-        updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(index+1, animated:true)
-    }
-    
-    func updateButtons(index:Int)
-    {
-        nextButton?.enabled=true
-        previousButton?.enabled=true
-        shuffleButton?.enabled=true
-        
-        if index==0
-        {
-            previousButton?.enabled=false
-        }
-        
-        if index==streamsArray!.count-1
-        {
-            nextButton?.enabled=false
-        }
-        
-        if streamsArray!.count==1
-        {
-            shuffleButton?.enabled=false
-        }
-    }
-    
-    @IBAction func more()
-    {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
-        vc.stream=stream
-        presentViewController(vc, animated:true, completion:nil)
     }
     
     func numberOfItemsInCarousel(carousel:iCarousel)->Int
@@ -238,8 +166,6 @@ class ModalViewController: UIViewController
             stream=streamsArray![index] as? Stream
         }
         
-        player=AVPlayer(URL:NSURL(string:"http://\(host)/media/\(stream!.id).mp4")!)
-        
         let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
         thumbnailView.backgroundColor=UIColor.darkGrayColor()
         thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
@@ -263,6 +189,95 @@ class ModalViewController: UIViewController
             
             updateButtons(aCarousel.currentItemIndex)
             updatePlayerWithStream()
+        }
+        
+        let item=queue[aCarousel.currentItemIndex]
+        player?.replaceCurrentItemWithPlayerItem(item)
+        player?.play()
+    }
+    
+    @IBAction func more()
+    {
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=stream
+        presentViewController(vc, animated:true, completion:nil)
+    }
+    
+    @IBAction func like()
+    {
+        if SongManager.isAlreadyFavourited(stream!.id)
+        {
+            likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
+            SongManager.removeFromFavourite(stream!.id)
+        }
+        else
+        {
+            likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
+            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
+        }
+    }
+    
+    @IBAction func seekBarValueChanged()
+    {
+        let seconds=Int64(seekBar!.value)
+        let targetTime=CMTimeMake(seconds, 1)
+        
+        player!.seekToTime(targetTime)
+    }
+    
+    @IBAction func close()
+    {
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+        dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    @IBAction func menu()
+    {
+        
+    }
+    
+    func secondsToReadableTime(durationSeconds:Int)->String
+    {
+        var readableDuration=""
+        
+        let hours=durationSeconds/3600
+        var minutes=String(format:"%02d", durationSeconds%3600/60)
+        let seconds=String(format:"%02d", durationSeconds%3600%60)
+        
+        if(hours>0)
+        {
+            readableDuration="\(hours):"
+        }
+        else
+        {
+            minutes="\(Int(minutes)!)"
+        }
+        
+        readableDuration+="\(minutes):\(seconds)"
+        
+        return readableDuration
+    }
+    
+    func updateButtons(index:Int)
+    {
+        nextButton?.enabled=true
+        previousButton?.enabled=true
+        shuffleButton?.enabled=true
+        
+        if index==0
+        {
+            previousButton?.enabled=false
+        }
+        
+        if index==streamsArray!.count-1
+        {
+            nextButton?.enabled=false
+        }
+        
+        if streamsArray!.count==1
+        {
+            shuffleButton?.enabled=false
         }
     }
 }
