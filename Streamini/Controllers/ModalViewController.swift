@@ -191,8 +191,20 @@ class ModalViewController: UIViewController
             updatePlayerWithStream()
         }
         
-        let item=queue[aCarousel.currentItemIndex]
-        player?.replaceCurrentItemWithPlayerItem(item)
+        playAtIndex(aCarousel.currentItemIndex)
+    }
+        
+    func playAtIndex(index:Int)
+    {
+        player?.removeAllItems()
+        
+        for i in index ..< queue.count
+        {
+            let item=queue[i]
+            item.seekToTime(kCMTimeZero)
+            player?.insertItem(item, afterItem:nil)
+        }
+        
         player?.play()
     }
     
