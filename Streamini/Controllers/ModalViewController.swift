@@ -34,6 +34,7 @@ class ModalViewController: UIViewController
     override func viewDidLoad()
     {
         carousel?.pagingEnabled=true
+        carousel?.type = .Rotary
         
         createPlayerWithPlaylist()
         updatePlayerWithStream()
@@ -203,6 +204,21 @@ class ModalViewController: UIViewController
         }
         
         playAtIndex(aCarousel.currentItemIndex)
+    }
+    
+    func carousel(carousel:iCarousel, valueForOption option:iCarouselOption, withDefault value:CGFloat)->CGFloat
+    {
+        switch(option)
+        {
+        case .ShowBackfaces:
+            return 0
+        case .Spacing:
+            return value*1.2
+        case .VisibleItems:
+            return 3
+        default:
+            return value
+        }
     }
     
     func playAtIndex(index:Int)
