@@ -19,6 +19,8 @@
 #import "DGActivityIndicatorView.h"
 #import "WXApi.h"
 #import "iCarousel.h"
+#import "DWSDK.h"
+
 //#import <SwiftFilePath/SwiftFilePath.h>
 
 //#import <SCLAlertView/SCLAlertView-Swift.h>
