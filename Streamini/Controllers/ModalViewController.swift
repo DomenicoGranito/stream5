@@ -24,7 +24,7 @@ class ModalViewController: UIViewController
     @IBOutlet var nextButton:UIButton?
     @IBOutlet var shuffleButton:UIButton?
     
-    var isPlaying=false
+    var isPlaying=true
     var player:AVQueuePlayer?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -94,6 +94,16 @@ class ModalViewController: UIViewController
         }
         
         player=AVQueuePlayer(items:queue)
+        
+        player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
+        {_ in
+            if self.player!.currentItem!.status == .ReadyToPlay
+            {
+                let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
+                self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
+                self.seekBar!.value=Float(time)
+            }
+        }
     }
     
     func helperFunction(index:Int)
@@ -234,6 +244,7 @@ class ModalViewController: UIViewController
         }
         
         player?.play()
+        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
     }
     
     @IBAction func more()
