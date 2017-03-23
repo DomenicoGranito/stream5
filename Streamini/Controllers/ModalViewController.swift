@@ -30,6 +30,7 @@ class ModalViewController: UIViewController
     var streamsArray:NSArray?
     let (host, port, _, _, _)=Config.shared.wowza()
     var queue:[AVPlayerItem]=[]
+    var durationSeconds:Int!
     
     override func viewDidLoad()
     {
@@ -100,6 +101,7 @@ class ModalViewController: UIViewController
             if self.player!.currentItem!.status == .ReadyToPlay
             {
                 let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
+                self.videoDurationLbl!.text="-\(self.secondsToReadableTime(self.durationSeconds-time))"
                 self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
                 self.seekBar!.value=Float(time)
             }
@@ -243,8 +245,19 @@ class ModalViewController: UIViewController
             player?.insertItem(item, afterItem:nil)
         }
         
-        player?.play()
-        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+        {
+            self.durationSeconds=Int(CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
+            
+            dispatch_async(dispatch_get_main_queue())
+            {
+                self.videoDurationLbl?.text="-\(self.secondsToReadableTime(self.durationSeconds))"
+                self.seekBar!.maximumValue=Float(self.durationSeconds)
+                
+                self.player?.play()
+                self.playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+            }
+        }
     }
     
     @IBAction func more()
