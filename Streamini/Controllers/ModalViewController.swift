@@ -225,9 +225,8 @@ class ModalViewController: UIViewController
         UIView.animateWithDuration(0.5, animations:{
             aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
-                let playerLayer=self.player!.view.layer
-                playerLayer.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
-                aCarousel.currentItemView!.layer.addSublayer(playerLayer)
+                self.player!.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+                aCarousel.currentItemView!.addSubview(self.player!.view)
                 self.player?.play()
         })
     }
