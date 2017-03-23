@@ -25,7 +25,8 @@ class ModalViewController: UIViewController
     @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=true
-    var player:AVQueuePlayer?
+    //var player:AVQueuePlayer?
+    var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
     let (host, port, _, _, _)=Config.shared.wowza()
@@ -94,18 +95,21 @@ class ModalViewController: UIViewController
             queue.append(item)
         }
         
-        player=AVQueuePlayer(items:queue)
+        //player=AVQueuePlayer(items:queue)
+        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
+        player?.videoId="F913E6FF859FA7B79C33DC5901307461"
+        player?.startRequestPlayInfo()
         
-        player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
-        {_ in
-            if self.player!.currentItem!.status == .ReadyToPlay
-            {
-                let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
-                self.videoDurationLbl!.text="-\(self.secondsToReadableTime(self.durationSeconds-time))"
-                self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
-                self.seekBar!.value=Float(time)
-            }
-        }
+//        player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
+//        {_ in
+//            if self.player!.currentItem!.status == .ReadyToPlay
+//            {
+//                let time=Int(CMTimeGetSeconds(self.player!.currentTime()))
+//                self.videoDurationLbl!.text="-\(self.secondsToReadableTime(self.durationSeconds-time))"
+//                self.videoProgressDurationLbl!.text=self.secondsToReadableTime(time)
+//                self.seekBar!.value=Float(time)
+//            }
+//        }
     }
     
     func helperFunction(index:Int)
@@ -209,13 +213,22 @@ class ModalViewController: UIViewController
             updatePlayerWithStream()
         }
         
+//        UIView.animateWithDuration(0.5, animations:{
+//            aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+//            }, completion:{(finished:Bool)->Void in
+//                let playerLayer=AVPlayerLayer(player:self.player)
+//                playerLayer.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+//                aCarousel.currentItemView!.layer.addSublayer(playerLayer)
+//                self.playAtIndex(aCarousel.currentItemIndex)
+//        })
+        
         UIView.animateWithDuration(0.5, animations:{
             aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
-                let playerLayer=AVPlayerLayer(player:self.player)
+                let playerLayer=self.player!.view.layer
                 playerLayer.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
                 aCarousel.currentItemView!.layer.addSublayer(playerLayer)
-                self.playAtIndex(aCarousel.currentItemIndex)
+                self.player?.play()
         })
     }
     
@@ -236,28 +249,28 @@ class ModalViewController: UIViewController
     
     func playAtIndex(index:Int)
     {
-        player?.removeAllItems()
+        //player?.removeAllItems()
         
         for i in index ..< queue.count
         {
             let item=queue[i]
             item.seekToTime(kCMTimeZero)
-            player?.insertItem(item, afterItem:nil)
+            //player?.insertItem(item, afterItem:nil)
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
-        {
-            self.durationSeconds=Int(CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
-            
-            dispatch_async(dispatch_get_main_queue())
-            {
-                self.videoDurationLbl?.text="-\(self.secondsToReadableTime(self.durationSeconds))"
-                self.seekBar!.maximumValue=Float(self.durationSeconds)
-                
-                self.player?.play()
-                self.playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
-            }
-        }
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0))
+//        {
+//            self.durationSeconds=Int(CMTimeGetSeconds(self.player!.currentItem!.asset.duration))
+//            
+//            dispatch_async(dispatch_get_main_queue())
+//            {
+//                self.videoDurationLbl?.text="-\(self.secondsToReadableTime(self.durationSeconds))"
+//                self.seekBar!.maximumValue=Float(self.durationSeconds)
+//                
+//                self.player?.play()
+//                self.playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+//            }
+//        }
     }
     
     @IBAction func more()
@@ -287,7 +300,7 @@ class ModalViewController: UIViewController
         let seconds=Int64(seekBar!.value)
         let targetTime=CMTimeMake(seconds, 1)
         
-        player!.seekToTime(targetTime)
+        //player!.seekToTime(targetTime)
     }
     
     @IBAction func close()
