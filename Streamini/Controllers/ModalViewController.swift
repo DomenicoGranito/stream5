@@ -34,13 +34,14 @@ class ModalViewController: UIViewController
     override func viewDidLoad()
     {
         carousel?.pagingEnabled=true
-        carousel?.type = .Rotary
         
         createPlayerWithPlaylist()
         updatePlayerWithStream()
         
         if let _=streamsArray
         {
+            carousel?.type = .Rotary
+            
             let index=streamsArray!.indexOfObject(stream!)
             
             carousel?.scrollToItemAtIndex(index, animated:true)
