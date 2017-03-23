@@ -256,6 +256,7 @@ class ModalViewController: UIViewController
                 
                 self.player?.play()
                 self.playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+                self.carousel?.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }
         }
     }
