@@ -181,26 +181,19 @@ class ModalViewController: UIViewController
         }
         
         let thumbnailView:UIImageView!
-        let playerController:AVPlayerViewController!
+        let frame=CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50)
         
         if let v=view
         {
             thumbnailView=v.viewWithTag(1) as! UIImageView
+            thumbnailView.frame=frame
             thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         }
         else
         {
-            thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
+            thumbnailView=UIImageView(frame:frame)
             thumbnailView.tag=1
             thumbnailView.backgroundColor=UIColor.darkGrayColor()
-            
-            playerController=AVPlayerViewController()
-            playerController.showsPlaybackControls=false
-            playerController.player=player
-            playerController.view.frame=thumbnailView.frame
-            playerController.view.backgroundColor=UIColor.clearColor()
-            
-            thumbnailView.addSubview(playerController.view)
         }
         
         return thumbnailView
@@ -216,7 +209,14 @@ class ModalViewController: UIViewController
             updatePlayerWithStream()
         }
         
-        playAtIndex(aCarousel.currentItemIndex)
+        UIView.animateWithDuration(0.5, animations:{
+            aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+            }, completion:{(finished:Bool)->Void in
+                let playerLayer=AVPlayerLayer(player:self.player)
+                playerLayer.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+                aCarousel.currentItemView!.layer.addSublayer(playerLayer)
+                self.playAtIndex(aCarousel.currentItemIndex)
+        })
     }
     
     func carousel(carousel:iCarousel, valueForOption option:iCarouselOption, withDefault value:CGFloat)->CGFloat
@@ -256,7 +256,6 @@ class ModalViewController: UIViewController
                 
                 self.player?.play()
                 self.playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
-                self.carousel?.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }
         }
     }
