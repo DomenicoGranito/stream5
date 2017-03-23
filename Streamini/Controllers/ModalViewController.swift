@@ -99,7 +99,7 @@ class ModalViewController: UIViewController
         player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
         player?.videoId="F913E6FF859FA7B79C33DC5901307461"
         player?.startRequestPlayInfo()
-        
+        player?.controlStyle = .None
 //        player!.addPeriodicTimeObserverForInterval(CMTimeMake(1, 1), queue:dispatch_get_main_queue())
 //        {_ in
 //            if self.player!.currentItem!.status == .ReadyToPlay
