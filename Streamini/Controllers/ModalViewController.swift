@@ -103,8 +103,8 @@ class ModalViewController: UIViewController
     
     func timerHandler()
     {
-        videoDurationLbl?.text="-\(secondsToReadableTime(Int(player!.duration-player!.currentPlaybackTime)))"
-        videoProgressDurationLbl?.text=secondsToReadableTime(Int(player!.currentPlaybackTime))
+        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
+        videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
     }
     
@@ -117,7 +117,7 @@ class ModalViewController: UIViewController
     
     func moviePlayerDurationAvailable()
     {
-        videoDurationLbl?.text="-\(secondsToReadableTime(Int(player!.duration)))"
+        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration))"
         seekBar?.maximumValue=Float(player!.duration)
     }
     
@@ -279,10 +279,10 @@ class ModalViewController: UIViewController
     @IBAction func seekBarValueChanged()
     {
         player?.seekStartTime=player!.currentPlaybackTime
-        player?.currentPlaybackTime=seekBar!.value
+        player?.currentPlaybackTime=Double(seekBar!.value)
         
-        videoProgressDurationLbl?.text=secondsToReadableTime(Int(player!.currentPlaybackTime))
-        videoDurationLbl?.text="-\(secondsToReadableTime(Int(player!.duration-player!.currentPlaybackTime)))"
+        videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
+        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
     }
     
     @IBAction func close()
@@ -296,7 +296,7 @@ class ModalViewController: UIViewController
         
     }
     
-    func secondsToReadableTime(durationSeconds:Int)->String
+    func secondsToReadableTime(durationSeconds:Double)->String
     {
         var readableDuration=""
         
