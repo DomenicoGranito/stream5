@@ -257,6 +257,7 @@ class ModalViewController: UIViewController
         {
             let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
             label.text="Video not available"
+            label.textColor=UIColor.whiteColor()
             label.textAlignment = .Center
             player!.view.addSubview(label)
             
