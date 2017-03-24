@@ -225,9 +225,7 @@ class ModalViewController: UIViewController
         UIView.animateWithDuration(0.5, animations:{
             aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
-                self.player!.view.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width-50)
-                aCarousel.currentItemView!.addSubview(self.player!.view)
-                self.playAtIndex(aCarousel.currentItemIndex)
+                self.addPlayerAtIndex(aCarousel.currentItemIndex)
         })
     }
     
@@ -246,12 +244,22 @@ class ModalViewController: UIViewController
         }
     }
     
-    func playAtIndex(index:Int)
+    func addPlayerAtIndex(index:Int)
     {
-        player?.videoId=videoIDs[index]
-        player?.startRequestPlayInfo()
-        player?.play()
-        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        if videoIDs[index]==""
+        {
+            SCLAlertView().showSuccess("MESSAGE", subTitle:"Video not available yet")
+        }
+        else
+        {
+            player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+            carousel!.currentItemView!.addSubview(player!.view)
+            
+            player?.videoId=videoIDs[index]
+            player?.startRequestPlayInfo()
+            player?.play()
+            playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        }
     }
     
     @IBAction func more()
