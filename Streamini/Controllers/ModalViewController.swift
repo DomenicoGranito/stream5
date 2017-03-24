@@ -314,6 +314,13 @@ class ModalViewController: UIViewController
     
     func secondsToReadableTime(durationSeconds:Double)->String
     {
+        if durationSeconds.isNaN
+        {
+            return "0.00"
+        }
+        
+        let durationSeconds=Int(durationSeconds)
+        
         var readableDuration=""
         
         let hours=durationSeconds/3600
