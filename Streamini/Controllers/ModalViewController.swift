@@ -278,7 +278,11 @@ class ModalViewController: UIViewController
     
     @IBAction func seekBarValueChanged()
     {
+        player?.seekStartTime=player!.currentPlaybackTime
+        player?.currentPlaybackTime=seekBar!.value
         
+        videoProgressDurationLbl?.text=secondsToReadableTime(Int(player!.currentPlaybackTime))
+        videoDurationLbl?.text="-\(secondsToReadableTime(Int(player!.duration-player!.currentPlaybackTime)))"
     }
     
     @IBAction func close()

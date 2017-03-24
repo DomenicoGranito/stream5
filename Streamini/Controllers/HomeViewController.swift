@@ -176,7 +176,7 @@ class HomeViewController: BaseViewController
             for j in 0 ..< videos.count
             {
                 let videoID=videos[j]["id"] as! String
-                let streamKey=videos[j]["streamKey"] as! String
+                let streamKey=videos[j]["streamkey"] as! String
                 let videoTitle=videos[j]["title"] as! String
                 let videoHash=videos[j]["hash"] as! String
                 let lon=videos[j]["lon"]!.doubleValue
