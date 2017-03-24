@@ -103,7 +103,7 @@ class ModalViewController: UIViewController
     
     func timerHandler()
     {
-        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
+        videoDurationLbl?.text=secondsToReadableTime(player!.duration-player!.currentPlaybackTime)
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
     }
@@ -248,7 +248,7 @@ class ModalViewController: UIViewController
     {
         if videoIDs[index]==""
         {
-            SCLAlertView().showSuccess("MESSAGE", subTitle:"Video not available yet")
+            
         }
         else
         {
@@ -290,7 +290,7 @@ class ModalViewController: UIViewController
         player?.currentPlaybackTime=Double(seekBar!.value)
         
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
-        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
+        videoDurationLbl?.text=secondsToReadableTime(player!.duration-player!.currentPlaybackTime)
     }
     
     @IBAction func close()
