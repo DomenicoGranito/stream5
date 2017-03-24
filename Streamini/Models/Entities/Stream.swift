@@ -10,6 +10,7 @@ import UIKit
 
 class Stream: NSObject {
     var id: UInt = 0
+    var videoID=""
     var title = ""
     var streamHash = ""
     var lon: Double = 0

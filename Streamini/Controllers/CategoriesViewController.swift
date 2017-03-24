@@ -128,6 +128,7 @@ class CategoriesViewController: BaseViewController
         for i in 0 ..< data.count
         {
             let videoID=data[i]["id"] as! String
+            let streamKey=data[i]["streamKey"] as! String
             let videoTitle=data[i]["title"] as! String
             let videoHash=data[i]["hash"] as! String
             let lon=data[i]["lon"]!.doubleValue
@@ -150,6 +151,7 @@ class CategoriesViewController: BaseViewController
             
             let video=Stream()
             video.id=UInt(videoID)!
+            video.videoID=streamKey
             video.title=videoTitle
             video.streamHash=videoHash
             video.lon=lon
