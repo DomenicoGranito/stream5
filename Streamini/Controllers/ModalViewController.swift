@@ -46,6 +46,10 @@ class ModalViewController: UIViewController
             
             carousel?.scrollToItemAtIndex(index, animated:true)
         }
+        else
+        {
+            carousel?.scrollEnabled=false
+        }
     }
     
     override func viewWillAppear(animated:Bool)
@@ -103,7 +107,7 @@ class ModalViewController: UIViewController
     
     func timerHandler()
     {
-        videoDurationLbl?.text=secondsToReadableTime(player!.duration-player!.currentPlaybackTime)
+        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
     }
@@ -246,20 +250,23 @@ class ModalViewController: UIViewController
     
     func addPlayerAtIndex(index:Int)
     {
+        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        carousel!.currentItemView!.addSubview(player!.view)
+        
         if videoIDs[index]==""
         {
+            let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
+            label.text="Video not available"
+            label.textAlignment = .Center
+            player!.view.addSubview(label)
             
+            return
         }
-        else
-        {
-            player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
-            carousel!.currentItemView!.addSubview(player!.view)
-            
-            player?.videoId=videoIDs[index]
-            player?.startRequestPlayInfo()
-            player?.play()
-            playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
-        }
+        
+        player?.videoId=videoIDs[index]
+        player?.startRequestPlayInfo()
+        player?.play()
+        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
     }
     
     @IBAction func more()
@@ -290,7 +297,7 @@ class ModalViewController: UIViewController
         player?.currentPlaybackTime=Double(seekBar!.value)
         
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
-        videoDurationLbl?.text=secondsToReadableTime(player!.duration-player!.currentPlaybackTime)
+        videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
     }
     
     @IBAction func close()
