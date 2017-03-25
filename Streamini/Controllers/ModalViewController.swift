@@ -261,6 +261,9 @@ class ModalViewController: UIViewController
             label.textAlignment = .Center
             player!.view.addSubview(label)
             
+            playButton?.enabled=false
+            playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
+            
             return
         }
         
@@ -316,7 +319,7 @@ class ModalViewController: UIViewController
     {
         if durationSeconds.isNaN
         {
-            return "0.00"
+            return "0:00"
         }
         
         let durationSeconds=Int(durationSeconds)
