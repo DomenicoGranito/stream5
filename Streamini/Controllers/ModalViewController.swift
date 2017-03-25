@@ -93,8 +93,6 @@ class ModalViewController: UIViewController
         {
             videoIDs.append(stream!.videoID)
         }
-        
-        addPlayer()
     }
     
     func addPlayer()
