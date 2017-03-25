@@ -30,6 +30,7 @@ class ModalViewController: UIViewController
     var streamsArray:NSArray?
     let (host, port, _, _, _)=Config.shared.wowza()
     var videoIDs:[String]=[]
+    var timer:NSTimer?
     
     override func viewDidLoad()
     {
@@ -106,7 +107,7 @@ class ModalViewController: UIViewController
     
     func addTimer()
     {
-        NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
     func timerHandler()
