@@ -76,10 +76,6 @@ class ModalViewController: UIViewController
         {
             likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
         }
-        
-        seekBar?.value=0
-        videoProgressDurationLbl?.text="0:00"
-        videoDurationLbl?.text="-0:00"
     }
     
     func createPlayerWithPlaylist()
@@ -97,6 +93,15 @@ class ModalViewController: UIViewController
         {
             videoIDs.append(stream!.videoID)
         }
+        
+        addPlayer()
+    }
+    
+    func addPlayer()
+    {
+        seekBar?.value=0
+        videoProgressDurationLbl?.text="0:00"
+        videoDurationLbl?.text="-0:00"
         
         player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
         player?.controlStyle = .None
@@ -218,6 +223,8 @@ class ModalViewController: UIViewController
             thumbnailView.backgroundColor=UIColor.darkGrayColor()
         }
         
+        thumbnailView.subviews.forEach({$0.removeFromSuperview()})
+        
         return thumbnailView
     }
     
@@ -255,6 +262,10 @@ class ModalViewController: UIViewController
     
     func addPlayerAtIndex(index:Int)
     {
+        timer?.invalidate()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        addPlayer()
+        
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
         
