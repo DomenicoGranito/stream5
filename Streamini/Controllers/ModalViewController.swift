@@ -204,24 +204,10 @@ class ModalViewController: UIViewController
         {
             stream=streamsArray![index] as? Stream
         }
-        
-        let thumbnailView:UIImageView!
-        let frame=CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50)
-        
-        if let v=view
-        {
-            thumbnailView=v.viewWithTag(1) as! UIImageView
-            thumbnailView.frame=frame
-            thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
-        }
-        else
-        {
-            thumbnailView=UIImageView(frame:frame)
-            thumbnailView.tag=1
-            thumbnailView.backgroundColor=UIColor.darkGrayColor()
-        }
-        
-        thumbnailView.subviews.forEach({$0.removeFromSuperview()})
+
+        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
+        thumbnailView.backgroundColor=UIColor.darkGrayColor()
+        thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
         return thumbnailView
     }
