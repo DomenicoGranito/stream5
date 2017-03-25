@@ -75,6 +75,10 @@ class ModalViewController: UIViewController
         {
             likeButton?.setImage(UIImage(named:"empty_heart"), forState:.Normal)
         }
+        
+        seekBar?.value=0
+        videoProgressDurationLbl?.text="0:00"
+        videoDurationLbl?.text="-0:00"
     }
     
     func createPlayerWithPlaylist()
