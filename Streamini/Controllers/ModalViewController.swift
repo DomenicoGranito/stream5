@@ -245,7 +245,7 @@ class ModalViewController: UIViewController
     
     func showPlayer()
     {
-        UIView.animateWithDuration(5, animations:{
+        UIView.animateWithDuration(0.5, animations:{
             self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
                 self.addPlayerAtIndex()
