@@ -31,21 +31,23 @@ class ModalViewController: UIViewController
     let (host, port, _, _, _)=Config.shared.wowza()
     var videoIDs:[String]=[]
     var timer:NSTimer?
+    var firstTime=true
+    var selectedItemIndex=0
     
     override func viewDidLoad()
     {
         carousel?.pagingEnabled=true
         
-        createPlayerWithPlaylist()
+        createPlaylist()
         updatePlayerWithStream()
         
         if let _=streamsArray
         {
             carousel?.type = .Rotary
             
-            let index=streamsArray!.indexOfObject(stream!)
+            selectedItemIndex=streamsArray!.indexOfObject(stream!)
             
-            carousel?.scrollToItemAtIndex(index, animated:true)
+            carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
         }
         else
         {
@@ -56,6 +58,18 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+    }
+    
+    override func viewDidAppear(animated:Bool)
+    {
+        if streamsArray==nil
+        {
+            if firstTime
+            {
+                showPlayer()
+                firstTime=false
+            }
+        }
     }
     
     func updatePlayerWithStream()
@@ -78,7 +92,7 @@ class ModalViewController: UIViewController
         }
     }
     
-    func createPlayerWithPlaylist()
+    func createPlaylist()
     {
         if let _=streamsArray
         {
@@ -133,34 +147,34 @@ class ModalViewController: UIViewController
         seekBar?.maximumValue=Float(player!.duration)
     }
     
-    func helperFunction(index:Int)
+    func helperFunction()
     {
-        stream=streamsArray![index] as? Stream
+        stream=streamsArray![selectedItemIndex] as? Stream
         
-        updateButtons(index)
+        updateButtons()
         updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(index, animated:true)
+        carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
     }
     
     @IBAction func shuffle()
     {
-        let random=Int(arc4random_uniform(UInt32(streamsArray!.count)))
+        selectedItemIndex=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         
-        helperFunction(random)
+        helperFunction()
     }
     
     @IBAction func previous()
     {
-        let index=streamsArray!.indexOfObject(stream!)
+        selectedItemIndex=streamsArray!.indexOfObject(stream!)-1
         
-        helperFunction(index-1)
+        helperFunction()
     }
     
     @IBAction func next()
     {
-        let index=streamsArray!.indexOfObject(stream!)
+        selectedItemIndex=streamsArray!.indexOfObject(stream!)+1
         
-        helperFunction(index+1)
+        helperFunction()
     }
     
     @IBAction func play()
@@ -204,7 +218,7 @@ class ModalViewController: UIViewController
         {
             stream=streamsArray![index] as? Stream
         }
-
+        
         let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
         thumbnailView.backgroundColor=UIColor.darkGrayColor()
         thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
@@ -212,20 +226,29 @@ class ModalViewController: UIViewController
         return thumbnailView
     }
     
-    func carouselDidEndScrollingAnimation(aCarousel:iCarousel)
+    func carouselCurrentItemIndexDidChange(carousel:iCarousel)
     {
-        if let _=streamsArray
+        if carousel.currentItemIndex==selectedItemIndex
         {
-            stream=streamsArray![aCarousel.currentItemIndex] as? Stream
+            stream=streamsArray![selectedItemIndex] as? Stream
             
-            updateButtons(aCarousel.currentItemIndex)
+            updateButtons()
             updatePlayerWithStream()
+            showPlayer()
         }
-        
-        UIView.animateWithDuration(0.5, animations:{
-            aCarousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+    }
+    
+    func carouselDidScroll(carousel:iCarousel)
+    {
+        selectedItemIndex=carousel.currentItemIndex
+    }
+    
+    func showPlayer()
+    {
+        UIView.animateWithDuration(5, animations:{
+            self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
-                self.addPlayerAtIndex(aCarousel.currentItemIndex)
+                self.addPlayerAtIndex()
         })
     }
     
@@ -244,7 +267,7 @@ class ModalViewController: UIViewController
         }
     }
     
-    func addPlayerAtIndex(index:Int)
+    func addPlayerAtIndex()
     {
         timer?.invalidate()
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -253,7 +276,7 @@ class ModalViewController: UIViewController
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
         
-        if videoIDs[index]==""
+        if videoIDs[selectedItemIndex]==""
         {
             let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
             label.text="Video not available"
@@ -267,7 +290,7 @@ class ModalViewController: UIViewController
             return
         }
         
-        player?.videoId=videoIDs[index]
+        player?.videoId=videoIDs[selectedItemIndex]
         player?.startRequestPlayInfo()
         player?.play()
         playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
@@ -344,18 +367,18 @@ class ModalViewController: UIViewController
         return readableDuration
     }
     
-    func updateButtons(index:Int)
+    func updateButtons()
     {
         nextButton?.enabled=true
         previousButton?.enabled=true
         shuffleButton?.enabled=true
         
-        if index==0
+        if selectedItemIndex==0
         {
             previousButton?.enabled=false
         }
         
-        if index==streamsArray!.count-1
+        if selectedItemIndex==streamsArray!.count-1
         {
             nextButton?.enabled=false
         }
