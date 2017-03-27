@@ -225,7 +225,20 @@ class ModalViewController: UIViewController
         UIView.animateWithDuration(0.5, animations:{
             carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
-                self.addPlayerAtIndex()
+                
+                if self.lastPlay
+                {
+                    self.timer?.invalidate()
+                    self.player?.cancelRequestPlayInfo()
+                    self.player?.currentPlaybackTime=self.player!.duration
+                    self.player?.stop()
+                    self.player?.contentURL=nil
+                    self.player=nil
+                }
+                else
+                {
+                    self.addPlayerAtIndex()
+                }
         })
     }
     
@@ -249,19 +262,8 @@ class ModalViewController: UIViewController
     func addPlayerAtIndex()
     {
         timer?.invalidate()
-        NSNotificationCenter.defaultCenter().removeObserver(self)
         addPlayer()
         
-        if lastPlay
-        {
-            player?.videoId=""
-            player?.startRequestPlayInfo()
-            player?.play()
-            timer?.invalidate()
-            
-            return
-        }
-
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
         
