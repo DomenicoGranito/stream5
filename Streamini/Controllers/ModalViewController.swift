@@ -215,6 +215,7 @@ class ModalViewController: UIViewController
     {
         if let _=streamsArray
         {
+            selectedItemIndex=carousel.currentItemIndex
             stream=streamsArray![selectedItemIndex] as? Stream
             
             updateButtons()
@@ -222,7 +223,7 @@ class ModalViewController: UIViewController
         }
         
         UIView.animateWithDuration(0.5, animations:{
-            self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+            carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
                 self.addPlayerAtIndex()
         })
