@@ -306,11 +306,6 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         dismissViewControllerAnimated(true, completion:nil)
-        
-        timer?.invalidate()
-        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
-        player?.videoId=""
-        player?.startRequestPlayInfo()
     }
     
     @IBAction func menu()
