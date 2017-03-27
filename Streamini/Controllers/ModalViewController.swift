@@ -233,6 +233,8 @@ class ModalViewController: UIViewController
     {
         switch(option)
         {
+        case .Wrap:
+            return 0
         case .ShowBackfaces:
             return 0
         case .Spacing:
