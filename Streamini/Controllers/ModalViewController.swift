@@ -29,7 +29,6 @@ class ModalViewController: UIViewController
     let (host, port, _, _, _)=Config.shared.wowza()
     var videoIDs:[String]=[]
     var timer:NSTimer?
-    var firstTime=true
     var selectedItemIndex=0
     
     override func viewDidLoad()
@@ -55,18 +54,6 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
-    }
-    
-    override func viewDidAppear(animated:Bool)
-    {
-        if streamsArray==nil
-        {
-            if firstTime
-            {
-                showPlayer()
-                firstTime=false
-            }
-        }
     }
     
     func updatePlayerWithStream()
@@ -223,25 +210,16 @@ class ModalViewController: UIViewController
         return thumbnailView
     }
     
-    func carouselCurrentItemIndexDidChange(carousel:iCarousel)
+    func carouselDidEndScrollingAnimation(carousel:iCarousel)
     {
-        if carousel.currentItemIndex==selectedItemIndex
+        if let _=streamsArray
         {
             stream=streamsArray![selectedItemIndex] as? Stream
             
             updateButtons()
             updatePlayerWithStream()
-            showPlayer()
         }
-    }
-    
-    func carouselDidScroll(carousel:iCarousel)
-    {
-        selectedItemIndex=carousel.currentItemIndex
-    }
-    
-    func showPlayer()
-    {
+        
         UIView.animateWithDuration(0.5, animations:{
             self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
             }, completion:{(finished:Bool)->Void in
@@ -330,6 +308,9 @@ class ModalViewController: UIViewController
         dismissViewControllerAnimated(true, completion:nil)
         
         timer?.invalidate()
+        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
+        player?.videoId=""
+        player?.startRequestPlayInfo()
     }
     
     @IBAction func menu()
