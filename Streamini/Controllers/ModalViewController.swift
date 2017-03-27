@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 xxxAIRINxxx. All rights reserved.
 //
 
-import AVKit
-
 class ModalViewController: UIViewController
 {
     @IBOutlet var carousel:iCarousel?
@@ -36,13 +34,12 @@ class ModalViewController: UIViewController
     
     override func viewDidLoad()
     {
-        carousel?.pagingEnabled=true
-        
         createPlaylist()
         updatePlayerWithStream()
         
         if let _=streamsArray
         {
+            carousel?.pagingEnabled=true
             carousel?.type = .Rotary
             
             selectedItemIndex=streamsArray!.indexOfObject(stream!)
