@@ -23,6 +23,7 @@ class ModalViewController: UIViewController
     @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=true
+    var lastPlay=false
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -248,6 +249,16 @@ class ModalViewController: UIViewController
         NSNotificationCenter.defaultCenter().removeObserver(self)
         addPlayer()
         
+        if lastPlay
+        {
+            player?.videoId=""
+            player?.startRequestPlayInfo()
+            player?.play()
+            timer?.invalidate()
+            
+            return
+        }
+
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
         
@@ -306,6 +317,8 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         dismissViewControllerAnimated(true, completion:nil)
+        
+        lastPlay=true
     }
     
     @IBAction func menu()
