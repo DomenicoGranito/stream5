@@ -211,6 +211,11 @@ class ModalViewController: UIViewController
         return thumbnailView
     }
     
+    func carouselCurrentItemIndexDidChange(carousel:iCarousel)
+    {
+        carousel.reloadData()
+    }
+    
     func carouselDidEndScrollingAnimation(carousel:iCarousel)
     {
         if let _=streamsArray
