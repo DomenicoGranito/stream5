@@ -24,6 +24,7 @@ class ModalViewController: UIViewController
     
     var isPlaying=true
     var lastPlay=false
+    var selected=false
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -223,35 +224,44 @@ class ModalViewController: UIViewController
         carousel.reloadData()
     }
     
+    func carousel(carousel:iCarousel, didSelectItemAtIndex index:Int)
+    {
+        play()
+        selected=true
+    }
+    
     func carouselDidEndScrollingAnimation(carousel:iCarousel)
     {
-        if let _=streamsArray
+        if !selected
         {
-            selectedItemIndex=carousel.currentItemIndex
-            stream=streamsArray![selectedItemIndex] as? Stream
-            
-            updateButtons()
-            updatePlayerWithStream()
-        }
-        
-        UIView.animateWithDuration(0.5, animations:{
-            carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
-            }, completion:{(finished:Bool)->Void in
+            if let _=streamsArray
+            {
+                selectedItemIndex=carousel.currentItemIndex
+                stream=streamsArray![selectedItemIndex] as? Stream
                 
-                if self.lastPlay
-                {
-                    self.timer?.invalidate()
-                    self.player?.cancelRequestPlayInfo()
-                    self.player?.currentPlaybackTime=self.player!.duration
-                    self.player?.stop()
-                    self.player?.contentURL=nil
-                    self.player=nil
-                }
-                else
-                {
-                    self.addPlayerAtIndex()
-                }
-        })
+                updateButtons()
+                updatePlayerWithStream()
+            }
+            
+            UIView.animateWithDuration(0.5, animations:{
+                carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+                }, completion:{(finished:Bool)->Void in
+                    
+                    if self.lastPlay
+                    {
+                        self.timer?.invalidate()
+                        self.player?.cancelRequestPlayInfo()
+                        self.player?.currentPlaybackTime=self.player!.duration
+                        self.player?.stop()
+                        self.player?.contentURL=nil
+                        self.player=nil
+                    }
+                    else
+                    {
+                        self.addPlayerAtIndex()
+                    }
+            })
+        }
     }
     
     func carousel(carousel:iCarousel, valueForOption option:iCarouselOption, withDefault value:CGFloat)->CGFloat
