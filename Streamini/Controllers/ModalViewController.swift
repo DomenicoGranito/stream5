@@ -24,7 +24,6 @@ class ModalViewController: UIViewController
     
     var isPlaying=true
     var lastPlay=false
-    var selected=false
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -227,22 +226,21 @@ class ModalViewController: UIViewController
     func carousel(carousel:iCarousel, didSelectItemAtIndex index:Int)
     {
         play()
-        selected=true
     }
     
     func carouselDidEndScrollingAnimation(carousel:iCarousel)
     {
-        if !selected
+        if let _=streamsArray
         {
-            if let _=streamsArray
-            {
-                selectedItemIndex=carousel.currentItemIndex
-                stream=streamsArray![selectedItemIndex] as? Stream
-                
-                updateButtons()
-                updatePlayerWithStream()
-            }
+            selectedItemIndex=carousel.currentItemIndex
+            stream=streamsArray![selectedItemIndex] as? Stream
             
+            updateButtons()
+            updatePlayerWithStream()
+        }
+        
+        if carousel.currentItemView!.subviews.count==0
+        {
             UIView.animateWithDuration(0.5, animations:{
                 carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
                 }, completion:{(finished:Bool)->Void in
