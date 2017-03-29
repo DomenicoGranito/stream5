@@ -47,6 +47,7 @@ class StreamMappingProvider: NSObject {
         
         mapping.addAttributeMappingsFromDictionary([
             "id"            : "id",
+            "streamkey"     : "videoID",
             "title"         : "title",
             "hash"          : "streamHash",
             "ended"         : "ended",

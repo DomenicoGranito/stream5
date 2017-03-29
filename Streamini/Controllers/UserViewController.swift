@@ -68,27 +68,25 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBAction func avatarButtonPressed()
     {
         let actionSheet=UIActionSheet.changeUserpicActionSheet(self)
-        actionSheet.showInView(self.view)
+        actionSheet.showInView(view)
     }
 
     func actionSheet(actionSheet:UIActionSheet, clickedButtonAtIndex buttonIndex:Int)
     {
+        let controller=UIImagePickerController()
+        controller.allowsEditing=true
+        controller.delegate=self
+        
         if buttonIndex==1
         {
-            let controller=UIImagePickerController()
             controller.sourceType = .PhotoLibrary
-            controller.allowsEditing=true
-            controller.delegate=self
-            self.presentViewController(controller, animated:true, completion:nil)
         }
         if buttonIndex==2
         {
-            let controller=UIImagePickerController()
             controller.sourceType = .Camera
-            controller.allowsEditing=true
-            controller.delegate=self
-            self.presentViewController(controller, animated:true, completion:nil)
         }
+        
+        self.presentViewController(controller, animated:true, completion:nil)
     }
 
     func imagePickerController(picker:UIImagePickerController, didFinishPickingImage image:UIImage!, editingInfo:[NSObject:AnyObject]!)

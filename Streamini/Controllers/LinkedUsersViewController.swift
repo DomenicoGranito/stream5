@@ -43,8 +43,6 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         super.viewDidLoad()
         configureView()
     }
-        
-    // MARK: - StreamSelecting
     
     func streamDidSelected(stream:Stream)
     {
