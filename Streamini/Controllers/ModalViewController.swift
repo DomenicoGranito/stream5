@@ -250,11 +250,7 @@ class ModalViewController: UIViewController
         
         if selected&&carousel.currentItemView!.subviews.count==0
         {
-            UIView.animateWithDuration(0.5, animations:{
-                carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
-                }, completion:{(finished:Bool)->Void in
-                    self.addPlayerAtIndex()
-            })
+            showPlayer()
         }
     }
     
@@ -273,6 +269,15 @@ class ModalViewController: UIViewController
         default:
             return value
         }
+    }
+    
+    func showPlayer()
+    {
+        UIView.animateWithDuration(0.5, animations:{
+            self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+            }, completion:{(finished:Bool)->Void in
+                self.addPlayerAtIndex()
+        })
     }
     
     func addPlayerAtIndex()
