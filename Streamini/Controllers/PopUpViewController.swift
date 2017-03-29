@@ -105,7 +105,7 @@ class PopUpViewController: BaseViewController
             }
             else
             {
-                SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
+                SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1, streamKey:stream!.videoID)
             }
         }
         if indexPath.row==6

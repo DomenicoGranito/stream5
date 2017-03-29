@@ -72,7 +72,7 @@ class ModalViewController: UIViewController
         videoTitleLbl?.text=stream?.title
         videoArtistNameLbl?.text=stream?.user.name
         
-        SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name)
+        SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, streamKey:stream!.videoID)
         
         if SongManager.isAlreadyFavourited(stream!.id)
         {
@@ -326,7 +326,7 @@ class ModalViewController: UIViewController
         else
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1)
+            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1, streamKey:stream!.videoID)
         }
     }
     

@@ -67,6 +67,7 @@ class VideosViewController: UIViewController
         stream.id=favouriteStreams![row].valueForKey("streamID") as! UInt
         stream.title=favouriteStreams![row].valueForKey("streamTitle") as! String
         stream.streamHash=favouriteStreams![row].valueForKey("streamHash") as! String
+        stream.videoID=favouriteStreams![row].valueForKey("streamKey") as! String
         stream.user=user
         
         return stream

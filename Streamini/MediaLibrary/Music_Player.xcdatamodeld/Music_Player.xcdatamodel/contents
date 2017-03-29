@@ -3,6 +3,7 @@
     <entity name="Favourites" syncable="YES">
         <attribute name="streamHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="streamKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamUserName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -14,6 +15,7 @@
     <entity name="RecentlyPlayed" syncable="YES">
         <attribute name="streamHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="streamKey" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="streamUserName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -34,9 +36,9 @@
         <relationship name="playlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Playlist" inverseName="songs" inverseEntity="Playlist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Favourites" positionX="-243" positionY="216" width="128" height="120"/>
+        <element name="Favourites" positionX="-243" positionY="216" width="128" height="135"/>
         <element name="Playlist" positionX="-92" positionY="203" width="128" height="75"/>
-        <element name="RecentlyPlayed" positionX="-243" positionY="216" width="128" height="105"/>
+        <element name="RecentlyPlayed" positionX="-243" positionY="216" width="128" height="120"/>
         <element name="Settings" positionX="-234" positionY="81" width="128" height="90"/>
         <element name="Song" positionX="-387" positionY="198" width="128" height="180"/>
     </elements>

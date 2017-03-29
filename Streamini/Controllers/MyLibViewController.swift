@@ -173,6 +173,8 @@ class MyLibViewController: UIViewController
         stream.id=recentlyPlayed![row].valueForKey("streamID") as! UInt
         stream.title=recentlyPlayed![row].valueForKey("streamTitle") as! String
         stream.streamHash=recentlyPlayed![row].valueForKey("streamHash") as! String
+        stream.videoID=recentlyPlayed![row].valueForKey("streamKey") as! String
+        
         stream.user=user
         
         return stream
