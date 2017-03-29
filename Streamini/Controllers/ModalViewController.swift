@@ -23,7 +23,6 @@ class ModalViewController: UIViewController
     @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=true
-    var lastPlay=false
     var selected=true
     var player:DWMoviePlayerController?
     var stream:Stream?
@@ -60,7 +59,7 @@ class ModalViewController: UIViewController
         player?.play()
     }
     
-    override func viewDidDisappear(animated:Bool)
+    override func viewWillDisappear(animated:Bool)
     {
         player?.pause()
     }
@@ -254,20 +253,7 @@ class ModalViewController: UIViewController
             UIView.animateWithDuration(0.5, animations:{
                 carousel.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
                 }, completion:{(finished:Bool)->Void in
-                    
-                    if self.lastPlay
-                    {
-                        self.timer?.invalidate()
-                        self.player?.cancelRequestPlayInfo()
-                        self.player?.currentPlaybackTime=self.player!.duration
-                        self.player?.stop()
-                        self.player?.contentURL=nil
-                        self.player=nil
-                    }
-                    else
-                    {
-                        self.addPlayerAtIndex()
-                    }
+                    self.addPlayerAtIndex()
             })
         }
     }
@@ -353,7 +339,7 @@ class ModalViewController: UIViewController
         UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
         dismissViewControllerAnimated(true, completion:nil)
         
-        lastPlay=true
+        timer?.invalidate()
     }
     
     @IBAction func menu()
