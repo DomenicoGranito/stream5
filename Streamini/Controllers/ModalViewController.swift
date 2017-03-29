@@ -55,6 +55,13 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+        
+        player?.play()
+    }
+    
+    override func viewDidDisappear(animated:Bool)
+    {
+        player?.pause()
     }
     
     func updatePlayerWithStream()
