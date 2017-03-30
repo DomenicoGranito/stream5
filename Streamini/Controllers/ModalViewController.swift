@@ -23,7 +23,6 @@ class ModalViewController: UIViewController
     @IBOutlet var shuffleButton:UIButton?
     
     var isPlaying=true
-    var selected=true
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -184,6 +183,11 @@ class ModalViewController: UIViewController
             
             playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
             isPlaying=true
+            
+            if carousel!.currentItemView!.subviews.count==0
+            {
+                showPlayer()
+            }
         }
     }
     
@@ -226,15 +230,6 @@ class ModalViewController: UIViewController
     func carousel(carousel:iCarousel, didSelectItemAtIndex index:Int)
     {
         play()
-        
-        if selected
-        {
-            selected=false
-        }
-        else
-        {
-            selected=true
-        }
     }
     
     func carouselDidEndScrollingAnimation(carousel:iCarousel)
@@ -248,7 +243,7 @@ class ModalViewController: UIViewController
             updatePlayerWithStream()
         }
         
-        if selected&&carousel.currentItemView!.subviews.count==0
+        if isPlaying&&carousel.currentItemView!.subviews.count==0
         {
             showPlayer()
         }
