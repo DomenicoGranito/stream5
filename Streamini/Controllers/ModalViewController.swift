@@ -310,7 +310,8 @@ class ModalViewController: UIViewController
     
     func rotateScreen()
     {
-        print("ROTATE SCREEN")
+        let value=UIInterfaceOrientation.LandscapeLeft.rawValue
+        UIDevice.currentDevice().setValue(value, forKey:"orientation")
     }
     
     @IBAction func more()
