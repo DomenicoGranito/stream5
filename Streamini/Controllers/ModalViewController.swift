@@ -33,6 +33,8 @@ class ModalViewController: UIViewController
     
     override func viewDidLoad()
     {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
+        
         createPlaylist()
         updatePlayerWithStream()
         
@@ -312,6 +314,24 @@ class ModalViewController: UIViewController
     {
         let value=UIInterfaceOrientation.LandscapeRight.rawValue
         UIDevice.currentDevice().setValue(value, forKey:"orientation")
+    }
+    
+    func onDeviceOrientationChange()
+    {
+        let orientation=UIDevice.currentDevice().orientation
+        
+        if orientation==UIDeviceOrientation.LandscapeLeft
+        {
+            print("LEFT")
+        }
+        if orientation==UIDeviceOrientation.LandscapeRight
+        {
+            print("RIGHT")
+        }
+        if orientation==UIDeviceOrientation.Portrait
+        {
+            print("PORTRAIT")
+        }
     }
     
     @IBAction func more()
