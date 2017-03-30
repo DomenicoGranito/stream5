@@ -283,6 +283,11 @@ class ModalViewController: UIViewController
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
         
+        let fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width, 50, 50))
+        fullScreenButton.setImage(UIImage(named:"fullscreen"), forState:.Normal)
+        fullScreenButton.addTarget(self, action:#selector(rotateScreen), forControlEvents:.TouchUpInside)
+        view.insertSubview(fullScreenButton, aboveSubview:player!.view)
+
         if videoIDs[selectedItemIndex]==""
         {
             let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
@@ -301,6 +306,11 @@ class ModalViewController: UIViewController
         player?.startRequestPlayInfo()
         player?.play()
         playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+    }
+    
+    func rotateScreen()
+    {
+        print("ROTATE SCREEN")
     }
     
     @IBAction func more()
