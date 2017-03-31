@@ -336,7 +336,8 @@ class ModalViewController: UIViewController
     {
         informationView?.hidden=true
         bottomSpaceConstraint!.constant=75
-        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
+        player!.view.frame=CGRectMake(-124, -7, view.frame.size.width, view.frame.size.height)
+        carousel?.scrollEnabled=false
     }
     
     func showPortrait()
@@ -344,6 +345,11 @@ class ModalViewController: UIViewController
         informationView?.hidden=false
         bottomSpaceConstraint!.constant=0
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        
+        if let _=streamsArray
+        {
+            carousel?.scrollEnabled=true
+        }
     }
     
     @IBAction func more()
