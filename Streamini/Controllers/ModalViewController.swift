@@ -21,6 +21,8 @@ class ModalViewController: UIViewController
     @IBOutlet var previousButton:UIButton?
     @IBOutlet var nextButton:UIButton?
     @IBOutlet var shuffleButton:UIButton?
+    @IBOutlet var bottomSpaceConstraint:NSLayoutConstraint?
+    @IBOutlet var informationView:UIView?
     
     var isPlaying=true
     var player:DWMoviePlayerController?
@@ -320,18 +322,28 @@ class ModalViewController: UIViewController
     {
         let orientation=UIDevice.currentDevice().orientation
         
-        if orientation==UIDeviceOrientation.LandscapeLeft
+        if orientation==UIDeviceOrientation.LandscapeLeft||orientation==UIDeviceOrientation.LandscapeRight
         {
-            print("LEFT")
-        }
-        if orientation==UIDeviceOrientation.LandscapeRight
-        {
-            print("RIGHT")
+            showLandscape()
         }
         if orientation==UIDeviceOrientation.Portrait
         {
-            print("PORTRAIT")
+            showPortrait()
         }
+    }
+    
+    func showLandscape()
+    {
+        informationView?.hidden=true
+        bottomSpaceConstraint!.constant=75
+        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
+    }
+    
+    func showPortrait()
+    {
+        informationView?.hidden=false
+        bottomSpaceConstraint!.constant=0
+        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
     }
     
     @IBAction func more()
