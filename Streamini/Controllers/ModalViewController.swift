@@ -17,12 +17,15 @@ class ModalViewController: UIViewController
     @IBOutlet var videoDurationLbl:UILabel?
     @IBOutlet var likeButton:UIButton?
     @IBOutlet var playButton:UIButton?
+    @IBOutlet var playlistButton:UIButton?
+    @IBOutlet var closeButton:UIButton?
     @IBOutlet var seekBar:UISlider?
     @IBOutlet var previousButton:UIButton?
     @IBOutlet var nextButton:UIButton?
     @IBOutlet var shuffleButton:UIButton?
     @IBOutlet var bottomSpaceConstraint:NSLayoutConstraint?
     @IBOutlet var informationView:UIView?
+    @IBOutlet var topView:UIView?
     
     var isPlaying=true
     var player:DWMoviePlayerController?
@@ -291,7 +294,7 @@ class ModalViewController: UIViewController
         fullScreenButton.setImage(UIImage(named:"fullscreen"), forState:.Normal)
         fullScreenButton.addTarget(self, action:#selector(rotateScreen), forControlEvents:.TouchUpInside)
         view.insertSubview(fullScreenButton, aboveSubview:player!.view)
-
+        
         if videoIDs[selectedItemIndex]==""
         {
             let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
@@ -338,6 +341,9 @@ class ModalViewController: UIViewController
         bottomSpaceConstraint!.constant=75
         player!.view.frame=CGRectMake(-124, -7, view.frame.size.width, view.frame.size.height)
         carousel?.scrollEnabled=false
+        view.bringSubviewToFront(topView!)
+        playlistButton?.hidden=true
+        closeButton?.setImage(UIImage(named:"nonfullscreen"), forState:.Normal)
     }
     
     func showPortrait()
@@ -345,6 +351,8 @@ class ModalViewController: UIViewController
         informationView?.hidden=false
         bottomSpaceConstraint!.constant=0
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        playlistButton?.hidden=false
+        closeButton?.setImage(UIImage(named:"arrow_down"), forState:.Normal)
         
         if let _=streamsArray
         {
@@ -385,10 +393,20 @@ class ModalViewController: UIViewController
     
     @IBAction func close()
     {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
-        dismissViewControllerAnimated(true, completion:nil)
+        let orientation=UIDevice.currentDevice().orientation
         
-        timer?.invalidate()
+        if orientation==UIDeviceOrientation.LandscapeLeft||orientation==UIDeviceOrientation.LandscapeRight
+        {
+            let value=UIInterfaceOrientation.Portrait.rawValue
+            UIDevice.currentDevice().setValue(value, forKey:"orientation")
+        }
+        if orientation==UIDeviceOrientation.Portrait
+        {
+            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
+            dismissViewControllerAnimated(true, completion:nil)
+            
+            timer?.invalidate()
+        }
     }
     
     @IBAction func menu()

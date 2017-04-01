@@ -175,7 +175,7 @@ class HomeViewController: BaseViewController
             
             for j in 0 ..< videos.count
             {
-                let videoID=videos[j]["id"] as! String
+                let videoID=videos[j]["id"] as! Int
                 let streamKey=videos[j]["streamkey"] as! String
                 let videoTitle=videos[j]["title"] as! String
                 let videoHash=videos[j]["hash"] as! String
@@ -183,22 +183,22 @@ class HomeViewController: BaseViewController
                 let lat=videos[j]["lat"]!.doubleValue
                 let city=videos[j]["city"] as! String
                 let ended=videos[j]["ended"] as? String
-                let viewers=videos[j]["viewers"] as! String
-                let tviewers=videos[j]["tviewers"] as! String
-                let rviewers=videos[j]["rviewers"] as! String
-                let likes=videos[j]["likes"] as! String
-                let rlikes=videos[j]["rlikes"] as! String
-                let userID=videos[j]["user"]!["id"] as! String
+                let viewers=videos[j]["viewers"] as! Int
+                let tviewers=videos[j]["tviewers"] as! Int
+                let rviewers=videos[j]["rviewers"] as! Int
+                let likes=videos[j]["likes"] as! Int
+                let rlikes=videos[j]["rlikes"] as! Int
+                let userID=videos[j]["user"]!["id"] as! Int
                 let userName=videos[j]["user"]!["name"] as! String
                 let userAvatar=videos[j]["user"]!["avatar"] as? String
                 
                 let user=User()
-                user.id=UInt(userID)!
+                user.id=UInt(userID)
                 user.name=userName
                 user.avatar=userAvatar
                 
                 let video=Stream()
-                video.id=UInt(videoID)!
+                video.id=UInt(videoID)
                 video.videoID=streamKey
                 video.title=videoTitle
                 video.streamHash=videoHash
@@ -211,11 +211,11 @@ class HomeViewController: BaseViewController
                     video.ended=NSDate(timeIntervalSince1970:Double(e)!)
                 }
                 
-                video.viewers=UInt(viewers)!
-                video.tviewers=UInt(tviewers)!
-                video.rviewers=UInt(rviewers)!
-                video.likes=UInt(likes)!
-                video.rlikes=UInt(rlikes)!
+                video.viewers=UInt(viewers)
+                video.tviewers=UInt(tviewers)
+                video.rviewers=UInt(rviewers)
+                video.likes=UInt(likes)
+                video.rlikes=UInt(rlikes)
                 video.user=user
                 
                 oneCategoryItemsArray.addObject(video)

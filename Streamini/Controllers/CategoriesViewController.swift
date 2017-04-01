@@ -127,7 +127,7 @@ class CategoriesViewController: BaseViewController
         
         for i in 0 ..< data.count
         {
-            let videoID=data[i]["id"] as! String
+            let videoID=data[i]["id"] as! Int
             let streamKey=data[i]["streamkey"] as! String
             let videoTitle=data[i]["title"] as! String
             let videoHash=data[i]["hash"] as! String
@@ -135,22 +135,22 @@ class CategoriesViewController: BaseViewController
             let lat=data[i]["lat"]!.doubleValue
             let city=data[i]["city"] as! String
             let ended=data[i]["ended"] as? String
-            let viewers=data[i]["viewers"] as! String
-            let tviewers=data[i]["tviewers"] as! String
-            let rviewers=data[i]["rviewers"] as! String
-            let likes=data[i]["likes"] as! String
-            let rlikes=data[i]["rlikes"] as! String
-            let userID=data[i]["user"]!["id"] as! String
+            let viewers=data[i]["viewers"] as! Int
+            let tviewers=data[i]["tviewers"] as! Int
+            let rviewers=data[i]["rviewers"] as! Int
+            let likes=data[i]["likes"] as! Int
+            let rlikes=data[i]["rlikes"] as! Int
+            let userID=data[i]["user"]!["id"] as! Int
             let userName=data[i]["user"]!["name"] as! String
             let userAvatar=data[i]["user"]!["avatar"] as? String
             
             let user=User()
-            user.id=UInt(userID)!
+            user.id=UInt(userID)
             user.name=userName
             user.avatar=userAvatar
             
             let video=Stream()
-            video.id=UInt(videoID)!
+            video.id=UInt(videoID)
             video.videoID=streamKey
             video.title=videoTitle
             video.streamHash=videoHash
@@ -163,11 +163,11 @@ class CategoriesViewController: BaseViewController
                 video.ended=NSDate(timeIntervalSince1970:Double(e)!)
             }
             
-            video.viewers=UInt(viewers)!
-            video.tviewers=UInt(tviewers)!
-            video.rviewers=UInt(rviewers)!
-            video.likes=UInt(likes)!
-            video.rlikes=UInt(rlikes)!
+            video.viewers=UInt(viewers)
+            video.tviewers=UInt(tviewers)
+            video.rviewers=UInt(rviewers)
+            video.likes=UInt(likes)
+            video.rlikes=UInt(rlikes)
             video.user=user
             
             sectionItemsArray.addObject(video)
