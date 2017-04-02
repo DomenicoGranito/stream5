@@ -406,6 +406,8 @@ class ModalViewController: UIViewController
             dismissViewControllerAnimated(true, completion:nil)
             
             timer?.invalidate()
+            
+            player?.shouldAutoplay=false
         }
     }
     
