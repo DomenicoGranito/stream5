@@ -22,6 +22,11 @@ class PlaylistsTableViewController: UITableViewController
         refreshPlaylists()
     }
     
+    override func viewWillAppear(animated:Bool)
+    {
+        navigationController?.navigationBarHidden=false
+    }
+    
     @IBAction func didTapAddButton(sender:AnyObject)
     {
         showTextFieldDialog("Add playlist", message: "", placeHolder: "Name", okButtonTitle: "Add", didTapOkButton:
@@ -46,18 +51,9 @@ class PlaylistsTableViewController: UITableViewController
     
     override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        let playlistName=playlistNames[indexPath.row]
-        performSegueWithIdentifier("PlaylistsToPlaylist", sender:playlistName)
-    }
-    
-    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject!)
-    {
-        if segue.identifier=="PlaylistsToPlaylist"
-        {
-            let playlistName=sender as! String
-            let playlistVC=(segue.destinationViewController as? SeriesViewController)!
-            //playlistVC.playlistName=playlistName
-        }
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("SeriesViewController") as! SeriesViewController
+        navigationController?.pushViewController(vc, animated:true)
     }
     
     func addPlaylist(name:String)
