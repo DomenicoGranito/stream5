@@ -39,12 +39,6 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         view!.addSubview(blockingView)
     }
     
-    func scrollViewDidEndDecelerating(scrollView:UIScrollView)
-    {
-        let pageNumber=scrollView.contentOffset.x/scrollView.frame.size.width
-        pageControl.currentPage=Int(pageNumber)
-    }
-    
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 80
@@ -77,6 +71,12 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         return UITableViewCell()
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView:UIScrollView)
+    {
+        let pageNumber=scrollView.contentOffset.x/scrollView.frame.size.width
+        pageControl.currentPage=Int(pageNumber)
     }
     
     func scrollViewDidScroll(scrollView:UIScrollView)
