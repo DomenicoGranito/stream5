@@ -17,7 +17,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     let scrollView=UIScrollView(frame:CGRectMake(0, 0, 320, 300))
     var frame=CGRectMake(0, 0, 0, 0)
     var blockingView:UIView!
-
+    
     override func viewDidLoad()
     {
         scrollView.delegate=self
@@ -25,21 +25,13 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         
         for index in 0..<2
         {
-            frame.origin.x=scrollView.frame.size.width*CGFloat(index)
-            frame.size=scrollView.frame.size
-            scrollView.pagingEnabled=true
-            
-            let subView=UIView(frame:frame)
+            let subView=UIView(frame:CGRectMake(CGFloat(index*320), 0, 320, 300))
             scrollView.addSubview(subView)
         }
         
         scrollView.contentSize=CGSizeMake(scrollView.frame.size.width*2, scrollView.frame.size.height)
         
         tableHeader.clipsToBounds=true
-        navigationController!.navigationBar.backgroundColor=UIColor.clearColor()
-        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:.Default)
-        navigationController!.navigationBar.shadowImage!=UIImage()
-        
         tableView.contentOffset=CGPointMake(0, 64)
         
         blockingView=UIView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))
@@ -50,7 +42,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func scrollViewDidEndDecelerating(scrollView:UIScrollView)
     {
-        let pageNumber=round(scrollView.contentOffset.x/scrollView.frame.size.width)
+        let pageNumber=scrollView.contentOffset.x/scrollView.frame.size.width
         pageControl.currentPage=Int(pageNumber)
     }
     
@@ -62,16 +54,15 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
-        headerView.backgroundColor=UIColor(white:0.2, alpha:1)
+        headerView.backgroundColor=UIColor.blackColor()
         
-        let shuffle=UIButton(frame:CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width-80, 30))
+        let shuffle=UIButton(frame:CGRectMake(40, -25, UIScreen.mainScreen().bounds.size.width-80, 50))
         shuffle.setTitle("SHUFFLE PLAY", forState:.Normal)
         shuffle.backgroundColor=UIColor.greenColor()
         
         let headerTitle=UILabel(frame:CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width-20, 30))
         headerTitle.text="INCLUDES"
         headerTitle.textColor=UIColor.whiteColor()
-        headerTitle.backgroundColor=UIColor.clearColor()
         
         headerView.addSubview(shuffle)
         headerView.addSubview(headerTitle)
@@ -91,7 +82,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func scrollViewDidScroll(scrollView:UIScrollView)
     {
-        if scrollView.contentOffset.y>-20
+        if scrollView.contentOffset.y > -20
         {
             if searchBar.alpha==1
             {
