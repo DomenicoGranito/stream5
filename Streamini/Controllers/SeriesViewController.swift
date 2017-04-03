@@ -15,7 +15,6 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     @IBOutlet var pageControl:UIPageControl!
     
     let scrollView=UIScrollView(frame:CGRectMake(0, 0, 320, 300))
-    var frame=CGRectMake(0, 0, 0, 0)
     var blockingView:UIView!
     
     override func viewDidLoad()
