@@ -16,8 +16,6 @@ class PlaylistsTableViewController: UITableViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        
         let appDel = UIApplication.sharedApplication().delegate as? AppDelegate
         context = appDel!.managedObjectContext
         
@@ -31,11 +29,6 @@ class PlaylistsTableViewController: UITableViewController
                 self.addPlaylist(title!)
                 self.refreshPlaylists()
         })
-    }
-
-    override func numberOfSectionsInTableView(tableView:UITableView)->Int
-    {
-        return 1
     }
     
     override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
@@ -67,7 +60,7 @@ class PlaylistsTableViewController: UITableViewController
         }
     }
     
-    func addPlaylist(name: String)
+    func addPlaylist(name:String)
     {
         if(!SongManager.isPlaylist(name))
         {
@@ -102,10 +95,10 @@ class PlaylistsTableViewController: UITableViewController
     
     override func tableView(tableView:UITableView, commitEditingStyle editingStyle:UITableViewCellEditingStyle, forRowAtIndexPath indexPath:NSIndexPath)
     {
-        if editingStyle == UITableViewCellEditingStyle.Delete
+        if editingStyle == .Delete
         {
-            let row = indexPath.row
-            let playlistName = playlists[row].valueForKey("playlistName") as! String
+            let row=indexPath.row
+            let playlistName=playlists[row].valueForKey("playlistName") as! String
             deletePlaylist(playlistName)
             refreshPlaylists()
         }
