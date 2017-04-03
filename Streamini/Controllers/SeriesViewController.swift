@@ -6,20 +6,13 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import UIKit
-
-
-
-
-    class SeriesViewController: UIViewController, UIScrollViewDelegate {
-    
+class SeriesViewController: UIViewController, UIScrollViewDelegate
+{
     let scrollView = UIScrollView(frame: CGRectMake(0, 0, 320, 300))
     var colors:[UIColor] = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor()]
     var frame: CGRect = CGRectMake(0, 0, 0, 0)
     var pageControl : UIPageControl = UIPageControl(frame: CGRectMake(50, 300, 200, 50))
     
-
-
     @IBOutlet weak var tableHeader: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
@@ -28,14 +21,11 @@ import UIKit
     
     override func viewDidLoad()
     {
-        
-        
-        //
         configurePageControl()
         
         scrollView.delegate = self
-       // self.view.addSubview(scrollView)
-       self.tableHeader.addSubview(scrollView)
+        // self.view.addSubview(scrollView)
+        self.tableHeader.addSubview(scrollView)
         for index in 0..<2 {
             
             frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
@@ -49,7 +39,7 @@ import UIKit
         
         self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height)
         pageControl.addTarget(self, action:#selector(changePage), forControlEvents:.ValueChanged)
-
+        
         self.tableHeader.clipsToBounds = true
         self.navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
@@ -64,30 +54,32 @@ import UIKit
         self.blockingView.hidden = true
         self.view!.addSubview(blockingView)
     }
-    //
-        func configurePageControl() {
-            // The total number of pages that are available is based on how many available colors we have.
-            self.pageControl.numberOfPages = colors.count
-            self.pageControl.currentPage = 0
-            self.pageControl.tintColor = UIColor.redColor()
-            self.pageControl.pageIndicatorTintColor = UIColor.blackColor()
-            self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
-            self.view.addSubview(pageControl)
-            
-        }
+    
+    func configurePageControl()
+    {
+        // The total number of pages that are available is based on how many available colors we have.
+        self.pageControl.numberOfPages = colors.count
+        self.pageControl.currentPage = 0
+        self.pageControl.tintColor = UIColor.redColor()
+        self.pageControl.pageIndicatorTintColor = UIColor.blackColor()
+        self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
+        self.view.addSubview(pageControl)
         
-        // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
-        func changePage(sender: AnyObject) -> () {
-            let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
-            scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
-        }
-        
-        func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-            
-            let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
-            pageControl.currentPage = Int(pageNumber)
-        }
-                
+    }
+    
+    // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
+    func changePage(sender: AnyObject) -> ()
+    {
+        let x = CGFloat(pageControl.currentPage) * scrollView.frame.size.width
+        scrollView.setContentOffset(CGPointMake(x, 0), animated: true)
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView)
+    {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControl.currentPage = Int(pageNumber)
+    }
+    
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return 80
@@ -127,26 +119,31 @@ import UIKit
     {
         // This weird 44 - 64 is basically to mean:
         // Past 44 pixels (assuming the tableview starts at -64, which it does because of some automatic padding related to the status and nav bar)
-        if scrollView.contentOffset.y > 44 - 64 {
+        if scrollView.contentOffset.y > 44 - 64
+        {
             // Hide the search bar, and show the blocking view so when the content goes behind the nav bar, you dont see it
-            if searchBar.alpha == 1 {
+            if searchBar.alpha == 1
+            {
                 UIView.animateWithDuration(0.3, animations: {() -> Void in
                     self.searchBar.alpha = 0
-                }, completion: {(finished: Bool) -> Void in
-                    self.blockingView.hidden = false
+                    }, completion: {(finished: Bool) -> Void in
+                        self.blockingView.hidden = false
                 })
             }
             // we move the top view down at the same pace we scroll up, to give the effect of it being always in the same place on the screen
             self.topViewTopSpaceConstraint.constant = max(0, scrollView.contentOffset.y - (44 - 64))
-        }else{
-                // showing the search bar again, and hiding the no longer needed blocking view (which would block the search bar)
-                if searchBar.alpha == 0 {
-                    self.blockingView.hidden = true
-                    UIView.animateWithDuration(0.3, animations: {() -> Void in
-                        self.searchBar.alpha = 1
-                    })
-                }
-                self.topViewTopSpaceConstraint.constant = 0
+        }
+        else
+        {
+            // showing the search bar again, and hiding the no longer needed blocking view (which would block the search bar)
+            if searchBar.alpha == 0
+            {
+                self.blockingView.hidden = true
+                UIView.animateWithDuration(0.3, animations: {() -> Void in
+                    self.searchBar.alpha = 1
+                })
+            }
+            self.topViewTopSpaceConstraint.constant = 0
         }
     }
 }

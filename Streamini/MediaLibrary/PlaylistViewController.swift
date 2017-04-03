@@ -39,13 +39,11 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate
         self.navigationController?.navigationBarHidden = false
     }
     
-    //stop video only when view popped
     override func viewDidDisappear(animated: Bool) {
         if (stopVid == true){
             player.stop()
             player.player = nil
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -81,7 +79,6 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate
         }
     }
     
-    //initialize avPlayer
     func startPlayer(){
         if(player.playlistDelegate == nil){
             //sets avplayercontainer's delegate as the playlist shown
@@ -92,8 +89,8 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate
         player.player?.play()
     }
     
-    //initialize Youtube WebView
-    func pushWebView() {
+    func pushWebView()
+    {
         performSegueWithIdentifier("playlistToSearchView", sender: nil)
     }
 }
