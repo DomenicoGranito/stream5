@@ -79,7 +79,6 @@
 		B67448251E2C63CC0049890F /* SongCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B674480F1E2C63CC0049890F /* SongCell.swift */; };
 		B67448261E2C63CC0049890F /* SongManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448101E2C63CC0049890F /* SongManager.swift */; };
 		B67448271E2C63CC0049890F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448111E2C63CC0049890F /* TabBarController.swift */; };
-		B67448281E2C63CC0049890F /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448121E2C63CC0049890F /* UserProfileViewController.swift */; };
 		B67448291E2C63CC0049890F /* YouTubeSearchWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448131E2C63CC0049890F /* YouTubeSearchWebView.swift */; };
 		B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67448311E2C7FB30049890F /* MobileCoreServices.framework */; };
 		B674483C1E2C96780049890F /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = B67448351E2C96780049890F /* black.png */; };
@@ -89,14 +88,6 @@
 		B67448401E2C96780049890F /* pastel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67448391E2C96780049890F /* pastel.jpg */; };
 		B67448411E2C96780049890F /* shuffle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B674483A1E2C96780049890F /* shuffle@2x.png */; };
 		B67448421E2C96780049890F /* video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B674483B1E2C96780049890F /* video@2x.png */; };
-		B674484C1E2C968B0049890F /* ContainerView.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B67448441E2C968B0049890F /* ContainerView.PNG */; };
-		B674484D1E2C968B0049890F /* ContainerViewFunctionality.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B67448451E2C968B0049890F /* ContainerViewFunctionality.PNG */; };
-		B674484E1E2C968B0049890F /* Downloads.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B67448461E2C968B0049890F /* Downloads.PNG */; };
-		B674484F1E2C968B0049890F /* FullScreen.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B67448471E2C968B0049890F /* FullScreen.PNG */; };
-		B67448501E2C968B0049890F /* LockScreenInfo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67448481E2C968B0049890F /* LockScreenInfo.jpg */; };
-		B67448511E2C968B0049890F /* Playlists.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B67448491E2C968B0049890F /* Playlists.PNG */; };
-		B67448521E2C968B0049890F /* Settings.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B674484A1E2C968B0049890F /* Settings.PNG */; };
-		B67448531E2C968B0049890F /* WebView.PNG in Resources */ = {isa = PBXBuildFile; fileRef = B674484B1E2C968B0049890F /* WebView.PNG */; };
 		B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448561E2C96B90049890F /* AVAssetAudio.swift */; };
 		B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448571E2C96B90049890F /* UIViewController+Alert.swift */; };
 		B6782DDA1E1969F600289D8A /* ARNVTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */; };
@@ -314,7 +305,6 @@
 		B674480F1E2C63CC0049890F /* SongCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongCell.swift; path = MediaLibrary/SongCell.swift; sourceTree = "<group>"; };
 		B67448101E2C63CC0049890F /* SongManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SongManager.swift; path = MediaLibrary/SongManager.swift; sourceTree = "<group>"; };
 		B67448111E2C63CC0049890F /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = MediaLibrary/TabBarController.swift; sourceTree = "<group>"; };
-		B67448121E2C63CC0049890F /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserProfileViewController.swift; path = MediaLibrary/UserProfileViewController.swift; sourceTree = "<group>"; };
 		B67448131E2C63CC0049890F /* YouTubeSearchWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YouTubeSearchWebView.swift; path = MediaLibrary/YouTubeSearchWebView.swift; sourceTree = "<group>"; };
 		B67448311E2C7FB30049890F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B67448331E2C81560049890F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -325,14 +315,6 @@
 		B67448391E2C96780049890F /* pastel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pastel.jpg; path = MediaLibrary/Images/pastel.jpg; sourceTree = "<group>"; };
 		B674483A1E2C96780049890F /* shuffle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shuffle@2x.png"; path = "MediaLibrary/Images/shuffle@2x.png"; sourceTree = "<group>"; };
 		B674483B1E2C96780049890F /* video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video@2x.png"; path = "MediaLibrary/Images/video@2x.png"; sourceTree = "<group>"; };
-		B67448441E2C968B0049890F /* ContainerView.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ContainerView.PNG; path = MediaLibrary/Images/Screenshots/ContainerView.PNG; sourceTree = "<group>"; };
-		B67448451E2C968B0049890F /* ContainerViewFunctionality.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ContainerViewFunctionality.PNG; path = MediaLibrary/Images/Screenshots/ContainerViewFunctionality.PNG; sourceTree = "<group>"; };
-		B67448461E2C968B0049890F /* Downloads.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Downloads.PNG; path = MediaLibrary/Images/Screenshots/Downloads.PNG; sourceTree = "<group>"; };
-		B67448471E2C968B0049890F /* FullScreen.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FullScreen.PNG; path = MediaLibrary/Images/Screenshots/FullScreen.PNG; sourceTree = "<group>"; };
-		B67448481E2C968B0049890F /* LockScreenInfo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = LockScreenInfo.jpg; path = MediaLibrary/Images/Screenshots/LockScreenInfo.jpg; sourceTree = "<group>"; };
-		B67448491E2C968B0049890F /* Playlists.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Playlists.PNG; path = MediaLibrary/Images/Screenshots/Playlists.PNG; sourceTree = "<group>"; };
-		B674484A1E2C968B0049890F /* Settings.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Settings.PNG; path = MediaLibrary/Images/Screenshots/Settings.PNG; sourceTree = "<group>"; };
-		B674484B1E2C968B0049890F /* WebView.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = WebView.PNG; path = MediaLibrary/Images/Screenshots/WebView.PNG; sourceTree = "<group>"; };
 		B67448561E2C96B90049890F /* AVAssetAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVAssetAudio.swift; path = MediaLibrary/helper/extensions/AVAssetAudio.swift; sourceTree = "<group>"; };
 		B67448571E2C96B90049890F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "MediaLibrary/helper/extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARNVTransitionAnimator.swift; path = ARNTransitionAnimator/ARNVTransitionAnimator.swift; sourceTree = "<group>"; };
@@ -585,7 +567,6 @@
 				B674480F1E2C63CC0049890F /* SongCell.swift */,
 				B67448101E2C63CC0049890F /* SongManager.swift */,
 				B67448111E2C63CC0049890F /* TabBarController.swift */,
-				B67448121E2C63CC0049890F /* UserProfileViewController.swift */,
 				B67448131E2C63CC0049890F /* YouTubeSearchWebView.swift */,
 			);
 			name = Mylibrary;
@@ -604,7 +585,6 @@
 		B67448341E2C95A60049890F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				B67448431E2C967D0049890F /* Screenshots */,
 				B67448351E2C96780049890F /* black.png */,
 				B67448361E2C96780049890F /* droplets.jpg */,
 				B67448371E2C96780049890F /* gear@2x.png */,
@@ -614,21 +594,6 @@
 				B674483B1E2C96780049890F /* video@2x.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		B67448431E2C967D0049890F /* Screenshots */ = {
-			isa = PBXGroup;
-			children = (
-				B67448441E2C968B0049890F /* ContainerView.PNG */,
-				B67448451E2C968B0049890F /* ContainerViewFunctionality.PNG */,
-				B67448461E2C968B0049890F /* Downloads.PNG */,
-				B67448471E2C968B0049890F /* FullScreen.PNG */,
-				B67448481E2C968B0049890F /* LockScreenInfo.jpg */,
-				B67448491E2C968B0049890F /* Playlists.PNG */,
-				B674484A1E2C968B0049890F /* Settings.PNG */,
-				B674484B1E2C968B0049890F /* WebView.PNG */,
-			);
-			name = Screenshots;
 			sourceTree = "<group>";
 		};
 		B67448541E2C96940049890F /* helper */ = {
@@ -1039,27 +1004,19 @@
 			files = (
 				B674483E1E2C96780049890F /* gear@2x.png in Resources */,
 				B7763B011B6110DA00D469E3 /* NSDateTimeAgo.bundle in Resources */,
-				B674484F1E2C968B0049890F /* FullScreen.PNG in Resources */,
-				B67448521E2C968B0049890F /* Settings.PNG in Resources */,
-				B67448501E2C968B0049890F /* LockScreenInfo.jpg in Resources */,
-				B674484D1E2C968B0049890F /* ContainerViewFunctionality.PNG in Resources */,
 				B72475891B4133F50080BE1B /* Localizable.strings in Resources */,
 				3EF1F0301D719DE40055A372 /* test.mp4 in Resources */,
-				B67448531E2C968B0049890F /* WebView.PNG in Resources */,
 				3E2674DE1D7530BA00E33DCD /* user.png in Resources */,
 				B7AA932B1B3172740005972E /* Main.storyboard in Resources */,
 				B7AA93301B3172740005972E /* LaunchScreen.xib in Resources */,
 				B674483D1E2C96780049890F /* droplets.jpg in Resources */,
-				B67448511E2C968B0049890F /* Playlists.PNG in Resources */,
 				B674483F1E2C96780049890F /* hills.jpg in Resources */,
 				B67448401E2C96780049890F /* pastel.jpg in Resources */,
 				B67448411E2C96780049890F /* shuffle@2x.png in Resources */,
 				3E2674DB1D7530BA00E33DCD /* back.png in Resources */,
-				B674484C1E2C968B0049890F /* ContainerView.PNG in Resources */,
 				3E2674DC1D7530BA00E33DCD /* lock.png in Resources */,
 				3E2674DD1D7530BA00E33DCD /* msg.png in Resources */,
 				B7D6F0B91B37F4D90070C36A /* Config.plist in Resources */,
-				B674484E1E2C968B0049890F /* Downloads.PNG in Resources */,
 				B67448421E2C96780049890F /* video@2x.png in Resources */,
 				B66561E21E09884100EDA684 /* README.txt in Resources */,
 				B7AA932D1B3172740005972E /* Images.xcassets in Resources */,
@@ -1167,7 +1124,6 @@
 				A60F82E91D490F4D002E2CEA /* Category.swift in Sources */,
 				B77AABE81B398A3C007DE187 /* Connector.swift in Sources */,
 				B6EAF82A1E28F179007038DC /* CategoryCell.swift in Sources */,
-				B67448281E2C63CC0049890F /* UserProfileViewController.swift in Sources */,
 				B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */,
 				B79469FE1BE1F94B0071CC97 /* StreamExtension.swift in Sources */,
 				3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */,
