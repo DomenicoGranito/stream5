@@ -1,7 +1,5 @@
-import Foundation
-
-enum MenuAction:String{
-    
+enum MenuAction:String
+{
     case copyLink = "copyLinkAction:"
     case saveVideo = "saveToCameraRollAction:"
     

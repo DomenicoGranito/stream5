@@ -6,9 +6,8 @@
 //  Copyright © 2016 Sem. All rights reserved.
 //
 
-//the View Controller that contains the Player and Playlist
-class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate {
-    
+class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate
+{
     @IBOutlet weak var container: UIView!
     var playlist: Playlist!
     var player : Player!
@@ -97,5 +96,4 @@ class PlaylistViewController: UIViewController, PlaylistViewControllerDelegate {
     func pushWebView() {
         performSegueWithIdentifier("playlistToSearchView", sender: nil)
     }
-    
 }

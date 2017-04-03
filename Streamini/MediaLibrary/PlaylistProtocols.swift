@@ -6,9 +6,6 @@
 //  Copyright © 2016 Sem. All rights reserved.
 //
 
-import Foundation
-
-
 protocol PlaylistViewControllerDelegate{
     func pushWebView()
     func startPlayer()

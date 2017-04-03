@@ -9,21 +9,9 @@
 import CoreData
 import AVFoundation
 import AVKit
-//import XCDYouTubeKit
 
-class Playlist: UITableViewController, UISearchResultsUpdating, PlaylistDelegate {
-    
-    
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////
-    ////////
-    //////////
-    ////////////
-    //////////////
-    ////////////////   Initialization
-    
-    
+class Playlist: UITableViewController, UISearchResultsUpdating, PlaylistDelegate
+{
     @IBOutlet var selectButton: UIBarButtonItem!
     @IBOutlet var shuffleButton: UIBarButtonItem!
     @IBOutlet var deleteButton: UIBarButtonItem!
