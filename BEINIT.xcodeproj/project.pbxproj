@@ -82,10 +82,7 @@
 		B67448291E2C63CC0049890F /* YouTubeSearchWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448131E2C63CC0049890F /* YouTubeSearchWebView.swift */; };
 		B67448321E2C7FB40049890F /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67448311E2C7FB30049890F /* MobileCoreServices.framework */; };
 		B674483C1E2C96780049890F /* black.png in Resources */ = {isa = PBXBuildFile; fileRef = B67448351E2C96780049890F /* black.png */; };
-		B674483D1E2C96780049890F /* droplets.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67448361E2C96780049890F /* droplets.jpg */; };
 		B674483E1E2C96780049890F /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B67448371E2C96780049890F /* gear@2x.png */; };
-		B674483F1E2C96780049890F /* hills.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67448381E2C96780049890F /* hills.jpg */; };
-		B67448401E2C96780049890F /* pastel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B67448391E2C96780049890F /* pastel.jpg */; };
 		B67448411E2C96780049890F /* shuffle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B674483A1E2C96780049890F /* shuffle@2x.png */; };
 		B67448421E2C96780049890F /* video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B674483B1E2C96780049890F /* video@2x.png */; };
 		B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448561E2C96B90049890F /* AVAssetAudio.swift */; };
@@ -309,10 +306,7 @@
 		B67448311E2C7FB30049890F /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		B67448331E2C81560049890F /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B67448351E2C96780049890F /* black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = black.png; path = MediaLibrary/Images/black.png; sourceTree = "<group>"; };
-		B67448361E2C96780049890F /* droplets.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = droplets.jpg; path = MediaLibrary/Images/droplets.jpg; sourceTree = "<group>"; };
 		B67448371E2C96780049890F /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gear@2x.png"; path = "MediaLibrary/Images/gear@2x.png"; sourceTree = "<group>"; };
-		B67448381E2C96780049890F /* hills.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hills.jpg; path = MediaLibrary/Images/hills.jpg; sourceTree = "<group>"; };
-		B67448391E2C96780049890F /* pastel.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = pastel.jpg; path = MediaLibrary/Images/pastel.jpg; sourceTree = "<group>"; };
 		B674483A1E2C96780049890F /* shuffle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shuffle@2x.png"; path = "MediaLibrary/Images/shuffle@2x.png"; sourceTree = "<group>"; };
 		B674483B1E2C96780049890F /* video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video@2x.png"; path = "MediaLibrary/Images/video@2x.png"; sourceTree = "<group>"; };
 		B67448561E2C96B90049890F /* AVAssetAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AVAssetAudio.swift; path = MediaLibrary/helper/extensions/AVAssetAudio.swift; sourceTree = "<group>"; };
@@ -586,10 +580,7 @@
 			isa = PBXGroup;
 			children = (
 				B67448351E2C96780049890F /* black.png */,
-				B67448361E2C96780049890F /* droplets.jpg */,
 				B67448371E2C96780049890F /* gear@2x.png */,
-				B67448381E2C96780049890F /* hills.jpg */,
-				B67448391E2C96780049890F /* pastel.jpg */,
 				B674483A1E2C96780049890F /* shuffle@2x.png */,
 				B674483B1E2C96780049890F /* video@2x.png */,
 			);
@@ -1009,9 +1000,6 @@
 				3E2674DE1D7530BA00E33DCD /* user.png in Resources */,
 				B7AA932B1B3172740005972E /* Main.storyboard in Resources */,
 				B7AA93301B3172740005972E /* LaunchScreen.xib in Resources */,
-				B674483D1E2C96780049890F /* droplets.jpg in Resources */,
-				B674483F1E2C96780049890F /* hills.jpg in Resources */,
-				B67448401E2C96780049890F /* pastel.jpg in Resources */,
 				B67448411E2C96780049890F /* shuffle@2x.png in Resources */,
 				3E2674DB1D7530BA00E33DCD /* back.png in Resources */,
 				3E2674DC1D7530BA00E33DCD /* lock.png in Resources */,
