@@ -55,8 +55,8 @@ class PlaylistsTableViewController: UITableViewController
         if segue.identifier=="PlaylistsToPlaylist"
         {
             let playlistName=sender as! String
-            let playlistVC=(segue.destinationViewController as? PlaylistViewController)!
-            playlistVC.playlistName=playlistName
+            let playlistVC=(segue.destinationViewController as? SeriesViewController)!
+            //playlistVC.playlistName=playlistName
         }
     }
     
