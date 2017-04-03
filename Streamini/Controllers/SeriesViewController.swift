@@ -34,13 +34,11 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         }
         
         scrollView.contentSize=CGSizeMake(scrollView.frame.size.width*2, scrollView.frame.size.height)
-        pageControl.addTarget(self, action:#selector(changePage), forControlEvents:.ValueChanged)
         
         tableHeader.clipsToBounds=true
         navigationController!.navigationBar.backgroundColor=UIColor.clearColor()
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:.Default)
         navigationController!.navigationBar.shadowImage!=UIImage()
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         tableView.contentOffset=CGPointMake(0, 64)
         
@@ -48,12 +46,6 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         blockingView.backgroundColor=UIColor.blackColor()
         blockingView.hidden=true
         view!.addSubview(blockingView)
-    }
-    
-    func changePage(sender:AnyObject)->()
-    {
-        let x=CGFloat(pageControl.currentPage)*scrollView.frame.size.width
-        scrollView.setContentOffset(CGPointMake(x, 0), animated:true)
     }
     
     func scrollViewDidEndDecelerating(scrollView:UIScrollView)
@@ -99,7 +91,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func scrollViewDidScroll(scrollView:UIScrollView)
     {
-        if scrollView.contentOffset.y > 44 - 64
+        if scrollView.contentOffset.y>-20
         {
             if searchBar.alpha==1
             {
@@ -109,8 +101,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
                         self.blockingView.hidden=false
                 })
             }
-            
-            topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y-(44-64))
+            topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
         }
         else
         {
