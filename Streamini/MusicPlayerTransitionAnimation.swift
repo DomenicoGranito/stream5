@@ -28,9 +28,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         return modalVC
     }
     
-    
-    
-   
     init(rootVC:TabBarViewController, modalVC:ModalViewController)
     {
         self.rootVC=rootVC

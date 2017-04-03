@@ -104,6 +104,4 @@ class BackgroundVideo{
         self.backGroundPlayer?.play()
         
     }
-    
-
 }
