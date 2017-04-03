@@ -8,16 +8,16 @@
 
 class SeriesViewController: UIViewController, UIScrollViewDelegate
 {
-    let scrollView = UIScrollView(frame: CGRectMake(0, 0, 320, 300))
-    var colors:[UIColor] = [UIColor.redColor(), UIColor.blueColor(), UIColor.greenColor(), UIColor.yellowColor()]
-    var frame: CGRect = CGRectMake(0, 0, 0, 0)
-    var pageControl : UIPageControl = UIPageControl(frame: CGRectMake(50, 300, 200, 50))
+    let scrollView=UIScrollView(frame:CGRectMake(0, 0, 320, 300))
+    var colors=[UIColor.redColor(), UIColor.blueColor()]
+    var frame=CGRectMake(0, 0, 0, 0)
     
-    @IBOutlet weak var tableHeader: UIView!
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var topViewTopSpaceConstraint: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!
-    var blockingView: UIView!
+    @IBOutlet var tableHeader:UIView!
+    @IBOutlet var searchBar:UISearchBar!
+    @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var pageControl:UIPageControl!
+    var blockingView:UIView!
     
     override func viewDidLoad()
     {
@@ -37,7 +37,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
             self.scrollView .addSubview(subView)
         }
         
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 4, self.scrollView.frame.size.height)
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height)
         pageControl.addTarget(self, action:#selector(changePage), forControlEvents:.ValueChanged)
         
         self.tableHeader.clipsToBounds = true
@@ -64,7 +64,6 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         self.pageControl.pageIndicatorTintColor = UIColor.blackColor()
         self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
         self.view.addSubview(pageControl)
-        
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
@@ -104,7 +103,7 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 20
+        return 2
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
