@@ -24,46 +24,44 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         configurePageControl()
         
         scrollView.delegate = self
-        // self.view.addSubview(scrollView)
-        self.tableHeader.addSubview(scrollView)
-        for index in 0..<2 {
+        // view.addSubview(scrollView)
+        tableHeader.addSubview(scrollView)
+        for index in 0..<2
+        {
             
-            frame.origin.x = self.scrollView.frame.size.width * CGFloat(index)
-            frame.size = self.scrollView.frame.size
-            self.scrollView.pagingEnabled = true
+            frame.origin.x = scrollView.frame.size.width * CGFloat(index)
+            frame.size = scrollView.frame.size
+            scrollView.pagingEnabled = true
             
             let subView = UIView(frame: frame)
             subView.backgroundColor = colors[index]
-            self.scrollView .addSubview(subView)
+            scrollView.addSubview(subView)
         }
         
-        self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * 2, self.scrollView.frame.size.height)
+        scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 2, scrollView.frame.size.height)
         pageControl.addTarget(self, action:#selector(changePage), forControlEvents:.ValueChanged)
         
-        self.tableHeader.clipsToBounds = true
-        self.navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
-        self.navigationController!.navigationBar.shadowImage! = UIImage()
+        tableHeader.clipsToBounds = true
+        navigationController!.navigationBar.backgroundColor = UIColor.clearColor()
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationController!.navigationBar.shadowImage! = UIImage()
         UIApplication.sharedApplication().statusBarStyle = .LightContent
         // Starting with the table view a bit scrolled down to hide the search bar
         tableView.contentOffset = CGPointMake(0, 64)
         // This blocking view is used to hide the tableview cells when they scroll too far up
         // you can comment this view to see what happens
-        self.blockingView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))
+        blockingView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 64))
         blockingView.backgroundColor = UIColor.blackColor()
-        self.blockingView.hidden = true
-        self.view!.addSubview(blockingView)
+        blockingView.hidden = true
+        view!.addSubview(blockingView)
     }
     
     func configurePageControl()
     {
-        // The total number of pages that are available is based on how many available colors we have.
-        self.pageControl.numberOfPages = colors.count
-        self.pageControl.currentPage = 0
-        self.pageControl.tintColor = UIColor.redColor()
-        self.pageControl.pageIndicatorTintColor = UIColor.blackColor()
-        self.pageControl.currentPageIndicatorTintColor = UIColor.greenColor()
-        self.view.addSubview(pageControl)
+        pageControl.tintColor=UIColor.redColor()
+        pageControl.pageIndicatorTintColor=UIColor.blackColor()
+        pageControl.currentPageIndicatorTintColor=UIColor.greenColor()
+        view.addSubview(pageControl)
     }
     
     // MARK : TO CHANGE WHILE CLICKING ON PAGE CONTROL
@@ -84,18 +82,18 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
         return 80
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView = UIView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
-        headerView.backgroundColor = UIColor(white: 0.2, alpha: 1)
-        let shuffle = UIButton(frame: CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width - 80, 30))
-        shuffle.setTitle("Shuffle Play", forState: .Normal)
-        shuffle.backgroundColor = UIColor.greenColor()
+        let headerView=UIView(frame:CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 80))
+        headerView.backgroundColor=UIColor(white: 0.2, alpha: 1)
+        let shuffle=UIButton(frame:CGRectMake(40, 0, UIScreen.mainScreen().bounds.size.width-80, 30))
+        shuffle.setTitle("Shuffle Play", forState:.Normal)
+        shuffle.backgroundColor=UIColor.greenColor()
         headerView.addSubview(shuffle)
-        let headerTitle = UILabel(frame: CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 30))
-        headerTitle.text = "Section Title"
-        headerTitle.textColor = UIColor.whiteColor()
-        headerTitle.backgroundColor = UIColor.clearColor()
+        let headerTitle=UILabel(frame:CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width - 20, 30))
+        headerTitle.text="Section Title"
+        headerTitle.textColor=UIColor.whiteColor()
+        headerTitle.backgroundColor=UIColor.clearColor()
         headerView.addSubview(headerTitle)
         
         return headerView
@@ -103,14 +101,11 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 2
+        return 10
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        //var cell = tableView.dequeueReusableCellWithIdentifier("songCell")!
-        //cell.textLabel!.text! = "Song Name"
-        //cell.detailTextLabel!.text! = "Artist Name"
         return UITableViewCell()
     }
     
