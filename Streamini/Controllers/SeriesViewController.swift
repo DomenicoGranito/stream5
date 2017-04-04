@@ -11,6 +11,7 @@ class SeriesViewController: UIViewController
     @IBOutlet var tableView:UITableView!
     @IBOutlet var pageControl:UIPageControl!
     @IBOutlet var scrollView:UIScrollView!
+    @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
     override func viewDidLoad()
     {
@@ -72,5 +73,17 @@ class SeriesViewController: UIViewController
     {
         let pageNumber=scrollView.contentOffset.x/scrollView.frame.size.width
         pageControl.currentPage=Int(pageNumber)
+    }
+    
+    func scrollViewDidScroll(scrollView:UIScrollView)
+    {
+        if scrollView.contentOffset.y > -20
+        {
+            topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
+        }
+        else
+        {
+            topViewTopSpaceConstraint.constant=0
+        }
     }
 }
