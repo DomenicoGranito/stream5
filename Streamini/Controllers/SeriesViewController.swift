@@ -6,27 +6,15 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class SeriesViewController: UIViewController, UIScrollViewDelegate
+class SeriesViewController: UIViewController
 {
-    @IBOutlet var tableHeader:UIView!
-    @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     @IBOutlet var pageControl:UIPageControl!
-    
-    let scrollView=UIScrollView(frame:CGRectMake(0, 0, 320, 300))
+    @IBOutlet var scrollView:UIScrollView!
     
     override func viewDidLoad()
     {
         navigationController?.navigationBarHidden=true
-        
-        scrollView.delegate=self
-        tableHeader.addSubview(scrollView)
-        
-        for index in 0..<2
-        {
-            let subView=UIView(frame:CGRectMake(CGFloat(index*320), 0, 320, 300))
-            scrollView.addSubview(subView)
-        }
         
         scrollView.contentSize=CGSizeMake(scrollView.frame.size.width*2, scrollView.frame.size.height)
         
@@ -45,14 +33,14 @@ class SeriesViewController: UIViewController, UIScrollViewDelegate
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRectMake(0, 25, UIScreen.mainScreen().bounds.size.width, 55))
-        headerView.backgroundColor=UIColor.blackColor()
+        let headerView=UIView(frame:CGRectMake(0, 0, view.frame.size.width, 80))
+        headerView.backgroundColor=UIColor.darkGrayColor()
         
-        let shuffle=UIButton(frame:CGRectMake(40, -25, UIScreen.mainScreen().bounds.size.width-80, 50))
+        let shuffle=UIButton(frame:CGRectMake(40, 0, view.frame.size.width-80, 50))
         shuffle.setTitle("SHUFFLE PLAY", forState:.Normal)
         shuffle.backgroundColor=UIColor.greenColor()
         
-        let headerTitle=UILabel(frame:CGRectMake(10, 40, UIScreen.mainScreen().bounds.size.width-20, 30))
+        let headerTitle=UILabel(frame:CGRectMake(10, 55, view.frame.size.width-20, 20))
         headerTitle.text="INCLUDES"
         headerTitle.textColor=UIColor.whiteColor()
         
