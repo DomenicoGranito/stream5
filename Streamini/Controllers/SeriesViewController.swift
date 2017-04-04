@@ -14,9 +14,17 @@ class SeriesViewController: UIViewController
     
     override func viewDidLoad()
     {
-        navigationController?.navigationBarHidden=true
+        scrollView.contentSize=CGSizeMake(view.frame.size.width*2, 276)
         
-        scrollView.contentSize=CGSizeMake(scrollView.frame.size.width*2, scrollView.frame.size.height)
+        let playlistView=PlaylistView.instanceFromNib()
+        playlistView.frame=CGRectMake(0, 0, view.frame.size.width, 276)
+        scrollView.addSubview(playlistView)
+        
+        let playlistDetailView=PlaylistDetailView.instanceFromNib()
+        playlistDetailView.frame=CGRectMake(view.frame.size.width, 0, view.frame.size.width, 276)
+        scrollView.addSubview(playlistDetailView)
+        
+        navigationController?.navigationBarHidden=true
         
         tableView.contentOffset=CGPointMake(0, 64)
     }

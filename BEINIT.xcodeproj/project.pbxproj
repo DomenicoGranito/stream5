@@ -21,6 +21,10 @@
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
 		3E79060E1E7FBD6A00257C5B /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E79060C1E7FBD6200257C5B /* iCarousel.m */; };
+		3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BBC1E937BC000065FEC /* PlaylistView.swift */; };
+		3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E935BBE1E937D0500065FEC /* PlaylistView.xib */; };
+		3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */; };
+		3E935BC31E937D8700065FEC /* PlaylistDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E935BC21E937D8700065FEC /* PlaylistDetailView.xib */; };
 		3EEF52BD1D83127C0015BA92 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */; };
 		3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */; };
 		3EF1F02C1D7197310055A372 /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */; };
@@ -240,6 +244,10 @@
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		3E79060B1E7FBD6100257C5B /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
 		3E79060C1E7FBD6200257C5B /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iCarousel.m; path = iCarousel/iCarousel.m; sourceTree = "<group>"; };
+		3E935BBC1E937BC000065FEC /* PlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistView.swift; sourceTree = "<group>"; };
+		3E935BBE1E937D0500065FEC /* PlaylistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistView.xib; sourceTree = "<group>"; };
+		3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
+		3E935BC21E937D8700065FEC /* PlaylistDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistDetailView.xib; sourceTree = "<group>"; };
 		3EB1AB3F1DBBCFBB0047726D /* Streamini.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Streamini.entitlements; sourceTree = "<group>"; };
 		3EEF52BC1D83127B0015BA92 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		3EEF52BE1D83B5AF0015BA92 /* AllCategoriesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCategoriesRow.swift; sourceTree = "<group>"; };
@@ -638,6 +646,10 @@
 				B71405981B62333B00EAEC61 /* ReplayView.swift */,
 				B70AB1371B73839C00BAD62A /* UserHeaderView.swift */,
 				B7DA8EA81B8349EE0082ED5C /* SelectorView.swift */,
+				3E935BBC1E937BC000065FEC /* PlaylistView.swift */,
+				3E935BBE1E937D0500065FEC /* PlaylistView.xib */,
+				3E935BC01E937D6100065FEC /* PlaylistDetailView.swift */,
+				3E935BC21E937D8700065FEC /* PlaylistDetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -998,6 +1010,7 @@
 				B72475891B4133F50080BE1B /* Localizable.strings in Resources */,
 				3EF1F0301D719DE40055A372 /* test.mp4 in Resources */,
 				3E2674DE1D7530BA00E33DCD /* user.png in Resources */,
+				3E935BBF1E937D0500065FEC /* PlaylistView.xib in Resources */,
 				B7AA932B1B3172740005972E /* Main.storyboard in Resources */,
 				B7AA93301B3172740005972E /* LaunchScreen.xib in Resources */,
 				B67448411E2C96780049890F /* shuffle@2x.png in Resources */,
@@ -1007,6 +1020,7 @@
 				B7D6F0B91B37F4D90070C36A /* Config.plist in Resources */,
 				B67448421E2C96780049890F /* video@2x.png in Resources */,
 				B66561E21E09884100EDA684 /* README.txt in Resources */,
+				3E935BC31E937D8700065FEC /* PlaylistDetailView.xib in Resources */,
 				B7AA932D1B3172740005972E /* Images.xcassets in Resources */,
 				B674483C1E2C96780049890F /* black.png in Resources */,
 			);
@@ -1214,9 +1228,11 @@
 				B67448231E2C63CC0049890F /* SearchWebViewController.swift in Sources */,
 				B67448201E2C63CC0049890F /* PlaylistProtocols.swift in Sources */,
 				B72815381B5E38D00005BBC6 /* ViewersCollectionViewCell.swift in Sources */,
+				3E935BC11E937D6100065FEC /* PlaylistDetailView.swift in Sources */,
 				3EF535B21E0920B90049B2E9 /* TransitionGestureHandler.swift in Sources */,
 				B674481D1E2C63CC0049890F /* mylibrary.swift in Sources */,
 				B77AABE61B398815007DE187 /* StreamMappingProvider.swift in Sources */,
+				3E935BBD1E937BC100065FEC /* PlaylistView.swift in Sources */,
 				3EF535AE1E0920B90049B2E9 /* ARNTransitionAnimator.swift in Sources */,
 				3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */,
 				A68B73191BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift in Sources */,
