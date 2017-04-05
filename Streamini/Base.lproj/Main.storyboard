@@ -603,7 +603,7 @@
                         </containerView>
                         <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AA0E0674-ED21-4EE2-9E61-A07065857258" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E4C8C7EA-C006-4C07-8C3A-1D8EAEFBB020" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="BYG-p1-viV"/>
                                         <constraint firstAttribute="width" constant="20" id="agt-QP-2YF"/>
@@ -627,7 +627,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="7A45FD08-2DAD-4C3F-BB2A-63A4DB8745AB" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="07E45194-003D-45C4-ACAD-32F21BA267BC" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="TT8-ro-toq"/>
                                         <constraint firstAttribute="width" constant="26" id="mnO-gk-SW7"/>
@@ -7936,6 +7936,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="x1i-Wy-zFZ" kind="show" identifier="PlaylistsToPlaylist" id="Edm-Cm-2sY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gzA-ia-eFO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8573,7 +8576,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="WOz-ZV-HXQ">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="kwV-gf-ZrT">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                                    <rect key="frame" x="0.0" y="64" width="320" height="320"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePi-kl-2tr">
@@ -8631,7 +8634,7 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="songCell" rowHeight="64" id="aMW-Li-zza">
-                                        <rect key="frame" x="0.0" y="321" width="320" height="64"/>
+                                        <rect key="frame" x="0.0" y="385" width="320" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMW-Li-zza" id="tKu-8U-ZYJ">
                                             <frame key="frameInset" width="320" height="63"/>
@@ -8650,7 +8653,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WOz-ZV-HXQ" secondAttribute="trailing" id="1b3-IX-A9G"/>
-                            <constraint firstItem="j1w-CX-d7p" firstAttribute="top" secondItem="WOz-ZV-HXQ" secondAttribute="bottom" id="2sR-Xv-ILD"/>
+                            <constraint firstItem="j1w-CX-d7p" firstAttribute="top" secondItem="WOz-ZV-HXQ" secondAttribute="bottom" constant="-49" id="2sR-Xv-ILD"/>
                             <constraint firstItem="WOz-ZV-HXQ" firstAttribute="leading" secondItem="GhT-3k-gcy" secondAttribute="leading" id="das-VM-UjD"/>
                             <constraint firstItem="WOz-ZV-HXQ" firstAttribute="top" secondItem="GhT-3k-gcy" secondAttribute="top" id="jZC-5w-GfX"/>
                         </constraints>
@@ -8671,7 +8674,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="7A45FD08-2DAD-4C3F-BB2A-63A4DB8745AB" width="60" height="60">
+        <image name="07E45194-003D-45C4-ACAD-32F21BA267BC" width="60" height="60">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -8962,7 +8965,7 @@ AMIA2QDbAN1Bv0HEQc9B2EHrQe9B+kIDQghCEEITQhhCJ0IrQjJCOkJHQkxCTkJQQlVCXUJgQmVCbUJw
 QoJChUKKAAAAAAAAAgEAAAAAAAAAQQAAAAAAAAAAAAAAAAAAQow
 </mutableData>
         </image>
-        <image name="AA0E0674-ED21-4EE2-9E61-A07065857258" width="45" height="27">
+        <image name="E4C8C7EA-C006-4C07-8C3A-1D8EAEFBB020" width="45" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

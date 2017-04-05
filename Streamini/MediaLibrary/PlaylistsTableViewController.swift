@@ -46,9 +46,7 @@ class PlaylistsTableViewController: UITableViewController
     
     override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("SeriesViewController") as! SeriesViewController
-        navigationController?.pushViewController(vc, animated:true)
+        performSegueWithIdentifier("PlaylistsToPlaylist", sender:nil)
     }
     
     func addPlaylist(name:String)
