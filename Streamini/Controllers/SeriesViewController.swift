@@ -14,6 +14,8 @@ class SeriesViewController: UIViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
+    var blockingView:UIView!
+    
     override func viewDidLoad()
     {
         scrollView.contentSize=CGSizeMake(view.frame.size.width*2, 276)
@@ -30,6 +32,11 @@ class SeriesViewController: UIViewController
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:.Default)
         
         tableView.contentOffset=CGPointMake(0, 64)
+        
+        blockingView=UIView(frame:CGRectMake(0, 0, view.frame.size.width, 64))
+        blockingView.backgroundColor=UIColor.blackColor()
+        blockingView.hidden=true
+        view.addSubview(blockingView)
     }
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
@@ -80,6 +87,8 @@ class SeriesViewController: UIViewController
             {
                 UIView.animateWithDuration(0.3, animations:{()->Void in
                     self.searchBar.alpha=0
+                    }, completion:{(finished:Bool)->Void in
+                        self.blockingView.hidden=false
                 })
             }
             
@@ -89,6 +98,7 @@ class SeriesViewController: UIViewController
         {
             if searchBar.alpha==0
             {
+                blockingView.hidden=true
                 UIView.animateWithDuration(0.3, animations:{()->Void in
                     self.searchBar.alpha=1
                 })
