@@ -21,12 +21,7 @@ class PlaylistsTableViewController: UITableViewController
         
         refreshPlaylists()
     }
-    
-    override func viewWillAppear(animated:Bool)
-    {
-        navigationController?.navigationBarHidden=false
-    }
-    
+        
     @IBAction func didTapAddButton(sender:AnyObject)
     {
         showTextFieldDialog("Add playlist", message: "", placeHolder: "Name", okButtonTitle: "Add", didTapOkButton:

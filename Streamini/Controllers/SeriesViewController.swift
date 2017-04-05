@@ -11,6 +11,7 @@ class SeriesViewController: UIViewController
     @IBOutlet var tableView:UITableView!
     @IBOutlet var pageControl:UIPageControl!
     @IBOutlet var scrollView:UIScrollView!
+    @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
     override func viewDidLoad()
@@ -25,14 +26,10 @@ class SeriesViewController: UIViewController
         playlistDetailView.frame=CGRectMake(view.frame.size.width, 0, view.frame.size.width, 276)
         scrollView.addSubview(playlistDetailView)
         
-        navigationController?.navigationBarHidden=true
+        navigationController!.navigationBar.backgroundColor=UIColor.clearColor()
+        navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:.Default)
         
         tableView.contentOffset=CGPointMake(0, 64)
-    }
-    
-    @IBAction func back()
-    {
-        navigationController?.popViewControllerAnimated(true)
     }
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
@@ -79,10 +76,24 @@ class SeriesViewController: UIViewController
     {
         if scrollView.contentOffset.y > -20
         {
+            if searchBar.alpha==1
+            {
+                UIView.animateWithDuration(0.3, animations:{()->Void in
+                    self.searchBar.alpha=0
+                })
+            }
+            
             topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
         }
         else
         {
+            if searchBar.alpha==0
+            {
+                UIView.animateWithDuration(0.3, animations:{()->Void in
+                    self.searchBar.alpha=1
+                })
+            }
+            
             topViewTopSpaceConstraint.constant=0
         }
     }
