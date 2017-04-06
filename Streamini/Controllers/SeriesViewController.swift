@@ -18,6 +18,7 @@ class SeriesViewController: UIViewController
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
     var blockingView:UIView!
+    var navigationBarBackgroundImage:UIImage!
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override func viewDidLoad()
@@ -32,6 +33,8 @@ class SeriesViewController: UIViewController
         playlistDetailView.frame=CGRectMake(view.frame.size.width, 0, view.frame.size.width, 276)
         scrollView.addSubview(playlistDetailView)
         
+        navigationBarBackgroundImage=navigationController!.navigationBar.backgroundImageForBarMetrics(.Default)
+        
         navigationController!.navigationBar.backgroundColor=UIColor.clearColor()
         navigationController!.navigationBar.setBackgroundImage(UIImage(), forBarMetrics:.Default)
         
@@ -40,6 +43,11 @@ class SeriesViewController: UIViewController
         blockingView=UIView(frame:CGRectMake(0, 0, view.frame.size.width, 64))
         blockingView.backgroundColor=UIColor.blackColor()
         view.addSubview(blockingView)
+    }
+    
+    override func viewWillDisappear(animated:Bool)
+    {
+        navigationController!.navigationBar.setBackgroundImage(navigationBarBackgroundImage, forBarMetrics:.Default)
     }
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
