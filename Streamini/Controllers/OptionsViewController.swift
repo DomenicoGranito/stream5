@@ -12,9 +12,11 @@ class OptionsViewController: UIViewController
     
     let menuItemTitlesArray:NSMutableArray=["Custom", "Title", "Artist", "Recently Added"]
     
+    var backgroundImage:UIImage!
+    
     override func viewDidLoad()
     {
-        
+        backgroundImageView?.image=backgroundImage
     }
     
     @IBAction func closeButtonPressed()

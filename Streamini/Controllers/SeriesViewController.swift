@@ -18,6 +18,7 @@ class SeriesViewController: UIViewController
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
     var blockingView:UIView!
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override func viewDidLoad()
     {
@@ -139,5 +140,33 @@ class SeriesViewController: UIViewController
         searchBar.resignFirstResponder()
         filterButton?.hidden=false
         cancelButton?.hidden=true
+    }
+    
+    @IBAction func filter()
+    {
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("FiltersViewController") as! FiltersViewController
+        vc.backgroundImage=renderImageFromView()
+        presentViewController(vc, animated:true, completion:nil)
+    }
+    
+    @IBAction func options()
+    {
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("OptionsViewController") as! OptionsViewController
+        vc.backgroundImage=renderImageFromView()
+        presentViewController(vc, animated:true, completion:nil)
+    }
+    
+    func renderImageFromView()->UIImage?
+    {
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, true, 0)
+        let context=UIGraphicsGetCurrentContext()
+        
+        view.layer.renderInContext(context!)
+        
+        let renderedImage=UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return renderedImage
     }
 }
