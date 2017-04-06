@@ -37,4 +37,9 @@ class FiltersViewController: UIViewController
         
         return cell
     }
+    
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        
+    }
 }

@@ -37,4 +37,9 @@ class OptionsViewController: UIViewController
         
         return cell
     }
+    
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        
+    }
 }
