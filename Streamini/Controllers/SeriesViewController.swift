@@ -12,6 +12,9 @@ class SeriesViewController: UIViewController
     @IBOutlet var pageControl:UIPageControl!
     @IBOutlet var scrollView:UIScrollView!
     @IBOutlet var searchBar:UISearchBar!
+    @IBOutlet var searchView:UIView!
+    @IBOutlet var cancelButton:UIButton!
+    @IBOutlet var filterButton:UIButton!
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
     
     var blockingView:UIView!
@@ -84,10 +87,10 @@ class SeriesViewController: UIViewController
         {
             if scrollView.contentOffset.y > -20
             {
-                if searchBar.alpha==1
+                if searchView.alpha==1
                 {
                     UIView.animateWithDuration(0.3, animations:{()->Void in
-                        self.searchBar.alpha=0
+                        self.searchView.alpha=0
                         }, completion:{(finished:Bool)->Void in
                             self.blockingView.hidden=false
                     })
@@ -97,16 +100,44 @@ class SeriesViewController: UIViewController
             }
             else
             {
-                if searchBar.alpha==0
+                if searchView.alpha==0
                 {
                     blockingView.hidden=true
                     UIView.animateWithDuration(0.3, animations:{()->Void in
-                        self.searchBar.alpha=1
+                        self.searchView.alpha=1
                     })
                 }
                 
                 topViewTopSpaceConstraint.constant=0
             }
         }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar:UISearchBar)
+    {
+        searchBar.resignFirstResponder()
+        filterButton?.hidden=false
+        cancelButton?.hidden=true
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar:UISearchBar)
+    {
+        filterButton?.hidden=true
+        cancelButton?.hidden=false
+    }
+    
+    func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
+    {
+        if searchText.characters.count>0
+        {
+            
+        }
+    }
+        
+    @IBAction func cancel()
+    {
+        searchBar.resignFirstResponder()
+        filterButton?.hidden=false
+        cancelButton?.hidden=true
     }
 }
