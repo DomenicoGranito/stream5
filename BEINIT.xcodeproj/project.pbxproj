@@ -17,6 +17,8 @@
 		3E2674DD1D7530BA00E33DCD /* msg.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2674D91D7530BA00E33DCD /* msg.png */; };
 		3E2674DE1D7530BA00E33DCD /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2674DA1D7530BA00E33DCD /* user.png */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
+		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
+		3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */; };
 		3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
 		3E71926B1E768DFE00B7049B /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E71926A1E768DFD00B7049B /* ErrorView.swift */; };
@@ -239,6 +241,8 @@
 		3E356F9D1E843580008FD8B9 /* DWUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUploader.h; path = DWSDK/DWUploader.h; sourceTree = "<group>"; };
 		3E356F9E1E843580008FD8B9 /* DWVideoCompressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWVideoCompressController.h; path = DWSDK/DWVideoCompressController.h; sourceTree = "<group>"; };
 		3E356F9F1E843580008FD8B9 /* libCCSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCCSDK.a; path = DWSDK/libCCSDK.a; sourceTree = "<group>"; };
+		3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
 		3E71926A1E768DFD00B7049B /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -891,6 +895,8 @@
 				B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */,
 				B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */,
 				86564ECE1E540BA300584405 /* SeriesViewController.swift */,
+				3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */,
+				3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */,
 				B6D4134E1E156829001E8108 /* DiscoverViewController.swift */,
 				B79669841B821C5D0071AF91 /* LegalViewController.swift */,
 				B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */,
@@ -1115,6 +1121,7 @@
 				B728153A1B5E4C400005BBC6 /* ViewersDataSource.swift in Sources */,
 				B6EAF8261E28CC84007038DC /* CategoryDataSource.swift in Sources */,
 				B7D5EA941B565B0B003EE25D /* MessageExtension.swift in Sources */,
+				3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */,
 				B71BA5DB1B84A86C0055F427 /* ProfileStatisticsViewController.swift in Sources */,
 				B79187981B4437FC002DFAB4 /* AmazonTool.swift in Sources */,
 				3EEF52BF1D83B5AF0015BA92 /* AllCategoriesRow.swift in Sources */,
@@ -1206,6 +1213,7 @@
 				B728153E1B5EBCB10005BBC6 /* UIColorExtension.swift in Sources */,
 				3EF535AF1E0920B90049B2E9 /* InteractiveTransitioning.swift in Sources */,
 				B67448241E2C63CC0049890F /* Settings.swift in Sources */,
+				3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */,
 				B72475831B411D910080BE1B /* CreateStreamViewController.swift in Sources */,
 				3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */,
 				B67448221E2C63CC0049890F /* PlaylistViewController.swift in Sources */,

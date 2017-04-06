@@ -35,7 +35,6 @@ class SeriesViewController: UIViewController
         
         blockingView=UIView(frame:CGRectMake(0, 0, view.frame.size.width, 64))
         blockingView.backgroundColor=UIColor.blackColor()
-        blockingView.hidden=true
         view.addSubview(blockingView)
     }
     
@@ -75,36 +74,39 @@ class SeriesViewController: UIViewController
     
     func scrollViewDidEndDecelerating(scrollView:UIScrollView)
     {
-        let pageNumber=scrollView.contentOffset.x/scrollView.frame.size.width
+        let pageNumber=self.scrollView.contentOffset.x/scrollView.frame.size.width
         pageControl.currentPage=Int(pageNumber)
     }
     
     func scrollViewDidScroll(scrollView:UIScrollView)
     {
-        if scrollView.contentOffset.y > -20
+        if scrollView==tableView
         {
-            if searchBar.alpha==1
+            if scrollView.contentOffset.y > -20
             {
-                UIView.animateWithDuration(0.3, animations:{()->Void in
-                    self.searchBar.alpha=0
-                    }, completion:{(finished:Bool)->Void in
-                        self.blockingView.hidden=false
-                })
+                if searchBar.alpha==1
+                {
+                    UIView.animateWithDuration(0.3, animations:{()->Void in
+                        self.searchBar.alpha=0
+                        }, completion:{(finished:Bool)->Void in
+                            self.blockingView.hidden=false
+                    })
+                }
+                
+                topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
             }
-            
-            topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
-        }
-        else
-        {
-            if searchBar.alpha==0
+            else
             {
-                blockingView.hidden=true
-                UIView.animateWithDuration(0.3, animations:{()->Void in
-                    self.searchBar.alpha=1
-                })
+                if searchBar.alpha==0
+                {
+                    blockingView.hidden=true
+                    UIView.animateWithDuration(0.3, animations:{()->Void in
+                        self.searchBar.alpha=1
+                    })
+                }
+                
+                topViewTopSpaceConstraint.constant=0
             }
-            
-            topViewTopSpaceConstraint.constant=0
         }
     }
 }
