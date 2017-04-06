@@ -10,6 +10,11 @@ import UIKit
 
 class PlaylistView: UIView
 {
+    @IBOutlet var playlistThumbnailImageView:UIImageView!
+    @IBOutlet var playlistNameLbl:UILabel!
+    @IBOutlet var followButton:UIButton!
+    @IBOutlet var playlistFollowersLbl:UILabel!
+    
     class func instanceFromNib()->UIView
     {
         return UINib(nibName:"PlaylistView", bundle:nil).instantiateWithOwner(nil, options:nil)[0] as! UIView

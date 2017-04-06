@@ -45,6 +45,12 @@
             </subviews>
             <color key="backgroundColor" red="0.1220092252" green="0.12583872679999999" blue="0.13294178249999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="followButton" destination="mlT-8d-ZYI" id="3zA-Oy-Rmd"/>
+                <outlet property="playlistFollowersLbl" destination="M6b-n9-QGt" id="x4w-jZ-tXA"/>
+                <outlet property="playlistNameLbl" destination="K9s-5d-kk9" id="We7-TY-l5u"/>
+                <outlet property="playlistThumbnailImageView" destination="DxB-jy-Gyn" id="Yq9-ao-GBd"/>
+            </connections>
         </view>
     </objects>
 </document>

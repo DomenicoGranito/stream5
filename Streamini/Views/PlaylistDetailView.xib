@@ -58,6 +58,12 @@
             </subviews>
             <color key="backgroundColor" red="0.14901960780000001" green="0.65098039220000004" blue="0.29803921570000003" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="createdAtTimeLbl" destination="jHv-3X-pnZ" id="ekC-yn-AXi"/>
+                <outlet property="createdONDateLbl" destination="g0c-Rf-0Od" id="b0W-kA-uVp"/>
+                <outlet property="userImageView" destination="Kv5-Ed-LE1" id="B16-nU-xRO"/>
+                <outlet property="userNameLbl" destination="UMp-2p-4tK" id="f4U-Fe-FO0"/>
+            </connections>
         </view>
     </objects>
 </document>
