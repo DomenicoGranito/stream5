@@ -61,6 +61,7 @@ class VideosViewController: UIViewController
         let user=User()
         
         user.name=favouriteStreams![row].valueForKey("streamUserName") as! String
+        user.id=favouriteStreams![row].valueForKey("streamUserID") as! UInt
         
         let stream=Stream()
         

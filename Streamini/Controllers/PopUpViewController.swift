@@ -111,6 +111,7 @@ class PopUpViewController: BaseViewController
         if indexPath.row==6
         {
             SocialConnector().block(stream!.user.id, success:blockSuccess, failure:failureWithoutAction)
+            SongManager.deleteBlockedUserVideos(stream!.user.id)
         }
     }
     
@@ -121,7 +122,7 @@ class PopUpViewController: BaseViewController
     
     func blockSuccess()
     {
-        SCLAlertView().showSuccess("MESSAGE", subTitle:"Channel has been blocked")
+        
     }
     
     func failureWithoutAction(error:NSError)

@@ -47,6 +47,29 @@ public class SongManager{
         return false
     }
     
+    class func deleteBlockedUserVideos(userID:UInt)
+    {
+        let favouriteEntity=NSFetchRequest(entityName:"Favourites")
+        favouriteEntity.predicate=NSPredicate(format:"streamUserID=%d", userID)
+        let fetchedFavourites=try! context.executeFetchRequest(favouriteEntity)
+        
+        for i in 0 ..< fetchedFavourites.count
+        {
+            context.deleteObject(fetchedFavourites[i] as! NSManagedObject)
+        }
+        
+        let recentlyPlayedEntity=NSFetchRequest(entityName:"RecentlyPlayed")
+        recentlyPlayedEntity.predicate=NSPredicate(format:"streamUserID=%d", userID)
+        let fetchedRecentlyPlayed=try! context.executeFetchRequest(recentlyPlayedEntity)
+        
+        for i in 0 ..< fetchedRecentlyPlayed.count
+        {
+            context.deleteObject(fetchedRecentlyPlayed[i] as! NSManagedObject)
+        }
+        
+        save()
+    }
+    
     class func isRecentlyPlayed(streamID:UInt)->Bool
     {
         let recentlyPlayedEntity=NSFetchRequest(entityName:"RecentlyPlayed")
