@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     var bgTask: UIBackgroundTaskIdentifier?
     var closeStream: Bool = false
 
-    
-    
     //dominicg weixin login wx68aa08d12b601234 dgranito@gmail account
     //wx282a923ebe81d445 demo account
     //AppID：wx5bd67c93b16ab684 marie@cedricm.com account
@@ -28,8 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     // this will be used when opening Webview from playlist
     var downloadTable : downloadTableViewControllerDelegate?
     var dataDownloader : DataDownloader?
-    
-    
     
     private func addCustomMenuItems() {
         
@@ -44,7 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         menuController.menuItems = menuItems
     }
     
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(application: UIApplication)
+    {
         if(closeStream)
         {
             // Post notifications to current controllers
@@ -65,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
                 self.bgTask = UIBackgroundTaskInvalid
             })
         }
-
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
@@ -73,13 +69,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         NSNotificationCenter.defaultCenter().postNotificationName("enteredBackgroundID", object: nil)
     }
     
-    func applicationWillEnterForeground(application: UIApplication) {
-        
+    func applicationWillEnterForeground(application: UIApplication)
+    {
         //renable video tracks
         NSNotificationCenter.defaultCenter().postNotificationName("enteredForegroundID", object: nil)
     }
-    
-   
     
     func applicationWillTerminate(application: UIApplication) {
         
@@ -172,14 +166,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    
-    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
-        
-            addCustomMenuItems()
+        addCustomMenuItems()
            
-              
         UITextField.appearance().tintColor=UIColor(colorLiteralRed:43/255, green:185/255, blue:86/255, alpha:1)
         UITextField.appearance().keyboardAppearance = .Dark
         
@@ -230,13 +220,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
             }
         }
         
-      
-        
-        
         return true
     }
 
-   
    // func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

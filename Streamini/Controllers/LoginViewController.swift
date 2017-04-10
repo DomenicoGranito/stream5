@@ -28,8 +28,6 @@ class LoginViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        
         WXApi.registerApp(appID)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onResp), name:"getCode", object:nil)
