@@ -16,13 +16,17 @@ class SeriesViewController: UIViewController
     @IBOutlet var cancelButton:UIButton!
     @IBOutlet var filterButton:UIButton!
     @IBOutlet var topViewTopSpaceConstraint:NSLayoutConstraint!
+    @IBOutlet var shuffleButtonTopSpaceConstraint:NSLayoutConstraint!
     
     var blockingView:UIView!
     var navigationBarBackgroundImage:UIImage!
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    var shuffleButtonTopSpace:CGFloat!
     
     override func viewDidLoad()
     {
+        shuffleButtonTopSpace=shuffleButtonTopSpaceConstraint.constant
+        
         scrollView.contentSize=CGSizeMake(view.frame.size.width*2, 276)
         
         let playlistView=PlaylistView.instanceFromNib()
@@ -50,30 +54,6 @@ class SeriesViewController: UIViewController
         navigationController!.navigationBar.setBackgroundImage(navigationBarBackgroundImage, forBarMetrics:.Default)
     }
     
-    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
-    {
-        return 80
-    }
-    
-    func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
-    {
-        let headerView=UIView(frame:CGRectMake(0, 0, view.frame.size.width, 80))
-        headerView.backgroundColor=UIColor.darkGrayColor()
-        
-        let shuffle=UIButton(frame:CGRectMake(40, 0, view.frame.size.width-80, 50))
-        shuffle.setTitle("SHUFFLE PLAY", forState:.Normal)
-        shuffle.backgroundColor=UIColor.greenColor()
-        
-        let headerTitle=UILabel(frame:CGRectMake(10, 55, view.frame.size.width-20, 20))
-        headerTitle.text="INCLUDES"
-        headerTitle.textColor=UIColor.whiteColor()
-        
-        headerView.addSubview(shuffle)
-        headerView.addSubview(headerTitle)
-        
-        return headerView
-    }
-    
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return 10
@@ -92,33 +72,35 @@ class SeriesViewController: UIViewController
     
     func scrollViewDidScroll(scrollView:UIScrollView)
     {
-        if scrollView==tableView
+        if tableView.contentOffset.y > -20
         {
-            if scrollView.contentOffset.y > -20
+            if searchView.alpha==1
             {
-                if searchView.alpha==1
-                {
-                    UIView.animateWithDuration(0.3, animations:{()->Void in
-                        self.searchView.alpha=0
-                        }, completion:{(finished:Bool)->Void in
-                            self.blockingView.hidden=false
-                    })
-                }
-                
-                topViewTopSpaceConstraint.constant=max(0, scrollView.contentOffset.y+20)
+                UIView.animateWithDuration(0.3, animations:{()->Void in
+                    self.searchView.alpha=0
+                    }, completion:{(finished:Bool)->Void in
+                        self.blockingView.hidden=false
+                })
             }
-            else
+            
+            topViewTopSpaceConstraint.constant=max(0, tableView.contentOffset.y+20)
+        }
+        else
+        {
+            if searchView.alpha==0
             {
-                if searchView.alpha==0
-                {
-                    blockingView.hidden=true
-                    UIView.animateWithDuration(0.3, animations:{()->Void in
-                        self.searchView.alpha=1
-                    })
-                }
-                
-                topViewTopSpaceConstraint.constant=0
+                blockingView.hidden=true
+                UIView.animateWithDuration(0.3, animations:{()->Void in
+                    self.searchView.alpha=1
+                })
             }
+            
+            topViewTopSpaceConstraint.constant=0
+        }
+        
+        if tableView.contentOffset.y<=231
+        {
+            shuffleButtonTopSpaceConstraint.constant=shuffleButtonTopSpace-tableView.contentOffset.y
         }
     }
     
@@ -142,7 +124,7 @@ class SeriesViewController: UIViewController
             
         }
     }
-        
+    
     @IBAction func cancel()
     {
         searchBar.resignFirstResponder()

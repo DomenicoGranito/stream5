@@ -603,7 +603,7 @@
                         </containerView>
                         <view alpha="0.64999997615814209" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="00A01D7B-ABFB-4F2C-B5A3-C179CE9E02C0" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6B827394-8B41-48C1-8F55-A713C9BFD18F" translatesAutoresizingMaskIntoConstraints="NO" id="bAf-AH-pQ5">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="12" id="BYG-p1-viV"/>
                                         <constraint firstAttribute="width" constant="20" id="agt-QP-2YF"/>
@@ -627,7 +627,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="A70F554E-3061-41E2-AED6-F58522390F88" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C1E8F8F4-21EA-4474-A755-456DF526907D" translatesAutoresizingMaskIntoConstraints="NO" id="41q-Rp-r7x">
                                     <constraints>
                                         <constraint firstAttribute="height" constant="26" id="TT8-ro-toq"/>
                                         <constraint firstAttribute="width" constant="26" id="mnO-gk-SW7"/>
@@ -3203,10 +3203,10 @@
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LinkedUserCell" rowHeight="66" id="bt9-Du-siP" customClass="LinkedUserCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="40" width="1000" height="66"/>
+                                        <rect key="frame" x="0.0" y="40" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bt9-Du-siP" id="5BE-M8-NNW">
-                                            <frame key="frameInset" width="1000" height="66"/>
+                                            <frame key="frameInset" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tpM-lb-rjL">
@@ -3331,10 +3331,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecentStreamCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecentStreamCell" rowHeight="100" id="xZv-S5-XPB" customClass="RecentStreamCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="106" width="1000" height="100"/>
+                                        <rect key="frame" x="0.0" y="106" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xZv-S5-XPB" id="dMx-UB-aJF">
-                                            <frame key="frameInset" width="1000" height="100"/>
+                                            <frame key="frameInset" width="320" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MjS-JO-s97">
@@ -6031,10 +6031,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="270" id="UP8-ew-ec6" customClass="CategoryRow" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="60" width="1000" height="270"/>
+                                        <rect key="frame" x="0.0" y="60" width="320" height="270"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UP8-ew-ec6" id="9jj-rM-7pS">
-                                            <frame key="frameInset" width="1000" height="270"/>
+                                            <frame key="frameInset" width="320" height="270"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KdN-kk-bGC">
@@ -6047,7 +6047,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="Yu8-Fm-Fpv" customClass="VideoCell" customModule="Streamini" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="5" width="170" height="222"/>
+                                                            <rect key="frame" x="5" y="24" width="170" height="222"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="170" height="222"/>
@@ -6091,7 +6091,7 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weeklyCell" id="7S3-aL-cZF" customClass="VideoCell" customModule="Streamini" customModuleProvider="target">
-                                                            <rect key="frame" x="5" y="261" width="170" height="222"/>
+                                                            <rect key="frame" x="180" y="24" width="170" height="222"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="170" height="222"/>
@@ -7202,7 +7202,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="K7p-tU-w3l" customClass="VideoCell" customModule="Streamini" customModuleProvider="target">
-                                                            <rect key="frame" x="10" y="-5" width="145" height="210"/>
+                                                            <rect key="frame" x="10" y="5" width="145" height="210"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                                 <rect key="frame" x="0.0" y="0.0" width="145" height="210"/>
@@ -7905,7 +7905,7 @@
         <!--Playlists-->
         <scene sceneID="txb-eR-2hT">
             <objects>
-                <tableViewController id="ZK1-cb-L6V" customClass="PlaylistsTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <tableViewController id="ZK1-cb-L6V" customClass="PlaylistsTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3hY-fJ-5iI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -7933,7 +7933,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fjm-62-TeU">
                             <color key="tintColor" red="0.74443717279999999" green="0.55735154870000003" blue="0.25056629460000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="didTapAddButton:" destination="ZK1-cb-L6V" id="VkH-k1-kED"/>
+                                <action selector="didTapAddButton" destination="ZK1-cb-L6V" id="dN9-6J-jS9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -7951,7 +7951,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1dm-ie-WdX" propertyAccessControl="all" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="My Account" image="people" id="szu-Oh-nkb"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1fB-oc-1YF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1fB-oc-1YF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -8421,11 +8421,11 @@
                                         <rect key="frame" x="0.0" y="175" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAe-x7-FDW" id="iwN-6M-wvQ">
-                                            <frame key="frameInset" width="320" height="44"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Content Copyright" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1gC-u7-Bit" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8451,7 +8451,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Show Terms &amp; Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9Uh-gL-KyR" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8476,7 +8476,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Show Privacy Policy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="flu-bh-lUc" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" width="270" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8676,13 +8676,26 @@
                                     <outlet property="delegate" destination="x1i-Wy-zFZ" id="yds-Nk-cUV"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5hd-Nh-6cF">
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Aav-dQ-cf1"/>
+                                    <constraint firstAttribute="height" constant="50" id="G6B-fY-VLz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="SHUFFLE PLAY">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="WOz-ZV-HXQ" secondAttribute="trailing" id="1b3-IX-A9G"/>
                             <constraint firstItem="j1w-CX-d7p" firstAttribute="top" secondItem="WOz-ZV-HXQ" secondAttribute="bottom" constant="-49" id="2sR-Xv-ILD"/>
+                            <constraint firstItem="5hd-Nh-6cF" firstAttribute="centerX" secondItem="GhT-3k-gcy" secondAttribute="centerX" id="Rj0-Mm-33f"/>
                             <constraint firstItem="WOz-ZV-HXQ" firstAttribute="leading" secondItem="GhT-3k-gcy" secondAttribute="leading" id="das-VM-UjD"/>
                             <constraint firstItem="WOz-ZV-HXQ" firstAttribute="top" secondItem="GhT-3k-gcy" secondAttribute="top" id="jZC-5w-GfX"/>
+                            <constraint firstItem="5hd-Nh-6cF" firstAttribute="top" secondItem="NKe-Mb-2Aw" secondAttribute="bottom" constant="231" id="vIe-ZP-k8O"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="TIg-Ln-hjz">
@@ -8702,6 +8715,7 @@
                         <outlet property="scrollView" destination="Blo-mM-EMt" id="rCv-cM-N3g"/>
                         <outlet property="searchBar" destination="uQG-qo-F3E" id="P8p-LK-5uW"/>
                         <outlet property="searchView" destination="ePi-kl-2tr" id="SDG-Lb-A99"/>
+                        <outlet property="shuffleButtonTopSpaceConstraint" destination="vIe-ZP-k8O" id="9ay-fY-Lsc"/>
                         <outlet property="tableView" destination="WOz-ZV-HXQ" id="CU5-Kn-kLr"/>
                         <outlet property="topViewTopSpaceConstraint" destination="JDO-nI-KUe" id="dFD-SR-0of"/>
                     </connections>
@@ -8942,7 +8956,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="00A01D7B-ABFB-4F2C-B5A3-C179CE9E02C0" width="45" height="27">
+        <image name="6B827394-8B41-48C1-8F55-A713C9BFD18F" width="45" height="27">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -9093,7 +9107,7 @@ LyE+IUIhSSFRIV4hYyFlIWchbCF0IXchfCGEIYchmSGcIaEAAAAAAAACAQAAAAAAAAA+AAAAAAAAAAAA
 AAAAAAAhow
 </mutableData>
         </image>
-        <image name="A70F554E-3061-41E2-AED6-F58522390F88" width="60" height="60">
+        <image name="C1E8F8F4-21EA-4474-A755-456DF526907D" width="60" height="60">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
