@@ -39,7 +39,8 @@ extension User {
         try super.validateValue(ioValue, forKeyPath: inKeyPath)
     }
     
-    func avatarURL() -> NSURL {
+    func avatarURL()->NSURL
+    {
         if let avatar = self.avatar {
             if !avatar.isEmpty {
                 return NSURL(string: avatar)!

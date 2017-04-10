@@ -59,6 +59,8 @@ class RegisterViewController: BaseViewController
     func loginSuccess(session:String)
     {
         A0SimpleKeychain().setString(session, forKey:"PHPSESSID")
+        A0SimpleKeychain().setString("0", forKey:"WeChatLogin")
+        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("TabBarViewController")
         navigationController?.pushViewController(vc, animated:true)

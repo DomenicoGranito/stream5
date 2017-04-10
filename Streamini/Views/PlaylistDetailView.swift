@@ -6,8 +6,6 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-import UIKit
-
 class PlaylistDetailView: UIView
 {
     @IBOutlet var userImageView:UIImageView!

@@ -50,11 +50,20 @@ class UserHeaderView: UIView, UITextViewDelegate {
         aTextview.alpha = 1.0
     }
     
-    func update(user: User) {
-        userImageView.sd_setImageWithURL(user.avatarURL())
+    func update(user:User)
+    {
+        let WeChatLogin=A0SimpleKeychain().stringForKey("WeChatLogin")
         
-        usernameLabel.text  = user.name
-        likeCountLabel.text = "\(user.likes)"
+        if WeChatLogin=="1"
+        {
+            userImageView.sd_setImageWithURL(NSURL(string:A0SimpleKeychain().stringForKey("headimgurl")!))
+            usernameLabel.text=A0SimpleKeychain().stringForKey("nickname")
+        }
+        else
+        {
+            userImageView.sd_setImageWithURL(user.avatarURL())
+            usernameLabel.text=user.name
+        }
         
 //        if let label = userDescriptionLabel {
 //            userDescriptionLabel.text   = user.desc
@@ -68,7 +77,10 @@ class UserHeaderView: UIView, UITextViewDelegate {
 //            }
 //        }
         
-        if let live = liveLabel {
+        likeCountLabel.text="\(user.likes)"
+        
+        if let live=liveLabel
+        {
             live.hidden = !user.isLive
         }
     }

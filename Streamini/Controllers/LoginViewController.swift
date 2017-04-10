@@ -87,6 +87,9 @@ class LoginViewController: BaseViewController
         password="beinitpass"
         email=username+"@WeChat.com"
         
+        A0SimpleKeychain().setString(data["nickname"] as! String, forKey:"nickname")
+        A0SimpleKeychain().setString(data["headimgurl"] as! String, forKey:"headimgurl")
+        
         signupWithBEINIT()
     }
     
@@ -103,6 +106,7 @@ class LoginViewController: BaseViewController
         A0SimpleKeychain().setString(email, forKey:"id")
         A0SimpleKeychain().setString(password, forKey:"password")
         A0SimpleKeychain().setString("signup", forKey:"type")
+        A0SimpleKeychain().setString("1", forKey:"WeChatLogin")
         
         if let deviceToken=(UIApplication.sharedApplication().delegate as! AppDelegate).deviceToken
         {
@@ -153,6 +157,8 @@ class LoginViewController: BaseViewController
     
     @IBAction func login()
     {
+        A0SimpleKeychain().setString("0", forKey:"WeChatLogin")
+        
         username=usernameTxt!.text!
         password=passwordTxt!.text!
         

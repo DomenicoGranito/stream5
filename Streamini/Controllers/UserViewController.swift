@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-protocol UserSelecting: class {
-    func userDidSelected(user: User)
+protocol UserSelecting:class
+{
+    func userDidSelected(user:User)
 }
 
 protocol StreamSelecting:class
@@ -16,15 +17,17 @@ protocol StreamSelecting:class
     func openPopUpForSelectedStream(stream:Stream)
 }
 
-protocol UserStatisticsDelegate: class {
-    func recentStreamsDidSelected(userId: UInt)
-    func followersDidSelected(userId: UInt)
-    func followingDidSelected(userId: UInt)
+protocol UserStatisticsDelegate:class
+{
+    func recentStreamsDidSelected(userId:UInt)
+    func followersDidSelected(userId:UInt)
+    func followingDidSelected(userId:UInt)
 }
 
-protocol UserStatusDelegate: class {
-    func followStatusDidChange(status: Bool, user: User)
-    func blockStatusDidChange(status: Bool, user: User)
+protocol UserStatusDelegate:class
+{
+    func followStatusDidChange(status:Bool, user:User)
+    func blockStatusDidChange(status:Bool, user:User)
 }
 
 class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AmazonToolDelegate
@@ -287,6 +290,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
             let buttonTitle=NSLocalizedString("user_card_follow", comment:"")
             followButton.setTitle(buttonTitle, forState:.Normal)
         }
+        
         backgroundImageView?.image=renderImageFromView()
         activityIndicator.stopAnimating()
     }
