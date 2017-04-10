@@ -61,7 +61,7 @@ public class SongManager{
         return false
     }
     
-    class func addToRecentlyPlayed(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String, streamKey:String)
+    class func addToRecentlyPlayed(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String, streamKey:String, streamUserID:UInt)
     {
         if(!isRecentlyPlayed(streamID))
         {
@@ -71,6 +71,7 @@ public class SongManager{
             newRecentlyPlayed.setValue(streamUserName, forKey:"streamUserName")
             newRecentlyPlayed.setValue(streamID, forKey:"streamID")
             newRecentlyPlayed.setValue(streamKey, forKey:"streamKey")
+            newRecentlyPlayed.setValue(streamUserID, forKey:"streamUserID")
             save()
             
             if(getRecentlyPlayed().count>25)
@@ -88,7 +89,7 @@ public class SongManager{
         save()
     }
     
-    class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String, vType:Int, streamKey:String)
+    class func addToFavourite(streamTitle:String, streamHash:String, streamID:UInt, streamUserName:String, vType:Int, streamKey:String, streamUserID:UInt)
     {
         let newFavourite=NSEntityDescription.insertNewObjectForEntityForName("Favourites", inManagedObjectContext:context)
         newFavourite.setValue(streamTitle, forKey:"streamTitle")
@@ -97,6 +98,7 @@ public class SongManager{
         newFavourite.setValue(streamID, forKey:"streamID")
         newFavourite.setValue(streamKey, forKey:"streamKey")
         newFavourite.setValue(vType, forKey:"vType")
+        newFavourite.setValue(streamUserID, forKey:"streamUserID")
         save()
     }
     

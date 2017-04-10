@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E03D5041E67F5F30056D275 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03D5031E67F5F30056D275 /* PopUpViewController.swift */; };
+		3E03F0901E9B89DE00C9C99A /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E03F08F1E9B89DE00C9C99A /* Reachability.swift */; };
 		3E20216D1D81A6530058DAAD /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216C1D81A6530058DAAD /* HomeViewController.swift */; };
 		3E20216F1D81AB440058DAAD /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E20216E1D81AB440058DAAD /* CategoryRow.swift */; };
 		3E2021711D81ACFF0058DAAD /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2021701D81ACFE0058DAAD /* VideoCell.swift */; };
@@ -225,6 +226,7 @@
 		27BA8F7BE253BA8E13E1AD0C /* Pods-Streamini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.debug.xcconfig"; sourceTree = "<group>"; };
 		3D0F6E64AA65AD195559CE8B /* Pods-Streamini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Streamini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Streamini/Pods-Streamini.release.xcconfig"; sourceTree = "<group>"; };
 		3E03D5031E67F5F30056D275 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		3E03F08F1E9B89DE00C9C99A /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		3E20216C1D81A6530058DAAD /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E20216E1D81AB440058DAAD /* CategoryRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		3E2021701D81ACFE0058DAAD /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -780,6 +782,7 @@
 				B77AABE21B398627007DE187 /* RestKitObjC.h */,
 				B77AABE31B398627007DE187 /* RestKitObjC.m */,
 				B77AABE11B398606007DE187 /* Streamini-Bridging-Header.h */,
+				3E03F08F1E9B89DE00C9C99A /* Reachability.swift */,
 				B7B0F0931B397E92006FDA5D /* Models */,
 				B7D6F0AF1B37F14D0070C36A /* Controllers */,
 				B7AA93231B3172740005972E /* AppDelegate.swift */,
@@ -1101,6 +1104,7 @@
 				B755D0641B7516F6003FB816 /* UserStatisticsDataSource.swift in Sources */,
 				B755D0661B75258B003FB816 /* UserSelectingHandler.swift in Sources */,
 				B77AABF51B39B40E007DE187 /* StreamDataSource.swift in Sources */,
+				3E03F0901E9B89DE00C9C99A /* Reachability.swift in Sources */,
 				B6D413591E17AC1A001E8108 /* ARNModalImageTransitionViewController.swift in Sources */,
 				B73464E21B74F31B0025ECC3 /* FollowingDataSource.swift in Sources */,
 				B64176D31DF4EDE200099A9D /* PlayerView.swift in Sources */,
