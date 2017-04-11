@@ -46,9 +46,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         rootVC.view.layoutIfNeeded()
         modalVC.view.setNeedsLayout()
         modalVC.view.layoutIfNeeded()
-        
-        miniPlayerStartFrame=rootVC.miniPlayerView.frame
-        tabBarStartFrame=rootVC.vtabBar.frame
     }
     
     func willAnimation(transitionType:TransitionType, containerView:UIView)
@@ -87,7 +84,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             rootVC.vtabBar.frame.origin.y=min(max(tabY, tabBarStartFrame.origin.y), tabEndOriginY)
             
             let alpha=1.0-(1.0*percentComplete)
-            //rootVC.containerView.alpha=alpha+0.5
             rootVC.vtabBar.alpha=alpha
             rootVC.miniPlayerView.subviews.forEach{$0.alpha=alpha}
         }
@@ -97,7 +93,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             let endOriginY=miniPlayerStartFrame.origin.y
             let diff = -startOriginY+endOriginY
             
-            let tabStartOriginY=rootVC.miniPlayerView.bounds.size.height
+            let tabStartOriginY=modalVC.view.frame.size.height
             let tabEndOriginY=tabBarStartFrame.origin.y
             let tabDiff=tabStartOriginY-tabEndOriginY
             
@@ -107,7 +103,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             rootVC.vtabBar.frame.origin.y=tabStartOriginY-(tabDiff*percentComplete)
             
             let alpha=percentComplete
-            //rootVC.containerView.alpha=alpha+0.5
             rootVC.vtabBar.alpha=alpha
             rootVC.miniPlayerView.alpha=1
             rootVC.miniPlayerView.subviews.forEach{$0.alpha=alpha}
