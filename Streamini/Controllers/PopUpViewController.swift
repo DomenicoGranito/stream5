@@ -110,8 +110,10 @@ class PopUpViewController: BaseViewController
         }
         if indexPath.row==6
         {
+            dismissViewControllerAnimated(true, completion:nil)
             SocialConnector().block(stream!.user.id, success:blockSuccess, failure:failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
+            NSNotificationCenter.defaultCenter().postNotificationName("blockUser", object:nil)
         }
     }
     

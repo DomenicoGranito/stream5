@@ -52,12 +52,20 @@ class UserHeaderView: UIView, UITextViewDelegate {
     
     func update(user:User)
     {
-        let WeChatLogin=A0SimpleKeychain().stringForKey("WeChatLogin")
-        
-        if WeChatLogin=="1"
+        if UserContainer.shared.logged().id==user.id
         {
-            userImageView.sd_setImageWithURL(NSURL(string:A0SimpleKeychain().stringForKey("headimgurl")!))
-            usernameLabel.text=A0SimpleKeychain().stringForKey("nickname")
+            let WeChatLogin=A0SimpleKeychain().stringForKey("WeChatLogin")
+            
+            if WeChatLogin=="1"
+            {
+                userImageView.sd_setImageWithURL(NSURL(string:A0SimpleKeychain().stringForKey("headimgurl")!))
+                usernameLabel.text=A0SimpleKeychain().stringForKey("nickname")
+            }
+            else
+            {
+                userImageView.sd_setImageWithURL(user.avatarURL())
+                usernameLabel.text=user.name
+            }
         }
         else
         {

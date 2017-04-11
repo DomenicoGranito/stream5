@@ -39,6 +39,7 @@ class ModalViewController: UIViewController
     override func viewDidLoad()
     {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -68,6 +69,43 @@ class ModalViewController: UIViewController
     override func viewWillDisappear(animated:Bool)
     {
         player?.pause()
+    }
+    
+    func deleteBlockUserVideos()
+    {
+        if let _=streamsArray
+        {
+            let blockedUserID=stream!.user.id
+            let streamsMutableArray=NSMutableArray(array:streamsArray!)
+            
+            for i in 0 ..< streamsArray!.count
+            {
+                let stream=streamsArray![i] as! Stream
+                
+                if blockedUserID==stream.user.id
+                {
+                    streamsMutableArray.removeObject(stream)
+                    
+                    let index=videoIDs.indexOf(stream.videoID)
+                    videoIDs.removeAtIndex(index!)
+                }
+            }
+            
+            streamsArray=streamsMutableArray
+            
+            if streamsArray!.count==0
+            {
+                close()
+            }
+            else
+            {
+                carousel!.reloadData()
+            }
+        }
+        else
+        {
+            close()
+        }
     }
     
     func updatePlayerWithStream()
