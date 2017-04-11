@@ -12,17 +12,18 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
-    @IBOutlet var containerView:UIView!
-    @IBOutlet var playView:UIView!
-    @IBOutlet var miniPlayerButton:UIButton!
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     
     override func viewDidLoad()
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as? ModalViewController
+        miniPlayerView.frame=CGRectMake(0, view.frame.size.height-99, view.frame.size.width, 50)
+        view.addSubview(miniPlayerView)
+        
+        let sb=UIStoryboard(name:"Main", bundle:nil)
+        modalVC=sb.instantiateViewControllerWithIdentifier("ModalViewController") as? ModalViewController
+        modalVC.stream=Stream()
         
         setupAnimator()
         getPermissions()
@@ -47,7 +48,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func hideButton()
     {
-        playView.hidden=true
+        miniPlayerView.hidden=true
     }
     
     @IBAction func tapMiniPlayerButton()
