@@ -10,6 +10,7 @@
 
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
 {
+    var shouldRotate=false
     var window: UIWindow?
     var deviceToken: String?
     var notificationsDelegate = NotificationsDelegate()
@@ -38,6 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         menuItems.append(copyLinkItem)
         menuItems.append(saveVideoItem)
         menuController.menuItems = menuItems
+    }
+    
+    func application(application:UIApplication, supportedInterfaceOrientationsForWindow window:UIWindow?)->UIInterfaceOrientationMask
+    {
+        if shouldRotate
+        {
+            return .AllButUpsideDown
+        }
+        else
+        {
+            return .Portrait
+        }
     }
     
     func applicationWillResignActive(application: UIApplication)

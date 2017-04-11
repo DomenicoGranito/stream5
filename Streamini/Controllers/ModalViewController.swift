@@ -35,9 +35,13 @@ class ModalViewController: UIViewController
     var videoIDs:[String]=[]
     var timer:NSTimer?
     var selectedItemIndex=0
+    var appDelegate:AppDelegate!
     
     override func viewDidLoad()
     {
+        appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.shouldRotate=true
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
         
@@ -446,6 +450,7 @@ class ModalViewController: UIViewController
             timer?.invalidate()
             
             player?.shouldAutoplay=false
+            appDelegate.shouldRotate=false
         }
     }
     
