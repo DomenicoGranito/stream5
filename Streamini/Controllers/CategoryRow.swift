@@ -69,8 +69,11 @@ class CategoryRow: UITableViewCell
         let stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream
         
         modalVC.stream=stream
+        modalVC.player=tabBarController.player
+        
         tabBarController.stream=stream
         tabBarController.modalVC=modalVC
+        
         tabBarController.setupAnimator()
         tabBarController.updateMiniPlayerWithStream()
         tabBarController.tapMiniPlayerButton()

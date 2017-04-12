@@ -155,9 +155,6 @@ class ModalViewController: UIViewController
         videoProgressDurationLbl?.text="0:00"
         videoDurationLbl?.text="-0:00"
         
-        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
-        player?.controlStyle = .None
-        
         addObserverForMPMoviePlayController()
         addTimer()
     }

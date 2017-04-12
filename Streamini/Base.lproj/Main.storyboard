@@ -580,7 +580,6 @@
                     </tabBar>
                     <connections>
                         <outlet property="miniPlayerView" destination="WbR-XY-JoC" id="cKa-0B-sen"/>
-                        <outlet property="playButton" destination="DB1-yF-op2" id="GtZ-Oh-uIJ"/>
                         <outlet property="videoArtistLbl" destination="nsN-sz-hU5" id="GkP-Q2-cVV"/>
                         <outlet property="videoThumbnailImageView" destination="bAf-AH-pQ5" id="aYv-Nu-Fmo"/>
                         <outlet property="videoTitleLbl" destination="jab-IU-Wgi" id="Hef-a1-68A"/>
@@ -620,11 +619,6 @@
                             <connections>
                                 <action selector="tapMiniPlayerButton" destination="hDB-Gb-oqN" eventType="touchUpInside" id="SMn-0V-nsy"/>
                             </connections>
-                        </button>
-                        <button clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DB1-yF-op2">
-                            <frame key="frameInset" minX="287" minY="14" width="20" height="23"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="play"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -8330,7 +8324,6 @@
         <image name="music_slider_circle" width="25" height="25"/>
         <image name="next_song" width="28" height="27"/>
         <image name="people" width="28" height="28"/>
-        <image name="play" width="20" height="23"/>
         <image name="play-big" width="60" height="70"/>
         <image name="prev_song" width="28" height="27"/>
         <image name="profile" width="25" height="25"/>
