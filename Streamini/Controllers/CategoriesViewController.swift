@@ -206,9 +206,7 @@ class CategoriesViewController: BaseViewController
         modalVC.streamsArray=streamsArray
         modalVC.TBVC=TBVC
         
-        TBVC.stream=stream
         TBVC.modalVC=modalVC
-        
-        TBVC.configure()
+        TBVC.configure(stream)
     }
 }

@@ -55,10 +55,8 @@ class VideosViewController: UIViewController
         modalVC.stream=makeStreamClassObject(indexPath.row)
         modalVC.TBVC=TBVC
         
-        TBVC.stream=makeStreamClassObject(indexPath.row)
         TBVC.modalVC=modalVC
-        
-        TBVC.configure()
+        TBVC.configure(makeStreamClassObject(indexPath.row))
     }
     
     func makeStreamClassObject(row:Int)->Stream

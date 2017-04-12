@@ -90,6 +90,7 @@ class DiscoverViewController:BaseTableViewController
             let cell=tableView.dequeueReusableCellWithIdentifier("Recent") as! CategoryRow
             
             cell.oneCategoryItemsArray=featuredStreamsArray
+            cell.TBVC=tabBarController as! TabBarViewController
             cell.cellIdentifier="videoCell"
             
             return cell

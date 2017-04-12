@@ -124,10 +124,8 @@ class MyLibViewController: UIViewController
             modalVC.stream=makeStreamClassObject(indexPath.row-5)
             modalVC.TBVC=TBVC
             
-            TBVC.stream=makeStreamClassObject(indexPath.row-5)
             TBVC.modalVC=modalVC
-            
-            TBVC.configure()
+            TBVC.configure(makeStreamClassObject(indexPath.row-5))
         }
         else if indexPath.row<4
         {

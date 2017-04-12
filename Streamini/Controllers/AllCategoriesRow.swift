@@ -52,10 +52,8 @@ class AllCategoriesRow: UITableViewCell
         modalVC.stream=stream
         modalVC.TBVC=TBVC
         
-        TBVC.stream=stream
         TBVC.modalVC=modalVC
-        
-        TBVC.configure()
+        TBVC.configure(stream)
     }
     
     func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize

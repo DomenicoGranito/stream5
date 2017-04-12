@@ -55,10 +55,8 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         modalVC.stream=stream
         modalVC.TBVC=TBVC
         
-        TBVC.stream=stream
         TBVC.modalVC=modalVC
-        
-        TBVC.configure()
+        TBVC.configure(stream)
     }
     
     func openPopUpForSelectedStream(stream:Stream)

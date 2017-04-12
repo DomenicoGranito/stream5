@@ -288,6 +288,7 @@ class ModalViewController: UIViewController
             selectedItemIndex=carousel.currentItemIndex
             stream=streamsArray![selectedItemIndex] as? Stream
             
+            TBVC.updateMiniPlayerWithStream(stream!)
             updateButtons()
             updatePlayerWithStream()
         }

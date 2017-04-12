@@ -19,7 +19,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     var player:DWMoviePlayerController!
-    var stream:Stream!
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
@@ -34,7 +33,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         getPermissions()
     }
     
-    func updateMiniPlayerWithStream()
+    func updateMiniPlayerWithStream(stream:Stream)
     {
         miniPlayerView.hidden=false
         
@@ -43,10 +42,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
     }
     
-    func configure()
+    func configure(stream:Stream)
     {
         setupAnimator()
-        updateMiniPlayerWithStream()
+        updateMiniPlayerWithStream(stream)
         tapMiniPlayerButton()
     }
     
