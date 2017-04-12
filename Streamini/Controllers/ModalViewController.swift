@@ -28,7 +28,7 @@ class ModalViewController: UIViewController
     @IBOutlet var topView:UIView?
     
     var isPlaying=true
-    var TBC:TabBarViewController!
+    var TBVC:TabBarViewController!
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -68,7 +68,7 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
-        player=TBC.player
+        player=TBVC.player
         addTimer()
         player?.play()
     }

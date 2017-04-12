@@ -10,7 +10,7 @@ class CategoryRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
     var oneCategoryItemsArray:NSArray!
-    var tabBarController:TabBarViewController!
+    var TBVC:TabBarViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
     var cellIdentifier:String?
     
@@ -69,13 +69,11 @@ class CategoryRow: UITableViewCell
         let stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream
         
         modalVC.stream=stream
-        modalVC.TBC=tabBarController
+        modalVC.TBVC=TBVC
         
-        tabBarController.stream=stream
-        tabBarController.modalVC=modalVC
+        TBVC.stream=stream
+        TBVC.modalVC=modalVC
         
-        tabBarController.setupAnimator()
-        tabBarController.updateMiniPlayerWithStream()
-        tabBarController.tapMiniPlayerButton()
+        TBVC.configure()
     }
 }

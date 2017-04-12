@@ -129,7 +129,7 @@ class HomeViewController: BaseViewController
         
         if(allCategoryItemsArray.count>0)
         {
-            cell.tabBarController=tabBarController as! TabBarViewController
+            cell.TBVC=tabBarController as! TabBarViewController
             cell.oneCategoryItemsArray=allCategoryItemsArray[indexPath.section] as! NSArray
             
             if indexPath.section==0

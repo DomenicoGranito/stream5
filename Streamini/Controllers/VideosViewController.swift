@@ -9,13 +9,13 @@
 class VideosViewController: UIViewController
 {
     var vType:Int!
-    var TBC:TabBarViewController!
+    var TBVC:TabBarViewController!
     var favouriteStreams:[NSManagedObject]?
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
     {
-        TBC=tabBarController as! TabBarViewController
+        TBVC=tabBarController as! TabBarViewController
         
         favouriteStreams=SongManager.getFavourites(vType)
     }
@@ -53,14 +53,12 @@ class VideosViewController: UIViewController
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
         modalVC.stream=makeStreamClassObject(indexPath.row)
-        modalVC.TBC=TBC
+        modalVC.TBVC=TBVC
         
-        TBC.stream=makeStreamClassObject(indexPath.row)
-        TBC.modalVC=modalVC
+        TBVC.stream=makeStreamClassObject(indexPath.row)
+        TBVC.modalVC=modalVC
         
-        TBC.setupAnimator()
-        TBC.updateMiniPlayerWithStream()
-        TBC.tapMiniPlayerButton()
+        TBVC.configure()
     }
     
     func makeStreamClassObject(row:Int)->Stream

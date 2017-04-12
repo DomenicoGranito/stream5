@@ -18,14 +18,14 @@ class CategoriesViewController: BaseViewController
     var categoryName:String?
     var page=0
     var categoryID:Int?
-    var TBC:TabBarViewController!
+    var TBVC:TabBarViewController!
     let maxHeaderHeight:CGFloat=220.0
     let minHeaderHeight:CGFloat=100.0
     var previousScrollOffset:CGFloat=0.0
     
     override func viewDidLoad()
     {
-        TBC=tabBarController as! TabBarViewController
+        TBVC=tabBarController as! TabBarViewController
         
         headerLbl?.text=categoryName?.uppercaseString
         navigationController?.navigationBarHidden=true
@@ -91,7 +91,7 @@ class CategoriesViewController: BaseViewController
         let cell=tableView.dequeueReusableCellWithIdentifier("cell") as! AllCategoriesRow
         
         cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
-        cell.tabBarController=tabBarController as! TabBarViewController
+        cell.TBVC=TBVC
         
         return cell
     }
@@ -204,13 +204,11 @@ class CategoriesViewController: BaseViewController
         
         modalVC.stream=stream
         modalVC.streamsArray=streamsArray
-        modalVC.TBC=TBC
+        modalVC.TBVC=TBVC
         
-        TBC.stream=stream
-        TBC.modalVC=modalVC
+        TBVC.stream=stream
+        TBVC.modalVC=modalVC
         
-        TBC.setupAnimator()
-        TBC.updateMiniPlayerWithStream()
-        TBC.tapMiniPlayerButton()
+        TBVC.configure()
     }
 }

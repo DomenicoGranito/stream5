@@ -21,12 +21,12 @@ class MyLibViewController: UIViewController
     let menuItemIconsArray=["playlist", "youtube", "internet", "channels"]
     
     var recentlyPlayed:[NSManagedObject]?
-    var TBC:TabBarViewController!
+    var TBVC:TabBarViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewWillAppear(animated:Bool)
     {
-        TBC=tabBarController as! TabBarViewController
+        TBVC=tabBarController as! TabBarViewController
         
         navigationController?.navigationBarHidden=false
         
@@ -122,14 +122,12 @@ class MyLibViewController: UIViewController
             let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
             modalVC.stream=makeStreamClassObject(indexPath.row-5)
-            modalVC.TBC=TBC
+            modalVC.TBVC=TBVC
             
-            TBC.stream=makeStreamClassObject(indexPath.row-5)
-            TBC.modalVC=modalVC
+            TBVC.stream=makeStreamClassObject(indexPath.row-5)
+            TBVC.modalVC=modalVC
             
-            TBC.setupAnimator()
-            TBC.updateMiniPlayerWithStream()
-            TBC.tapMiniPlayerButton()
+            TBVC.configure()
         }
         else if indexPath.row<4
         {

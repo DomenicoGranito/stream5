@@ -43,6 +43,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
     }
     
+    func configure()
+    {
+        setupAnimator()
+        updateMiniPlayerWithStream()
+        tapMiniPlayerButton()
+    }
+    
     override func viewWillAppear(animated:Bool)
     {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
