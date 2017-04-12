@@ -204,7 +204,7 @@ class CategoriesViewController: BaseViewController
         
         modalVC.stream=stream
         modalVC.streamsArray=streamsArray
-        modalVC.player=TBC.player
+        modalVC.TBC=TBC
         
         TBC.stream=stream
         TBC.modalVC=modalVC

@@ -28,6 +28,7 @@ class ModalViewController: UIViewController
     @IBOutlet var topView:UIView?
     
     var isPlaying=true
+    var TBC:TabBarViewController!
     var player:DWMoviePlayerController?
     var stream:Stream?
     var streamsArray:NSArray?
@@ -156,6 +157,8 @@ class ModalViewController: UIViewController
         seekBar?.value=0
         videoProgressDurationLbl?.text="0:00"
         videoDurationLbl?.text="-0:00"
+        
+        player=TBC.player
         
         addObserverForMPMoviePlayController()
     }

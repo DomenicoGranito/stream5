@@ -53,9 +53,7 @@ class VideosViewController: UIViewController
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
         modalVC.stream=makeStreamClassObject(indexPath.row)
-        
-        modalVC.stream=makeStreamClassObject(indexPath.row)
-        modalVC.player=TBC.player
+        modalVC.TBC=TBC
         
         TBC.stream=makeStreamClassObject(indexPath.row)
         TBC.modalVC=modalVC

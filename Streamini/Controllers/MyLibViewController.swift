@@ -122,9 +122,7 @@ class MyLibViewController: UIViewController
             let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
             modalVC.stream=makeStreamClassObject(indexPath.row-5)
-            
-            modalVC.stream=makeStreamClassObject(indexPath.row-5)
-            modalVC.player=TBC.player
+            modalVC.TBC=TBC
             
             TBC.stream=makeStreamClassObject(indexPath.row-5)
             TBC.modalVC=modalVC

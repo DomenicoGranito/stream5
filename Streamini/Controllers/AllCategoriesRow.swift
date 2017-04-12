@@ -50,7 +50,7 @@ class AllCategoriesRow: UITableViewCell
         let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
         modalVC.stream=stream
-        modalVC.player=tabBarController.player
+        modalVC.TBC=tabBarController
         
         tabBarController.stream=stream
         tabBarController.modalVC=modalVC

@@ -13,6 +13,7 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     
     var dataSource: UserStatisticsDataSource?
     var profileDelegate: ProfileDelegate?
+    var TBC:TabBarViewController!
     
     func userDidSelected(user:User)
     {
@@ -42,14 +43,26 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     {
         super.viewDidLoad()
         configureView()
+        
+        TBC=tabBarController as! TabBarViewController
     }
     
     func streamDidSelected(stream:Stream)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        
+        let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
+        
         modalVC.stream=stream
-        presentViewController(modalVC, animated:true, completion:nil)
+        modalVC.TBC=TBC
+        
+        TBC.stream=stream
+        TBC.modalVC=modalVC
+        
+        TBC.setupAnimator()
+        TBC.updateMiniPlayerWithStream()
+        TBC.tapMiniPlayerButton()
     }
     
     func openPopUpForSelectedStream(stream:Stream)
