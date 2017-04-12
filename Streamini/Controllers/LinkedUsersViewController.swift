@@ -52,8 +52,6 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
-        let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
-        
         modalVC.stream=stream
         modalVC.TBC=TBC
         

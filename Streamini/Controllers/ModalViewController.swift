@@ -68,6 +68,7 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
+        player=TBC.player
         addTimer()
         player?.play()
     }
@@ -157,8 +158,6 @@ class ModalViewController: UIViewController
         seekBar?.value=0
         videoProgressDurationLbl?.text="0:00"
         videoDurationLbl?.text="-0:00"
-        
-        player=TBC.player
         
         addObserverForMPMoviePlayController()
     }
