@@ -67,11 +67,13 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
+        addTimer()
         player?.play()
     }
     
     override func viewWillDisappear(animated:Bool)
     {
+        timer?.invalidate()
         player?.pause()
     }
     
@@ -156,7 +158,6 @@ class ModalViewController: UIViewController
         videoDurationLbl?.text="-0:00"
         
         addObserverForMPMoviePlayController()
-        addTimer()
     }
     
     func addTimer()
@@ -323,7 +324,6 @@ class ModalViewController: UIViewController
     
     func addPlayerAtIndex()
     {
-        timer?.invalidate()
         addPlayer()
         
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
@@ -443,8 +443,6 @@ class ModalViewController: UIViewController
         {
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
-            
-            timer?.invalidate()
             
             player?.shouldAutoplay=false
             appDelegate.shouldRotate=false
