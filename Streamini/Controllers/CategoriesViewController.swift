@@ -18,12 +18,15 @@ class CategoriesViewController: BaseViewController
     var categoryName:String?
     var page=0
     var categoryID:Int?
+    var TBC:TabBarViewController!
     let maxHeaderHeight:CGFloat=220.0
     let minHeaderHeight:CGFloat=100.0
     var previousScrollOffset:CGFloat=0.0
     
     override func viewDidLoad()
     {
+        TBC=tabBarController as! TabBarViewController
+        
         headerLbl?.text=categoryName?.uppercaseString
         navigationController?.navigationBarHidden=true
         itemsTbl?.addInfiniteScrollingWithActionHandler{()->Void in
@@ -193,16 +196,21 @@ class CategoriesViewController: BaseViewController
     
     @IBAction func shufflePlay()
     {
-        let root=UIApplication.sharedApplication().delegate?.window!!.rootViewController as! UINavigationController
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
         let random=Int(arc4random_uniform(UInt32(streamsArray.count)))
         let stream=streamsArray[random] as! Stream
         
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
-        
         modalVC.stream=stream
         modalVC.streamsArray=streamsArray
-        root.presentViewController(modalVC, animated:true, completion:nil)
+        modalVC.player=TBC.player
+        
+        TBC.stream=stream
+        TBC.modalVC=modalVC
+        
+        TBC.setupAnimator()
+        TBC.updateMiniPlayerWithStream()
+        TBC.tapMiniPlayerButton()
     }
 }
