@@ -12,6 +12,7 @@ class AllCategoriesRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
     var sectionItemsArray:NSArray!
+    var tabBarController:TabBarViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
     
     func reloadCollectionView()
@@ -43,16 +44,20 @@ class AllCategoriesRow: UITableViewCell
     
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
-        
-        let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
-        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
-        modalVC.stream=stream
+        let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
-        root.presentViewController(modalVC, animated:true, completion:nil)
+        modalVC.stream=stream
+        modalVC.player=tabBarController.player
+        
+        tabBarController.stream=stream
+        tabBarController.modalVC=modalVC
+        
+        tabBarController.setupAnimator()
+        tabBarController.updateMiniPlayerWithStream()
+        tabBarController.tapMiniPlayerButton()
     }
     
     func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
