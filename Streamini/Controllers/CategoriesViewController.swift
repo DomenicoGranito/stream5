@@ -88,6 +88,7 @@ class CategoriesViewController: BaseViewController
         let cell=tableView.dequeueReusableCellWithIdentifier("cell") as! AllCategoriesRow
         
         cell.sectionItemsArray=allItemsArray[indexPath.row] as! NSArray
+        cell.tabBarController=tabBarController as! TabBarViewController
         
         return cell
     }
