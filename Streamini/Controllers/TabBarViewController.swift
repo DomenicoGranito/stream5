@@ -12,21 +12,36 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
 {
     @IBOutlet var vtabBar:UITabBar!
     @IBOutlet var miniPlayerView:UIView!
+    @IBOutlet var videoTitleLbl:UILabel!
+    @IBOutlet var videoArtistLbl:UILabel!
+    @IBOutlet var videoThumbnailImageView:UIImageView!
+    @IBOutlet var playButton:UIButton!
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
+    var player:DWMoviePlayerController!
+    var stream:Stream!
+    let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
     {
+        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
+        player?.controlStyle = .None
+        
         miniPlayerView.frame=CGRectMake(0, view.frame.size.height-99, view.frame.size.width, 50)
         view.addSubview(miniPlayerView)
+        miniPlayerView.hidden=true
         
-        let sb=UIStoryboard(name:"Main", bundle:nil)
-        modalVC=sb.instantiateViewControllerWithIdentifier("ModalViewController") as? ModalViewController
-        modalVC.stream=Stream()
-        
-        setupAnimator()
         getPermissions()
+    }
+    
+    func updateMiniPlayerWithStream()
+    {
+        miniPlayerView.hidden=false
+        
+        videoTitleLbl.text=stream.title
+        videoArtistLbl.text=stream.user.name
+        videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
     }
     
     override func viewWillAppear(animated:Bool)
@@ -44,11 +59,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         let navigationController=self.viewControllers![self.selectedIndex] as! UINavigationController
         navigationController.pushViewController(vc, animated:true)
-    }
-    
-    func hideButton()
-    {
-        miniPlayerView.hidden=true
     }
     
     @IBAction func tapMiniPlayerButton()

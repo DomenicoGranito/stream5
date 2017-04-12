@@ -10,6 +10,7 @@ class CategoryRow: UITableViewCell
 {
     @IBOutlet var collectionView:UICollectionView?
     var oneCategoryItemsArray:NSArray!
+    var tabBarController:TabBarViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
     var cellIdentifier:String?
     
@@ -62,15 +63,16 @@ class CategoryRow: UITableViewCell
     
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let root=UIApplication.sharedApplication().delegate!.window!?.rootViewController as! UINavigationController
-        
-        let storyboardn=UIStoryboard(name:"Main", bundle:nil)
-        let modalVC=storyboardn.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
         let stream=oneCategoryItemsArray[gestureRecognizer.view!.tag] as! Stream
         
         modalVC.stream=stream
-        
-        root.presentViewController(modalVC, animated:true, completion:nil)
+        tabBarController.stream=stream
+        tabBarController.modalVC=modalVC
+        tabBarController.setupAnimator()
+        tabBarController.updateMiniPlayerWithStream()
+        tabBarController.tapMiniPlayerButton()
     }
 }

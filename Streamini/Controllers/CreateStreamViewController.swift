@@ -255,7 +255,7 @@ UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.hidesBottomBarWhenPushed = true
         self.navigationController!.setNavigationBarHidden(true, animated: false)
-        (tabBarController as! TabBarViewController).hideButton()
+        (tabBarController as! TabBarViewController).miniPlayerView.hidden=true
         super.viewWillAppear(animated)
         keyboardHandler!.register()
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
