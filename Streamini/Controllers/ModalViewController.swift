@@ -445,7 +445,6 @@ class ModalViewController: UIViewController
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
             
-            timer?.invalidate()
             appDelegate.shouldRotate=false
         }
     }
