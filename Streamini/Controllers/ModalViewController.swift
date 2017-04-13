@@ -48,6 +48,7 @@ class ModalViewController: UIViewController
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(moviePlayerLoadStateDidChange), name:MPMoviePlayerLoadStateDidChangeNotification, object:player!)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -161,7 +162,7 @@ class ModalViewController: UIViewController
         }
     }
     
-    func addPlayer()
+    func reset()
     {
         seekBar?.value=0
         videoProgressDurationLbl?.text="0:00"
@@ -179,6 +180,15 @@ class ModalViewController: UIViewController
     {
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration))"
         seekBar?.maximumValue=Float(player!.duration)
+    }
+    
+    func moviePlayerLoadStateDidChange()
+    {
+        if player!.loadState == .Playable
+        {
+            player?.play()
+            playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        }
     }
     
     @IBAction func shuffle()
@@ -312,7 +322,7 @@ class ModalViewController: UIViewController
     
     func addPlayerAtIndex()
     {
-        addPlayer()
+        reset()
         
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
         carousel!.currentItemView!.addSubview(player!.view)
@@ -338,8 +348,6 @@ class ModalViewController: UIViewController
         
         player?.videoId=videoIDs[selectedItemIndex]
         player?.startRequestPlayInfo()
-        player?.play()
-        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
     }
     
     func rotateScreen()
