@@ -70,7 +70,13 @@ class ModalViewController: UIViewController
         
         player=TBVC.player
         addTimer()
+    }
+    
+    override func viewDidAppear(animated:Bool)
+    {
         player?.play()
+        isPlaying=true
+        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
     }
     
     override func viewWillDisappear(animated:Bool)
@@ -187,34 +193,25 @@ class ModalViewController: UIViewController
         seekBar?.maximumValue=Float(player!.duration)
     }
     
-    func helperFunction()
-    {
-        stream=streamsArray![selectedItemIndex] as? Stream
-        
-        updateButtons()
-        updatePlayerWithStream()
-        carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
-    }
-    
     @IBAction func shuffle()
     {
         selectedItemIndex=Int(arc4random_uniform(UInt32(streamsArray!.count)))
         
-        helperFunction()
+        carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
     }
     
     @IBAction func previous()
     {
         selectedItemIndex=streamsArray!.indexOfObject(stream!)-1
         
-        helperFunction()
+        carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
     }
     
     @IBAction func next()
     {
         selectedItemIndex=streamsArray!.indexOfObject(stream!)+1
         
-        helperFunction()
+        carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
     }
     
     @IBAction func play()
@@ -447,7 +444,6 @@ class ModalViewController: UIViewController
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
             
-            player?.shouldAutoplay=false
             appDelegate.shouldRotate=false
         }
     }
