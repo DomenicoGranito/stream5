@@ -40,11 +40,14 @@ class ModalViewController: UIViewController
     
     override func viewDidLoad()
     {
+        player=TBVC.player
+        
         appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.shouldRotate=true
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -68,8 +71,7 @@ class ModalViewController: UIViewController
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
-        player=TBVC.player
-        addTimer()
+        timer=NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
     override func viewDidAppear(animated:Bool)
@@ -164,13 +166,6 @@ class ModalViewController: UIViewController
         seekBar?.value=0
         videoProgressDurationLbl?.text="0:00"
         videoDurationLbl?.text="-0:00"
-        
-        addObserverForMPMoviePlayController()
-    }
-    
-    func addTimer()
-    {
-        timer=NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
     func timerHandler()
@@ -178,13 +173,6 @@ class ModalViewController: UIViewController
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
-    }
-    
-    func addObserverForMPMoviePlayController()
-    {
-        let notificationCenter=NSNotificationCenter.defaultCenter()
-        
-        notificationCenter.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
     }
     
     func moviePlayerDurationAvailable()
