@@ -23,9 +23,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     override func viewDidLoad()
     {
-        player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
-        player.controlStyle = .None
-        
         miniPlayerView.frame=CGRectMake(0, view.frame.size.height-99, view.frame.size.width, 50)
         view.addSubview(miniPlayerView)
         miniPlayerView.hidden=true
