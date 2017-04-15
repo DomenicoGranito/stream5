@@ -42,8 +42,6 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     override func viewDidLoad()
     {
         configureView()
-        
-        TBVC=tabBarController as! TabBarViewController
     }
     
     func streamDidSelected(stream:Stream)

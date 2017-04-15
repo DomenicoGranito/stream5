@@ -28,6 +28,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         miniPlayerView.hidden=true
         
         getPermissions()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
     }
     
     func updateMiniPlayerWithStream(stream:Stream)
@@ -46,15 +48,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         tapMiniPlayerButton()
     }
     
-    override func viewWillAppear(animated:Bool)
-    {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
-    }
-    
     func goToChannels(notification:NSNotification)
     {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name:"goToChannels", object:nil)
-        
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
         vc.user=notification.object as? User
