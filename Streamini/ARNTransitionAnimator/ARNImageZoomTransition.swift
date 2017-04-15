@@ -85,7 +85,8 @@ class ARNImageZoomTransition {
             
             animator.dismissalBeforeHandler = { containerView, transitionContext in
                 if case .Dismiss = operationType {
-                    containerView.addSubview(toVC.navigationController!.view)
+                    //containerView.addSubview(toVC.navigationController!.view)
+                    containerView.addSubview(toVC.view)
                 } else {
                     containerView.addSubview(toVC.view)
                 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 xxxAIRINxxx. All rights reserved.
 //
 
-class ModalViewController: UIViewController
+class ModalViewController: UIViewController, ARNImageTransitionZoomable
 {
     @IBOutlet var carousel:iCarousel?
     @IBOutlet var backgroundImageView:UIImageView?
@@ -458,7 +458,10 @@ class ModalViewController: UIViewController
     
     @IBAction func menu()
     {
-        
+        let storyboard=UIStoryboard(name:"Main", bundle:nil)
+        let vc=storyboard.instantiateViewControllerWithIdentifier("PlaylistViewController") as! PlaylistViewController
+        vc.transitioningDelegate=vc
+        presentViewController(vc, animated:true, completion:nil)
     }
     
     func secondsToReadableTime(durationSeconds:Double)->String
@@ -510,5 +513,10 @@ class ModalViewController: UIViewController
         {
             shuffleButton?.enabled=false
         }
+    }
+    
+    func createTransitionImageView()->UIImageView
+    {
+        return UIImageView()
     }
 }
