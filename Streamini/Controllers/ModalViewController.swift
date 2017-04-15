@@ -67,6 +67,8 @@ class ModalViewController: UIViewController
     override func viewWillAppear(animated:Bool)
     {
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
+        
+        songLikeStatus()
     }
     
     override func viewDidAppear(animated:Bool)
@@ -128,6 +130,11 @@ class ModalViewController: UIViewController
         
         SongManager.addToRecentlyPlayed(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, streamKey:stream!.videoID, streamUserID:stream!.user.id)
         
+        songLikeStatus()
+    }
+    
+    func songLikeStatus()
+    {
         if SongManager.isAlreadyFavourited(stream!.id)
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)

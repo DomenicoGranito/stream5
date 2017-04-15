@@ -41,7 +41,6 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
         configureView()
         
         TBVC=tabBarController as! TabBarViewController
