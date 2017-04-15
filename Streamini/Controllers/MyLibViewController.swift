@@ -83,7 +83,7 @@ class MyLibViewController: UIViewController
             
             cell.videoTitleLbl?.text=recentlyPlayed![indexPath.row-5].valueForKey("streamTitle") as? String
             cell.artistNameLbl?.text=recentlyPlayed![indexPath.row-5].valueForKey("streamUserName") as? String
-            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(recentlyPlayed![indexPath.row-5].valueForKey("streamID") as! Int).jpg"))
+            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(recentlyPlayed![indexPath.row-5].valueForKey("streamID") as! Int).jpg"))
             
             return cell
         }

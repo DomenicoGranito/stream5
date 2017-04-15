@@ -20,7 +20,7 @@ class RecentStreamCell: StreamCell
         let (host, _, _, _, _)=Config.shared.wowza()
         
         super.update(stream)
-        playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
+        playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
         userLabel.text = stream.user.name
         streamNameLabel.text  = stream.title
         streamEndedLabel.text = stream.ended!.timeAgoSimple

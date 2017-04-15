@@ -122,7 +122,7 @@ class ModalViewController: UIViewController
     
     func updatePlayerWithStream()
     {
-        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
         headerTitleLbl?.text=stream?.title
         videoTitleLbl?.text=stream?.title
