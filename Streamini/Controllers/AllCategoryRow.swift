@@ -30,7 +30,7 @@ class AllCategoryRow: UITableViewCell
         let category=sectionItemsArray[indexPath.row] as! Category
         
         cell.videoTitleLbl?.text=category.name
-        cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://spectator.live/thumbs/\(category.id).jpg"))
+        cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://spectator.live/thumb/\(category.id).jpg"))
         
         let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
         cell.tag=indexPath.row

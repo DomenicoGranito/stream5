@@ -44,7 +44,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         videoTitleLbl.text=stream.title
         videoArtistLbl.text=stream.user.name
-        videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
+        videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
     }
     
     func configure(stream:Stream)

@@ -41,7 +41,7 @@ class SearchStreamCell: StreamCell {
         self.streamLiveView.setCount(stream.viewers)
                 
         //streamImageView.sd_setImageWithURL(stream.urlToStreamImage())
-        streamImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream.id).jpg"))
+        streamImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
 
     }
 }

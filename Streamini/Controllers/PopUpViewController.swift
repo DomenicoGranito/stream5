@@ -25,7 +25,7 @@ class PopUpViewController: BaseViewController
             menuItemIconsArray.replaceObjectAtIndex(4, withObject:"time.png")
         }
         
-        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
     }
     
     @IBAction func closeButtonPressed()
@@ -58,7 +58,7 @@ class PopUpViewController: BaseViewController
             
             cell.videoTitleLbl?.text=stream?.title
             cell.artistNameLbl?.text=stream?.user.name
-            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(stream!.id).jpg"))
+            cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
             
             videoImage=cell.videoThumbnailImageView?.image
             

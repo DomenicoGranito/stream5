@@ -31,7 +31,7 @@ class VideosViewController: UIViewController
         
         cell.streamNameLabel?.text=favouriteStreams![indexPath.row].valueForKey("streamTitle") as? String
         cell.userLabel?.text=favouriteStreams![indexPath.row].valueForKey("streamUserName") as? String
-        cell.playImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumbs/\(favouriteStreams![indexPath.row].valueForKey("streamID") as! Int).jpg"))
+        cell.playImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(favouriteStreams![indexPath.row].valueForKey("streamID") as! Int).jpg"))
         
         cell.dotsButton?.tag=indexPath.row
         cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
