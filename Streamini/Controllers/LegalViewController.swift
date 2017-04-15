@@ -6,22 +6,22 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-enum LegalViewControllerType {
+enum LegalViewControllerType
+{
     case TermsOfService
     case PrivacyPolicy
 }
 
-class LegalViewController: BaseViewController, UIWebViewDelegate {
+class LegalViewController: BaseViewController, UIWebViewDelegate
+{
     @IBOutlet weak var webView: UIWebView!
     var type: LegalViewControllerType?
     
-    // MARK: - View life cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidLoad()
+    {
         let urlString: String
-        switch type! {
+        switch type!
+        {
         case .TermsOfService:
             urlString = Config.shared.legal().termsOfService
             self.title = NSLocalizedString("profile_terms", comment: "")
@@ -30,15 +30,17 @@ class LegalViewController: BaseViewController, UIWebViewDelegate {
             self.title = NSLocalizedString("profile_privacy", comment: "")
         }
         
-        let url = NSURL(string: urlString)!
-        webView.loadRequest(NSURLRequest(URL: url))
+        webView.loadRequest(NSURLRequest(URL:NSURL(string:urlString)!))
     }
     
-    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if navigationType == .LinkClicked {
+    func webView(webView:UIWebView, shouldStartLoadWithRequest request:NSURLRequest, navigationType:UIWebViewNavigationType)->Bool
+    {
+        if navigationType == .LinkClicked
+        {
             UIApplication.sharedApplication().openURL(request.URL!)
             return false
         }
+        
         return true
     }
 }

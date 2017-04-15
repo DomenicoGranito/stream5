@@ -12,9 +12,8 @@ class PasswordViewController: BaseViewController {
     @IBOutlet weak var newPassword: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewDidLoad()
+    {
         let doneBarButtonItem=UIBarButtonItem(barButtonSystemItem:.Done, target:self, action:#selector(doneButtonPressed))
         self.navigationItem.rightBarButtonItem = doneBarButtonItem
         
@@ -23,8 +22,8 @@ class PasswordViewController: BaseViewController {
         confirmPassword.placeholder = NSLocalizedString("confirm_password", comment: "")
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillAppear(animated:Bool)
+    {
         currentPassword.text = ""
         newPassword.text = ""
         confirmPassword.text = ""
@@ -47,20 +46,20 @@ class PasswordViewController: BaseViewController {
             return
         }
         
-        let text: String
-        text = newPassword.text!
-        
+        let text=newPassword.text!
         
         UserConnector().password(text, success: passwordSuccess, failure: passwordFailure)
     }
 
-    func passwordSuccess() {
+    func passwordSuccess()
+    {
         let alertView = UIAlertView.notAuthorizedAlert(NSLocalizedString("password_changed", comment: ""))
         alertView.show()
         A0SimpleKeychain().setString(newPassword.text!, forKey: "password")
     }
     
-    func passwordFailure(error: NSError) {
-        self.handleError(error)
+    func passwordFailure(error:NSError)
+    {
+        handleError(error)
     }
 }

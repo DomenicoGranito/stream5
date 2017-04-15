@@ -43,7 +43,6 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
         configureView()
 
         let userId = UserContainer.shared.logged().id
@@ -80,12 +79,14 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         navigationController!.pushViewController(vc, animated:true)
     }
     
-    func followStatusDidChange(status: Bool, user: User) {
+    func followStatusDidChange(status: Bool, user: User)
+    {
         dataSource!.updateFollowedStatus(user, status: status)
         profileDelegate!.reload()
     }
     
-    func blockStatusDidChange(status: Bool, user: User) {
+    func blockStatusDidChange(status: Bool, user: User)
+    {
         dataSource!.updateBlockedStatus(user, status: status)
         profileDelegate!.reload()
     }
