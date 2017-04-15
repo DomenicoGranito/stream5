@@ -114,6 +114,8 @@ class PopUpViewController: BaseViewController
             SocialConnector().block(stream!.user.id, success:blockSuccess, failure:failureWithoutAction)
             SongManager.deleteBlockedUserVideos(stream!.user.id)
             NSNotificationCenter.defaultCenter().postNotificationName("blockUser", object:nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("hideMiniPlayer", object:nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("refreshAfterBlock", object:nil)
         }
     }
     

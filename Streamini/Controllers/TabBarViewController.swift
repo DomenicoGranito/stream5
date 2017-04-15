@@ -30,6 +30,12 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         getPermissions()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(hideMiniPlayer), name:"hideMiniPlayer", object:nil)
+    }
+    
+    func hideMiniPlayer()
+    {
+        miniPlayerView.hidden=true
     }
     
     func updateMiniPlayerWithStream(stream:Stream)

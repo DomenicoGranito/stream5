@@ -170,6 +170,7 @@ class MyLibViewController: UIViewController
         let user=User()
         
         user.name=recentlyPlayed![row].valueForKey("streamUserName") as! String
+        user.id=recentlyPlayed![row].valueForKey("streamUserID") as! UInt
         
         let stream=Stream()
         
