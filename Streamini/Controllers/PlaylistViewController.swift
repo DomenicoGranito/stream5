@@ -148,7 +148,14 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         for i in 0 ..< selectedStreamsArray.count
         {
-            streamsArray.removeObjectAtIndex(selectedStreamsArray[i] as! Int)
+            let index=selectedStreamsArray[i] as! Int
+            
+            if (index<nowPlayingStreamIndex)
+            {
+                nowPlayingStreamIndex=nowPlayingStreamIndex-1
+            }
+            
+            streamsArray.removeObjectAtIndex(index)
         }
         
         selectedStreamsArray.removeAllObjects()
@@ -166,7 +173,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     @IBAction func tapCloseButton()
     {
-        streamsArray.insertObject(nowPlayingStream, atIndex:0)
+        streamsArray.insertObject(nowPlayingStream, atIndex:nowPlayingStreamIndex)
         
         dismissViewControllerAnimated(true, completion:nil)
     }
