@@ -146,6 +146,8 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     @IBAction func removeSelectedStreams()
     {
+        let indexSet=NSMutableIndexSet()
+        
         for i in 0 ..< selectedStreamsArray.count
         {
             let index=selectedStreamsArray[i] as! Int
@@ -155,9 +157,10 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
                 nowPlayingStreamIndex=nowPlayingStreamIndex-1
             }
             
-            streamsArray.removeObjectAtIndex(index)
+            indexSet.addIndex(index)
         }
         
+        streamsArray.removeObjectsAtIndexes(indexSet)
         selectedStreamsArray.removeAllObjects()
         itemsTbl.reloadData()
         performAnimation(0)
