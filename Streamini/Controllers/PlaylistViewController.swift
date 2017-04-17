@@ -11,7 +11,18 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     @IBOutlet var bottomView:UIView!
     @IBOutlet var itemsTbl:UITableView!
     
+    let (host, _, _, _, _)=Config.shared.wowza()
     var selectedStreamsArray=NSMutableArray()
+    var streamsArray=NSMutableArray()
+    var nowPlayingStream:Stream!
+    var nowPlayingStreamIndex:Int!
+    
+    override func viewDidLoad()
+    {
+        nowPlayingStreamIndex=streamsArray.indexOfObject(nowPlayingStream)
+        
+        streamsArray.removeObjectAtIndex(nowPlayingStreamIndex)
+    }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
@@ -23,16 +34,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
         
         let titleLbl=UILabel(frame:CGRectMake(10, 0, 300, 20))
-        
-        if section==0
-        {
-            titleLbl.text="NOW PLAYING"
-        }
-        else
-        {
-            titleLbl.text="UP NEXT ON SHUFFLE"
-        }
-        
+        titleLbl.text=section==0 ? "NOW PLAYING" : "UP NEXT ON SHUFFLE"
         titleLbl.font=UIFont.systemFontOfSize(10)
         titleLbl.textColor=UIColor.whiteColor()
         
@@ -65,7 +67,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         }
         else
         {
-            return 10
+            return streamsArray.count
         }
     }
     
@@ -75,8 +77,9 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("NowPlayingCell") as! RecentStreamCell
             
-            cell.streamNameLabel.text="Now playing"
-            cell.userLabel.text="Ankit"
+            cell.streamNameLabel.text=nowPlayingStream.title
+            cell.userLabel.text=nowPlayingStream.user.name
+            cell.playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
             
             return cell
@@ -85,8 +88,19 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
             
-            cell.streamNameLabel.text="Up next"
-            cell.userLabel.text="Ankit Garg"
+            if selectedStreamsArray.containsObject(indexPath.row)
+            {
+                cell.playImageView.backgroundColor=UIColor.greenColor()
+            }
+            else
+            {
+                cell.playImageView.backgroundColor=UIColor.redColor()
+            }
+            
+            let stream=streamsArray[indexPath.row] as! Stream
+            
+            cell.streamNameLabel.text=stream.title
+            cell.userLabel.text=stream.user.name
             
             return cell
         }
@@ -118,10 +132,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
                 offset=50
             }
             
-            UIView.animateWithDuration(0.5, animations:{
-                self.itemsTbl.frame=CGRectMake(0, 48, self.view.frame.size.width, self.view.frame.size.height-48-offset)
-                self.bottomView.frame=CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 50)
-            })
+            performAnimation(offset)
         }
     }
     
@@ -129,17 +140,34 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
-        vc.stream=Stream()
+        vc.stream=nowPlayingStream
         presentViewController(vc, animated:true, completion:nil)
     }
     
     @IBAction func removeSelectedStreams()
     {
+        for i in 0 ..< selectedStreamsArray.count
+        {
+            streamsArray.removeObjectAtIndex(selectedStreamsArray[i] as! Int)
+        }
         
+        selectedStreamsArray.removeAllObjects()
+        itemsTbl.reloadData()
+        performAnimation(0)
+    }
+    
+    func performAnimation(offset:CGFloat)
+    {
+        UIView.animateWithDuration(0.5, animations:{
+            self.itemsTbl.frame=CGRectMake(0, 48, self.view.frame.size.width, self.view.frame.size.height-48-offset)
+            self.bottomView.frame=CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 50)
+        })
     }
     
     @IBAction func tapCloseButton()
     {
+        streamsArray.insertObject(nowPlayingStream, atIndex:0)
+        
         dismissViewControllerAnimated(true, completion:nil)
     }
     

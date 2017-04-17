@@ -69,6 +69,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
         songLikeStatus()
+        carousel?.reloadData()
     }
     
     override func viewDidAppear(animated:Bool)
@@ -461,6 +462,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
+        vc.nowPlayingStream=stream
+        vc.streamsArray=streamsArray as! NSMutableArray
         presentViewController(vc, animated:true, completion:nil)
     }
     
