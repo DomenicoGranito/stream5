@@ -49,26 +49,12 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if indexPath.section==0
-        {
-            return 60
-        }
-        else
-        {
-            return 50
-        }
+        return indexPath.section==0 ? 60 : 50
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if section==0
-        {
-            return 1
-        }
-        else
-        {
-            return streamsArray.count
-        }
+        return section==0 ? 1 : streamsArray.count
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
@@ -88,14 +74,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
             
-            if selectedStreamsArray.containsObject(indexPath.row)
-            {
-                cell.playImageView.backgroundColor=UIColor.greenColor()
-            }
-            else
-            {
-                cell.playImageView.backgroundColor=UIColor.redColor()
-            }
+            cell.playImageView.backgroundColor=selectedStreamsArray.containsObject(indexPath.row) ? UIColor.greenColor() : UIColor.redColor()
             
             let stream=streamsArray[indexPath.row] as! Stream
             
