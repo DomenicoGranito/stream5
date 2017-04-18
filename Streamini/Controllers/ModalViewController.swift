@@ -359,6 +359,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player?.videoId=videoIDs[selectedItemIndex]
         player?.startRequestPlayInfo()
         player?.play()
+        playButton?.enabled=true
         playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
     }
     
@@ -452,6 +453,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
             
+            TBVC.updateSeekBar(seekBar!.value, maximum:seekBar!.maximumValue)
             appDelegate.shouldRotate=false
         }
     }

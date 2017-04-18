@@ -581,6 +581,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="r5v-5T-rlv" id="z2n-TE-zHx"/>
                         <outlet property="miniPlayerView" destination="WbR-XY-JoC" id="cKa-0B-sen"/>
+                        <outlet property="seekBar" destination="2N6-rc-2c3" id="ZuP-jA-0H3"/>
                         <outlet property="videoArtistLbl" destination="nsN-sz-hU5" id="GkP-Q2-cVV"/>
                         <outlet property="videoThumbnailImageView" destination="bAf-AH-pQ5" id="aYv-Nu-Fmo"/>
                         <outlet property="videoTitleLbl" destination="jab-IU-Wgi" id="Hef-a1-68A"/>

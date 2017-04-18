@@ -16,10 +16,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     @IBOutlet var videoArtistLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
     @IBOutlet var backgroundImageView:UIImageView!
+    @IBOutlet var seekBar:UISlider!
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
-    var player:DWMoviePlayerController!
     let (host, _, _, _, _)=Config.shared.wowza()
     
     override func viewDidLoad()
@@ -37,6 +37,12 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     func hideMiniPlayer()
     {
         miniPlayerView.hidden=true
+    }
+    
+    func updateSeekBar(current:Float, maximum:Float)
+    {
+        seekBar.maximumValue=maximum
+        seekBar.value=current
     }
     
     func updateMiniPlayerWithStream(stream:Stream)
