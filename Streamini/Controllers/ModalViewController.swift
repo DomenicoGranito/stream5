@@ -189,12 +189,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
         player?.controlStyle = .None
         
-        addObserverForMPMoviePlayController()
-        addTimer()
-    }
-    
-    func addTimer()
-    {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
+        
         timer=NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:#selector(timerHandler), userInfo:nil, repeats:true)
     }
     
@@ -203,13 +199,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration-player!.currentPlaybackTime))"
         videoProgressDurationLbl?.text=secondsToReadableTime(player!.currentPlaybackTime)
         seekBar?.value=Float(player!.currentPlaybackTime)
-    }
-    
-    func addObserverForMPMoviePlayController()
-    {
-        let notificationCenter=NSNotificationCenter.defaultCenter()
-        
-        notificationCenter.addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
     }
     
     func moviePlayerDurationAvailable()
