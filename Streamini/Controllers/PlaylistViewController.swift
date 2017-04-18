@@ -19,8 +19,6 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     override func viewDidLoad()
     {
-        nowPlayingStreamIndex=streamsArray.indexOfObject(nowPlayingStream)
-        
         streamsArray.removeObjectAtIndex(nowPlayingStreamIndex)
     }
     

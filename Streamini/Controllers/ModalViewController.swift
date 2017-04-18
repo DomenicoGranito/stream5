@@ -464,6 +464,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         let vc=storyboard.instantiateViewControllerWithIdentifier("PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
         vc.nowPlayingStream=stream
+        vc.nowPlayingStreamIndex=selectedItemIndex
         vc.streamsArray=streamsArray as! NSMutableArray
         presentViewController(vc, animated:true, completion:nil)
     }
