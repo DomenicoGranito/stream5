@@ -37,6 +37,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     var timer:NSTimer?
     var selectedItemIndex=0
     var appDelegate:AppDelegate!
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override func viewDidLoad()
     {
@@ -417,8 +418,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func more()
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
         vc.stream=stream
         presentViewController(vc, animated:true, completion:nil)
     }
@@ -467,8 +467,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func menu()
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("PlaylistViewController") as! PlaylistViewController
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("PlaylistViewController") as! PlaylistViewController
         vc.transitioningDelegate=vc
         vc.nowPlayingStream=stream
         vc.nowPlayingStreamIndex=selectedItemIndex
