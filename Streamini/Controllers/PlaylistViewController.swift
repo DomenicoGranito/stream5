@@ -125,11 +125,13 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         let indexSet=NSMutableIndexSet()
         
+        let selectedStreamIndex=nowPlayingStreamIndex
+        
         for i in 0 ..< selectedStreamsArray.count
         {
             let index=selectedStreamsArray[i] as! Int
             
-            if (index<nowPlayingStreamIndex)
+            if (index<selectedStreamIndex)
             {
                 nowPlayingStreamIndex=nowPlayingStreamIndex-1
             }
@@ -154,6 +156,8 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     @IBAction func tapCloseButton()
     {
         streamsArray.insertObject(nowPlayingStream, atIndex:nowPlayingStreamIndex)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("updatePlayer", object:nowPlayingStreamIndex)
         
         dismissViewControllerAnimated(true, completion:nil)
     }

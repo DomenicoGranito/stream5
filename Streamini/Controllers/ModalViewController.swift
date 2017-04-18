@@ -45,6 +45,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updatePlayer), name:"updatePlayer", object:nil)
         
         createPlaylist()
         updatePlayerWithStream()
@@ -81,6 +82,14 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     override func viewWillDisappear(animated:Bool)
     {
         player?.pause()
+    }
+    
+    func updatePlayer(notification:NSNotification)
+    {
+        selectedItemIndex=notification.object as! Int
+        updateButtons()
+        videoIDs.removeAll()
+        createPlaylist()
     }
     
     func deleteBlockUserVideos()
