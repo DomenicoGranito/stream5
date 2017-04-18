@@ -69,7 +69,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
         songLikeStatus()
-        carousel?.reloadData()
     }
     
     override func viewDidAppear(animated:Bool)

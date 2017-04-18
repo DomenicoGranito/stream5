@@ -15,6 +15,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     @IBOutlet var videoTitleLbl:UILabel!
     @IBOutlet var videoArtistLbl:UILabel!
     @IBOutlet var videoThumbnailImageView:UIImageView!
+    @IBOutlet var backgroundImageView:UIImageView!
     
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
@@ -45,6 +46,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         videoTitleLbl.text=stream.title
         videoArtistLbl.text=stream.user.name
         videoThumbnailImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
+        backgroundImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
     }
     
     func configure(stream:Stream)
