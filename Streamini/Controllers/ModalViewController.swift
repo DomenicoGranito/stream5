@@ -74,9 +74,18 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewDidAppear(animated:Bool)
     {
-        player?.play()
-        isPlaying=true
-        playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        if isPlaying
+        {
+            player?.play()
+            
+            playButton?.setImage(UIImage(named:"big_pause_button"), forState:.Normal)
+        }
+        else
+        {
+            player?.pause()
+            
+            playButton?.setImage(UIImage(named:"big_play_button"), forState:.Normal)
+        }
     }
     
     override func viewWillDisappear(animated:Bool)
