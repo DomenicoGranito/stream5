@@ -247,14 +247,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func numberOfItemsInCarousel(carousel:iCarousel)->Int
     {
-        if let _=streamsArray
-        {
-            return streamsArray!.count
-        }
-        else
-        {
-            return 1
-        }
+        return streamsArray!.count
     }
     
     func carouselItemWidth(carousel:iCarousel)->CGFloat
@@ -288,7 +281,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func carouselDidEndScrollingAnimation(carousel:iCarousel)
     {
-        if let _=streamsArray
+        if streamsArray!.count>1
         {
             selectedItemIndex=carousel.currentItemIndex
             stream=streamsArray![selectedItemIndex] as? Stream
