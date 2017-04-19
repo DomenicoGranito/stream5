@@ -49,7 +49,10 @@ class LinkedUsersViewController: UIViewController, UserStatisticsDelegate, Strea
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
         
-        modalVC.stream=stream
+        let streamsArray=NSMutableArray()
+        streamsArray.addObject(stream)
+        
+        modalVC.streamsArray=streamsArray
         modalVC.TBVC=TBVC
         
         TBVC.modalVC=modalVC

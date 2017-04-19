@@ -121,7 +121,10 @@ class MyLibViewController: UIViewController
             let storyboard=UIStoryboard(name:"Main", bundle:nil)
             let modalVC=storyboard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
-            modalVC.stream=makeStreamClassObject(indexPath.row-5)
+            let streamsArray=NSMutableArray()
+            streamsArray.addObject(makeStreamClassObject(indexPath.row-5))
+            
+            modalVC.streamsArray=streamsArray
             modalVC.TBVC=TBVC
             
             TBVC.modalVC=modalVC
