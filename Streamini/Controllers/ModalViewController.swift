@@ -44,6 +44,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.shouldRotate=true
         
+        stream=streamsArray!.objectAtIndex(selectedItemIndex) as? Stream
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(onDeviceOrientationChange), name:UIDeviceOrientationDidChangeNotification, object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(deleteBlockUserVideos), name:"blockUser", object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updatePlayer), name:"updatePlayer", object:nil)
@@ -55,8 +57,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         {
             carousel?.pagingEnabled=true
             carousel?.type = .Rotary
-            
-            selectedItemIndex=streamsArray!.indexOfObject(stream!)
             
             carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
         }

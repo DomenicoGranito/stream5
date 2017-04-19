@@ -52,7 +52,6 @@ class AllCategoriesRow: UITableViewCell
         let streamsArray=NSMutableArray()
         streamsArray.addObject(stream)
         
-        modalVC.stream=stream
         modalVC.streamsArray=streamsArray
         modalVC.TBVC=TBVC
         

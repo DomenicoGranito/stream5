@@ -202,7 +202,7 @@ class CategoriesViewController: BaseViewController
         let random=Int(arc4random_uniform(UInt32(streamsArray.count)))
         let stream=streamsArray[random] as! Stream
         
-        modalVC.stream=stream
+        modalVC.selectedItemIndex=random
         modalVC.streamsArray=streamsArray
         modalVC.TBVC=TBVC
         
