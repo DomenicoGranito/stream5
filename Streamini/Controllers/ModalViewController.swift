@@ -250,10 +250,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func carousel(carousel:iCarousel, viewForItemAtIndex index:Int, reusingView view:UIView?)->UIView
     {
-        if let _=streamsArray
-        {
-            stream=streamsArray![index] as? Stream
-        }
+        stream=streamsArray![index] as? Stream
         
         let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
         thumbnailView.backgroundColor=UIColor.darkGrayColor()
