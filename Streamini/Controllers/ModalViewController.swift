@@ -51,7 +51,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         createPlaylist()
         updatePlayerWithStream()
         
-        if let _=streamsArray
+        if streamsArray!.count>1
         {
             carousel?.pagingEnabled=true
             carousel?.type = .Rotary
@@ -166,18 +166,11 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func createPlaylist()
     {
-        if let _=streamsArray
+        for i in 0 ..< streamsArray!.count
         {
-            for i in 0 ..< streamsArray!.count
-            {
-                let stream=streamsArray![i] as! Stream
-                
-                videoIDs.append(stream.videoID)
-            }
-        }
-        else
-        {
-            videoIDs.append(stream!.videoID)
+            let stream=streamsArray![i] as! Stream
+            
+            videoIDs.append(stream.videoID)
         }
     }
     
@@ -410,7 +403,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         playlistButton?.hidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), forState:.Normal)
         
-        if let _=streamsArray
+        if streamsArray!.count>1
         {
             carousel?.scrollEnabled=true
         }

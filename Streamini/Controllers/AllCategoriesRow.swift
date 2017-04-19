@@ -49,7 +49,11 @@ class AllCategoriesRow: UITableViewCell
         
         let stream=sectionItemsArray[gestureRecognizer.view!.tag] as! Stream
         
+        let streamsArray=NSMutableArray()
+        streamsArray.addObject(stream)
+        
         modalVC.stream=stream
+        modalVC.streamsArray=streamsArray
         modalVC.TBVC=TBVC
         
         TBVC.modalVC=modalVC
