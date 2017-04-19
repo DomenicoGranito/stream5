@@ -104,38 +104,31 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func deleteBlockUserVideos()
     {
-        if let _=streamsArray
+        let blockedUserID=stream!.user.id
+        let streamsMutableArray=NSMutableArray(array:streamsArray!)
+        
+        for i in 0 ..< streamsArray!.count
         {
-            let blockedUserID=stream!.user.id
-            let streamsMutableArray=NSMutableArray(array:streamsArray!)
+            let stream=streamsArray![i] as! Stream
             
-            for i in 0 ..< streamsArray!.count
+            if blockedUserID==stream.user.id
             {
-                let stream=streamsArray![i] as! Stream
+                streamsMutableArray.removeObject(stream)
                 
-                if blockedUserID==stream.user.id
-                {
-                    streamsMutableArray.removeObject(stream)
-                    
-                    let index=videoIDs.indexOf(stream.videoID)
-                    videoIDs.removeAtIndex(index!)
-                }
+                let index=videoIDs.indexOf(stream.videoID)
+                videoIDs.removeAtIndex(index!)
             }
-            
-            streamsArray=streamsMutableArray
-            
-            if streamsArray!.count==0
-            {
-                close()
-            }
-            else
-            {
-                carousel!.reloadData()
-            }
+        }
+        
+        streamsArray=streamsMutableArray
+        
+        if streamsArray!.count==0
+        {
+            close()
         }
         else
         {
-            close()
+            carousel!.reloadData()
         }
     }
     
