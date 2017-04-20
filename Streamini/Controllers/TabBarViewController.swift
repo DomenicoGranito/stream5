@@ -59,7 +59,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func configure(stream:Stream)
     {
-        setupAnimator()
+        //setupAnimator()
         updateMiniPlayerWithStream(stream)
         tapMiniPlayerButton()
     }
