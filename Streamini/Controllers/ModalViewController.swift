@@ -41,6 +41,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     override func viewDidLoad()
     {
+        seekBar!.setThumbImage(UIImage(), forState:.Normal)
+        
         appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.shouldRotate=true
         

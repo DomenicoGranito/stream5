@@ -24,6 +24,8 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     override func viewDidLoad()
     {
+        seekBar.setThumbImage(UIImage(), forState:.Normal)
+        
         miniPlayerView.frame=CGRectMake(0, view.frame.size.height-99, view.frame.size.width, 50)
         view.addSubview(miniPlayerView)
         miniPlayerView.hidden=true
