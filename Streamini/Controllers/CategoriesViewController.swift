@@ -11,6 +11,7 @@ class CategoriesViewController: BaseViewController
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var headerLbl:UILabel?
     @IBOutlet var topImageView:UIImageView?
+    @IBOutlet var shufflePlayButton:UIButton!
     @IBOutlet var headerHeightConstraint:NSLayoutConstraint!
     
     var allItemsArray=NSMutableArray()
@@ -110,6 +111,7 @@ class CategoriesViewController: BaseViewController
     
     func successStreams(data:NSDictionary)
     {
+        shufflePlayButton.enabled=true
         allItemsArray.addObjectsFromArray(getData(data) as [AnyObject])
         itemsTbl?.reloadData()
     }
