@@ -5776,21 +5776,22 @@
                         <viewControllerLayoutGuide type="top" id="vHi-4R-j3w"/>
                         <viewControllerLayoutGuide type="bottom" id="czk-H8-WWA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y8W-Sn-agh">
+                    <view key="view" contentMode="scaleToFill" id="y8W-Sn-agh" propertyAccessControl="none">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-0m-4ru" propertyAccessControl="all"/>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EN7-dl-UQ4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCk-0m-4ru" propertyAccessControl="none"/>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EN7-dl-UQ4" propertyAccessControl="none">
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="DAA-A2-71x">
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY5-Ia-NYA">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZY5-Ia-NYA" propertyAccessControl="none">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaZ-fT-1ny">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="EAG-7W-MtT"/>
                                             <constraint firstAttribute="width" constant="50" id="NcQ-2T-Q6V"/>
@@ -5810,6 +5811,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXF-UO-TnX">
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="4Qg-w8-Ida"/>
                                             <constraint firstAttribute="height" constant="32" id="c2K-wv-3t6"/>
@@ -5832,14 +5834,14 @@
                                     <constraint firstItem="BaZ-fT-1ny" firstAttribute="top" secondItem="ZY5-Ia-NYA" secondAttribute="top" constant="8" id="wMO-Nz-lqZ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIk-vW-iso" customClass="iCarousel">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIk-vW-iso" customClass="iCarousel" propertyAccessControl="none">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="4Kk-WS-jGZ" id="qyL-9C-1FV"/>
                                     <outlet property="delegate" destination="4Kk-WS-jGZ" id="wDt-vG-hAz"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BQ-be-EUO">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3BQ-be-EUO" propertyAccessControl="none">
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Gc-uY-r81">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -5885,7 +5887,7 @@
                                     <constraint firstItem="Hrg-Ek-8gN" firstAttribute="top" secondItem="3BQ-be-EUO" secondAttribute="top" constant="1" id="tnX-TD-q7K"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cp-jZ-8mX">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cp-jZ-8mX" propertyAccessControl="none">
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SOJ-MK-RQ2">
                                         <subviews>

@@ -59,7 +59,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     
     func configure(stream:Stream)
     {
-        //setupAnimator()
+        setupAnimator()
         updateMiniPlayerWithStream(stream)
         tapMiniPlayerButton()
     }
@@ -96,10 +96,10 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         animation.completion={isPresenting in
             if isPresenting
             {
-                let modalGestureHandler=TransitionGestureHandler(targetVC:self, direction:.bottom)
-                modalGestureHandler.registerGesture(self.modalVC.view)
-                modalGestureHandler.panCompletionThreshold=15.0
-                self.animator.registerInteractiveTransitioning(.dismiss, gestureHandler:modalGestureHandler)
+                //let modalGestureHandler=TransitionGestureHandler(targetVC:self, direction:.bottom)
+                //modalGestureHandler.registerGesture(self.modalVC.view)
+                //modalGestureHandler.panCompletionThreshold=15.0
+                //self.animator.registerInteractiveTransitioning(.dismiss, gestureHandler:modalGestureHandler)
             }
             else
             {
