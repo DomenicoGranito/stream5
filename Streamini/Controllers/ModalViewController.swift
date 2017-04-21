@@ -363,13 +363,13 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func onDeviceOrientationChange()
     {
-        let orientation=UIDevice.currentDevice().orientation
+        let orientation=UIApplication.sharedApplication().statusBarOrientation
         
-        if orientation==UIDeviceOrientation.LandscapeLeft||orientation==UIDeviceOrientation.LandscapeRight
+        if UIInterfaceOrientationIsLandscape(orientation)
         {
             showLandscape()
         }
-        if orientation==UIDeviceOrientation.Portrait
+        else
         {
             showPortrait()
         }
@@ -432,14 +432,14 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     @IBAction func close()
     {
-        let orientation=UIDevice.currentDevice().orientation
+        let orientation=UIApplication.sharedApplication().statusBarOrientation
         
-        if orientation==UIDeviceOrientation.LandscapeLeft||orientation==UIDeviceOrientation.LandscapeRight
+        if UIInterfaceOrientationIsLandscape(orientation)
         {
             let value=UIInterfaceOrientation.Portrait.rawValue
             UIDevice.currentDevice().setValue(value, forKey:"orientation")
         }
-        if orientation==UIDeviceOrientation.Portrait
+        else
         {
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
