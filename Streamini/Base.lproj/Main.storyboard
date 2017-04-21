@@ -6725,7 +6725,7 @@
         <!--My Library-->
         <scene sceneID="w1u-TN-QrS">
             <objects>
-                <viewController id="88Q-eZ-4eh" customClass="MyLibViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController id="88Q-eZ-4eh" customClass="MyLibViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JCc-ez-Ef2"/>
                         <viewControllerLayoutGuide type="bottom" id="zmL-7u-ZX9"/>
@@ -6779,9 +6779,10 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="har-bn-MUF">
-                                                    <frame key="frameInset" minX="270" minY="6" width="40" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="har-bn-MUF">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="HMu-BO-rJ5"/>
+                                                    </constraints>
                                                     <state key="normal" title="Edit">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -6790,6 +6791,10 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="har-bn-MUF" firstAttribute="top" secondItem="5CY-GZ-Lq8" secondAttribute="top" constant="6" id="cdw-zo-v70"/>
+                                                <constraint firstAttribute="trailing" secondItem="har-bn-MUF" secondAttribute="trailing" constant="10" id="jaE-Pm-d3J"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
@@ -8380,7 +8385,7 @@
                                         </constraints>
                                         <state key="normal" image="arrow_down"/>
                                         <connections>
-                                            <action selector="tapCloseButton" destination="fVm-wT-eeP" eventType="touchUpInside" id="vzq-15-TH7"/>
+                                            <action selector="closePlayer" destination="fVm-wT-eeP" eventType="touchUpInside" id="v8Q-0C-mYi"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="song name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5N-ze-oyy">
@@ -8400,7 +8405,7 @@
                                         </constraints>
                                         <state key="normal" image="menu"/>
                                         <connections>
-                                            <action selector="tapCloseButton" destination="fVm-wT-eeP" eventType="touchUpInside" id="17C-ZL-msf"/>
+                                            <action selector="closePlaylist" destination="fVm-wT-eeP" eventType="touchUpInside" id="SaY-iS-abI"/>
                                         </connections>
                                     </button>
                                 </subviews>

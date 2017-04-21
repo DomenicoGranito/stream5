@@ -44,7 +44,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         seekBar!.setThumbImage(UIImage(), forState:.Normal)
         
         appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
-        appDelegate.shouldRotate=true
         
         stream=streamsArray!.objectAtIndex(selectedItemIndex) as? Stream
         
@@ -73,6 +72,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation:.Fade)
         
         songLikeStatus()
+        
+        appDelegate.shouldRotate=true
     }
     
     override func viewDidAppear(animated:Bool)
@@ -95,6 +96,9 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         player?.shouldAutoplay=false
         player?.pause()
+        
+        TBVC.updateSeekBar(seekBar!.value, maximum:seekBar!.maximumValue)
+        appDelegate.shouldRotate=false
     }
     
     func updatePlayer(notification:NSNotification)
@@ -439,9 +443,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         {
             UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation:.Fade)
             dismissViewControllerAnimated(true, completion:nil)
-            
-            TBVC.updateSeekBar(seekBar!.value, maximum:seekBar!.maximumValue)
-            appDelegate.shouldRotate=false
         }
     }
     

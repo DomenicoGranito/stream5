@@ -156,13 +156,22 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         })
     }
     
-    @IBAction func tapCloseButton()
+    @IBAction func closePlaylist()
     {
         streamsArray.insertObject(nowPlayingStream, atIndex:nowPlayingStreamIndex)
         
         NSNotificationCenter.defaultCenter().postNotificationName("updatePlayer", object:nowPlayingStreamIndex)
         
         dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    @IBAction func closePlayer()
+    {
+        streamsArray.insertObject(nowPlayingStream, atIndex:nowPlayingStreamIndex)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("updatePlayer", object:nowPlayingStreamIndex)
+        
+        view.window?.rootViewController?.dismissViewControllerAnimated(true, completion:nil)
     }
     
     func createTransitionImageView()->UIImageView
