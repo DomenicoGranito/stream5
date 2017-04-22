@@ -54,7 +54,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         
         if transitionType.isPresenting
         {
-            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y+rootVC.miniPlayerView.frame.size.height
+            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
         }
         else
         {
@@ -69,19 +69,17 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         if transitionType.isPresenting
         {
             let startOriginY=miniPlayerStartFrame.origin.y
-            let endOriginY = -miniPlayerStartFrame.size.height
-            let diff = -endOriginY+startOriginY
             
             let tabStartOriginY=tabBarStartFrame.origin.y
             let tabEndOriginY=modalVC.view.frame.size.height
             let tabDiff=tabEndOriginY-tabStartOriginY
             
-            let playerY=startOriginY-(diff*percentComplete)
-            rootVC.miniPlayerView.frame.origin.y=max(min(playerY, miniPlayerStartFrame.origin.y), endOriginY)
+            let playerY=startOriginY-(startOriginY*percentComplete)
+            rootVC.miniPlayerView.frame.origin.y=min(playerY, startOriginY)
+            modalVC.view.frame.origin.y=min(playerY, startOriginY)
             
-            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y+rootVC.miniPlayerView.frame.size.height
             let tabY=tabStartOriginY+(tabDiff*percentComplete)
-            rootVC.vtabBar.frame.origin.y=min(max(tabY, tabBarStartFrame.origin.y), tabEndOriginY)
+            rootVC.vtabBar.frame.origin.y=max(tabY, tabStartOriginY)
             
             let alpha=1.0-(1.0*percentComplete)
             rootVC.vtabBar.alpha=alpha
