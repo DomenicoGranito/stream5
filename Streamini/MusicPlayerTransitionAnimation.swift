@@ -58,8 +58,7 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         }
         else
         {
-            rootVC.miniPlayerView.alpha=1
-            rootVC.miniPlayerView.frame.origin.y = -rootVC.miniPlayerView.bounds.size.height
+            rootVC.miniPlayerView.frame.origin.y=0
             rootVC.vtabBar.frame.origin.y=containerView.bounds.size.height
         }
     }
@@ -83,27 +82,24 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             
             let alpha=1.0-(1.0*percentComplete)
             rootVC.vtabBar.alpha=alpha
-            rootVC.miniPlayerView.subviews.forEach{$0.alpha=alpha}
+            rootVC.miniPlayerView.alpha=alpha
         }
         else
         {
-            let startOriginY = -rootVC.miniPlayerView.bounds.size.height
             let endOriginY=miniPlayerStartFrame.origin.y
-            let diff = -startOriginY+endOriginY
             
             let tabStartOriginY=modalVC.view.frame.size.height
             let tabEndOriginY=tabBarStartFrame.origin.y
             let tabDiff=tabStartOriginY-tabEndOriginY
             
-            rootVC.miniPlayerView.frame.origin.y=startOriginY+(diff*percentComplete)
-            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y+rootVC.miniPlayerView.frame.size.height
+            rootVC.miniPlayerView.frame.origin.y=endOriginY*percentComplete
+            modalVC.view.frame.origin.y=rootVC.miniPlayerView.frame.origin.y
             
             rootVC.vtabBar.frame.origin.y=tabStartOriginY-(tabDiff*percentComplete)
             
             let alpha=percentComplete
             rootVC.vtabBar.alpha=alpha
-            rootVC.miniPlayerView.alpha=1
-            rootVC.miniPlayerView.subviews.forEach{$0.alpha=alpha}
+            rootVC.miniPlayerView.alpha=alpha
         }
     }
     
@@ -115,7 +111,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
         {
             if didComplete
             {
-                rootVC.miniPlayerView.alpha=0
                 modalVC.view.removeFromSuperview()
                 containerView?.addSubview(modalVC.view)
                 
@@ -136,7 +131,6 @@ final class MusicPlayerTransitionAnimation : TransitionAnimatable
             }
             else
             {
-                rootVC.miniPlayerView.alpha=0
                 modalVC.view.removeFromSuperview()
                 containerView?.addSubview(modalVC.view)
                 
