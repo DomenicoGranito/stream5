@@ -232,8 +232,8 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followButton.enabled=true
         user!.isFollowed=true
         
-        let buttonTitle=NSLocalizedString("user_card_unfollow", comment:"")
-        followButton.setTitle(buttonTitle, forState:.Normal)
+        followButton.layer.borderColor=UIColor.greenColor().CGColor
+        followButton.setTitle("FOLLOWING", forState:.Normal)
         
         if let delegate=userStatusDelegate
         {
@@ -254,8 +254,8 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         followButton.enabled=true
         user!.isFollowed=false
         
-        let buttonTitle=NSLocalizedString("user_card_follow", comment:"")
-        followButton.setTitle(buttonTitle, forState:.Normal)
+        followButton.layer.borderColor=UIColor.darkGrayColor().CGColor
+        followButton.setTitle("FOLLOW", forState:.Normal)
         
         if let delegate=userStatusDelegate
         {
@@ -282,13 +282,13 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         
         if user.isFollowed
         {
-            let buttonTitle=NSLocalizedString("user_card_unfollow", comment:"")
-            followButton.setTitle(buttonTitle, forState:.Normal)
+            followButton.layer.borderColor=UIColor.greenColor().CGColor
+            followButton.setTitle("FOLLOWING", forState:.Normal)
         }
         else
         {
-            let buttonTitle=NSLocalizedString("user_card_follow", comment:"")
-            followButton.setTitle(buttonTitle, forState:.Normal)
+            followButton.layer.borderColor=UIColor.darkGrayColor().CGColor
+            followButton.setTitle("FOLLOW", forState:.Normal)
         }
         
         backgroundImageView?.image=renderImageFromView()
