@@ -142,15 +142,12 @@ ProfileDelegate
         AmazonTool.shared.delegate = nil
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let sid = segue.identifier {
-            if sid == "ProfileToLegal" {
-                let controller = segue.destinationViewController as! LegalViewController
-                let index = (sender as! NSIndexPath).row
-                controller.type = (index == 2) ? LegalViewControllerType.TermsOfService : LegalViewControllerType.PrivacyPolicy
-            }
-            
-            if sid == "ProfileToProfileStatistics" {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if let sid = segue.identifier
+        {
+            if sid == "ProfileToProfileStatistics"
+            {
                 let controller = segue.destinationViewController as! ProfileStatisticsViewController
                 let index = (sender as! NSIndexPath).row
                 controller.type = ProfileStatisticsType(rawValue: index)!
