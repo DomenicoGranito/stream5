@@ -9241,10 +9241,6 @@
                     <navigationItem key="navigationItem" title="Live Streams" id="CJl-81-1ov"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
-                    <connections>
-                        <outlet property="followersValueLabel" destination="KDb-vO-ODX" id="hmR-DK-mMx"/>
-                        <outlet property="followingValueLabel" destination="3k7-Zw-qB2" id="2YX-ry-Ize"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TY4-3u-Eea" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
