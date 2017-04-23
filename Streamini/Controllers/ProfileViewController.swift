@@ -8,12 +8,6 @@
 
 import MessageUI
 
-enum ProfileActionSheetType:Int
-{
-    case ChangeAvatar
-    case Logout
-}
-
 protocol ProfileDelegate:class
 {
     func reload()
@@ -21,7 +15,7 @@ protocol ProfileDelegate:class
 }
 
 class ProfileViewController: BaseTableViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
+UINavigationControllerDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
 ProfileDelegate
 {
     @IBOutlet var userHeaderView: UserHeaderView!
@@ -60,24 +54,7 @@ ProfileDelegate
     {
         self.configureView()
         
-        let activator=UIActivityIndicatorView(activityIndicatorStyle:.White)
-        activator.startAnimating()
-        
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem(customView:activator)
         UserConnector().get(nil, success:successGetUser, failure:successFailure)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        self.navigationController!.setNavigationBarHidden(false, animated: false)
-        super.viewWillAppear(animated)
-        AmazonTool.shared.delegate = self
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-        UINavigationBar.setCustomAppereance()
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidAppear(animated)
-        AmazonTool.shared.delegate = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
@@ -160,16 +137,13 @@ ProfileDelegate
         })
     }
     
-    // MARK: - ProfileDelegate
-    
     func reload() {
         UserConnector().get(nil, success: successGetUser, failure: successFailure)
     }
     
-    func close() {
+    func close()
+    {
     }
-    
-    // MARK: - UserHeaderViewDelegate
     
     func usernameLabelPressed()
     {
