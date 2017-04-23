@@ -34,12 +34,6 @@ ProfileDelegate
     var profileDelegate: ProfileDelegate?
     var selectedImage: UIImage?
     
-    @IBAction func avatarButtonPressed(sender: AnyObject) {
-        let actionSheet = UIActionSheet.changeUserpicActionSheet(self)
-        actionSheet.tag = ProfileActionSheetType.ChangeAvatar.rawValue
-        actionSheet.showInView(self.view)
-    }
-    
     func configureView()
     {
         userHeaderView.delegate = self
@@ -60,52 +54,6 @@ ProfileDelegate
     
     func successFailure(error: NSError) {
         handleError(error)
-    }
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        if actionSheet.tag == ProfileActionSheetType.ChangeAvatar.rawValue {
-            if (buttonIndex == 1) { 
-                let controller = UIImagePickerController()
-                controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-                controller.allowsEditing = true
-                controller.delegate = self
-                self.presentViewController(controller, animated: true, completion: nil)
-            }
-            
-            if (buttonIndex == 2) {
-                let controller = UIImagePickerController()
-                controller.sourceType = UIImagePickerControllerSourceType.Camera
-                controller.allowsEditing = true
-                controller.delegate = self
-                self.presentViewController(controller, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        picker.dismissViewControllerAnimated(true, completion: { () -> Void in
-            self.selectedImage = image.fixOrientation().imageScaledToFitToSize(CGSizeMake(100, 100))
-            self.uploadImage(self.selectedImage!)
-        })
-    }
-        
-    func uploadImage(image: UIImage) {
-        let filename = "\(UserContainer.shared.logged().id)-avatar.jpg"
-                        
-        if AmazonTool.isAmazonSupported() {
-            AmazonTool.shared.uploadImage(image, name: filename) { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
-                dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-                    let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
-                    self.userHeaderView.progressView.setProgress(progress, animated: true)
-                })
-            }
-        } else {
-            let data = UIImageJPEGRepresentation(image, 1.0)!
-            UserConnector().uploadAvatar(filename, data: data, success: uploadAvatarSuccess, failure: uploadAvatarFailure, progress: { (bytesSent, totalBytesSent, totalBytesExpectedToSend) -> Void in
-                    let progress: Float = Float(totalBytesSent)/Float(totalBytesExpectedToSend)
-                    self.userHeaderView.progressView.setProgress(progress, animated: true)
-            })
-        }
     }
     
     override func viewDidLoad()
@@ -144,26 +92,6 @@ ProfileDelegate
                 controller.profileDelegate = self
             }
         }
-    }
-    
-    func uploadAvatarSuccess() {
-        userHeaderView.progressView.setProgress(0.0, animated: false)
-        userHeaderView.updateAvatar(user!, placeholder: selectedImage!)
-        if let delegate = profileDelegate {
-            delegate.reload()
-        }
-    }
-    
-    func uploadAvatarFailure(error: NSError) {
-        handleError(error)
-    }
-    
-    func imageDidUpload() {
-        UserConnector().avatar(uploadAvatarSuccess, failure: uploadAvatarFailure)
-    }
-    
-    func imageUploadFailed(error: NSError) {
-        handleError(error)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
