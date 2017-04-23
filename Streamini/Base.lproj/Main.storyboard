@@ -322,12 +322,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPY-0F-oE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3099" y="-6186"/>
+            <point key="canvasLocation" x="-3099" y="-5948"/>
         </scene>
         <!--Master-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
-                <navigationController title="Master" navigationBarHidden="YES" id="rS3-R9-Ivy" propertyAccessControl="none" sceneMemberID="viewController">
+                <navigationController title="Master" navigationBarHidden="YES" id="rS3-R9-Ivy" propertyAccessControl="all" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
@@ -342,7 +342,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3099" y="-6973"/>
+            <point key="canvasLocation" x="-3099" y="-6489"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="sck-w4-32e">
@@ -683,7 +683,7 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cin-QR-5br" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3099" y="-4641"/>
+            <point key="canvasLocation" x="-3082" y="-4536"/>
         </scene>
         <!--People View Controller-->
         <scene sceneID="bEc-os-5j6">
@@ -2415,12 +2415,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dp-sF-e5N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6443" y="-1320"/>
+            <point key="canvasLocation" x="-7038" y="-2333"/>
         </scene>
         <!--Pop Up View Controller-->
         <scene sceneID="Own-Xe-7CZ">
             <objects>
-                <viewController storyboardIdentifier="PopUpViewController" id="YLv-Ed-oSu" customClass="PopUpViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopUpViewController" id="YLv-Ed-oSu" customClass="PopUpViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="daT-eQ-AGl"/>
                         <viewControllerLayoutGuide type="bottom" id="Ybq-N8-Ucr"/>
@@ -2571,12 +2571,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Qx-dY-zJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-6443" y="-2193"/>
+            <point key="canvasLocation" x="-7037" y="-2949"/>
         </scene>
         <!--Linked Users View Controller-->
         <scene sceneID="Hyz-Py-U1J">
             <objects>
-                <viewController id="5zq-gU-zmg" customClass="LinkedUsersViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController id="5zq-gU-zmg" customClass="LinkedUsersViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mof-g3-uBz"/>
                         <viewControllerLayoutGuide type="bottom" id="udH-ce-TF3"/>
@@ -2982,7 +2982,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mxN-NA-bYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-5550" y="-1320"/>
+            <point key="canvasLocation" x="-7038" y="-1768"/>
         </scene>
         <!--Create Stream View Controller-->
         <scene sceneID="Ej4-12-ohc">
@@ -5426,7 +5426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yO7-tk-CZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2261" y="-6154"/>
+            <point key="canvasLocation" x="-2387" y="-5949"/>
         </scene>
         <!--Home-->
         <scene sceneID="vc0-al-M5g">
@@ -7324,9 +7324,9 @@
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="itemsTbl" destination="2pn-4Q-4ui" id="oCw-io-dSQ"/>
-                        <segue destination="aED-mx-nre" kind="show" identifier="Videos" id="fos-k1-FKq"/>
                         <segue destination="ZK1-cb-L6V" kind="show" identifier="Playlists" id="am1-4x-yp7"/>
                         <segue destination="kbb-NK-hdI" kind="show" identifier="Channels" id="1tB-8z-9nP"/>
+                        <segue destination="UeV-21-YCs" kind="show" identifier="Videos" id="7Sq-Ct-ero"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI7-Tl-ftY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -7336,7 +7336,7 @@
         <!--Videos View Controller-->
         <scene sceneID="wLe-Hn-fc6">
             <objects>
-                <viewController id="aED-mx-nre" customClass="VideosViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController id="aED-mx-nre" customClass="VideosViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p1K-S3-E56"/>
                         <viewControllerLayoutGuide type="bottom" id="xQp-oF-hx7"/>
@@ -7351,10 +7351,10 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" restorationIdentifier="RecentStreamCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="RecentStreamCell" rowHeight="100" id="nHf-xR-DdH" customClass="RecentStreamCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="1000" height="100"/>
+                                        <rect key="frame" x="0.0" y="1" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nHf-xR-DdH" id="c7H-DJ-Iry">
-                                            <frame key="frameInset" width="1000" height="100"/>
+                                            <frame key="frameInset" width="320" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d20-V8-1oK">
@@ -7558,7 +7558,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CVg-tN-vQU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1676" y="-2134"/>
+            <point key="canvasLocation" x="-1640" y="-1605"/>
         </scene>
         <!--Downloads-->
         <scene sceneID="7m6-Wj-4AI">
@@ -8065,7 +8065,7 @@
         <!--Account-->
         <scene sceneID="7bo-V9-uGa">
             <objects>
-                <tableViewController title="Account" id="4Z8-Pa-DVz" customClass="SubscriptionViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <tableViewController id="4Z8-Pa-DVz" customClass="SubscriptionViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" sectionIndexMinimumDisplayRowCount="5" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="CaH-ZA-yev">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8124,7 +8124,7 @@
         <!--Social-->
         <scene sceneID="TUz-iG-h6k">
             <objects>
-                <tableViewController title="Social" id="ecw-gG-N5G" customClass="SubscriptionViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <tableViewController id="ecw-gG-N5G" propertyAccessControl="none" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" sectionIndexMinimumDisplayRowCount="5" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tyu-Ws-QWf">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8139,7 +8139,7 @@
                                         <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" tableViewCell="4O5-UW-A06" id="Y3t-u9-b9K">
-                                            <frame key="frameInset" width="320" height="43.5"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Private Session lasts until you've been inanctive for 6 hours." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dww-GE-kWH">
@@ -8150,7 +8150,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Private Session" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9sW-Ol-OEK">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -8171,14 +8171,14 @@
                             <tableViewSection headerTitle="   " footerTitle="Share my activity and what i listen to with my followeres on Beinit." id="coL-J7-LYY" userLabel="Table Section 1">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" textLabel="0Ey-oO-gBc" style="IBUITableViewCellStyleDefault" id="GUf-aG-cUq">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="164" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" tableViewCell="GUf-aG-cUq" id="EDu-i3-ez5">
-                                            <frame key="frameInset" width="320" height="44"/>
+                                            <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Publish Activity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Ey-oO-gBc" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8202,14 +8202,14 @@
                             <tableViewSection headerTitle="WECHAT" footerTitle="   " id="fGy-af-FKh" userLabel="Table Section 1">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" textLabel="GXn-2D-jUF" style="IBUITableViewCellStyleDefault" id="rZk-Xu-R1t">
-                                        <rect key="frame" x="0.0" y="299" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="300" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rZk-Xu-R1t" id="Ge0-y1-FoS">
                                             <frame key="frameInset" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Connect to Wechat..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GXn-2D-jUF" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" width="290" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="290" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8228,7 +8228,9 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="oY1-gA-sFt"/>
+                    <navigationItem key="navigationItem" title="Social" id="oY1-gA-sFt"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V4H-fq-Mle" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8237,7 +8239,7 @@
         <!--About-->
         <scene sceneID="QvI-zs-MAp">
             <objects>
-                <tableViewController title="About" id="a4t-q3-aSe" customClass="SubscriptionViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <tableViewController id="a4t-q3-aSe" propertyAccessControl="none" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" sectionIndexMinimumDisplayRowCount="5" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="6PB-Dx-eU0">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -8252,11 +8254,11 @@
                                         <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A9b-6u-DCF" id="US1-vx-m16">
-                                            <frame key="frameInset" width="287" height="43.5"/>
+                                            <frame key="frameInset" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mcC-PB-dA1" userLabel="Account Label">
-                                                    <frame key="frameInset" minX="15" minY="12" width="57" height="20.5"/>
+                                                    <frame key="frameInset" minX="15" minY="11" width="57" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8266,7 +8268,7 @@
                                                     </variation>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ndj-Xt-xPh">
-                                                    <frame key="frameInset" minX="249.5" minY="12" width="35.5" height="20.5"/>
+                                                    <frame key="frameInset" minX="249" minY="11" width="36" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -8362,7 +8364,7 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="l9h-jO-yE1"/>
+                    <navigationItem key="navigationItem" title="About" id="l9h-jO-yE1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q0o-7A-GbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8429,7 +8431,7 @@
         <!--Series View Controller Scene-->
         <scene sceneID="fO5-o5-BVD">
             <objects>
-                <viewController storyboardIdentifier="SeriesViewController" id="x1i-Wy-zFZ" userLabel="Series View Controller Scene" customClass="SeriesViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeriesViewController" id="x1i-Wy-zFZ" userLabel="Series View Controller Scene" customClass="SeriesViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NKe-Mb-2Aw"/>
                         <viewControllerLayoutGuide type="bottom" id="j1w-CX-d7p"/>
@@ -8591,12 +8593,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4yJ-WX-jsT" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-765" y="-1230"/>
+            <point key="canvasLocation" x="-766" y="-1606"/>
         </scene>
         <!--Filters View Controller-->
         <scene sceneID="grF-P5-Huf">
             <objects>
-                <viewController storyboardIdentifier="FiltersViewController" id="e6y-Ct-9RU" customClass="FiltersViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FiltersViewController" id="e6y-Ct-9RU" customClass="FiltersViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zQJ-E3-EWd"/>
                         <viewControllerLayoutGuide type="bottom" id="Ezs-ZQ-0w1"/>
@@ -8703,12 +8705,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dp-DO-mjg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="-2135"/>
+            <point key="canvasLocation" x="-16" y="-2136"/>
         </scene>
         <!--Options View Controller-->
         <scene sceneID="WIk-FH-HRd">
             <objects>
-                <viewController storyboardIdentifier="OptionsViewController" id="DtK-a1-b4M" customClass="OptionsViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OptionsViewController" id="DtK-a1-b4M" customClass="OptionsViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ebn-eu-oMk"/>
                         <viewControllerLayoutGuide type="bottom" id="azP-9y-tIP"/>
@@ -8821,7 +8823,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frG-dG-UTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="79" y="-1230"/>
+            <point key="canvasLocation" x="-16" y="-1607"/>
         </scene>
         <!--Playlist View Controller-->
         <scene sceneID="zX5-ah-Na4">
@@ -9052,7 +9054,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hap-DX-p6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751.875" y="-1230"/>
+            <point key="canvasLocation" x="686" y="-1607"/>
         </scene>
         <!--Channels-->
         <scene sceneID="Ljx-g4-oOI">
@@ -9078,15 +9080,15 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Followers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n36-d8-89E" userLabel="Account Label">
                                                     <frame key="frameInset" minX="15" minY="11" width="73" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <color key="textColor" red="0.92136132719999997" green="0.9218783975" blue="0.92525255679999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JGH-6V-TNt">
-                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JGH-6V-TNt">
+                                                    <frame key="frameInset" minX="274" minY="11" width="11" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -9107,15 +9109,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QeS-XC-C1f">
-                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QeS-XC-C1f">
+                                                    <frame key="frameInset" minX="274" minY="11" width="11" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -9136,15 +9135,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact">
-                                                        <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    </variation>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eKi-xQ-gDF">
-                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eKi-xQ-gDF">
+                                                    <frame key="frameInset" minX="274" minY="11" width="11" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -9169,7 +9165,90 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-yd-Mzg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2331" y="-2135"/>
+            <point key="canvasLocation" x="-2331" y="-2147"/>
+        </scene>
+        <!--Live Streams-->
+        <scene sceneID="hRV-ef-G39">
+            <objects>
+                <tableViewController id="UeV-21-YCs" customClass="VideosTableViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" sectionIndexMinimumDisplayRowCount="5" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="TEB-zA-Uvv">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.071030758319999998" green="0.074862860140000001" blue="0.081973142920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="separatorColor" red="0.14616465570000001" green="0.1395329535" blue="0.16039979460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle=" " id="1SO-9C-4jV" userLabel="Table Section 1">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="D82-re-e1b" detailTextLabel="KDb-vO-ODX" style="IBUITableViewCellStyleValue1" id="XZ1-MN-0gg">
+                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XZ1-MN-0gg" id="HRJ-a0-9E4">
+                                            <frame key="frameInset" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Favourites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="D82-re-e1b" userLabel="Account Label">
+                                                    <frame key="frameInset" minX="15" minY="11" width="73" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KDb-vO-ODX">
+                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10980392160000001" green="0.1058823529" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="bcr-Er-iLE" detailTextLabel="3k7-Zw-qB2" style="IBUITableViewCellStyleValue1" id="CyQ-BL-oEj">
+                                        <rect key="frame" x="0.0" y="100" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CyQ-BL-oEj" id="Rlf-z4-yIL">
+                                            <frame key="frameInset" width="287" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Live Streams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bcr-Er-iLE">
+                                                    <frame key="frameInset" minX="15" minY="11" width="81" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3k7-Zw-qB2">
+                                                    <frame key="frameInset" minX="241" minY="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.10980392160000001" green="0.1058823529" blue="0.12549019610000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Live Streams" id="CJl-81-1ov"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <connections>
+                        <outlet property="followersValueLabel" destination="KDb-vO-ODX" id="hmR-DK-mMx"/>
+                        <outlet property="followingValueLabel" destination="3k7-Zw-qB2" id="2YX-ry-Ize"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TY4-3u-Eea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1640" y="-2136"/>
         </scene>
     </scenes>
     <resources>
@@ -9205,6 +9284,6 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ybU-Cf-XEH"/>
+        <segue reference="AcD-60-gNs"/>
     </inferredMetricsTieBreakers>
 </document>

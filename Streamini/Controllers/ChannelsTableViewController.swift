@@ -41,18 +41,17 @@ class ChannelsTableViewController: BaseTableViewController, ProfileDelegate
         handleError(error)
     }
     
+    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        performSegueWithIdentifier("GoToUsers", sender:indexPath)
+    }
+
     override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?)
     {
-        if let sid=segue.identifier
-        {
-            if sid=="GoToUsers"
-            {
-                let controller=segue.destinationViewController as! ProfileStatisticsViewController
-                let index=(sender as! NSIndexPath).row
-                controller.type=ProfileStatisticsType(rawValue:index)!
-                controller.profileDelegate=self
-            }
-        }
+        let controller=segue.destinationViewController as! ProfileStatisticsViewController
+        let index=(sender as! NSIndexPath).row
+        controller.type=ProfileStatisticsType(rawValue:index)!
+        controller.profileDelegate=self
     }
     
     func reload()

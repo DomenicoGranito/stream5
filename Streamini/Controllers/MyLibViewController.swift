@@ -151,7 +151,7 @@ class MyLibViewController: UIViewController
     {
         if segue.identifier=="Videos"
         {
-            let controller=segue.destinationViewController as! VideosViewController
+            let controller=segue.destinationViewController as! VideosTableViewController
             controller.vType=(sender as! NSIndexPath).row-1
         }
     }
