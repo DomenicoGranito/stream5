@@ -40,13 +40,6 @@ ProfileDelegate
         actionSheet.showInView(self.view)
     }
     
-    func logout()
-    {
-        let actionSheet = UIActionSheet.confirmLogoutActionSheet(self)
-        actionSheet.tag = ProfileActionSheetType.Logout.rawValue
-        actionSheet.showInView(self.view)
-    }
-    
     func configureView()
     {
         userHeaderView.delegate = self
@@ -85,12 +78,6 @@ ProfileDelegate
                 controller.allowsEditing = true
                 controller.delegate = self
                 self.presentViewController(controller, animated: true, completion: nil)
-            }
-        }
-        
-        if actionSheet.tag == ProfileActionSheetType.Logout.rawValue {
-            if buttonIndex != actionSheet.cancelButtonIndex {
-                UserConnector().logout(logoutSuccess, failure: logoutFailure)
             }
         }
     }
