@@ -25,20 +25,10 @@ UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMa
 ProfileDelegate
 {
     @IBOutlet weak var userHeaderView: UserHeaderView!
-    @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followingValueLabel: UILabel!
-    @IBOutlet weak var followersLabel: UILabel!
     @IBOutlet weak var followersValueLabel: UILabel!
-    @IBOutlet weak var blockedLabel: UILabel!
     @IBOutlet weak var blockedValueLabel: UILabel!
-    @IBOutlet weak var streamsLabel: UILabel!
     @IBOutlet weak var streamsValueLabel: UILabel!
-    @IBOutlet weak var shareLabel: UILabel!
-    @IBOutlet weak var feedbackLabel: UILabel!
-    @IBOutlet weak var termsLabel: UILabel!
-    @IBOutlet weak var privacyLabel: UILabel!
-    @IBOutlet weak var logoutLabel: UILabel!
-    @IBOutlet weak var changePasswordLabel: UILabel!
     
     var user: User?
     var profileDelegate: ProfileDelegate?
@@ -50,7 +40,8 @@ ProfileDelegate
         actionSheet.showInView(self.view)
     }
     
-    func logout() {
+    func logout()
+    {
         let actionSheet = UIActionSheet.confirmLogoutActionSheet(self)
         actionSheet.tag = ProfileActionSheetType.Logout.rawValue
         actionSheet.showInView(self.view)
@@ -58,22 +49,11 @@ ProfileDelegate
     
     func configureView()
     {
-        self.title = NSLocalizedString("profile_title", comment: "")
-        followingLabel.text = NSLocalizedString("profile_following", comment: "")
-        followersLabel.text = NSLocalizedString("profile_followers", comment: "")
-        blockedLabel.text   = NSLocalizedString("profile_blocked", comment: "")
-        streamsLabel.text   = NSLocalizedString("profile_streams", comment: "")
-        shareLabel.text     = NSLocalizedString("profile_share", comment: "")
-        feedbackLabel.text  = NSLocalizedString("profile_feedback", comment: "")
-        termsLabel.text     = NSLocalizedString("profile_terms", comment: "")
-        privacyLabel.text   = NSLocalizedString("profile_privacy", comment: "")
-        logoutLabel.text    = NSLocalizedString("profile_logout", comment: "")
-        changePasswordLabel.text = NSLocalizedString("profile_change_password", comment: "")
-        
         userHeaderView.delegate = self
     }
     
-    func successGetUser(user: User) {
+    func successGetUser(user: User)
+    {
         self.user = user
         userHeaderView.update(user)
         
@@ -219,35 +199,6 @@ ProfileDelegate
 
     func logoutSuccess()
     {
-        if A0SimpleKeychain().stringForKey("PHPSESSID") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("PHPSESSID")
-        }
-        if A0SimpleKeychain().stringForKey("id") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("id")
-        }
-        if A0SimpleKeychain().stringForKey("password") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("password")
-        }
-        if A0SimpleKeychain().stringForKey("secret") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("secret")
-        }
-        if A0SimpleKeychain().stringForKey("type") != nil
-        {
-            A0SimpleKeychain().deleteEntryForKey("type")
-        }
-        
-        // deprecated Twitter.sharedInstance().logOut()
-        
-        /*let store = Twitter.sharedInstance().sessionStore
-        
-        if let userID = store.session()?.userID {
-            store.logOutUserID(userID)
-        }*/
-        
         self.navigationController!.setNavigationBarHidden(true, animated: true)
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
