@@ -35,7 +35,7 @@ class SettingsViewController:UITableViewController, UIActionSheetDelegate
         let navController=appDelegate.window!.rootViewController as! UINavigationController
         navController.popToRootViewControllerAnimated(true)
     }
-    
+
     override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated:true)

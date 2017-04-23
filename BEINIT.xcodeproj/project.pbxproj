@@ -167,7 +167,6 @@
 		B795ACCF1B98949100ACFDE1 /* BlockedMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B795ACCE1B98949100ACFDE1 /* BlockedMessageController.swift */; };
 		B79669851B821C5D0071AF91 /* LegalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79669841B821C5D0071AF91 /* LegalViewController.swift */; };
 		B796A4921BB1520E0018B085 /* ViewersDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B796A4911BB1520E0018B085 /* ViewersDelegate.swift */; };
-		B7A6BB991B7A0CFE0080497F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */; };
 		B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */; };
 		B7AA45581B79CAC8001D293A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA45571B79CAC8001D293A /* RootViewController.swift */; };
 		B7AA93241B3172740005972E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AA93231B3172740005972E /* AppDelegate.swift */; };
@@ -390,7 +389,6 @@
 		B795ACCE1B98949100ACFDE1 /* BlockedMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockedMessageController.swift; sourceTree = "<group>"; };
 		B79669841B821C5D0071AF91 /* LegalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegalViewController.swift; sourceTree = "<group>"; };
 		B796A4911BB1520E0018B085 /* ViewersDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewersDelegate.swift; sourceTree = "<group>"; };
-		B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B7A886931B500C7100D37B63 /* LiveStreamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveStreamViewController.swift; sourceTree = "<group>"; };
 		B7AA45571B79CAC8001D293A /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		B7AA931E1B3172740005972E /* Streamini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Streamini.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -857,7 +855,6 @@
 				3EF535B71E092A330049B2E9 /* ModalViewController.swift */,
 				3ECEC44C1EA22F8A006A00F7 /* PlaylistViewController.swift */,
 				B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */,
-				B7A6BB981B7A0CFE0080497F /* ProfileViewController.swift */,
 				86564ECE1E540BA300584405 /* SeriesViewController.swift */,
 				3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */,
 				3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */,
@@ -1049,7 +1046,6 @@
 				B794AD9C1B5930200069C2A8 /* DisconnectedMessageController.swift in Sources */,
 				B7E15E531B6A629B000C8C69 /* CreateStreamKeyboardHandler.swift in Sources */,
 				B791879A1B4437FC002DFAB4 /* SocialTool.swift in Sources */,
-				B7A6BB991B7A0CFE0080497F /* ProfileViewController.swift in Sources */,
 				B7DA8EA91B8349EE0082ED5C /* SelectorView.swift in Sources */,
 				B63C1A4C1E2DEA0400EF2F7C /* SCLExtensions.swift in Sources */,
 				B7316E061B552FBD0079D387 /* StreamPlayer.swift in Sources */,
