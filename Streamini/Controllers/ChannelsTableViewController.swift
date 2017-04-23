@@ -6,9 +6,61 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class ChannelsTableViewController: UITableViewController
+protocol ProfileDelegate:class
 {
+    func reload()
+    func close()
+}
+
+class ChannelsTableViewController: BaseTableViewController, ProfileDelegate
+{
+    @IBOutlet var followingValueLabel:UILabel!
+    @IBOutlet var followersValueLabel:UILabel!
+    @IBOutlet var blockedValueLabel:UILabel!
+    
     override func viewDidLoad()
+    {
+        let activator=UIActivityIndicatorView(activityIndicatorStyle:.White)
+        activator.startAnimating()
+        
+        navigationItem.rightBarButtonItem=UIBarButtonItem(customView:activator)
+        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+    }
+    
+    func userSuccess(user:User)
+    {
+        followingValueLabel.text="\(user.following)"
+        followersValueLabel.text="\(user.followers)"
+        blockedValueLabel.text="\(user.blocked)"
+        
+        navigationItem.rightBarButtonItem=nil
+    }
+    
+    func userFailure(error:NSError)
+    {
+        handleError(error)
+    }
+    
+    override func prepareForSegue(segue:UIStoryboardSegue, sender:AnyObject?)
+    {
+        if let sid=segue.identifier
+        {
+            if sid=="GoToUsers"
+            {
+                let controller=segue.destinationViewController as! ProfileStatisticsViewController
+                let index=(sender as! NSIndexPath).row
+                controller.type=ProfileStatisticsType(rawValue:index)!
+                controller.profileDelegate=self
+            }
+        }
+    }
+    
+    func reload()
+    {
+        UserConnector().get(nil, success:userSuccess, failure:userFailure)
+    }
+    
+    func close()
     {
         
     }
