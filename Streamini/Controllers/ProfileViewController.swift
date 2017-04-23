@@ -1,6 +1,6 @@
 //
 //  ProfileViewController.swift
-// Streamini
+//  Streamini
 //
 //  Created by Vasily Evreinov on 11/08/15.
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
@@ -8,19 +8,22 @@
 
 import MessageUI
 
-enum ProfileActionSheetType: Int {
+enum ProfileActionSheetType:Int
+{
     case ChangeAvatar
     case Logout
 }
 
-protocol ProfileDelegate: class {
+protocol ProfileDelegate:class
+{
     func reload()
     func close()
 }
 
 class ProfileViewController: BaseTableViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
-ProfileDelegate {
+ProfileDelegate
+{
     @IBOutlet weak var userHeaderView: UserHeaderView!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followingValueLabel: UILabel!

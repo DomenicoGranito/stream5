@@ -24,14 +24,15 @@ class BlockedDataSource: UserStatisticsDataSource {
         self.reload()
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let user = users[indexPath.row]
         
-        if let delegate = userSelectedDelegate {
+        if let delegate = userSelectedDelegate
+        {
             delegate.userDidSelected(user)
         }
     }
-    
 }

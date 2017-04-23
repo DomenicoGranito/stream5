@@ -20,24 +20,25 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     // MARK: - Factory methods
     
-    class func create(type: ProfileStatisticsType, userId: UInt, tableView: UITableView) -> UserStatisticsDataSource? {
-        switch type {
+    class func create(type: ProfileStatisticsType, userId: UInt, tableView: UITableView) -> UserStatisticsDataSource?
+    {
+        switch type
+        {
         case .Following:
-            return FollowingDataSource(userId: userId, tableView: tableView)
+            return FollowingDataSource(userId:userId, tableView:tableView)
         case .Followers:
-            return FollowersDataSource(userId: userId, tableView: tableView)
+            return FollowersDataSource(userId:userId, tableView:tableView)
         case .Blocked:
-            return BlockedDataSource(userId: userId, tableView: tableView)
+            return BlockedDataSource(userId:userId, tableView:tableView)
         case .Streams:
-            return MyStreamsDataSource(userId: userId, tableView: tableView)
-        default:
-            return nil
+            return MyStreamsDataSource(userId:userId, tableView:tableView)
         }
     }
     
     // MARK: - Object life cycle
     
-    init(userId: UInt, tableView: UITableView) {
+    init(userId: UInt, tableView: UITableView)
+    {
         self.userId      = userId
         self.tableView   = tableView
         super.init()
@@ -45,13 +46,13 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         tableView.delegate   = self
     }
     
-    // MARK: - UITableViewDatasource
-    
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
         return users.count
     }
     
