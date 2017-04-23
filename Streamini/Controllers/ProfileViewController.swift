@@ -88,17 +88,7 @@ ProfileDelegate
             self.uploadImage(self.selectedImage!)
         })
     }
-    
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-       
         
-        navigationController.navigationBar.tintColor = UIColor.blueColor()
-        navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.blueColor()]
-        
-       // navigationController.navigationBar.tintColor = UIColor.whiteColor()
-       // navigationController.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.whiteColor()]
-    }
-    
     func uploadImage(image: UIImage) {
         let filename = "\(UserContainer.shared.logged().id)-avatar.jpg"
                         
