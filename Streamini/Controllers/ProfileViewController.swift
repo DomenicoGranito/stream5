@@ -24,11 +24,11 @@ class ProfileViewController: BaseTableViewController, UIActionSheetDelegate, UII
 UINavigationControllerDelegate, AmazonToolDelegate, UserHeaderViewDelegate, MFMailComposeViewControllerDelegate,
 ProfileDelegate
 {
-    @IBOutlet weak var userHeaderView: UserHeaderView!
-    @IBOutlet weak var followingValueLabel: UILabel!
-    @IBOutlet weak var followersValueLabel: UILabel!
-    @IBOutlet weak var blockedValueLabel: UILabel!
-    @IBOutlet weak var streamsValueLabel: UILabel!
+    @IBOutlet var userHeaderView: UserHeaderView!
+    @IBOutlet var followingValueLabel: UILabel!
+    @IBOutlet var followersValueLabel: UILabel!
+    @IBOutlet var blockedValueLabel: UILabel!
+    @IBOutlet var streamsValueLabel: UILabel!
     
     var user: User?
     var profileDelegate: ProfileDelegate?
@@ -71,7 +71,7 @@ ProfileDelegate
     
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         if actionSheet.tag == ProfileActionSheetType.ChangeAvatar.rawValue {
-            if (buttonIndex == 1) { // Gallery
+            if (buttonIndex == 1) { 
                 let controller = UIImagePickerController()
                 controller.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
                 controller.allowsEditing = true
@@ -79,7 +79,7 @@ ProfileDelegate
                 self.presentViewController(controller, animated: true, completion: nil)
             }
             
-            if (buttonIndex == 2) { // Camera
+            if (buttonIndex == 2) {
                 let controller = UIImagePickerController()
                 controller.sourceType = UIImagePickerControllerSourceType.Camera
                 controller.allowsEditing = true
@@ -94,8 +94,6 @@ ProfileDelegate
             }
         }
     }
-    
-    // MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: { () -> Void in
@@ -135,7 +133,6 @@ ProfileDelegate
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
         self.configureView()
         
         let activator=UIActivityIndicatorView(activityIndicatorStyle:.White)
@@ -175,8 +172,6 @@ ProfileDelegate
         }
     }
     
-    // MARK: - AmazonToolDelegate
-    
     func uploadAvatarSuccess() {
         userHeaderView.progressView.setProgress(0.0, animated: false)
         userHeaderView.updateAvatar(user!, placeholder: selectedImage!)
@@ -196,32 +191,26 @@ ProfileDelegate
     func imageUploadFailed(error: NSError) {
         handleError(error)
     }
-
-    func logoutSuccess()
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        self.navigationController!.setNavigationBarHidden(true, animated: true)
-        self.navigationController!.popToRootViewControllerAnimated(true)
-    }
-    
-    func logoutFailure(error: NSError) {
-        print("failure", terminator: "")
-    }
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        if indexPath.section == 1 { // following, followers, blocked, streams
+        if indexPath.section == 1
+        {
             self.performSegueWithIdentifier("ProfileToProfileStatistics", sender: indexPath)
         }
         
-        if indexPath.section == 2 && indexPath.row == 0 { // share
+        if indexPath.section == 2 && indexPath.row == 0
+        {
             UINavigationBar.resetCustomAppereance()
             let shareMessage = NSLocalizedString("profile_share_message", comment: "")
             let activityController = UIActivityViewController(activityItems: [shareMessage], applicationActivities: nil)
             self.presentViewController(activityController, animated: true, completion: nil)
         }
         
-        if indexPath.section == 2 && indexPath.row == 1 { // feedback
+        if indexPath.section == 2 && indexPath.row == 1
+        {
             UINavigationBar.resetCustomAppereance()
             let mailComposeViewController = configuredMailComposeViewController()
             if MFMailComposeViewController.canSendMail() {
@@ -230,22 +219,6 @@ ProfileDelegate
                 let alert = UIAlertView.mailUnavailableErrorAlert()
                 alert.show()
             }
-        }
-        
-        if indexPath.section == 2 && indexPath.row == 2 { // Terms Of Service
-            self.performSegueWithIdentifier("ProfileToLegal", sender: indexPath)
-        }
-        
-        if indexPath.section == 2 && indexPath.row == 3 { // Privacy Policy
-            self.performSegueWithIdentifier("ProfileToLegal", sender: indexPath)
-        }
-        
-        if indexPath.section == 3 && indexPath.row == 0 { // Change Password
-            self.performSegueWithIdentifier("ProfileToPassword", sender: indexPath)
-        }
-        
-        if indexPath.section == 3 && indexPath.row == 1 { // logout
-            logout()
         }
     }
     
