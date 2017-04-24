@@ -143,6 +143,7 @@ class DiscoverViewController:BaseTableViewController
         for j in 0 ..< videos.count
         {
             let videoID=videos[j]["id"] as! Int
+            let vType=videos[j]["vtype"] as! Int
             let streamKey=videos[j]["streamkey"] as! String
             let videoTitle=videos[j]["title"] as! String
             let videoHash=videos[j]["hash"] as! String
@@ -166,6 +167,7 @@ class DiscoverViewController:BaseTableViewController
             
             let video=Stream()
             video.id=UInt(videoID)
+            video.vType=vType
             video.videoID=streamKey
             video.title=videoTitle
             video.streamHash=videoHash
