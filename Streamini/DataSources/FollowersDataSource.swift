@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class FollowersDataSource: UserStatisticsDataSource
 {
     override func reload()
@@ -18,8 +16,8 @@ class FollowersDataSource: UserStatisticsDataSource
     override func fetchMore()
     {
         page+=1
-        let dictionary=NSDictionary(objects: [userId, page], forKeys:["id", "p"])
-        UserConnector().followers(dictionary, success: moreStatisticsDataSuccess, failure: statisticsDataFailure)
+        let dictionary=NSDictionary(objects:[userId, page], forKeys:["id", "p"])
+        UserConnector().followers(dictionary, success: moreStatisticsDataSuccess, failure:statisticsDataFailure)
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)

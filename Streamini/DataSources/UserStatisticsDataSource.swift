@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate {
+class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
+{
     let userId: UInt
     var users: [User] = []
     var page: UInt = 0
@@ -18,7 +19,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     // MARK: - Factory methods
     
-    class func create(type: ProfileStatisticsType, userId: UInt, tableView: UITableView) -> UserStatisticsDataSource?
+    class func create(type:ProfileStatisticsType, userId:UInt, tableView:UITableView)->UserStatisticsDataSource?
     {
         switch type
         {
@@ -35,7 +36,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     // MARK: - Object life cycle
     
-    init(userId: UInt, tableView: UITableView)
+    init(userId:UInt, tableView:UITableView)
     {
         self.userId      = userId
         self.tableView   = tableView
@@ -54,18 +55,20 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return users.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("LinkedUserCell", forIndexPath: indexPath) as! LinkedUserCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell=tableView.dequeueReusableCellWithIdentifier("LinkedUserCell", forIndexPath:indexPath) as! LinkedUserCell
         
-        let user = users[indexPath.row]
+        let user=users[indexPath.row]
         cell.update(user)
-        cell.delegate = self
+        cell.delegate=self
         return cell
     }
     
     // MARK: - LinkedCellDelegate
     
-    func willStatusChanged(cell: UITableViewCell) {
+    func willStatusChanged(cell: UITableViewCell)
+    {
         let selectedCell = cell as! LinkedUserCell
         self.selectedCells.append(selectedCell)
         
@@ -83,7 +86,8 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     // MARK: - Network communication
     
-    func unfollowSuccess() {
+    func unfollowSuccess()
+    {
         let selectedCell = self.selectedCells[0]
         selectedCell.isStatusOn = false
         selectedCell.userStatusButton.enabled = true
@@ -94,25 +98,30 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         }
     }
     
-    func followSuccess() {
+    func followSuccess()
+    {
         let selectedCell = self.selectedCells[0]
         selectedCell.isStatusOn = true
         selectedCell.userStatusButton.enabled = true
         selectedCells.removeAtIndex(0)
         
-        if let delegate = profileDelegate {
+        if let delegate = profileDelegate
+        {
             delegate.reload()
         }
     }
     
-    func followActionFailure(error: NSError) {
+    func followActionFailure(error: NSError)
+    {
         let selectedCell = self.selectedCells[0]
         selectedCell.userStatusButton.enabled = true
         selectedCells.removeAtIndex(0)
     }
     
-    func statisticsDataSuccess(users: [User]) {
-        if let pullToRefreshView = tableView.pullToRefreshView {
+    func statisticsDataSuccess(users: [User])
+    {
+        if let pullToRefreshView = tableView.pullToRefreshView
+        {
             pullToRefreshView.stopAnimating()
         }
         self.users = users        
@@ -120,14 +129,17 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         
         let range = NSMakeRange(0, tableView.numberOfSections)
         let indexSet = NSIndexSet(indexesInRange: range)
-        tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Automatic)
+        tableView.reloadSections(indexSet, withRowAnimation:.Automatic)
     }
     
-    func moreStatisticsDataSuccess(users: [User]) {
-        if let pullToRefreshView = tableView.pullToRefreshView {
+    func moreStatisticsDataSuccess(users: [User])
+    {
+        if let pullToRefreshView = tableView.pullToRefreshView
+        {
             pullToRefreshView.stopAnimating()
         }
-        if let infiniteScrollingView = tableView.infiniteScrollingView {
+        if let infiniteScrollingView = tableView.infiniteScrollingView
+        {
             infiniteScrollingView.stopAnimating()
         }
         
@@ -136,11 +148,14 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         tableView.reloadData()
     }
     
-    func statisticsDataFailure(error: NSError) {
-        if let pullToRefreshView = tableView.pullToRefreshView {
+    func statisticsDataFailure(error: NSError)
+    {
+        if let pullToRefreshView = tableView.pullToRefreshView
+        {
             pullToRefreshView.stopAnimating()
         }
-        if let infiniteScrollingView = tableView.infiniteScrollingView {
+        if let infiniteScrollingView = tableView.infiniteScrollingView
+        {
             infiniteScrollingView.stopAnimating()
         }
         
@@ -149,37 +164,44 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     
     // MARK: - Reload methods
     
-    func reload() {
+    func reload()
+    {
         assert(false, "This method must be overriden by the subclass")
     }
     
-    func fetchMore() {
+    func fetchMore()
+    {
        assert(false, "This method must be overriden by the subclass")        
     }
     
-    func clean() {
+    func clean()
+    {
         users = []
         tableView.reloadData()
     }
     
-    func updateFollowedStatus(user: User, status: Bool) {
+    func updateFollowedStatus(user: User, status: Bool)
+    {
         var updateObject = users.filter({ $0.id == user.id })
-        if updateObject.count > 0 {
-            updateObject[0].isFollowed = status
-            let index = (users as NSArray).indexOfObject(updateObject[0])
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        if updateObject.count>0
+        {
+            updateObject[0].isFollowed=status
+            let index=(users as NSArray).indexOfObject(updateObject[0])
+            let indexPath=NSIndexPath(forRow:index, inSection:0)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation:.None)
             return
         }
     }
     
-    func updateBlockedStatus(user: User, status: Bool) {
+    func updateBlockedStatus(user: User, status: Bool)
+    {
         var updateObject = users.filter({ $0.id == user.id })
-        if updateObject.count > 0 {
-            updateObject[0].isBlocked = status
-            let index = (users as NSArray).indexOfObject(updateObject[0])
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+        if updateObject.count>0
+        {
+            updateObject[0].isBlocked=status
+            let index=(users as NSArray).indexOfObject(updateObject[0])
+            let indexPath=NSIndexPath(forRow:index, inSection:0)
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation:.None)
             return
         }
     }

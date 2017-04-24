@@ -10,7 +10,7 @@ class FollowingDataSource: UserStatisticsDataSource
 {
     override func reload()
     {
-        UserConnector().following(NSDictionary(object: userId, forKey: "id"), success: statisticsDataSuccess, failure: statisticsDataFailure)
+        UserConnector().following(NSDictionary(object:userId, forKey:"id"), success:statisticsDataSuccess, failure:statisticsDataFailure)
     }
     
     override func fetchMore()

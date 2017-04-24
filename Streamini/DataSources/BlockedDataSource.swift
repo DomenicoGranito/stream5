@@ -22,7 +22,7 @@ class BlockedDataSource: UserStatisticsDataSource
     
     override func updateBlockedStatus(user:User, status:Bool)
     {
-        self.reload()
+        reload()
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)

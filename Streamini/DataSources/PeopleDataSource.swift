@@ -277,13 +277,15 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         }
     }
     
-    func search(data: NSDictionary) {
-        searchPage = 0
-        searchData = NSMutableDictionary(dictionary: data)
-        SocialConnector().search(data, success: searchSuccess, failure: actionFailure)
+    func search(data:NSDictionary)
+    {
+        searchPage=0
+        searchData=NSMutableDictionary(dictionary:data)
+        SocialConnector().search(data, success:searchSuccess, failure:actionFailure)
     }
     
-    func searchMore(data: NSDictionary) {
-        SocialConnector().search(data, success: searchMoreSuccess, failure: actionFailure)
+    func searchMore(data: NSDictionary)
+    {
+        SocialConnector().search(data, success:searchMoreSuccess, failure:actionFailure)
     }
 }
