@@ -8,12 +8,15 @@
 
 import UIKit
 
-class FollowersDataSource: UserStatisticsDataSource {    
-    override func reload() {
+class FollowersDataSource: UserStatisticsDataSource
+{
+    override func reload()
+    {
         UserConnector().followers(NSDictionary(object: userId, forKey: "id"), success: statisticsDataSuccess, failure: statisticsDataFailure)
     }
     
-    override func fetchMore() {
+    override func fetchMore()
+    {
         page += 1
         let dictionary = NSDictionary(objects: [userId, page], forKeys: ["id", "p"])
         UserConnector().followers(dictionary, success: moreStatisticsDataSuccess, failure: statisticsDataFailure)

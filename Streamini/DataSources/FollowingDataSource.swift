@@ -6,14 +6,15 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-class FollowingDataSource: UserStatisticsDataSource {    
-    override func reload() {
+class FollowingDataSource: UserStatisticsDataSource
+{
+    override func reload()
+    {
         UserConnector().following(NSDictionary(object: userId, forKey: "id"), success: statisticsDataSuccess, failure: statisticsDataFailure)
     }
     
-    override func fetchMore() {
+    override func fetchMore()
+    {
         page += 1
         let dictionary = NSDictionary(objects: [userId, page], forKeys: ["id", "p"])
         UserConnector().following(dictionary, success: moreStatisticsDataSuccess, failure: statisticsDataFailure)

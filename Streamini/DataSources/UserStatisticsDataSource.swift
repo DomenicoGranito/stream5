@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-import UIKit
-
 class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate {
     let userId: UInt
     var users: [User] = []

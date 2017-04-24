@@ -12,19 +12,23 @@ class ViewersDataSource: NSObject, UICollectionViewDataSource {
     var viewers: [User] = []
     var userSelectedDelegate: UserSelecting?
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView)->Int
+    {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(collectionView:UICollectionView, numberOfItemsInSection section: Int)->Int
+    {
         return viewers.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(collectionView:UICollectionView, cellForItemAtIndexPath indexPath:NSIndexPath)-> UICollectionViewCell
+    {
         let user = viewers[indexPath.row]
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("viewersCell", forIndexPath: indexPath) as! ViewersCollectionViewCell
         
-        if let delegate = self.userSelectedDelegate {
+        if let delegate = self.userSelectedDelegate
+        {
             cell.userSelectedDelegate = delegate
         }
         
