@@ -16,17 +16,7 @@ class SearchStreamCell: StreamCell {
     @IBOutlet weak var streamNameLabelHeight: NSLayoutConstraint!
    
     var userSelectingHandler: UserSelectingHandler?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
+        
     override func update(stream: Stream) {
         super.update(stream)
         let (host, _, _, _, _) = Config.shared.wowza()

@@ -15,16 +15,6 @@ class CommentCell: UITableViewCell {
     @IBOutlet weak var usernameLabelWidthConstraint: NSLayoutConstraint!
     weak var userSelectedDelegate: UserSelecting?
     var userSelectingHandler: UserSelectingHandler?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
     
     func update(message: Message, width: CGFloat) {
         if let delegate = userSelectedDelegate {

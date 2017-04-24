@@ -15,9 +15,9 @@ class FollowingDataSource: UserStatisticsDataSource
     
     override func fetchMore()
     {
-        page += 1
-        let dictionary = NSDictionary(objects: [userId, page], forKeys: ["id", "p"])
-        UserConnector().following(dictionary, success: moreStatisticsDataSuccess, failure: statisticsDataFailure)
+        page+=1
+        let dictionary=NSDictionary(objects:[userId, page], forKeys:["id", "p"])
+        UserConnector().following(dictionary, success:moreStatisticsDataSuccess, failure:statisticsDataFailure)
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)

@@ -29,18 +29,7 @@ class PeopleCell: UITableViewCell {
             userStatusButton.setImage(image!, forState: UIControlState.Normal)
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+        
     func update(user: User) {
         self.user = user
         
