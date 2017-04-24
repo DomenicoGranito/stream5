@@ -417,7 +417,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         else
         {
             likeButton?.setImage(UIImage(named:"red_heart"), forState:.Normal)
-            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:1, streamKey:stream!.videoID, streamUserID:stream!.user.id)
+            SongManager.addToFavourite(stream!.title, streamHash:stream!.streamHash, streamID:stream!.id, streamUserName:stream!.user.name, vType:stream!.vType, streamKey:stream!.videoID, streamUserID:stream!.user.id)
         }
     }
     
