@@ -37,7 +37,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
         
         l.font = UIFont(name: "HelveticNeue", size: 15.0)
         l.numberOfLines = 0
-        l.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        l.lineBreakMode = .ByWordWrapping
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -239,9 +239,9 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
         tableView.reloadData()
     }
 
-    func actionFailure(error: NSError) {
-        //tableView.pullToRefreshView.stopAnimating()
-        print("get user failed: \(error.localizedDescription)")
+    func actionFailure(error:NSError)
+    {
+        
     }
     
     // MARK: - Reload methods

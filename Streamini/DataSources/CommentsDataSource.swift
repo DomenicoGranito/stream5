@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-import UIKit
-
 class CommentsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var comments: [Message] = []
     var timers: [NSTimer]   = []
@@ -22,7 +20,7 @@ class CommentsDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         super.init()
         l.numberOfLines = 0
         l.font = UIFont(name: "HelveticaNeue", size: 15.0)
-        l.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        l.lineBreakMode = .ByWordWrapping
     }
     
     // MARK: - Comments accessors

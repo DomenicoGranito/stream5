@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class StreamConnector: Connector {
     
     func cities(success: (cities: [String]) -> (), failure: (error: NSError) -> ()) {

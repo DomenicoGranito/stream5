@@ -6,8 +6,6 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class CategoryMappingProvider: NSObject {
     
     class func categoryResponseMapping() -> RKObjectMapping {

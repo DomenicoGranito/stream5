@@ -83,7 +83,7 @@ class RecentStreamsDataSource:UserStatisticsDataSource
         tableView.hidden=self.streams.isEmpty
         let range=NSMakeRange(0, tableView.numberOfSections)
         let indexSet=NSIndexSet(indexesInRange:range)
-        tableView.reloadSections(indexSet, withRowAnimation:UITableViewRowAnimation.Automatic)
+        tableView.reloadSections(indexSet, withRowAnimation:.Automatic)
     }
 
     func recentFailure(error:NSError)

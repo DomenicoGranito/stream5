@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class StreamMappingProvider: NSObject {
     
     class func cityResponseMapping() -> RKObjectMapping {

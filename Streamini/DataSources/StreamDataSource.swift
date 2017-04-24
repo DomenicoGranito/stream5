@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class StreamDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     var lives: [Stream]     = []
     var recent: [Stream]    = []
@@ -18,7 +16,7 @@ class StreamDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         super.init()
         l.font = UIFont(name: "HelveticNeue-Light", size: 17.0)
         l.numberOfLines = 0
-        l.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        l.lineBreakMode = .ByWordWrapping
     }
 
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 enum MessageType: String {
     case Comment        = "comment"
     case Connected      = "connected"

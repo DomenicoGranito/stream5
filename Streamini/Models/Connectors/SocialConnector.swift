@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
 class SocialConnector: Connector {
     
     func users(data: NSDictionary, success: (top: [User], featured: [User]) -> (), failure: (error: NSError) -> ()) {

@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-import UIKit
-
 class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate {
     var foundUsers: [User]  = []
     var top: [User]         = []
@@ -30,7 +28,7 @@ class PeopleDataSource: NSObject, UITableViewDataSource, UITableViewDelegate, Li
         
         l.font = UIFont(name: "HelveticNeue", size: 15.0)
         l.numberOfLines = 0
-        l.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        l.lineBreakMode = .ByWordWrapping
     }
 
     // MARK: - UITableViewDatasource

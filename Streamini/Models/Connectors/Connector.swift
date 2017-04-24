@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 Direct Invent. All rights reserved.
 //
 
-import UIKit
-
 class Connector: NSObject {
     var manager = RKObjectManager(baseURL: Connector.baseUrl())
     var errorDescriptor:RKResponseDescriptor?
