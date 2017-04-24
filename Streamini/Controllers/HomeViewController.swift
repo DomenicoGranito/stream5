@@ -180,7 +180,7 @@ class HomeViewController: BaseViewController
             {
                 let videoID=videos[j]["id"] as! Int
                 let streamKey=videos[j]["streamkey"] as! String
-                //let vType=videos[j]["vtype"] as! Int
+                let vType=videos[j]["vtype"] as! Int
                 let videoTitle=videos[j]["title"] as! String
                 let videoHash=videos[j]["hash"] as! String
                 let lon=videos[j]["lon"]!.doubleValue
@@ -203,7 +203,7 @@ class HomeViewController: BaseViewController
                 
                 let video=Stream()
                 video.id=UInt(videoID)
-                //video.vType=vType
+                video.vType=vType
                 video.videoID=streamKey
                 video.title=videoTitle
                 video.streamHash=videoHash

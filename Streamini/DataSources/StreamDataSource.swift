@@ -6,7 +6,8 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class StreamDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+class StreamDataSource: NSObject, UITableViewDataSource, UITableViewDelegate
+{
     var lives: [Stream]     = []
     var recent: [Stream]    = []
     var userSelectedDelegate: UserSelecting?
@@ -19,7 +20,8 @@ class StreamDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
         l.lineBreakMode = .ByWordWrapping
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
+    {
         return 2
     }
     
