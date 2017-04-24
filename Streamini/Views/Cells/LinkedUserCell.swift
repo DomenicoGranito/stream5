@@ -6,55 +6,62 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-import UIKit
-
-protocol LinkedUserCellDelegate:class {
-    func willStatusChanged(cell: UITableViewCell)
+protocol LinkedUserCellDelegate:class
+{
+    func willStatusChanged(cell:UITableViewCell)
 }
 
-class LinkedUserCell: UITableViewCell {
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userStatusButton: SensibleButton!
-    weak var delegate: LinkedUserCellDelegate?
+class LinkedUserCell: UITableViewCell
+{
+    @IBOutlet var userImageView: UIImageView!
+    @IBOutlet var usernameLabel: UILabel!
+    @IBOutlet var userStatusButton: SensibleButton!
+    var delegate: LinkedUserCellDelegate?
 
     var isStatusOn = false {
         didSet {
             let image: UIImage?
             if isStatusOn {
-                image = UIImage(named: "checkmark")
+                image = UIImage(named:"checkmark")
             } else {
-                image = UIImage(named: "plus")
+                image = UIImage(named:"plus")
             }
-            userStatusButton.setImage(image!, forState: UIControlState.Normal)
+            userStatusButton.setImage(image!, forState:.Normal)
         }
     }
         
-    func update(user: User) {
+    func update(user:User)
+    {
         usernameLabel.text = user.name
-        userImageView.contentMode = UIViewContentMode.ScaleToFill
+        userImageView.contentMode = .ScaleToFill
         userImageView.sd_setImageWithURL(user.avatarURL())
      
         userStatusButton.hidden = UserContainer.shared.logged().id == user.id
         isStatusOn = user.isFollowed
-        userStatusButton.addTarget(self, action: #selector(LinkedUserCell.statusButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        userStatusButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
     }
     
-    func updateRecent(recent: Stream, isMyStream: Bool = false) {
-        userImageView.contentMode = UIViewContentMode.Center
+    func updateRecent(recent:Stream, isMyStream: Bool = false)
+    {
+        userImageView.contentMode = .Center
         
-        if isMyStream {
+        if isMyStream
+        {
             self.textLabel!.text = recent.title
-        } else {
+        }
+        else
+        {
             usernameLabel.text      = recent.title
-            userImageView.image     = UIImage(named: "play")
+            userImageView.image     = UIImage(named:"play")
             userImageView.tintColor = UIColor.navigationBarColor()
             userStatusButton.hidden = true
         }
     }
     
-    func statusButtonPressed(sender: AnyObject) {
-        if let del = delegate {
+    func statusButtonPressed()
+    {
+        if let del=delegate
+        {
             del.willStatusChanged(self)
         }
     }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-enum ProfileStatisticsType: Int
+enum ProfileStatisticsType:Int
 {
     case Following = 0
     case Followers

@@ -64,23 +64,24 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         cell.delegate=self
         return cell
     }
-    
-    // MARK: - LinkedCellDelegate
-    
-    func willStatusChanged(cell: UITableViewCell)
+        
+    func willStatusChanged(cell:UITableViewCell)
     {
-        let selectedCell = cell as! LinkedUserCell
+        let selectedCell=cell as! LinkedUserCell
         self.selectedCells.append(selectedCell)
         
-        let index = tableView.indexPathForCell(cell)!.row
-        let userId = users[index].id
-        selectedCell.userStatusButton.enabled = false
+        let index=tableView.indexPathForCell(cell)!.row
+        let userId=users[index].id
+        selectedCell.userStatusButton.enabled=false
         
         let connector = SocialConnector()
-        if selectedCell.isStatusOn {
-            connector.unfollow(userId, success: unfollowSuccess, failure: followActionFailure)
-        } else {
-            connector.follow(userId, success: followSuccess, failure: followActionFailure)
+        if selectedCell.isStatusOn
+        {
+            connector.unfollow(userId, success:unfollowSuccess, failure:followActionFailure)
+        }
+        else
+        {
+            connector.follow(userId, success:followSuccess, failure:followActionFailure)
         }
     }
     
@@ -93,7 +94,8 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         selectedCell.userStatusButton.enabled = true
         selectedCells.removeAtIndex(0)
         
-        if let delegate = profileDelegate {
+        if let delegate=profileDelegate
+        {
             delegate.reload()
         }
     }
@@ -105,7 +107,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         selectedCell.userStatusButton.enabled = true
         selectedCells.removeAtIndex(0)
         
-        if let delegate = profileDelegate
+        if let delegate=profileDelegate
         {
             delegate.reload()
         }
@@ -128,7 +130,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         tableView.hidden = self.users.isEmpty
         
         let range = NSMakeRange(0, tableView.numberOfSections)
-        let indexSet = NSIndexSet(indexesInRange: range)
+        let indexSet = NSIndexSet(indexesInRange:range)
         tableView.reloadSections(indexSet, withRowAnimation:.Automatic)
     }
     
@@ -158,20 +160,16 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         {
             infiniteScrollingView.stopAnimating()
         }
-        
-        print("get user failed: \(error.localizedDescription)")
     }
-    
-    // MARK: - Reload methods
     
     func reload()
     {
-        assert(false, "This method must be overriden by the subclass")
+
     }
     
     func fetchMore()
     {
-       assert(false, "This method must be overriden by the subclass")        
+       
     }
     
     func clean()
@@ -180,7 +178,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         tableView.reloadData()
     }
     
-    func updateFollowedStatus(user: User, status: Bool)
+    func updateFollowedStatus(user:User, status:Bool)
     {
         var updateObject = users.filter({ $0.id == user.id })
         if updateObject.count>0
@@ -193,7 +191,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         }
     }
     
-    func updateBlockedStatus(user: User, status: Bool)
+    func updateBlockedStatus(user:User, status:Bool)
     {
         var updateObject = users.filter({ $0.id == user.id })
         if updateObject.count>0
