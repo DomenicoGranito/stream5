@@ -222,6 +222,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
             {
                 let controller=segue.destinationViewController as! LinkedUsersViewController
                 controller.profileDelegate=self
+                controller.TBVC=tabBarController as! TabBarViewController
                 self.userStatisticsDelegate=controller
             }
         }
