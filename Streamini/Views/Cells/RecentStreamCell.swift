@@ -10,7 +10,7 @@ class RecentStreamCell: StreamCell
 {
     @IBOutlet var streamNameLabel: UILabel!
     @IBOutlet var userLabel: UILabel!
-    @IBOutlet var streamEndedLabel: UILabel!
+    //@IBOutlet var streamEndedLabel: UILabel!
     @IBOutlet var playImageView: UIImageView!
     @IBOutlet var playWidthConstraint: NSLayoutConstraint!
     @IBOutlet var dotsButton:UIButton?
@@ -23,7 +23,7 @@ class RecentStreamCell: StreamCell
         playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
         userLabel.text = stream.user.name
         streamNameLabel.text  = stream.title
-        streamEndedLabel.text = stream.ended!.timeAgoSimple
+        //streamEndedLabel.text = stream.ended!.timeAgoSimple
     }
     
     func updateMyStream(stream:Stream)
@@ -41,11 +41,11 @@ class RecentStreamCell: StreamCell
         self.userInteractionEnabled = isLessThan24Hours
         streamNameLabel.text  = stream.title
         
-        if let time = stream.ended {
-            streamEndedLabel.text = time.timeAgoSimple
-        } else {
-            streamEndedLabel.text = ""
-        }
+//        if let time = stream.ended {
+//            streamEndedLabel.text = time.timeAgoSimple
+//        } else {
+//            streamEndedLabel.text = ""
+//        }
 
         playWidthConstraint.constant = (isLessThan24Hours) ? 24.0 : 0.0
         self.layoutIfNeeded()
