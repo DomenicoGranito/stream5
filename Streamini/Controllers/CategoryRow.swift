@@ -45,6 +45,7 @@ class CategoryRow: UITableViewCell
         {
             if indexPath.row==0
             {
+                cell.videoTitleLbl?.hidden=true
                 cell.followersCountLbl?.hidden=true
                 cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
                 
