@@ -2693,14 +2693,22 @@
                                                         </mask>
                                                     </variation>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iIC-O4-ZHY">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="AiI-wJ-J7N"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Unblock"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="tpM-lb-rjL" firstAttribute="leading" secondItem="5BE-M8-NNW" secondAttribute="leading" constant="17" id="1Se-O0-4CO">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                                                 </constraint>
+                                                <constraint firstItem="iIC-O4-ZHY" firstAttribute="top" secondItem="5BE-M8-NNW" secondAttribute="top" constant="18" id="5zc-HD-XJE"/>
                                                 <constraint firstAttribute="centerY" secondItem="2bV-0q-x6V" secondAttribute="centerY" id="Dvx-UI-q8l"/>
                                                 <constraint firstAttribute="centerY" secondItem="tpM-lb-rjL" secondAttribute="centerY" id="Eh3-st-OBE"/>
+                                                <constraint firstAttribute="trailing" secondItem="iIC-O4-ZHY" secondAttribute="trailing" constant="10" id="L2w-0K-wwj"/>
                                                 <constraint firstAttribute="trailing" secondItem="2kN-8W-Bdh" secondAttribute="trailing" constant="19" id="bCU-9A-RmM">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="16"/>
                                                 </constraint>
@@ -2743,6 +2751,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.078431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <outlet property="unblockButton" destination="iIC-O4-ZHY" id="N2I-Tx-N1Z"/>
                                             <outlet property="userImageView" destination="tpM-lb-rjL" id="7Ce-Nr-9gf"/>
                                             <outlet property="userStatusButton" destination="2kN-8W-Bdh" id="2Bu-SL-KcZ"/>
                                             <outlet property="usernameLabel" destination="2bV-0q-x6V" id="TEf-Lq-AHz"/>
@@ -8899,11 +8908,11 @@
                                     <constraint firstItem="K5N-ze-oyy" firstAttribute="leading" secondItem="MMb-aQ-KfU" secondAttribute="trailing" constant="5" id="kpI-ed-tyE"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="98r-bh-mZp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="30" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="98r-bh-mZp">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NowPlayingCell" rowHeight="60" id="NSP-Rg-IEE" customClass="RecentStreamCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="30" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NSP-Rg-IEE" id="1DS-lH-7qA">
                                             <frame key="frameInset" width="320" height="60"/>
@@ -8969,7 +8978,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UpNextCell" rowHeight="50" id="u6L-ST-7kE" customClass="RecentStreamCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="116" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u6L-ST-7kE" id="J0b-Yt-3lg">
                                             <frame key="frameInset" width="320" height="50"/>

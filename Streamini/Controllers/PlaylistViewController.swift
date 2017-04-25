@@ -32,7 +32,6 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
-        headerView.backgroundColor=UIColor.darkGrayColor()
         
         let titleLbl=UILabel(frame:CGRectMake(10, 0, 300, 20))
         titleLbl.text=section==0 ? "NOW PLAYING" : "UP NEXT ON SHUFFLE"

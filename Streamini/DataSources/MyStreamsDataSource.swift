@@ -19,7 +19,9 @@ class MyStreamsDataSource: RecentStreamsDataSource
     
     func myRecentSuccess(streams:[Stream])
     {
-        super.recentSuccess( streams.map({ $0.user = UserContainer.shared.logged(); return $0 }) )
+        let filteredStreams=streams.filter{$0.user==UserContainer.shared.logged()&&$0.vType==super.vType}
+        
+        super.recentSuccess(filteredStreams)
     }
     
     override func reload()

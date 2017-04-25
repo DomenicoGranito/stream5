@@ -55,6 +55,7 @@ class VideosTableViewController: BaseTableViewController, ProfileDelegate
             let controller=segue.destinationViewController as! ProfileStatisticsViewController
             controller.type=ProfileStatisticsType(rawValue:3)!
             controller.profileDelegate=self
+            controller.vType=vType
         }
     }
     

@@ -21,7 +21,8 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
     var dataSource:UserStatisticsDataSource?
     var type:ProfileStatisticsType = .Following
     var profileDelegate:ProfileDelegate?
-
+    var vType:Int!
+    
     func configureView()
     {
         emptyLabel.text=NSLocalizedString("table_no_data", comment:"")
@@ -59,6 +60,7 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         dataSource!.profileDelegate=profileDelegate
         dataSource!.userSelectedDelegate=self
         dataSource!.type=type
+        dataSource!.vType=vType
         dataSource!.reload()
     }
     

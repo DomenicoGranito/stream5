@@ -16,7 +16,8 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     var profileDelegate: ProfileDelegate?
     var userSelectedDelegate: UserSelecting?
     var streamSelectedDelegate: StreamSelecting?
-    var type:ProfileStatisticsType!
+    var type:ProfileStatisticsType = .Following
+    var vType:Int!
     
     class func create(type:ProfileStatisticsType, userId:UInt, tableView:UITableView)->UserStatisticsDataSource?
     {
