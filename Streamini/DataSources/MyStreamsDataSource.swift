@@ -19,14 +19,12 @@ class MyStreamsDataSource: RecentStreamsDataSource
     
     func myRecentSuccess(streams:[Stream])
     {
-        let filteredStreams=streams.filter{$0.user==UserContainer.shared.logged()&&$0.vType==super.vType}
-        
-        super.recentSuccess(filteredStreams)
+        recentSuccess(streams.filter{$0.vType==vType})
     }
     
     override func reload()
     {
-        StreamConnector().my(myRecentSuccess, failure:recentFailure)
+        StreamConnector().recent(userId, success:myRecentSuccess, failure:recentFailure)
     }
     
     override func fetchMore()
