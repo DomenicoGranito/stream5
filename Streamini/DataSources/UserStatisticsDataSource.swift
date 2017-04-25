@@ -16,8 +16,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
     var profileDelegate: ProfileDelegate?
     var userSelectedDelegate: UserSelecting?
     var streamSelectedDelegate: StreamSelecting?
-    
-    // MARK: - Factory methods
+    var type:ProfileStatisticsType!
     
     class func create(type:ProfileStatisticsType, userId:UInt, tableView:UITableView)->UserStatisticsDataSource?
     {
@@ -33,8 +32,6 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
             return MyStreamsDataSource(userId:userId, tableView:tableView)
         }
     }
-    
-    // MARK: - Object life cycle
     
     init(userId:UInt, tableView:UITableView)
     {
@@ -55,13 +52,16 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return users.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCellWithIdentifier("LinkedUserCell", forIndexPath:indexPath) as! LinkedUserCell
         
         let user=users[indexPath.row]
+        
         cell.update(user)
         cell.delegate=self
+        cell.blockedView=type == .Blocked ? true : false
+        
         return cell
     }
         
@@ -84,8 +84,6 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
             connector.follow(userId, success:followSuccess, failure:followActionFailure)
         }
     }
-    
-    // MARK: - Network communication
     
     func unfollowSuccess()
     {

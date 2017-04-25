@@ -17,26 +17,34 @@ class LinkedUserCell: UITableViewCell
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var userStatusButton: SensibleButton!
     var delegate: LinkedUserCellDelegate?
-
-    var isStatusOn = false {
-        didSet {
-            let image: UIImage?
-            if isStatusOn {
-                image = UIImage(named:"checkmark")
-            } else {
-                image = UIImage(named:"plus")
+    var blockedView:Bool!
+    
+    var isStatusOn=false
+        {
+        didSet
+        {
+            if blockedView
+            {
+                let title=isStatusOn ? "Unblock" : "Block"
+                
+                userStatusButton.setTitle(title, forState:.Normal)
             }
-            userStatusButton.setImage(image!, forState:.Normal)
+            else
+            {
+                let image=isStatusOn ? UIImage(named:"checkmark") : UIImage(named:"plus")
+                
+                userStatusButton.setImage(image, forState:.Normal)
+            }
         }
     }
         
     func update(user:User)
     {
-        usernameLabel.text = user.name
+        usernameLabel.text=user.name
         userImageView.contentMode = .ScaleToFill
         userImageView.sd_setImageWithURL(user.avatarURL())
      
-        userStatusButton.hidden = UserContainer.shared.logged().id == user.id
+        userStatusButton.hidden=UserContainer.shared.logged().id==user.id
         isStatusOn = user.isFollowed
         userStatusButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
     }
