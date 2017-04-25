@@ -140,11 +140,11 @@
                                     <outlet property="menuItemTitleLbl" destination="vjp-Z9-iDd" id="fl1-Of-PHE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Category" rowHeight="210" id="cu2-0z-DMd" customClass="AllCategoryRow" customModule="Streamini" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="385" width="320" height="210"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Category" rowHeight="170" id="cu2-0z-DMd" customClass="AllCategoryRow" customModule="Streamini" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="385" width="320" height="170"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cu2-0z-DMd" id="yTq-kd-M2y">
-                                    <frame key="frameInset" width="320" height="209"/>
+                                    <frame key="frameInset" width="320" height="169"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MVS-74-P7q">
@@ -157,7 +157,7 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="XS4-lt-bdz" customClass="CategoryCell" customModule="Streamini" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="30" width="145" height="150"/>
+                                                    <rect key="frame" x="10" y="10" width="145" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="145" height="150"/>
@@ -233,7 +233,7 @@
         <!--Get Started View Controller-->
         <scene sceneID="P1M-d9-fte">
             <objects>
-                <viewController id="CWR-q7-lsk" customClass="GetStartedViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="all" sceneMemberID="viewController">
+                <viewController id="CWR-q7-lsk" customClass="GetStartedViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4rZ-Kb-rBM"/>
                         <viewControllerLayoutGuide type="bottom" id="BPM-ir-UBd"/>
@@ -288,7 +288,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fPv-b1-j6j" firstAttribute="leading" secondItem="TIq-bC-M8Y" secondAttribute="leading" id="2Dp-ad-6Ct"/>
                             <constraint firstItem="S9p-xE-B58" firstAttribute="top" secondItem="4rZ-Kb-rBM" secondAttribute="bottom" constant="30" id="3bq-n7-CFj"/>
@@ -2111,7 +2111,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QPy-8N-Nmo" firstAttribute="leading" secondItem="6qf-lr-4LU" secondAttribute="leading" id="0x3-yY-hGq"/>
                             <constraint firstItem="tMF-dx-f9a" firstAttribute="top" secondItem="QPy-8N-Nmo" secondAttribute="bottom" id="2eJ-0L-OQS"/>
@@ -2493,7 +2493,7 @@
                             </containerView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="akS-n2-RdG"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="fNB-wr-8uc" secondAttribute="trailing" id="128-kR-gy3"/>
                             <constraint firstItem="1aH-e5-o4p" firstAttribute="top" secondItem="ZzX-BT-qHH" secondAttribute="topMargin" constant="201" id="1Rd-Qw-wO4"/>
@@ -3055,7 +3055,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="h1N-hP-VaJ" firstAttribute="top" secondItem="mof-g3-uBz" secondAttribute="bottom" id="Os5-uf-ZWv"/>
                             <constraint firstAttribute="trailing" secondItem="B44-38-hx1" secondAttribute="trailing" id="SKD-hx-daM"/>
@@ -7438,7 +7438,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="top" secondItem="sgD-1X-oHE" secondAttribute="top" id="6Jx-1p-jV7"/>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="leading" secondItem="sgD-1X-oHE" secondAttribute="leading" id="OaI-Cr-ViK"/>
@@ -7645,7 +7645,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="6mA-99-NcJ" secondAttribute="bottom" id="7ld-u9-BqK"/>
                             <constraint firstItem="6mA-99-NcJ" firstAttribute="top" secondItem="jZI-Ay-3j8" secondAttribute="top" id="AcU-6c-8Jr"/>
@@ -9388,6 +9388,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AcD-60-gNs"/>
-        <segue reference="7Qu-7p-ztG"/>
+        <segue reference="bjY-rG-Avh"/>
     </inferredMetricsTieBreakers>
 </document>
