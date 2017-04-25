@@ -58,9 +58,9 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         
         let user=users[indexPath.row]
         
+        cell.blockedView=type == .Blocked ? true : false
         cell.update(user)
         cell.delegate=self
-        cell.blockedView=type == .Blocked ? true : false
         
         return cell
     }
@@ -74,14 +74,23 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         let userId=users[index].id
         selectedCell.userStatusButton.enabled=false
         
-        let connector = SocialConnector()
-        if selectedCell.isStatusOn
+        let connector=SocialConnector()
+        
+        if type == .Blocked
         {
-            connector.unfollow(userId, success:unfollowSuccess, failure:followActionFailure)
+            connector.unblock(userId, success:unfollowSuccess, failure:followActionFailure)
+            updateBlockedStatus(users[index], status:false)
         }
         else
         {
-            connector.follow(userId, success:followSuccess, failure:followActionFailure)
+            if selectedCell.isStatusOn
+            {
+                connector.unfollow(userId, success:unfollowSuccess, failure:followActionFailure)
+            }
+            else
+            {
+                connector.follow(userId, success:followSuccess, failure:followActionFailure)
+            }
         }
     }
     
@@ -111,7 +120,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         }
     }
     
-    func followActionFailure(error: NSError)
+    func followActionFailure(error:NSError)
     {
         let selectedCell = self.selectedCells[0]
         selectedCell.userStatusButton.enabled = true

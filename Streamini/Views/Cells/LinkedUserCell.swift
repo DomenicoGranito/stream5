@@ -13,40 +13,44 @@ protocol LinkedUserCellDelegate:class
 
 class LinkedUserCell: UITableViewCell
 {
-    @IBOutlet var userImageView: UIImageView!
-    @IBOutlet var usernameLabel: UILabel!
-    @IBOutlet var userStatusButton: SensibleButton!
-    var delegate: LinkedUserCellDelegate?
+    @IBOutlet var userImageView:UIImageView!
+    @IBOutlet var usernameLabel:UILabel!
+    @IBOutlet var userStatusButton:SensibleButton!
+    @IBOutlet var unblockButton:UIButton!
+    
+    var delegate:LinkedUserCellDelegate?
     var blockedView=false
     
     var isStatusOn=false
         {
         didSet
         {
-            if blockedView
-            {
-                let title=isStatusOn ? "Unblock" : "Block"
-                
-                userStatusButton.setTitle(title, forState:.Normal)
-            }
-            else
-            {
-                let image=isStatusOn ? UIImage(named:"checkmark") : UIImage(named:"plus")
-                
-                userStatusButton.setImage(image, forState:.Normal)
-            }
+            let image=isStatusOn ? UIImage(named:"checkmark") : UIImage(named:"plus")
+            
+            userStatusButton.setImage(image, forState:.Normal)
         }
     }
-        
+    
     func update(user:User)
     {
         usernameLabel.text=user.name
         userImageView.contentMode = .ScaleToFill
         userImageView.sd_setImageWithURL(user.avatarURL())
-     
+        
         userStatusButton.hidden=UserContainer.shared.logged().id==user.id
-        isStatusOn=blockedView ? user.isBlocked : user.isFollowed
-        userStatusButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
+        unblockButton.hidden=UserContainer.shared.logged().id==user.id
+        
+        if blockedView
+        {
+            userStatusButton.hidden=true
+            unblockButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
+        }
+        else
+        {
+            unblockButton.hidden=true
+            isStatusOn=user.isFollowed
+            userStatusButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
+        }
     }
     
     func updateRecent(recent:Stream, isMyStream: Bool = false)
