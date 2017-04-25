@@ -17,7 +17,7 @@ class LinkedUserCell: UITableViewCell
     @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var userStatusButton: SensibleButton!
     var delegate: LinkedUserCellDelegate?
-    var blockedView:Bool!
+    var blockedView=false
     
     var isStatusOn=false
         {
@@ -45,7 +45,7 @@ class LinkedUserCell: UITableViewCell
         userImageView.sd_setImageWithURL(user.avatarURL())
      
         userStatusButton.hidden=UserContainer.shared.logged().id==user.id
-        isStatusOn = user.isFollowed
+        isStatusOn=blockedView ? user.isBlocked : user.isFollowed
         userStatusButton.addTarget(self, action:#selector(statusButtonPressed), forControlEvents:.TouchUpInside)
     }
     

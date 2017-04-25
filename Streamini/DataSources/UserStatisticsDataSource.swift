@@ -52,7 +52,7 @@ class UserStatisticsDataSource: NSObject, UITableViewDataSource, UITableViewDele
         return users.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)->UITableViewCell
+    func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         let cell=tableView.dequeueReusableCellWithIdentifier("LinkedUserCell", forIndexPath:indexPath) as! LinkedUserCell
         

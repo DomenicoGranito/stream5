@@ -58,6 +58,7 @@ class ProfileStatisticsViewController: UIViewController, UserSelecting, UserStat
         dataSource=UserStatisticsDataSource.create(type, userId:userId, tableView:tableView)
         dataSource!.profileDelegate=profileDelegate
         dataSource!.userSelectedDelegate=self
+        dataSource!.type=type
         dataSource!.reload()
     }
     
