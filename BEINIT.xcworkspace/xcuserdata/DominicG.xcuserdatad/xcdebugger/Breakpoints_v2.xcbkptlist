@@ -1162,7 +1162,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "viewWillAppear(animated:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1210,7 +1210,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "viewWillAppear(animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1226,7 +1226,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "viewDidAppear(animated:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
