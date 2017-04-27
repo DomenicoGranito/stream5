@@ -13,6 +13,11 @@ class RecentlyPlayedCell:UITableViewCell
     @IBOutlet var videoThumbnailImageView:UIImageView?
 }
 
+class EditCell:UITableViewCell
+{
+    @IBOutlet var editButton:UIButton?
+}
+
 class MyLibViewController: UIViewController
 {
     @IBOutlet var itemsTbl:UITableView?
@@ -77,7 +82,9 @@ class MyLibViewController: UIViewController
         }
         else if indexPath.row==4
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("Cell")!
+            let cell=tableView.dequeueReusableCellWithIdentifier("EditCell") as! EditCell
+            
+            cell.editButton?.hidden=recentlyPlayed!.count==0 ? true : false
             
             return cell
         }
@@ -112,6 +119,15 @@ class MyLibViewController: UIViewController
             SongManager.deleteRecentlyPlayed(self.recentlyPlayed![indexPath.row-5])
             self.recentlyPlayed?.removeAtIndex(indexPath.row-5)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:.Automatic)
+            
+            if self.recentlyPlayed!.count==0
+            {
+                let editCellIndexPath=NSIndexPath(forRow:4, inSection:0)
+                let editCell=tableView.cellForRowAtIndexPath(editCellIndexPath) as! EditCell
+                tableView.editing=false
+                editCell.editButton?.setTitle("Edit", forState:.Normal)
+                editCell.editButton?.hidden=true
+            }
         }
         clearButton.backgroundColor=UIColor.darkGrayColor()
         
@@ -160,14 +176,16 @@ class MyLibViewController: UIViewController
         }
     }
     
-    @IBAction func editButtonPressed()
+    @IBAction func editButtonPressed(_ sender:UIButton)
     {
         if itemsTbl!.editing
         {
+            sender.setTitle("Edit", forState:.Normal)
             itemsTbl?.setEditing(false, animated:true)
         }
         else
         {
+            sender.setTitle("Done", forState:.Normal)
             itemsTbl?.setEditing(true, animated:true)
         }
     }
