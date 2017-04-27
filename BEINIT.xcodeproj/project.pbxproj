@@ -42,6 +42,7 @@
 		3EF535B41E0921430049B2E9 /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B31E0921430049B2E9 /* LineView.swift */; };
 		3EF535B61E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */; };
 		3EF535B81E092A330049B2E9 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF535B71E092A330049B2E9 /* ModalViewController.swift */; };
+		3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFAD8921EB217E900038484 /* GradientTableView.swift */; };
 		86564ECF1E540BA400584405 /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86564ECE1E540BA300584405 /* SeriesViewController.swift */; };
 		865C33401E520459008EA556 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 865C333F1E520459008EA556 /* GameKit.framework */; };
 		868CBDBF1E5746D600BF14C3 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 868CBDBE1E5746D500BF14C3 /* libz.1.2.8.tbd */; };
@@ -258,6 +259,7 @@
 		3EF535B31E0921430049B2E9 /* LineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		3EF535B51E0922D40049B2E9 /* MusicPlayerTransitionAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicPlayerTransitionAnimation.swift; sourceTree = "<group>"; };
 		3EF535B71E092A330049B2E9 /* ModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		3EFAD8921EB217E900038484 /* GradientTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientTableView.swift; sourceTree = "<group>"; };
 		6302C3C18A0A3B43612D9F59 /* libPods-Streamini.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Streamini.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		86564ECE1E540BA300584405 /* SeriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		865C333F1E520459008EA556 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -858,6 +860,7 @@
 				3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */,
 				3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */,
 				B6D4134E1E156829001E8108 /* DiscoverViewController.swift */,
+				3EFAD8921EB217E900038484 /* GradientTableView.swift */,
 				B79669841B821C5D0071AF91 /* LegalViewController.swift */,
 				B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */,
 				B71BA5DA1B84A86C0055F427 /* ProfileStatisticsViewController.swift */,
@@ -1086,6 +1089,7 @@
 				A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */,
 				A60F82E91D490F4D002E2CEA /* Category.swift in Sources */,
 				B77AABE81B398A3C007DE187 /* Connector.swift in Sources */,
+				3EFAD8931EB217E900038484 /* GradientTableView.swift in Sources */,
 				B6EAF82A1E28F179007038DC /* CategoryCell.swift in Sources */,
 				B67448191E2C63CC0049890F /* DownloadTableViewController.swift in Sources */,
 				B79469FE1BE1F94B0071CC97 /* StreamExtension.swift in Sources */,
