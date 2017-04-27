@@ -18,7 +18,7 @@ class MyLibViewController: UIViewController
     @IBOutlet var itemsTbl:UITableView?
     
     let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Channels"]
-    let menuItemIconsArray=["playlist", "youtube", "internet", "channels"]
+    let menuItemIconsArray=["videolist", "rec-off", "youtube", "videochannel"]
     
     var recentlyPlayed:[NSManagedObject]?
     var TBVC:TabBarViewController!
