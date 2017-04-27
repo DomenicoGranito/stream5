@@ -20,6 +20,7 @@ class EditCell:UITableViewCell
 
 class MyLibViewController: UIViewController
 {
+    @IBOutlet var messageLbl:UILabel!
     @IBOutlet var itemsTbl:UITableView?
     
     let menuItemTitlesArray=["Playlists", "Live Streams", "Videos", "Channels"]
@@ -36,6 +37,8 @@ class MyLibViewController: UIViewController
         navigationController?.navigationBarHidden=false
         
         recentlyPlayed=SongManager.getRecentlyPlayed()
+        
+        recentlyPlayed!.count==0 ? view.bringSubviewToFront(messageLbl) : view.sendSubviewToBack(messageLbl)
         
         itemsTbl?.reloadData()
     }
@@ -102,14 +105,7 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, canEditRowAtIndexPath indexPath:NSIndexPath)->Bool
     {
-        if indexPath.row<5
-        {
-            return false
-        }
-        else
-        {
-            return true
-        }
+        return indexPath.row<5 ? false : true
     }
     
     func tableView(tableView:UITableView, editActionsForRowAtIndexPath indexPath:NSIndexPath)->[UITableViewRowAction]?
@@ -127,6 +123,7 @@ class MyLibViewController: UIViewController
                 tableView.editing=false
                 editCell.editButton?.setTitle("Edit", forState:.Normal)
                 editCell.editButton?.hidden=true
+                self.view.bringSubviewToFront(self.messageLbl)
             }
         }
         clearButton.backgroundColor=UIColor.darkGrayColor()

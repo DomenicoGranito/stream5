@@ -7328,12 +7328,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get quick access to all your recently played content here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Xr-aj-hAE">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Wdf-Ya-oUP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2pn-4Q-4ui">
-                                <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.071030758319999998" green="0.074862860140000001" blue="0.081973142920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.14509803921568626" green="0.14117647058823529" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="L91-rz-hn6">
+                                    <rect key="frame" x="0.0" y="185" width="320" height="0.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MenuCell" id="oyO-Mq-lKZ" customClass="MenuCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="65" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="1" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oyO-Mq-lKZ" id="u59-sV-LAO">
                                             <frame key="frameInset" width="287" height="43"/>
@@ -7352,7 +7366,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.071030758319999998" green="0.074862860140000001" blue="0.081973142920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="menuItemIconImageView" destination="D4w-E4-5Tx" id="Tcu-hA-iAH"/>
@@ -7360,7 +7374,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EditCell" rowHeight="60" id="bel-xF-3Y4" customClass="EditCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="109" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="45" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bel-xF-3Y4" id="5CY-GZ-Lq8">
                                             <frame key="frameInset" width="320" height="59"/>
@@ -7393,14 +7407,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="har-bn-MUF" secondAttribute="trailing" constant="10" id="jaE-Pm-d3J"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.071030758319999998" green="0.074862860140000001" blue="0.081973142920000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="editButton" destination="har-bn-MUF" id="qHo-8C-ryF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RecentlyPlayedCell" rowHeight="80" id="aZI-pA-lX0" customClass="RecentlyPlayedCell" customModule="Streamini" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="169" width="320" height="80"/>
+                                        <rect key="frame" x="0.0" y="105" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aZI-pA-lX0" id="IVr-5K-NW8">
                                             <frame key="frameInset" width="287" height="79"/>
@@ -7453,8 +7467,11 @@
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="top" secondItem="sgD-1X-oHE" secondAttribute="top" id="6Jx-1p-jV7"/>
+                            <constraint firstItem="6Xr-aj-hAE" firstAttribute="leading" secondItem="sgD-1X-oHE" secondAttribute="leading" id="9xf-nA-GhN"/>
+                            <constraint firstItem="6Xr-aj-hAE" firstAttribute="top" secondItem="JCc-ez-Ef2" secondAttribute="bottom" constant="236" id="MQp-d3-g7S"/>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="leading" secondItem="sgD-1X-oHE" secondAttribute="leading" id="OaI-Cr-ViK"/>
                             <constraint firstAttribute="trailing" secondItem="2pn-4Q-4ui" secondAttribute="trailing" id="b55-sp-6hs"/>
+                            <constraint firstAttribute="trailing" secondItem="6Xr-aj-hAE" secondAttribute="trailing" id="eFy-gP-8cB"/>
                             <constraint firstItem="zmL-7u-ZX9" firstAttribute="top" secondItem="2pn-4Q-4ui" secondAttribute="bottom" constant="-49" id="obC-mT-VrB"/>
                         </constraints>
                     </view>
@@ -7478,6 +7495,7 @@
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="itemsTbl" destination="2pn-4Q-4ui" id="oCw-io-dSQ"/>
+                        <outlet property="messageLbl" destination="6Xr-aj-hAE" id="mQI-sa-UfS"/>
                         <segue destination="ZK1-cb-L6V" kind="show" identifier="Playlists" id="am1-4x-yp7"/>
                         <segue destination="kbb-NK-hdI" kind="show" identifier="Channels" id="1tB-8z-9nP"/>
                         <segue destination="UeV-21-YCs" kind="show" identifier="Videos" id="7Sq-Ct-ero"/>
