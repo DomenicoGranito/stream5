@@ -8,9 +8,8 @@
 
 class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTransitionZoomable
 {
-    @IBOutlet internal var backgroundImageView: UIImageView?
-    @IBOutlet var headerTitleLbl:UILabel?
-    
+    @IBOutlet var backgroundImageView:UIImageView!
+    @IBOutlet var headerTitleLbl:UILabel!
     @IBOutlet var bottomView:UIView!
     @IBOutlet var itemsTbl:UITableView!
     
@@ -22,16 +21,13 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     override func viewDidLoad()
     {
-        
         nowPlayingStream=streamsArray.objectAtIndex(nowPlayingStreamIndex) as! Stream
         
         streamsArray.removeObjectAtIndex(nowPlayingStreamIndex)
         
-        backgroundImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(nowPlayingStream!.id).jpg"))
+        backgroundImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
         
-        headerTitleLbl?.text=nowPlayingStream?.title
-        
-        
+        headerTitleLbl.text=nowPlayingStream.title
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -187,6 +183,4 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     {
         return UIImageView()
     }
-    
-    
 }

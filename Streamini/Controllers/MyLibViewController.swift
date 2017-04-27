@@ -45,9 +45,13 @@ class MyLibViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if indexPath.row<5
+        if indexPath.row<4
         {
             return 44
+        }
+        else if indexPath.row==4
+        {
+            return 60
         }
         else
         {
