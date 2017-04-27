@@ -38,7 +38,7 @@ class MyLibViewController: UIViewController
         
         recentlyPlayed=SongManager.getRecentlyPlayed()
         
-        recentlyPlayed!.count==0 ? view.bringSubviewToFront(messageLbl) : view.sendSubviewToBack(messageLbl)
+        messageLbl.hidden=recentlyPlayed!.count==0 ? false : true
         
         itemsTbl?.reloadData()
     }
@@ -123,7 +123,7 @@ class MyLibViewController: UIViewController
                 tableView.editing=false
                 editCell.editButton?.setTitle("Edit", forState:.Normal)
                 editCell.editButton?.hidden=true
-                self.view.bringSubviewToFront(self.messageLbl)
+                self.messageLbl.hidden=false
             }
         }
         clearButton.backgroundColor=UIColor.darkGrayColor()

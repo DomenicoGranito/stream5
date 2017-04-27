@@ -12,7 +12,7 @@ class RecentStreamCell: StreamCell
     @IBOutlet var userLabel: UILabel!
     //@IBOutlet var streamEndedLabel: UILabel!
     @IBOutlet var playImageView: UIImageView!
-    @IBOutlet var playWidthConstraint: NSLayoutConstraint!
+    //@IBOutlet var playWidthConstraint: NSLayoutConstraint!
     @IBOutlet var dotsButton:UIButton?
     
     override func update(stream:Stream)
@@ -32,13 +32,13 @@ class RecentStreamCell: StreamCell
         
         userLabel.text = UserContainer.shared.logged().name
         
-        var isLessThan24Hours = false
-        if let date = stream.ended {
-            isLessThan24Hours = NSDate().lessThan24Hours(date)
-        }
+        //var isLessThan24Hours = false
+        //if let date = stream.ended {
+        //    isLessThan24Hours = NSDate().lessThan24Hours(date)
+        //}
         
-        playImageView.hidden  = !isLessThan24Hours
-        self.userInteractionEnabled = isLessThan24Hours
+        //playImageView.hidden  = !isLessThan24Hours
+        //self.userInteractionEnabled = isLessThan24Hours
         streamNameLabel.text  = stream.title
         
 //        if let time = stream.ended {
@@ -47,8 +47,8 @@ class RecentStreamCell: StreamCell
 //            streamEndedLabel.text = ""
 //        }
 
-        playWidthConstraint.constant = (isLessThan24Hours) ? 24.0 : 0.0
-        self.layoutIfNeeded()
+        //playWidthConstraint.constant = (isLessThan24Hours) ? 24.0 : 0.0
+        //self.layoutIfNeeded()
     }
     
     func calculateHeight() -> CGFloat
