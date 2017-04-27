@@ -55,7 +55,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return indexPath.section==0 ? 60 : 50
+        return indexPath.section==0 ? 80 : 50
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
