@@ -63,7 +63,7 @@ class MyLibViewController: UIViewController
         }
         else
         {
-            return 90
+            return 80
         }
     }
     
