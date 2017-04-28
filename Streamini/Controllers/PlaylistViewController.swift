@@ -35,6 +35,11 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         return 2
     }
     
+    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
+        return 30
+    }
+    
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
