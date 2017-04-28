@@ -7325,7 +7325,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVC-vD-siQ">
-                                                    <frame key="frameInset" minX="75" minY="11" width="166" height="22"/>
+                                                    <frame key="frameInset" minX="55" minY="11" width="166" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -7417,7 +7417,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="artistNameLbl" destination="j7n-lq-OnB" id="heZ-5q-Vus"/>
                                             <outlet property="videoThumbnailImageView" destination="Xz1-zb-OAc" id="3iR-Jx-VpZ"/>
@@ -8920,12 +8920,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7H-u7-RTH" userLabel="Background Image View" propertyAccessControl="none"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p7H-u7-RTH" userLabel="Background Image View" propertyAccessControl="none">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XcA-25-u33" propertyAccessControl="none">
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1XM-NC-j7s">
                                     <frame key="frameInset"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cQ2-lP-BHn">
@@ -9035,7 +9039,7 @@
                                                 <constraint firstItem="Bmt-7i-WfW" firstAttribute="leading" secondItem="30C-m1-olj" secondAttribute="trailing" constant="5" id="yfJ-QX-367"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.13333333333333333" green="0.13725490196078433" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="dotsButton" destination="ZAG-3H-yoQ" id="7jP-BK-ObP"/>
                                             <outlet property="playImageView" destination="30C-m1-olj" id="TnY-uF-SbN"/>
@@ -9117,7 +9121,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Tab-XC-HAn"/>
                                     <constraint firstItem="FN4-yX-7cR" firstAttribute="leading" secondItem="IlH-Yv-8VI" secondAttribute="leading" id="WhK-I6-h12"/>
@@ -9126,7 +9130,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XcA-25-u33" firstAttribute="trailing" secondItem="cQ2-lP-BHn" secondAttribute="trailing" id="4LT-a1-I6i"/>
                             <constraint firstItem="XcA-25-u33" firstAttribute="leading" secondItem="cQ2-lP-BHn" secondAttribute="leading" id="5eW-QD-1el"/>
