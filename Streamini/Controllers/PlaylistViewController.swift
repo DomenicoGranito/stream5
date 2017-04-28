@@ -16,6 +16,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     var sectionTitlesArray=NSMutableArray(array:["NOW PLAYING", "UP NEXT ON SHUFFLE"])
     let (host, _, _, _, _)=Config.shared.wowza()
     var selectedStreamsArray=NSMutableArray()
+    var upNextStreamsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
     var nowPlayingStream:Stream!
     var nowPlayingStreamIndex:Int!
@@ -68,24 +69,21 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if sectionTitlesArray.count==2
+        if section==0
         {
-            return section==0 ? 1 : streamsArray.count
+            return 1
+        }
+        else if sectionTitlesArray.count==2&&section==1
+        {
+            return streamsArray.count
+        }
+        else if section==1
+        {
+            return upNextStreamsArray.count
         }
         else
         {
-            if section==0
-            {
-                return 1
-            }
-            else if section==1
-            {
-                return selectedStreamsArray.count
-            }
-            else
-            {
-                return streamsArray.count
-            }
+            return streamsArray.count
         }
     }
     
@@ -102,19 +100,26 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             
             return cell
         }
-        else if indexPath.section==1
-        {
-            let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
-            
-            return cell
-        }
         else
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
             
             cell.playImageView.backgroundColor=selectedStreamsArray.containsObject(indexPath.row) ? UIColor.greenColor() : UIColor.redColor()
             
-            let stream=streamsArray[indexPath.row] as! Stream
+            var stream:Stream!
+            
+            if sectionTitlesArray.count==2&&indexPath.section==1
+            {
+                stream=streamsArray[indexPath.row] as! Stream
+            }
+            else if indexPath.section==1
+            {
+                stream=upNextStreamsArray[indexPath.row] as! Stream
+            }
+            else
+            {
+                stream=streamsArray[indexPath.row] as! Stream
+            }
             
             cell.streamNameLabel.text=stream.title
             cell.userLabel.text=stream.user.name
@@ -171,11 +176,25 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     @IBAction func addToUpNext()
     {
-        sectionTitlesArray.insertObject("UP NEXT", atIndex:1)
+        if sectionTitlesArray.count==2
+        {
+            sectionTitlesArray.insertObject("UP NEXT", atIndex:1)
+        }
+        
+        for i in 0 ..< selectedStreamsArray.count
+        {
+            let sourceIndex=selectedStreamsArray[i] as! Int
+            let destinationIndex=nowPlayingStreamIndex+i
+            
+            streamsArray.exchangeObjectAtIndex(sourceIndex, withObjectAtIndex:destinationIndex)
+            upNextStreamsArray.addObject(streamsArray.objectAtIndex(sourceIndex))
+        }
+        
+        selectedStreamsArray.removeAllObjects()
         itemsTbl.reloadData()
         performAnimation(0)
     }
-
+    
     func dotsButtonTapped()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
