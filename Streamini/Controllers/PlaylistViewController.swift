@@ -68,7 +68,25 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return section==0 ? 1 : streamsArray.count
+        if sectionTitlesArray.count==2
+        {
+            return section==0 ? 1 : streamsArray.count
+        }
+        else
+        {
+            if section==0
+            {
+                return 1
+            }
+            else if section==1
+            {
+                return selectedStreamsArray.count
+            }
+            else
+            {
+                return streamsArray.count
+            }
+        }
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
@@ -81,6 +99,12 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             cell.userLabel.text=nowPlayingStream.user.name
             cell.playImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
             cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
+            
+            return cell
+        }
+        else if indexPath.section==1
+        {
+            let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
             
             return cell
         }
@@ -101,7 +125,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        if indexPath.section==1
+        if indexPath.section>0
         {
             let cell=tableView.cellForRowAtIndexPath(indexPath) as! RecentStreamCell
             
@@ -145,6 +169,13 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         itemsTbl.reloadData()
     }
     
+    @IBAction func addToUpNext()
+    {
+        sectionTitlesArray.insertObject("UP NEXT", atIndex:1)
+        itemsTbl.reloadData()
+        performAnimation(0)
+    }
+
     func dotsButtonTapped()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -201,12 +232,6 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         NSNotificationCenter.defaultCenter().postNotificationName("updatePlayer", object:nowPlayingStreamIndex)
         
         view.window?.rootViewController?.dismissViewControllerAnimated(true, completion:nil)
-    }
-    
-    @IBAction func addToUpNext()
-    {
-        sectionTitlesArray.insertObject("UP NEXT", atIndex:1)
-        itemsTbl.reloadData()
     }
     
     func createTransitionImageView()->UIImageView
