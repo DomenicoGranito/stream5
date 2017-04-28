@@ -13,6 +13,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     @IBOutlet var bottomView:UIView!
     @IBOutlet var itemsTbl:UITableView!
     
+    var sectionTitlesArray=["NOW PLAYING", "UP NEXT ON SHUFFLE"]
     let (host, _, _, _, _)=Config.shared.wowza()
     var selectedStreamsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
@@ -45,7 +46,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
         
         let titleLbl=UILabel(frame:CGRectMake(10, 0, 300, 20))
-        titleLbl.text=section==0 ? "NOW PLAYING" : "UP NEXT ON SHUFFLE"
+        titleLbl.text=sectionTitlesArray[section]
         titleLbl.font=UIFont.systemFontOfSize(10)
         titleLbl.textColor=UIColor.whiteColor()
         
