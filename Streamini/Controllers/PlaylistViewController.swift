@@ -13,7 +13,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     @IBOutlet var bottomView:UIView!
     @IBOutlet var itemsTbl:UITableView!
     
-    var sectionTitlesArray=["NOW PLAYING", "UP NEXT ON SHUFFLE"]
+    var sectionTitlesArray=NSMutableArray(array:["NOW PLAYING", "UP NEXT ON SHUFFLE"])
     let (host, _, _, _, _)=Config.shared.wowza()
     var selectedStreamsArray=NSMutableArray()
     var streamsArray=NSMutableArray()
@@ -29,11 +29,13 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         backgroundImageView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(nowPlayingStream.id).jpg"))
         
         headerTitleLbl.text=nowPlayingStream.title
+        
+        itemsTbl.editing=true
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
-        return 2
+        return sectionTitlesArray.count
     }
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
@@ -46,7 +48,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
         
         let titleLbl=UILabel(frame:CGRectMake(10, 0, 300, 20))
-        titleLbl.text=sectionTitlesArray[section]
+        titleLbl.text=sectionTitlesArray[section] as? String
         titleLbl.font=UIFont.systemFontOfSize(10)
         titleLbl.textColor=UIColor.whiteColor()
         
@@ -127,6 +129,22 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         }
     }
     
+    func tableView(tableView:UITableView, editingStyleForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCellEditingStyle
+    {
+        return .None
+    }
+    
+    func tableView(tableView:UITableView, canMoveRowAtIndexPath indexPath:NSIndexPath)->Bool
+    {
+        return indexPath.section==0 ? false : true
+    }
+    
+    func tableView(tableView:UITableView, moveRowAtIndexPath sourceIndexPath:NSIndexPath, toIndexPath destinationIndexPath:NSIndexPath)
+    {
+        streamsArray.exchangeObjectAtIndex(sourceIndexPath.row, withObjectAtIndex:destinationIndexPath.row)
+        itemsTbl.reloadData()
+    }
+    
     func dotsButtonTapped()
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
@@ -183,6 +201,12 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         NSNotificationCenter.defaultCenter().postNotificationName("updatePlayer", object:nowPlayingStreamIndex)
         
         view.window?.rootViewController?.dismissViewControllerAnimated(true, completion:nil)
+    }
+    
+    @IBAction func addToUpNext()
+    {
+        sectionTitlesArray.insertObject("UP NEXT", atIndex:1)
+        itemsTbl.reloadData()
     }
     
     func createTransitionImageView()->UIImageView
