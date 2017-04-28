@@ -15,32 +15,38 @@
         <scene sceneID="rrA-ar-txh">
             <objects>
                 <tableViewController storyboardIdentifier="DiscoverViewController" id="Bo7-1L-Z3b" userLabel="Discover View Controller" customClass="DiscoverViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="3" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="g1T-GY-UdH" customClass="GradientTableView" customModule="Streamini" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="595"/>
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" id="g1T-GY-UdH" customClass="GradientTableView" customModule="Streamini" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="555"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.070588235294117646" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.14509803921568626" green="0.14117647058823529" blue="0.16078431372549018" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="gub-Jx-pPc">
+                            <rect key="frame" x="0.0" y="545" width="320" height="10"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Recent" rowHeight="270" id="6qY-BX-Fwh" customClass="CategoryRow" customModule="Streamini" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="65" width="320" height="270"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6qY-BX-Fwh" id="nnl-y8-zer">
-                                    <frame key="frameInset" width="320" height="269"/>
+                                    <frame key="frameInset" width="320" height="270"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XmV-2W-HhD">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="oZ1-Rb-SqR">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="oZ1-Rb-SqR">
                                                 <size key="itemSize" width="170" height="222"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="sectionInset" minX="10" minY="47" maxX="10" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="IHy-6G-pZb" customClass="VideoCell" customModule="Streamini" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="24" width="170" height="222"/>
+                                                    <rect key="frame" x="10" y="48" width="170" height="222"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="170" height="222"/>
@@ -107,7 +113,7 @@
                                 <rect key="frame" x="0.0" y="335" width="320" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CD8-k6-8qt" id="GiG-gz-4jb">
-                                    <frame key="frameInset" width="287" height="49"/>
+                                    <frame key="frameInset" width="287" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cog-Jg-PLY">
@@ -121,43 +127,53 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q02-64-gA5">
+                                            <color key="backgroundColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="0.5" id="me2-lv-zag"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstItem="q02-64-gA5" firstAttribute="leading" secondItem="GiG-gz-4jb" secondAttribute="leading" constant="10" id="5d5-Hs-NuK"/>
                                         <constraint firstItem="vjp-Z9-iDd" firstAttribute="leading" secondItem="cog-Jg-PLY" secondAttribute="trailing" constant="10" id="6FI-ed-7kd"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="vjp-Z9-iDd" secondAttribute="trailing" constant="72" id="Hjb-vd-RVP"/>
                                         <constraint firstItem="cog-Jg-PLY" firstAttribute="centerY" secondItem="vjp-Z9-iDd" secondAttribute="centerY" id="JYT-19-h6Y"/>
                                         <constraint firstItem="cog-Jg-PLY" firstAttribute="centerY" secondItem="GiG-gz-4jb" secondAttribute="centerY" id="h69-3Z-bFa"/>
+                                        <constraint firstItem="q02-64-gA5" firstAttribute="top" secondItem="vjp-Z9-iDd" secondAttribute="bottom" constant="9.5" id="k0t-ue-eDO"/>
                                         <constraint firstItem="cog-Jg-PLY" firstAttribute="top" secondItem="vjp-Z9-iDd" secondAttribute="top" id="kmC-Jm-rNk"/>
                                         <constraint firstItem="cog-Jg-PLY" firstAttribute="leading" secondItem="GiG-gz-4jb" secondAttribute="leadingMargin" constant="2" id="oVp-6w-9Db"/>
                                         <constraint firstItem="vjp-Z9-iDd" firstAttribute="top" secondItem="GiG-gz-4jb" secondAttribute="topMargin" constant="2" id="zdI-GM-TMa"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="q02-64-gA5" secondAttribute="trailing" constant="10" id="f68-zX-sF3"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="menuItemIconImageView" destination="cog-Jg-PLY" id="yBz-53-gM2"/>
                                     <outlet property="menuItemTitleLbl" destination="vjp-Z9-iDd" id="fl1-Of-PHE"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Category" rowHeight="170" id="cu2-0z-DMd" customClass="AllCategoryRow" customModule="Streamini" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="385" width="320" height="170"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Category" rowHeight="160" id="cu2-0z-DMd" customClass="AllCategoryRow" customModule="Streamini" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="385" width="320" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cu2-0z-DMd" id="yTq-kd-M2y">
-                                    <frame key="frameInset" width="320" height="169"/>
+                                    <frame key="frameInset" width="320" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MVS-74-P7q">
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BCr-1K-V0v">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="BCr-1K-V0v">
                                                 <size key="itemSize" width="145" height="150"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
+                                                <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="categoryCell" id="XS4-lt-bdz" customClass="CategoryCell" customModule="Streamini" customModuleProvider="target">
-                                                    <rect key="frame" x="10" y="10" width="145" height="150"/>
+                                                    <rect key="frame" x="10" y="1" width="145" height="150"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="145" height="150"/>
@@ -202,8 +218,8 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstItem="MVS-74-P7q" firstAttribute="leading" secondItem="yTq-kd-M2y" secondAttribute="leading" id="0LM-Xn-uKs"/>
-                                        <constraint firstAttribute="bottom" secondItem="MVS-74-P7q" secondAttribute="bottom" id="6Cs-9F-1ip"/>
-                                        <constraint firstItem="MVS-74-P7q" firstAttribute="top" secondItem="yTq-kd-M2y" secondAttribute="top" id="OfF-Ox-v7N"/>
+                                        <constraint firstAttribute="bottom" secondItem="MVS-74-P7q" secondAttribute="bottom" constant="-1" id="6Cs-9F-1ip"/>
+                                        <constraint firstItem="MVS-74-P7q" firstAttribute="top" secondItem="yTq-kd-M2y" secondAttribute="top" constant="10" id="OfF-Ox-v7N"/>
                                         <constraint firstAttribute="trailing" secondItem="MVS-74-P7q" secondAttribute="trailing" id="iMH-Mm-YVZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -221,7 +237,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Discover" id="LcI-8L-05W"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="595"/>
+                    <size key="freeformSize" width="320" height="555"/>
                     <connections>
                         <segue destination="aek-ff-zgE" kind="show" identifier="Channels" id="xIY-9a-cRg"/>
                     </connections>

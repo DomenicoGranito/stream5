@@ -79,7 +79,7 @@ class DiscoverViewController:BaseTableViewController
         }
         else
         {
-            return 210
+            return 160
         }
     }
     
