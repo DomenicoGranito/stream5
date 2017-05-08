@@ -6,25 +6,32 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class SearchViewController: UIViewController, UserSelecting, StreamSelecting, ProfileDelegate, UserStatusDelegate
+class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
 {
-    @IBOutlet var searchBar:UISearchBar!
-    @IBOutlet var tableView:UITableView!
-
     var dataSource:SearchDataSource?
     
-    override func viewDidLoad()
+    @IBOutlet var searchBar:UISearchBar!
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var searchTypeSegment:UISegmentedControl!
+    
+    @IBAction func changeMode()
     {
-        configureView()
-        
-        dataSource!.reload()
+        switch searchTypeSegment.selectedSegmentIndex
+        {
+        case 0:
+            searchBar.resignFirstResponder()
+            dataSource?.changeMode("categories")
+            break
+        case 1:
+            searchBar.resignFirstResponder()
+            dataSource?.changeMode("places")
+            break
+        default:
+            dataSource?.changeMode("people")
+            break
+        }
     }
     
-    override func viewWillAppear(animated:Bool)
-    {
-        navigationController?.navigationBarHidden=true
-    }
-
     func searchBarSearchButtonClicked(searchBar:UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -43,7 +50,10 @@ class SearchViewController: UIViewController, UserSelecting, StreamSelecting, Pr
     
     func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
     {
-        dataSource!.search(searchText)
+        if searchText.characters.count>0&&(dataSource!.mode=="streams"||dataSource!.mode=="people")
+        {
+            dataSource!.search(searchText)
+        }
     }
     
     func configureView()
@@ -56,6 +66,25 @@ class SearchViewController: UIViewController, UserSelecting, StreamSelecting, Pr
         dataSource=SearchDataSource(tableView:tableView)
         dataSource!.userSelectedDelegate=self
         dataSource!.streamSelectedDelegate=self
+        
+        searchTypeSegment.setTitle(NSLocalizedString("broadcasts", comment:""), forSegmentAtIndex:0)
+        searchTypeSegment.setTitle(NSLocalizedString("places", comment:""), forSegmentAtIndex:1)
+        searchTypeSegment.setTitle(NSLocalizedString("people", comment:""), forSegmentAtIndex:2)
+        
+        searchTypeSegment.layer.cornerRadius=0.0
+        searchTypeSegment.layer.borderWidth=1.5
+    }
+    
+    override func viewDidLoad()
+    {
+        configureView()
+        
+        dataSource!.reload()
+    }
+    
+    override func viewWillAppear(animated:Bool)
+    {
+        self.navigationController?.navigationBarHidden=true
     }
     
     func reload()

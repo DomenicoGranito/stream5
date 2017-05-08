@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-class SearchDataSource:NSObject, LinkedUserCellDelegate
+class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
 {
     var users: [User] = []
     var streams: [Stream] = []
@@ -17,6 +17,7 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
     var userSelectedDelegate: UserSelecting?
     var streamSelectedDelegate: StreamSelecting?
     var page: UInt = 0
+    private let l = UILabel()
     
     //var mode = "categories"
     var mode = "streams"
@@ -31,6 +32,12 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
     {
         self.tableView   = tableView
         super.init()
+        tableView.dataSource = self
+        tableView.delegate   = self
+        
+        l.font = UIFont(name: "HelveticNeue", size: 15.0)
+        l.numberOfLines = 0
+        l.lineBreakMode = .ByWordWrapping
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -102,7 +109,9 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
                     text = user.desc
                 }
             }
-            return 82.0
+            l.text = text
+            let expectedSize = l.sizeThatFits(CGSizeMake(tableView.bounds.size.width - 98.0, 1000))
+            return expectedSize.height + 82.0
         }
         
         return 44.0
