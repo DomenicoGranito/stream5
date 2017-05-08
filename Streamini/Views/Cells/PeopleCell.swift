@@ -49,5 +49,4 @@ class PeopleCell: UITableViewCell {
             del.willStatusChanged(self)
         }
     }
-
 }

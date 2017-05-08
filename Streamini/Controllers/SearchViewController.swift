@@ -55,7 +55,7 @@ class SearchViewController: UIViewController
     {
         return 30
     }
-
+    
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
@@ -116,7 +116,34 @@ class SearchViewController: UIViewController
         }
         else
         {
-            return UITableViewCell()
+            let cell=tableView.dequeueReusableCellWithIdentifier("PeopleCell", forIndexPath:indexPath) as! PeopleCell
+            
+            let user:User
+            
+            if indexPath.section==0
+            {
+                user=brands[indexPath.row]
+            }
+            else if indexPath.section==1
+            {
+                user=agencies[indexPath.row]
+            }
+            else if indexPath.section==2
+            {
+                user=venues[indexPath.row]
+            }
+            else if indexPath.section==3
+            {
+                user=talents[indexPath.row]
+            }
+            else
+            {
+                user=profiles[indexPath.row]
+            }
+            
+            cell.update(user)
+            
+            return cell
         }
     }
     
