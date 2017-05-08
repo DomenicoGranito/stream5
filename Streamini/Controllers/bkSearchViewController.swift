@@ -15,11 +15,6 @@ class bkSearchViewController: BaseViewController, UserSelecting, StreamSelecting
     
     func configureView()
     {
-        tableView.addInfiniteScrollingWithActionHandler
-            {()->Void in
-                self.dataSource!.fetchMore()
-        }
-        
         dataSource=SearchDataSource(tableView:tableView)
         dataSource!.userSelectedDelegate=self
         dataSource!.streamSelectedDelegate=self
@@ -31,12 +26,7 @@ class bkSearchViewController: BaseViewController, UserSelecting, StreamSelecting
         
         dataSource!.reload()
     }
-    
-    override func viewWillAppear(animated:Bool)
-    {
-        self.navigationController?.navigationBarHidden=true
-    }
-    
+        
     func reload()
     {
         dataSource!.reload()
