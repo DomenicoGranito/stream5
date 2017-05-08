@@ -8,30 +8,23 @@
 
 class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
 {
-    var dataSource:SearchDataSource?
-    
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
-    @IBOutlet var searchTypeSegment:UISegmentedControl!
+
+    var dataSource:SearchDataSource?
     
-    @IBAction func changeMode()
+    override func viewDidLoad()
     {
-        switch searchTypeSegment.selectedSegmentIndex
-        {
-        case 0:
-            searchBar.resignFirstResponder()
-            dataSource?.changeMode("categories")
-            break
-        case 1:
-            searchBar.resignFirstResponder()
-            dataSource?.changeMode("places")
-            break
-        default:
-            dataSource?.changeMode("people")
-            break
-        }
+        configureView()
+        
+        dataSource!.reload()
     }
     
+    override func viewWillAppear(animated:Bool)
+    {
+        navigationController?.navigationBarHidden=true
+    }
+
     func searchBarSearchButtonClicked(searchBar:UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -66,25 +59,6 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
         dataSource=SearchDataSource(tableView:tableView)
         dataSource!.userSelectedDelegate=self
         dataSource!.streamSelectedDelegate=self
-        
-        searchTypeSegment.setTitle(NSLocalizedString("broadcasts", comment:""), forSegmentAtIndex:0)
-        searchTypeSegment.setTitle(NSLocalizedString("places", comment:""), forSegmentAtIndex:1)
-        searchTypeSegment.setTitle(NSLocalizedString("people", comment:""), forSegmentAtIndex:2)
-        
-        searchTypeSegment.layer.cornerRadius=0.0
-        searchTypeSegment.layer.borderWidth=1.5
-    }
-    
-    override func viewDidLoad()
-    {
-        configureView()
-        
-        dataSource!.reload()
-    }
-    
-    override func viewWillAppear(animated:Bool)
-    {
-        self.navigationController?.navigationBarHidden=true
     }
     
     func reload()
