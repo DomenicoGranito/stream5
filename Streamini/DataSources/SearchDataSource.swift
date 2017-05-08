@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
+class SearchDataSource:NSObject, LinkedUserCellDelegate
 {
     var users: [User] = []
     var streams: [Stream] = []
@@ -17,9 +17,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
     var userSelectedDelegate: UserSelecting?
     var streamSelectedDelegate: StreamSelecting?
     var page: UInt = 0
-    private let l = UILabel()
     
-    //var mode = "categories"
     var mode = "streams"
     
     var selectedCells: [PeopleCell] = []
@@ -31,18 +29,6 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
     init(tableView:UITableView)
     {
         self.tableView   = tableView
-        super.init()
-        tableView.dataSource = self
-        tableView.delegate   = self
-        
-        l.font = UIFont(name: "HelveticNeue", size: 15.0)
-        l.numberOfLines = 0
-        l.lineBreakMode = .ByWordWrapping
-    }
-    
-    func numberOfSectionsInTableView(tableView:UITableView)->Int
-    {
-        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -109,9 +95,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
                     text = user.desc
                 }
             }
-            l.text = text
-            let expectedSize = l.sizeThatFits(CGSizeMake(tableView.bounds.size.width - 98.0, 1000))
-            return expectedSize.height + 82.0
+            return 82.0
         }
         
         return 44.0
@@ -121,7 +105,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if mode == "categories" {
-            // search categories
+            
             let c = categories[indexPath.row]
             self.category = c.id
             self.city = ""
@@ -129,7 +113,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
             changeMode("streams")
         }
         else if mode == "places" {
-           // search cities
+           
             self.city = cities[indexPath.row]
             self.category = 0
             self.query = ""
@@ -288,11 +272,11 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
         
         if mode == "categories" {
             tableView.infiniteScrollingView.stopAnimating()
-            // do nothing
+           
         }
         else if mode == "places" {
             tableView.infiniteScrollingView.stopAnimating()
-            // do nothing        
+            
         }
         else if mode == "streams" {
             page = page+1
