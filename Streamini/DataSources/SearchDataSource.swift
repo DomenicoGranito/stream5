@@ -17,7 +17,6 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
     var userSelectedDelegate: UserSelecting?
     var streamSelectedDelegate: StreamSelecting?
     var page: UInt = 0
-    private let l = UILabel()
     
     //var mode = "categories"
     var mode = "streams"
@@ -32,10 +31,6 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
     {
         self.tableView   = tableView
         super.init()
-        
-        l.font = UIFont(name: "HelveticNeue", size: 15.0)
-        l.numberOfLines = 0
-        l.lineBreakMode = .ByWordWrapping
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -107,9 +102,7 @@ class SearchDataSource:NSObject, LinkedUserCellDelegate
                     text = user.desc
                 }
             }
-            l.text = text
-            let expectedSize = l.sizeThatFits(CGSizeMake(tableView.bounds.size.width - 98.0, 1000))
-            return expectedSize.height + 82.0
+            return 82.0
         }
         
         return 44.0
