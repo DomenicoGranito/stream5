@@ -39,7 +39,7 @@ class SearchViewController: UIViewController
     
     func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
     {
-        
+        SocialConnector().search(NSDictionary(object:searchText, forKey:"q"), success:searchSuccess, failure:searchFailure)
     }
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
@@ -63,6 +63,16 @@ class SearchViewController: UIViewController
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        
+    }
+    
+    func searchSuccess(users:[User])
+    {
+        
+    }
+    
+    func searchFailure(error:NSError)
     {
         
     }
