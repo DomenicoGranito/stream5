@@ -277,7 +277,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
             StreamConnector().cities(citiesSuccess, failure: actionFailure)
         }
         else if mode == "streams" {
-            StreamConnector().search(0, category: category, query: query, city: city, success: streamsSuccess, failure: actionFailure)
+            //StreamConnector().search(0, category: category, query: query, city: city, success: streamsSuccess, failure: actionFailure)
         }
         else if mode == "people" {
             SocialConnector().search(NSDictionary(object: query, forKey: "q"), success: peopleSuccess, failure: actionFailure)
@@ -296,7 +296,7 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
         }
         else if mode == "streams" {
             page = page+1
-            StreamConnector().search(page, category:category, query: query, city: city, success: streamsSuccess, failure: actionFailure)
+            //StreamConnector().search(page, category:category, query: query, city: city, success: streamsSuccess, failure: actionFailure)
         }
         else if mode == "people" {
             page = page+1
