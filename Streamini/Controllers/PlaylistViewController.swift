@@ -54,7 +54,7 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         titleLbl.textColor=UIColor.whiteColor()
         
         let lineView=UIView(frame:CGRectMake(10, 29, tableView.frame.size.width-20, 1))
-        lineView.backgroundColor=UIColor.darkGrayColor()
+        //lineView.backgroundColor=UIColor.darkGrayColor()
         
         headerView.addSubview(titleLbl)
         headerView.addSubview(lineView)
@@ -104,8 +104,8 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
         {
             let cell=tableView.dequeueReusableCellWithIdentifier("UpNextCell") as! RecentStreamCell
             
-            cell.playImageView.backgroundColor=selectedStreamsArray.containsObject(indexPath.row) ? UIColor.greenColor() : UIColor.redColor()
-            
+            //cell.playImageView.backgroundColor=selectedStreamsArray.containsObject(indexPath.row) ? UIColor.greenColor() : UIColor.redColor()
+            cell.playImageView.image=selectedStreamsArray.containsObject(indexPath.row) ? UIImage(named:"checkmark") : UIImage(named:"checkmarkblank")
             var stream:Stream!
             
             if sectionTitlesArray.count==2&&indexPath.section==1
@@ -137,14 +137,16 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
             if selectedStreamsArray.containsObject(indexPath.row)
             {
                 selectedStreamsArray.removeObject(indexPath.row)
-                
-                cell.playImageView.backgroundColor=UIColor.redColor()
+                cell.playImageView.image=UIImage(named:"checkmarkblank")
+                //cell.playImageView.backgroundColor=UIColor.redColor()
+             //   cell.playImageView.setImage(UIImage(named:"checkmarkblank"), forState:.Normal)
             }
             else
             {
                 selectedStreamsArray.addObject(indexPath.row)
-                
-                cell.playImageView.backgroundColor=UIColor.greenColor()
+                cell.playImageView.image=UIImage(named:"checkmark")
+                //cell.playImageView.backgroundColor=UIColor.greenColor()
+               // cell.playImageView.setImage(UIImage(named:"checkmark"), forState:.Normal)
             }
             
             var offset:CGFloat=0
