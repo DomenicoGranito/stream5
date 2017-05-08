@@ -132,7 +132,7 @@ class StreamConnector: Connector {
     {
         let path="category/discover"
         
-        manager.getObjectsAtPath(path, parameters:self.sessionParams(), success:{ (operation, mappingResult)->Void in
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{ (operation, mappingResult)->Void in
             
             let error=self.findErrorObject(mappingResult:mappingResult)!
             
@@ -163,7 +163,7 @@ class StreamConnector: Connector {
             failure(error:error)
         }
     }
-
+    
     func homeStreams(success:(data:NSDictionary)->(), failure:(error:NSError)->())
     {
         let path="category/streams"
@@ -179,8 +179,8 @@ class StreamConnector: Connector {
                     self.relogin({()->() in
                         self.homeStreams(success, failure:failure)
                         },
-                                 failure:{()->() in
-                                    failure(error:error.toNSError())
+                        failure:{()->() in
+                            failure(error:error.toNSError())
                     })
                 }
                 else
@@ -235,10 +235,29 @@ class StreamConnector: Connector {
             failure(error:error)
         }
     }
-
-    func search(query:String, success:(data:NSDictionary)->(), failure:(error:NSError)->())
+    
+    func search(query:String, success:(brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])->(), failure:(error:NSError)->())
     {
         let path="stream/search?q=\(query)"
+        
+        let userMapping=UserMappingProvider.userResponseMapping()
+        let streamMapping=StreamMappingProvider.streamResponseMapping()
+        
+        let statusCode=RKStatusCodeIndexSetForClass(.Successful)
+        
+        let brandsResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.brands", statusCodes:statusCode)
+        let agenciesResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.agencies", statusCodes:statusCode)
+        let venuesResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.venues", statusCodes:statusCode)
+        let talentsResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.talents", statusCodes:statusCode)
+        let profilesResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.profiles", statusCodes:statusCode)
+        let streamsResponseDescriptor=RKResponseDescriptor(mapping:streamMapping, method:.GET, pathPattern:nil, keyPath:"data.streams", statusCodes:statusCode)
+        
+        manager.addResponseDescriptor(brandsResponseDescriptor)
+        manager.addResponseDescriptor(agenciesResponseDescriptor)
+        manager.addResponseDescriptor(venuesResponseDescriptor)
+        manager.addResponseDescriptor(talentsResponseDescriptor)
+        manager.addResponseDescriptor(profilesResponseDescriptor)
+        manager.addResponseDescriptor(streamsResponseDescriptor)
         
         manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
             
@@ -262,9 +281,14 @@ class StreamConnector: Connector {
             }
             else
             {
-                let json=try! NSJSONSerialization.JSONObjectWithData(operation.HTTPRequestOperation.responseData, options:.MutableLeaves) as! NSDictionary
+                let brands=mappingResult.dictionary()["data.brands"] as! [User]
+                let agencies=mappingResult.dictionary()["data.agencies"] as! [User]
+                let venues=mappingResult.dictionary()["data.venues"] as! [User]
+                let talents=mappingResult.dictionary()["data.talents"] as! [User]
+                let profiles=mappingResult.dictionary()["data.profiles"] as! [User]
+                let streams=mappingResult.dictionary()["data.streams"] as! [Stream]
                 
-                success(data:json)
+                success(brands:brands, agencies:agencies, venues:venues, talents:talents, profiles:profiles, streams:streams)
             }
             })
         {(operation, error)->Void in

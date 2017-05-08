@@ -11,6 +11,15 @@ class SearchViewController: UIViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     
+    let sectionTitlesArray=["Brands", "Agencies", "Venues", "Talents", "Profiles", "Streams"]
+    
+    var brands:[User]=[]
+    var agencies:[User]=[]
+    var venues:[User]=[]
+    var talents:[User]=[]
+    var profiles:[User]=[]
+    var streams:[Stream]=[]
+    
     override func viewDidLoad()
     {
         
@@ -20,7 +29,7 @@ class SearchViewController: UIViewController
     {
         navigationController?.navigationBarHidden=true
     }
-
+    
     func searchBarSearchButtonClicked(searchBar:UISearchBar)
     {
         searchBar.resignFirstResponder()
@@ -42,24 +51,85 @@ class SearchViewController: UIViewController
         StreamConnector().search(searchText, success:searchSuccess, failure:searchFailure)
     }
     
+    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    {
+        return 30
+    }
+
+    func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
+    {
+        let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
+        headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+        
+        let titleLbl=UILabel(frame:CGRectMake(5, 5, 285, 20))
+        titleLbl.text=sectionTitlesArray[section].uppercaseString
+        titleLbl.font=UIFont.systemFontOfSize(18)
+        titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
+        
+        headerView.addSubview(titleLbl)
+        
+        return headerView
+    }
+    
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
-        return 1
+        return 6
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        return 0
+        if section==0
+        {
+            return brands.count
+        }
+        else if section==1
+        {
+            return agencies.count
+        }
+        else if section==2
+        {
+            return venues.count
+        }
+        else if section==3
+        {
+            return talents.count
+        }
+        else if section==4
+        {
+            return profiles.count
+        }
+        else
+        {
+            return streams.count
+        }
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        return UITableViewCell()
+        if indexPath.section>4
+        {
+            let cell=tableView.dequeueReusableCellWithIdentifier("StreamCell", forIndexPath:indexPath) as! SearchStreamCell
+            let stream=streams[indexPath.row]
+            cell.update(stream)
+            
+            return cell
+        }
+        else
+        {
+            return UITableViewCell()
+        }
     }
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        return 44
+        if indexPath.section>4
+        {
+            return 80
+        }
+        else
+        {
+            return 110
+        }
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
@@ -67,9 +137,16 @@ class SearchViewController: UIViewController
         
     }
     
-    func searchSuccess(data:NSDictionary)
+    func searchSuccess(brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])
     {
+        self.brands=brands
+        self.agencies=agencies
+        self.venues=venues
+        self.talents=talents
+        self.profiles=profiles
+        self.streams=streams
         
+        tableView.reloadData()
     }
     
     func searchFailure(error:NSError)
