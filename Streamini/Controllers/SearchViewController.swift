@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
+class SearchViewController: UIViewController, UserSelecting, StreamSelecting, ProfileDelegate, UserStatusDelegate
 {
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
@@ -43,10 +43,7 @@ class SearchViewController: BaseViewController, UserSelecting, StreamSelecting, 
     
     func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
     {
-        if searchText.characters.count>0&&(dataSource!.mode=="streams"||dataSource!.mode=="people")
-        {
-            dataSource!.search(searchText)
-        }
+        dataSource!.search(searchText)
     }
     
     func configureView()

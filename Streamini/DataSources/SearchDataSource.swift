@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Evghenii Todorov. All rights reserved.
 //
 
-class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, LinkedUserCellDelegate
+class SearchDataSource:NSObject, LinkedUserCellDelegate
 {
     var users: [User] = []
     var streams: [Stream] = []
@@ -32,8 +32,6 @@ class SearchDataSource:NSObject, UITableViewDataSource, UITableViewDelegate, Lin
     {
         self.tableView   = tableView
         super.init()
-        tableView.dataSource = self
-        tableView.delegate   = self
         
         l.font = UIFont(name: "HelveticNeue", size: 15.0)
         l.numberOfLines = 0
