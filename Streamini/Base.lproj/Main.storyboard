@@ -1538,8 +1538,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="dl5-aR-JXz" id="GZ5-5z-p4A"/>
-                                    <outlet property="delegate" destination="dl5-aR-JXz" id="ojf-dw-xjf"/>
+                                    <outlet property="dataSource" destination="dl5-aR-JXz" id="odD-Jq-cwG"/>
+                                    <outlet property="delegate" destination="dl5-aR-JXz" id="gUq-FQ-Pav"/>
                                 </connections>
                             </tableView>
                         </subviews>
