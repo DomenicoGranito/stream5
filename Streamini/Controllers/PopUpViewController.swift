@@ -139,7 +139,7 @@ class PopUpViewController: BaseViewController
         if WXApi.isWXAppInstalled()
         {
             let videoObject=WXVideoObject()
-            videoObject.videoUrl="http://beinit.c/\(stream!.streamHash)/\(stream!.id)"
+            videoObject.videoUrl="http://beinit.cn/\(stream!.streamHash)/\(stream!.id)"
             
             let message=WXMediaMessage()
             message.title=stream?.title
