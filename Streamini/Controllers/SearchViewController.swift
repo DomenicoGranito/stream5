@@ -22,7 +22,7 @@ class SearchViewController: UIViewController
     
     override func viewDidLoad()
     {
-        tableView.hidden=true
+        
     }
     
     override func viewWillAppear(animated:Bool)
@@ -78,7 +78,11 @@ class SearchViewController: UIViewController
         titleLbl.font=UIFont.systemFontOfSize(16)
         titleLbl.textColor=UIColor.whiteColor()
         
+        let lineView=UIView(frame:CGRectMake(0, 29.5, tableView.frame.size.width, 0.5))
+        lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
+        
         footerView.addSubview(titleLbl)
+        footerView.addSubview(lineView)
         
         return footerView
     }
@@ -91,7 +95,7 @@ class SearchViewController: UIViewController
         let titleLbl=UILabel(frame:CGRectMake(15, 5, 285, 20))
         titleLbl.text=sectionTitlesArray[section].uppercaseString
         titleLbl.font=UIFont.systemFontOfSize(16)
-        titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
+        titleLbl.textColor=UIColor.darkGrayColor()
         
         headerView.addSubview(titleLbl)
         
