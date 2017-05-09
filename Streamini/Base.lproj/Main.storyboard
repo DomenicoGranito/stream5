@@ -6326,10 +6326,10 @@
             </objects>
             <point key="canvasLocation" x="-3099" y="-2134"/>
         </scene>
-        <!--View Controller-->
+        <!--See More View Controller-->
         <scene sceneID="F3c-ZM-HMp">
             <objects>
-                <viewController id="8Ej-aK-pd8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SeeMoreViewController" id="8Ej-aK-pd8" customClass="SeeMoreViewController" customModule="Streamini" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mrR-Fx-imi"/>
                         <viewControllerLayoutGuide type="bottom" id="T8p-A4-tZ2"/>
@@ -6352,7 +6352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZZ-0H-8dP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2078" y="-3230"/>
+            <point key="canvasLocation" x="-2078" y="-3246"/>
         </scene>
         <!--Charts View Controller-->
         <scene sceneID="Fwi-he-1LH">
