@@ -63,7 +63,7 @@ class SearchViewController: UIViewController
         
         let titleLbl=UILabel(frame:CGRectMake(5, 5, 285, 20))
         titleLbl.text=sectionTitlesArray[section].uppercaseString
-        titleLbl.font=UIFont.systemFontOfSize(18)
+        titleLbl.font=UIFont.systemFontOfSize(16)
         titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
         
         headerView.addSubview(titleLbl)
@@ -141,7 +141,9 @@ class SearchViewController: UIViewController
                 user=profiles[indexPath.row]
             }
             
-            cell.update(user)
+            cell.userImageView.sd_setImageWithURL(user.avatarURL())
+            cell.usernameLabel.text=user.name
+            cell.likesLabel.text="\(user.likes)"
             
             return cell
         }
@@ -155,7 +157,7 @@ class SearchViewController: UIViewController
         }
         else
         {
-            return 110
+            return 70
         }
     }
     
