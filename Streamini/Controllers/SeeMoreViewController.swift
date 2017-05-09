@@ -8,8 +8,11 @@
 
 class SeeMoreViewController: UIViewController
 {
+    var t:String!
+    
     override func viewDidLoad()
     {
-        
+        self.title = t.capitalizedString
+        navigationController?.navigationBarHidden=false
     }
 }

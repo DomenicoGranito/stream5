@@ -207,10 +207,11 @@ class SearchViewController: UIViewController
         
     }
     
-    func footerTapped()
+    func footerTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
+        vc.t=sectionTitlesArray[gestureRecognizer.view!.tag]
         navigationController?.pushViewController(vc, animated:true)
     }
 }
