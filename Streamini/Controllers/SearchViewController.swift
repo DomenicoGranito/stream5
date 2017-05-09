@@ -11,8 +11,7 @@ class SearchViewController: UIViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     
-    let sectionTitlesArray=["brands", "agencies", "venues", "talents", "profiles", "streams"]
-    
+    var sectionTitlesArray=NSMutableArray()
     var brands:[User]=[]
     var agencies:[User]=[]
     var venues:[User]=[]
@@ -53,13 +52,15 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if indexPath.section<5
+        let sectionTitle=sectionTitlesArray[indexPath.section] as! String
+        
+        if sectionTitle=="streams"
         {
-            return indexPath.row<4 ? 70 : 40
+            return indexPath.row<4 ? 80 : 40
         }
         else
         {
-            return indexPath.row<4 ? 80 : 40
+            return indexPath.row<4 ? 70 : 40
         }
     }
     
@@ -80,28 +81,30 @@ class SearchViewController: UIViewController
     
     func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
-        return 6
+        return sectionTitlesArray.count
     }
     
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
-        if section==0
+        let sectionTitle=sectionTitlesArray[section] as! String
+        
+        if sectionTitle=="brands"
         {
             return brands.count<4 ? brands.count : 5
         }
-        else if section==1
+        else if sectionTitle=="agencies"
         {
             return agencies.count<4 ? agencies.count : 5
         }
-        else if section==2
+        else if sectionTitle=="venues"
         {
             return venues.count<4 ? venues.count : 5
         }
-        else if section==3
+        else if sectionTitle=="talents"
         {
             return talents.count<4 ? talents.count : 5
         }
-        else if section==4
+        else if sectionTitle=="profiles"
         {
             return profiles.count<4 ? profiles.count : 5
         }
@@ -113,7 +116,31 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if indexPath.section<5
+        let sectionTitle=sectionTitlesArray[indexPath.section] as! String
+        
+        if sectionTitle=="streams"
+        {
+            if indexPath.row<4
+            {
+                let cell=tableView.dequeueReusableCellWithIdentifier("StreamCell", forIndexPath:indexPath) as! SearchStreamCell
+                let stream=streams[indexPath.row]
+                cell.update(stream)
+                
+                return cell
+            }
+            else
+            {
+                let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
+                cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
+                
+                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+                cell.tag=indexPath.section
+                cell.addGestureRecognizer(cellRecognizer)
+                
+                return cell
+            }
+        }
+        else
         {
             if indexPath.row<4
             {
@@ -121,19 +148,19 @@ class SearchViewController: UIViewController
                 
                 let user:User
                 
-                if indexPath.section==0
+                if sectionTitle=="brands"
                 {
                     user=brands[indexPath.row]
                 }
-                else if indexPath.section==1
+                else if sectionTitle=="agencies"
                 {
                     user=agencies[indexPath.row]
                 }
-                else if indexPath.section==2
+                else if sectionTitle=="venues"
                 {
                     user=venues[indexPath.row]
                 }
-                else if indexPath.section==3
+                else if sectionTitle=="talents"
                 {
                     user=talents[indexPath.row]
                 }
@@ -160,28 +187,6 @@ class SearchViewController: UIViewController
                 return cell
             }
         }
-        else
-        {
-            if indexPath.row<4
-            {
-                let cell=tableView.dequeueReusableCellWithIdentifier("StreamCell", forIndexPath:indexPath) as! SearchStreamCell
-                let stream=streams[indexPath.row]
-                cell.update(stream)
-                
-                return cell
-            }
-            else
-            {
-                let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
-                cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
-                
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-                cell.tag=indexPath.section
-                cell.addGestureRecognizer(cellRecognizer)
-                
-                return cell
-            }
-        }
     }
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
@@ -191,12 +196,38 @@ class SearchViewController: UIViewController
     
     func searchSuccess(brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])
     {
-        self.brands=brands
-        self.agencies=agencies
-        self.venues=venues
-        self.talents=talents
-        self.profiles=profiles
-        self.streams=streams
+        sectionTitlesArray.removeAllObjects()
+        
+        if brands.count>0
+        {
+            sectionTitlesArray.addObject("brands")
+            self.brands=brands
+        }
+        if agencies.count>0
+        {
+            sectionTitlesArray.addObject("agencies")
+            self.agencies=agencies
+        }
+        if venues.count>0
+        {
+            sectionTitlesArray.addObject("venues")
+            self.venues=venues
+        }
+        if talents.count>0
+        {
+            sectionTitlesArray.addObject("talents")
+            self.talents=talents
+        }
+        if profiles.count>0
+        {
+            sectionTitlesArray.addObject("profiles")
+            self.profiles=profiles
+        }
+        if streams.count>0
+        {
+            sectionTitlesArray.addObject("streams")
+            self.streams=streams
+        }
         
         tableView.hidden=false
         tableView.reloadData()
@@ -211,7 +242,7 @@ class SearchViewController: UIViewController
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
-        vc.t=sectionTitlesArray[gestureRecognizer.view!.tag]
+        vc.t=sectionTitlesArray[gestureRecognizer.view!.tag] as! String
         vc.q=searchBar.text
         navigationController?.pushViewController(vc, animated:true)
     }
