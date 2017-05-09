@@ -52,8 +52,6 @@
 		A60F82E91D490F4D002E2CEA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82E81D490F4D002E2CEA /* Category.swift */; };
 		A60F82EB1D490F70002E2CEA /* CategoryMappingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */; };
 		A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */; };
-		A60F82EF1D4917FE002E2CEA /* bkSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82EE1D4917FE002E2CEA /* bkSearchViewController.swift */; };
-		A60F82F11D491AAF002E2CEA /* SearchDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60F82F01D491AAF002E2CEA /* SearchDataSource.swift */; };
 		A631E6321D378D95002C7F78 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A631E6311D378D95002C7F78 /* PasswordViewController.swift */; };
 		A68B73191BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B73181BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift */; };
 		A68B731D1BB28DBB00695C80 /* UIImage+imageWithColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68B731C1BB28DBB00695C80 /* UIImage+imageWithColor.swift */; };
@@ -271,8 +269,6 @@
 		A60F82E81D490F4D002E2CEA /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A60F82EA1D490F70002E2CEA /* CategoryMappingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryMappingProvider.swift; sourceTree = "<group>"; };
 		A60F82EC1D49168E002E2CEA /* SearchStreamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStreamCell.swift; sourceTree = "<group>"; };
-		A60F82EE1D4917FE002E2CEA /* bkSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = bkSearchViewController.swift; sourceTree = "<group>"; };
-		A60F82F01D491AAF002E2CEA /* SearchDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDataSource.swift; sourceTree = "<group>"; };
 		A631E6311D378D95002C7F78 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		A68B73181BB2859800695C80 /* NSLayoutConstraint+preciseConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+preciseConstant.swift"; sourceTree = "<group>"; };
 		A68B731C1BB28DBB00695C80 /* UIImage+imageWithColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+imageWithColor.swift"; sourceTree = "<group>"; };
@@ -656,7 +652,6 @@
 				B755D0631B7516F6003FB816 /* UserStatisticsDataSource.swift */,
 				B733B1F81B78DBD2002FEAB6 /* PeopleDataSource.swift */,
 				B71BA5DC1B84A9580055F427 /* BlockedDataSource.swift */,
-				A60F82F01D491AAF002E2CEA /* SearchDataSource.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -871,7 +866,6 @@
 				3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */,
 				3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */,
 				A631E6311D378D95002C7F78 /* PasswordViewController.swift */,
-				A60F82EE1D4917FE002E2CEA /* bkSearchViewController.swift */,
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
 			);
@@ -1136,7 +1130,6 @@
 				B77AABF71B39B42D007DE187 /* StreamLiveView.swift in Sources */,
 				B7D5EA981B579CDC003EE25D /* CommentsDataSource.swift in Sources */,
 				B674481E1E2C63CC0049890F /* Player.swift in Sources */,
-				A60F82EF1D4917FE002E2CEA /* bkSearchViewController.swift in Sources */,
 				B7A886941B500C7100D37B63 /* LiveStreamViewController.swift in Sources */,
 				B77AABEA1B398AEF007DE187 /* ErrorMappingProvider.swift in Sources */,
 				B77AABF21B39AEF4007DE187 /* LiveStreamCell.swift in Sources */,
@@ -1184,7 +1177,6 @@
 				B72475831B411D910080BE1B /* CreateStreamViewController.swift in Sources */,
 				3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */,
 				B746FB101B5FC23100DE3534 /* FollowersViewController.swift in Sources */,
-				A60F82F11D491AAF002E2CEA /* SearchDataSource.swift in Sources */,
 				B7AA93241B3172740005972E /* AppDelegate.swift in Sources */,
 				B7E15E551B6A62B6000C8C69 /* JoinStreamKeyboardHandler.swift in Sources */,
 				B7316E0A1B5553030079D387 /* Animator.swift in Sources */,
