@@ -53,37 +53,14 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
-        if indexPath.section>4
+        if indexPath.section<5
         {
-            return 80
+            return indexPath.row<4 ? 70 : 40
         }
         else
         {
-            return 70
+            return indexPath.row<4 ? 80 : 40
         }
-    }
-    
-    func tableView(tableView:UITableView, viewForFooterInSection section:Int)->UIView?
-    {
-        let footerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 40))
-        footerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
-        
-        let titleLbl=UILabel(frame:CGRectMake(15, 10, 285, 20))
-        titleLbl.text="See all \(sectionTitlesArray[section])"
-        titleLbl.font=UIFont.systemFontOfSize(16)
-        titleLbl.textColor=UIColor.whiteColor()
-        
-        let lineView=UIView(frame:CGRectMake(0, 39.5, tableView.frame.size.width, 0.5))
-        lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
-        
-        let tapGesture=UITapGestureRecognizer(target:self, action:#selector(footerTapped))
-        footerView.addGestureRecognizer(tapGesture)
-        footerView.tag=section
-
-        footerView.addSubview(titleLbl)
-        footerView.addSubview(lineView)
-        
-        return footerView
     }
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
@@ -110,72 +87,100 @@ class SearchViewController: UIViewController
     {
         if section==0
         {
-            return brands.count
+            return brands.count<4 ? brands.count : 5
         }
         else if section==1
         {
-            return agencies.count
+            return agencies.count<4 ? agencies.count : 5
         }
         else if section==2
         {
-            return venues.count
+            return venues.count<4 ? venues.count : 5
         }
         else if section==3
         {
-            return talents.count
+            return talents.count<4 ? talents.count : 5
         }
         else if section==4
         {
-            return profiles.count
+            return profiles.count<4 ? profiles.count : 5
         }
         else
         {
-            return streams.count
+            return streams.count<4 ? streams.count : 5
         }
     }
     
     func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
-        if indexPath.section>4
+        if indexPath.section<5
         {
-            let cell=tableView.dequeueReusableCellWithIdentifier("StreamCell", forIndexPath:indexPath) as! SearchStreamCell
-            let stream=streams[indexPath.row]
-            cell.update(stream)
-            
-            return cell
-        }
-        else
-        {
-            let cell=tableView.dequeueReusableCellWithIdentifier("PeopleCell", forIndexPath:indexPath) as! PeopleCell
-            
-            let user:User
-            
-            if indexPath.section==0
+            if indexPath.row<4
             {
-                user=brands[indexPath.row]
-            }
-            else if indexPath.section==1
-            {
-                user=agencies[indexPath.row]
-            }
-            else if indexPath.section==2
-            {
-                user=venues[indexPath.row]
-            }
-            else if indexPath.section==3
-            {
-                user=talents[indexPath.row]
+                let cell=tableView.dequeueReusableCellWithIdentifier("PeopleCell", forIndexPath:indexPath) as! PeopleCell
+                
+                let user:User
+                
+                if indexPath.section==0
+                {
+                    user=brands[indexPath.row]
+                }
+                else if indexPath.section==1
+                {
+                    user=agencies[indexPath.row]
+                }
+                else if indexPath.section==2
+                {
+                    user=venues[indexPath.row]
+                }
+                else if indexPath.section==3
+                {
+                    user=talents[indexPath.row]
+                }
+                else
+                {
+                    user=profiles[indexPath.row]
+                }
+                
+                cell.userImageView.sd_setImageWithURL(user.avatarURL())
+                cell.usernameLabel.text=user.name
+                cell.likesLabel.text="\(user.likes)"
+                
+                return cell
             }
             else
             {
-                user=profiles[indexPath.row]
+                let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
+                cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
+                
+                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+                cell.tag=indexPath.section
+                cell.addGestureRecognizer(cellRecognizer)
+                
+                return cell
             }
-            
-            cell.userImageView.sd_setImageWithURL(user.avatarURL())
-            cell.usernameLabel.text=user.name
-            cell.likesLabel.text="\(user.likes)"
-            
-            return cell
+        }
+        else
+        {
+            if indexPath.row<4
+            {
+                let cell=tableView.dequeueReusableCellWithIdentifier("StreamCell", forIndexPath:indexPath) as! SearchStreamCell
+                let stream=streams[indexPath.row]
+                cell.update(stream)
+                
+                return cell
+            }
+            else
+            {
+                let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
+                cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
+                
+                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
+                cell.tag=indexPath.section
+                cell.addGestureRecognizer(cellRecognizer)
+                
+                return cell
+            }
         }
     }
     
@@ -202,7 +207,7 @@ class SearchViewController: UIViewController
         
     }
     
-    func footerTapped(gestureRecognizer:UITapGestureRecognizer)
+    func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
