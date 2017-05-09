@@ -20,11 +20,6 @@ class SearchViewController: UIViewController
     var profiles:[User]=[]
     var streams:[Stream]=[]
     
-    override func viewDidLoad()
-    {
-        
-    }
-    
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=true
@@ -53,7 +48,7 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return 30
+        return 40
     }
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
@@ -70,15 +65,15 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, viewForFooterInSection section:Int)->UIView?
     {
-        let footerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 30))
+        let footerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 40))
         footerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
         
-        let titleLbl=UILabel(frame:CGRectMake(15, 5, 285, 20))
+        let titleLbl=UILabel(frame:CGRectMake(15, 10, 285, 20))
         titleLbl.text="See all \(sectionTitlesArray[section])"
         titleLbl.font=UIFont.systemFontOfSize(16)
         titleLbl.textColor=UIColor.whiteColor()
         
-        let lineView=UIView(frame:CGRectMake(0, 29.5, tableView.frame.size.width, 0.5))
+        let lineView=UIView(frame:CGRectMake(0, 39.5, tableView.frame.size.width, 0.5))
         lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
         
         let tapGesture=UITapGestureRecognizer(target:self, action:#selector(footerTapped))
@@ -93,10 +88,10 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 30))
+        let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 40))
         headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
         
-        let titleLbl=UILabel(frame:CGRectMake(15, 5, 285, 20))
+        let titleLbl=UILabel(frame:CGRectMake(15, 15, 285, 20))
         titleLbl.text=sectionTitlesArray[section].uppercaseString
         titleLbl.font=UIFont.systemFontOfSize(16)
         titleLbl.textColor=UIColor.darkGrayColor()

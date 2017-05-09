@@ -473,6 +473,7 @@
 		3E79060A1E7FBC8E00257C5B /* iCarousel */ = {
 			isa = PBXGroup;
 			children = (
+				B77AABE31B398627007DE187 /* RestKitObjC.m */,
 				3E79060B1E7FBD6100257C5B /* iCarousel.h */,
 				3E79060C1E7FBD6200257C5B /* iCarousel.m */,
 			);
@@ -743,7 +744,6 @@
 				B77AABF31B39B3CB007DE187 /* DataSources */,
 				B77AABEF1B39AEC2007DE187 /* Views */,
 				B77AABE21B398627007DE187 /* RestKitObjC.h */,
-				B77AABE31B398627007DE187 /* RestKitObjC.m */,
 				B77AABE11B398606007DE187 /* Streamini-Bridging-Header.h */,
 				3E03F08F1E9B89DE00C9C99A /* Reachability.swift */,
 				B7B0F0931B397E92006FDA5D /* Models */,
