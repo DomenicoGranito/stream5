@@ -212,6 +212,7 @@ class SearchViewController: UIViewController
         let storyboard=UIStoryboard(name:"Main", bundle:nil)
         let vc=storyboard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
         vc.t=sectionTitlesArray[gestureRecognizer.view!.tag]
+        vc.q=searchBar.text
         navigationController?.pushViewController(vc, animated:true)
     }
 }

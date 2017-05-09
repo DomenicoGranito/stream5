@@ -296,6 +296,94 @@ class StreamConnector: Connector {
         }
     }
     
+    func searchMoreStreams(query:String, success:(streams:[Stream])->(), failure:(error:NSError)->())
+    {
+        let path="stream/searchmore?q=\(query)&t=streams"
+        
+        let streamMapping=StreamMappingProvider.streamResponseMapping()
+        
+        let statusCode=RKStatusCodeIndexSetForClass(.Successful)
+        
+        let streamsResponseDescriptor=RKResponseDescriptor(mapping:streamMapping, method:.GET, pathPattern:nil, keyPath:"data.streams", statusCodes:statusCode)
+        
+        manager.addResponseDescriptor(streamsResponseDescriptor)
+        
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
+            
+            let error=self.findErrorObject(mappingResult:mappingResult)!
+            
+            if !error.status
+            {
+                if error.code == Error.kLoginExpiredCode
+                {
+                    self.relogin({()->() in
+                        self.searchMoreStreams(query, success:success, failure:failure)
+                        },
+                        failure:{()->() in
+                            failure(error:error.toNSError())
+                    })
+                }
+                else
+                {
+                    failure(error:error.toNSError())
+                }
+            }
+            else
+            {
+                let streams=mappingResult.dictionary()["data.streams"] as! [Stream]
+                
+                success(streams:streams)
+            }
+            })
+        {(operation, error)->Void in
+            failure(error:error)
+        }
+    }
+
+    func searchMoreOthers(query:String, identifier:String, success:(users:[User])->(), failure:(error:NSError)->())
+    {
+        let path="stream/searchmore?q=\(query)&t=\(identifier)"
+        
+        let userMapping=UserMappingProvider.userResponseMapping()
+        
+        let statusCode=RKStatusCodeIndexSetForClass(.Successful)
+        
+        let usersResponseDescriptor=RKResponseDescriptor(mapping:userMapping, method:.GET, pathPattern:nil, keyPath:"data.\(identifier)", statusCodes:statusCode)
+        
+        manager.addResponseDescriptor(usersResponseDescriptor)
+        
+        manager.getObjectsAtPath(path, parameters:sessionParams(), success:{(operation, mappingResult)->Void in
+            
+            let error=self.findErrorObject(mappingResult:mappingResult)!
+            
+            if !error.status
+            {
+                if error.code == Error.kLoginExpiredCode
+                {
+                    self.relogin({()->() in
+                        self.searchMoreOthers(query, identifier:identifier, success:success, failure:failure)
+                        },
+                        failure:{()->() in
+                            failure(error:error.toNSError())
+                    })
+                }
+                else
+                {
+                    failure(error:error.toNSError())
+                }
+            }
+            else
+            {
+                let users=mappingResult.dictionary()["data.\(identifier)"] as! [User]
+                
+                success(users:users)
+            }
+            })
+        {(operation, error)->Void in
+            failure(error:error)
+        }
+    }
+
     /*** WRITTEN BY ANKIT GARG ***/
     
     func recent(userId: UInt, success: (streams: [Stream]) -> (), failure: (error: NSError) -> ()) {

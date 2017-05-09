@@ -9,6 +9,7 @@
 class SeeMoreViewController: UIViewController
 {
     var t:String!
+    var q:String!
     
     override func viewDidLoad()
     {
