@@ -11,7 +11,7 @@ class SearchViewController: UIViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     
-    let sectionTitlesArray=["Brands", "Agencies", "Venues", "Talents", "Profiles", "Streams"]
+    let sectionTitlesArray=["brands", "agencies", "venues", "talents", "profiles", "streams"]
     
     var brands:[User]=[]
     var agencies:[User]=[]
@@ -22,7 +22,7 @@ class SearchViewController: UIViewController
     
     override func viewDidLoad()
     {
-        
+        tableView.hidden=true
     }
     
     override func viewWillAppear(animated:Bool)
@@ -56,12 +56,39 @@ class SearchViewController: UIViewController
         return 30
     }
     
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        if indexPath.section>4
+        {
+            return 80
+        }
+        else
+        {
+            return 70
+        }
+    }
+    
+    func tableView(tableView:UITableView, viewForFooterInSection section:Int)->UIView?
+    {
+        let footerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
+        footerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+        
+        let titleLbl=UILabel(frame:CGRectMake(15, 5, 285, 20))
+        titleLbl.text="See all \(sectionTitlesArray[section])"
+        titleLbl.font=UIFont.systemFontOfSize(16)
+        titleLbl.textColor=UIColor.whiteColor()
+        
+        footerView.addSubview(titleLbl)
+        
+        return footerView
+    }
+    
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
         headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
         
-        let titleLbl=UILabel(frame:CGRectMake(5, 5, 285, 20))
+        let titleLbl=UILabel(frame:CGRectMake(15, 5, 285, 20))
         titleLbl.text=sectionTitlesArray[section].uppercaseString
         titleLbl.font=UIFont.systemFontOfSize(16)
         titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
@@ -149,18 +176,6 @@ class SearchViewController: UIViewController
         }
     }
     
-    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
-    {
-        if indexPath.section>4
-        {
-            return 80
-        }
-        else
-        {
-            return 70
-        }
-    }
-    
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         
@@ -175,6 +190,7 @@ class SearchViewController: UIViewController
         self.profiles=profiles
         self.streams=streams
         
+        tableView.hidden=false
         tableView.reloadData()
     }
     
