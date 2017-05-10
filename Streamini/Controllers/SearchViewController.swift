@@ -239,6 +239,7 @@ class SearchViewController: UIViewController
                     vc.user=profiles[indexPath.row]
                 }
                 
+                vc.TBVC=TBVC
                 navigationController?.pushViewController(vc, animated:true)
             }
             else

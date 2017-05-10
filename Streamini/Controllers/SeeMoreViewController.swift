@@ -17,7 +17,7 @@ class SeeMoreViewController: UIViewController
     var users:[User]=[]
     var streams:[Stream]=[]
     
-    override func viewDidLoad()
+    override func viewWillAppear(animated:Bool)
     {
         self.title = t.capitalizedString
         navigationController?.navigationBarHidden=false
@@ -102,6 +102,7 @@ class SeeMoreViewController: UIViewController
         {
             let vc=storyBoard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
             vc.user=users[indexPath.row]
+            vc.TBVC=TBVC
             navigationController?.pushViewController(vc, animated:true)
         }
     }
