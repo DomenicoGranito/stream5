@@ -216,7 +216,30 @@ class SearchViewController: UIViewController
         {
             if indexPath.row<4
             {
+                let vc=storyBoard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
                 
+                if sectionTitle=="brands"
+                {
+                    vc.user=brands[indexPath.row]
+                }
+                else if sectionTitle=="agencies"
+                {
+                    vc.user=agencies[indexPath.row]
+                }
+                else if sectionTitle=="venues"
+                {
+                    vc.user=venues[indexPath.row]
+                }
+                else if sectionTitle=="talents"
+                {
+                    vc.user=talents[indexPath.row]
+                }
+                else
+                {
+                    vc.user=profiles[indexPath.row]
+                }
+                
+                navigationController?.pushViewController(vc, animated:true)
             }
             else
             {
