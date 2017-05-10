@@ -30,7 +30,6 @@ class SearchViewController: UIViewController
     
     func searchBarSearchButtonClicked(searchBar:UISearchBar)
     {
-        StreamConnector().search(searchBar.text!, success:searchSuccess, failure:searchFailure)
         searchBar.resignFirstResponder()
     }
     
@@ -44,6 +43,11 @@ class SearchViewController: UIViewController
     func searchBarTextDidBeginEditing(searchBar:UISearchBar)
     {
         searchBar.showsCancelButton=true
+    }
+    
+    func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
+    {
+        StreamConnector().search(searchText, success:searchSuccess, failure:searchFailure)
     }
     
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
