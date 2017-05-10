@@ -137,10 +137,6 @@ class SearchViewController: UIViewController
                 let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
                 cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
                 
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-                cell.tag=indexPath.section
-                cell.addGestureRecognizer(cellRecognizer)
-                
                 return cell
             }
         }
@@ -184,10 +180,6 @@ class SearchViewController: UIViewController
                 let cell=tableView.dequeueReusableCellWithIdentifier("SeeMoreCell", forIndexPath:indexPath)
                 cell.textLabel?.text="See all \(sectionTitlesArray[indexPath.section])"
                 
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-                cell.tag=indexPath.section
-                cell.addGestureRecognizer(cellRecognizer)
-                
                 return cell
             }
         }
@@ -195,7 +187,30 @@ class SearchViewController: UIViewController
     
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
+        let sectionTitle=sectionTitlesArray[indexPath.section] as! String
         
+        if sectionTitle=="streams"
+        {
+            if indexPath.row<4
+            {
+                
+            }
+            else
+            {
+                cellTapped(indexPath.section)
+            }
+        }
+        else
+        {
+            if indexPath.row<4
+            {
+                
+            }
+            else
+            {
+                cellTapped(indexPath.section)
+            }
+        }
     }
     
     func searchSuccess(brands:[User], agencies:[User], venues:[User], talents:[User], profiles:[User], streams:[Stream])
@@ -242,10 +257,10 @@ class SearchViewController: UIViewController
         
     }
     
-    func cellTapped(gestureRecognizer:UITapGestureRecognizer)
+    func cellTapped(section:Int)
     {
         let vc=storyBoard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
-        vc.t=sectionTitlesArray[gestureRecognizer.view!.tag] as! String
+        vc.t=sectionTitlesArray[section] as! String
         vc.q=searchBar.text
         navigationController?.pushViewController(vc, animated:true)
     }
