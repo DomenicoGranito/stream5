@@ -42,6 +42,19 @@ public class SongManager{
         save()
     }
     
+    class func deleteSearchHistory()
+    {
+        let searchHistoryEntity=NSFetchRequest(entityName:"SearchHistory")
+        let fetchedSearchHistory=try! context.executeFetchRequest(searchHistoryEntity)
+        
+        for i in 0 ..< fetchedSearchHistory.count
+        {
+            context.deleteObject(fetchedSearchHistory[i] as! NSManagedObject)
+        }
+        
+        save()
+    }
+
     //gets playlist associated with (playlistName : String)
     class func getPlaylist(playlistName : String) -> NSManagedObject {
         let playlistRequest = NSFetchRequest(entityName: "Playlist")
