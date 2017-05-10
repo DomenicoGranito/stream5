@@ -13,6 +13,7 @@ class SearchViewController: UIViewController
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var sectionTitlesArray=NSMutableArray()
+    var TBVC:TabBarViewController!
     var brands:[User]=[]
     var agencies:[User]=[]
     var venues:[User]=[]
@@ -22,6 +23,8 @@ class SearchViewController: UIViewController
     
     override func viewWillAppear(animated:Bool)
     {
+        TBVC=tabBarController as! TabBarViewController
+        
         navigationController?.navigationBarHidden=true
     }
     
@@ -199,10 +202,10 @@ class SearchViewController: UIViewController
                 streamsArray.addObject(streams[indexPath.row])
                 
                 modalVC.streamsArray=streamsArray
-                modalVC.TBVC=tabBarController as! TabBarViewController
+                modalVC.TBVC=TBVC
                 
-                (tabBarController as! TabBarViewController).modalVC=modalVC
-                (tabBarController as! TabBarViewController).configure(streams[indexPath.row])
+                TBVC.modalVC=modalVC
+                TBVC.configure(streams[indexPath.row])
             }
             else
             {
@@ -271,6 +274,7 @@ class SearchViewController: UIViewController
         let vc=storyBoard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
         vc.t=sectionTitlesArray[section] as! String
         vc.q=searchBar.text
+        vc.TBVC=TBVC
         navigationController?.pushViewController(vc, animated:true)
     }
     

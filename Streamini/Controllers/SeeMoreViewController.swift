@@ -11,6 +11,7 @@ class SeeMoreViewController: UIViewController
     @IBOutlet var tableView:UITableView!
     
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+    var TBVC:TabBarViewController!
     var t:String!
     var q:String!
     var users:[User]=[]
@@ -86,7 +87,16 @@ class SeeMoreViewController: UIViewController
     {
         if t=="streams"
         {
+            let modalVC=storyBoard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
             
+            let streamsArray=NSMutableArray()
+            streamsArray.addObject(streams[indexPath.row])
+            
+            modalVC.streamsArray=streamsArray
+            modalVC.TBVC=TBVC
+            
+            TBVC.modalVC=modalVC
+            TBVC.configure(streams[indexPath.row])
         }
         else
         {
