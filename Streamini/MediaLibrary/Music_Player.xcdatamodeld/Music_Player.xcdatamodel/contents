@@ -21,6 +21,9 @@
         <attribute name="streamUserID" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="streamUserName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="SearchHistory" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Settings" syncable="YES">
         <attribute name="cache" optional="YES" attributeType="Integer 32" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="playlist" optional="YES" attributeType="String" syncable="YES"/>
@@ -43,5 +46,6 @@
         <element name="RecentlyPlayed" positionX="-243" positionY="216" width="128" height="135"/>
         <element name="Settings" positionX="-234" positionY="81" width="128" height="90"/>
         <element name="Song" positionX="-387" positionY="198" width="128" height="180"/>
+        <element name="SearchHistory" positionX="-243" positionY="216" width="128" height="60"/>
     </elements>
 </model>

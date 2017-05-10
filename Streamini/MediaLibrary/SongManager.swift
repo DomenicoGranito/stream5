@@ -29,6 +29,19 @@ public class SongManager{
         return try! context.executeFetchRequest(recentlyPlayedRequest) as! [NSManagedObject]
     }
     
+    class func getSearchHistory()->[NSManagedObject]
+    {
+        let searchHistoryRequest=NSFetchRequest(entityName:"SearchHistory")
+        return try! context.executeFetchRequest(searchHistoryRequest) as! [NSManagedObject]
+    }
+    
+    class func addToSearchHistory(title:String)
+    {
+        let newSearchHistory=NSEntityDescription.insertNewObjectForEntityForName("SearchHistory", inManagedObjectContext:context)
+        newSearchHistory.setValue(title, forKey:"title")
+        save()
+    }
+    
     //gets playlist associated with (playlistName : String)
     class func getPlaylist(playlistName : String) -> NSManagedObject {
         let playlistRequest = NSFetchRequest(entityName: "Playlist")
