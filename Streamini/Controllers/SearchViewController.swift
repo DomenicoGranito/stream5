@@ -193,7 +193,16 @@ class SearchViewController: UIViewController
         {
             if indexPath.row<4
             {
+                let modalVC=storyBoard.instantiateViewControllerWithIdentifier("ModalViewController") as! ModalViewController
                 
+                let streamsArray=NSMutableArray()
+                streamsArray.addObject(streams[indexPath.row])
+                
+                modalVC.streamsArray=streamsArray
+                modalVC.TBVC=tabBarController as! TabBarViewController
+                
+                (tabBarController as! TabBarViewController).modalVC=modalVC
+                (tabBarController as! TabBarViewController).configure(streams[indexPath.row])
             }
             else
             {

@@ -84,7 +84,14 @@ class SeeMoreViewController: UIViewController
 
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
-        
+        if t=="streams"
+        {
+            
+        }
+        else
+        {
+            
+        }
     }
 
     func searchMoreStreamsSuccess(streams:[Stream])
