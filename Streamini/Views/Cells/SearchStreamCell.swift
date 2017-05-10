@@ -11,6 +11,7 @@ class SearchStreamCell: StreamCell
     @IBOutlet var streamImageView:UIImageView!
     @IBOutlet var userLabel:UILabel!
     @IBOutlet var streamNameLabel:UILabel!
+    @IBOutlet var dotsButton:UIButton?
     
     var userSelectingHandler:UserSelectingHandler?
     let (host, _, _, _, _)=Config.shared.wowza()

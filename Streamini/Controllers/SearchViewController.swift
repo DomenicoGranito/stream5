@@ -11,6 +11,7 @@ class SearchViewController: UIViewController
     @IBOutlet var searchBar:UISearchBar!
     @IBOutlet var tableView:UITableView!
     
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var sectionTitlesArray=NSMutableArray()
     var brands:[User]=[]
     var agencies:[User]=[]
@@ -126,6 +127,9 @@ class SearchViewController: UIViewController
                 let stream=streams[indexPath.row]
                 cell.update(stream)
                 
+                cell.dotsButton?.tag=indexPath.row
+                cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
+
                 return cell
             }
             else
@@ -240,10 +244,16 @@ class SearchViewController: UIViewController
     
     func cellTapped(gestureRecognizer:UITapGestureRecognizer)
     {
-        let storyboard=UIStoryboard(name:"Main", bundle:nil)
-        let vc=storyboard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("SeeMoreViewController") as! SeeMoreViewController
         vc.t=sectionTitlesArray[gestureRecognizer.view!.tag] as! String
         vc.q=searchBar.text
         navigationController?.pushViewController(vc, animated:true)
+    }
+    
+    func dotsButtonTapped(sender:UIButton)
+    {
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=streams[sender.tag]
+        presentViewController(vc, animated:true, completion:nil)
     }
 }

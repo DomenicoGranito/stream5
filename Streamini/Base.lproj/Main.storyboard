@@ -1161,6 +1161,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="dotsButton" destination="ZPa-2f-1vL" id="Bo1-D0-iaQ"/>
                                             <outlet property="streamImageView" destination="mG5-C5-Tf4" id="u6Q-J3-TMb"/>
                                             <outlet property="streamNameLabel" destination="PHK-U8-SgS" id="f62-AE-GvJ"/>
                                             <outlet property="userLabel" destination="7qm-Pr-fg6" id="7Fp-PF-cpR"/>
@@ -6447,6 +6448,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="dotsButton" destination="XJ4-UC-hm3" id="Egm-9w-nEf"/>
                                             <outlet property="streamImageView" destination="0rJ-QK-fFK" id="D1j-cZ-6br"/>
                                             <outlet property="streamNameLabel" destination="zHF-MS-Lat" id="OLh-hc-xcE"/>
                                             <outlet property="userLabel" destination="EEZ-vQ-48x" id="57w-ve-cc4"/>

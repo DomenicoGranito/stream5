@@ -10,6 +10,7 @@ class SeeMoreViewController: UIViewController
 {
     @IBOutlet var tableView:UITableView!
     
+    let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     var t:String!
     var q:String!
     var users:[User]=[]
@@ -62,6 +63,9 @@ class SeeMoreViewController: UIViewController
             let stream=streams[indexPath.row]
             cell.update(stream)
             
+            cell.dotsButton?.tag=indexPath.row
+            cell.dotsButton?.addTarget(self, action:#selector(dotsButtonTapped), forControlEvents:.TouchUpInside)
+            
             return cell
         }
         else
@@ -100,5 +104,12 @@ class SeeMoreViewController: UIViewController
     func searchFailure(error:NSError)
     {
         
+    }
+    
+    func dotsButtonTapped(sender:UIButton)
+    {
+        let vc=storyBoard.instantiateViewControllerWithIdentifier("PopUpViewController") as! PopUpViewController
+        vc.stream=streams[sender.tag]
+        presentViewController(vc, animated:true, completion:nil)
     }
 }
