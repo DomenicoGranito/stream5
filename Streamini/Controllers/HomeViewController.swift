@@ -66,6 +66,18 @@ class HomeViewController: BaseViewController
         timer!.invalidate()
     }
     
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        if indexPath.section==0
+        {
+            return 200
+        }
+        else
+        {
+            return 242
+        }
+    }
+
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return section==0 ? 1 : 30

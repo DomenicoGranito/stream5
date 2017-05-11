@@ -78,4 +78,18 @@ class CategoryRow: UITableViewCell
         TBVC.modalVC=modalVC
         TBVC.configure(stream)
     }
+    
+    func collectionView(collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath)->CGSize
+    {
+        let width=(collectionView.frame.size.width-25)/2
+        
+        if cellIdentifier=="weeklyCell"
+        {
+            return CGSizeMake(width, 180)
+        }
+        else
+        {
+            return CGSizeMake(width, 222)
+        }
+    }
 }
