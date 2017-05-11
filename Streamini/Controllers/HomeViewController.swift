@@ -70,7 +70,7 @@ class HomeViewController: BaseViewController
     {
         if indexPath.section==0
         {
-            return 200
+            return 177
         }
         else
         {
@@ -80,27 +80,27 @@ class HomeViewController: BaseViewController
 
     func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        return section==0 ? 1 : 30
+        return section==0 ? 1 : 60
     }
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         if section>0
         {
-            let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 30))
+            let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 60))
             headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
             
-            let titleLbl=UILabel(frame:CGRectMake(10, 0, 285, 20))
+            let titleLbl=UILabel(frame:CGRectMake(10, 30, 285, 20))
             
             if(allCategoryItemsArray.count>0)
             {
                 titleLbl.text=categoryNamesArray[section].uppercaseString
             }
             
-            titleLbl.font=UIFont.systemFontOfSize(18)
+            titleLbl.font=UIFont.systemFontOfSize(24)
             titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
             
-            let lineView=UIView(frame:CGRectMake(10, 29.5, tableView.frame.size.width-20, 0.5))
+            let lineView=UIView(frame:CGRectMake(10, 59.5, tableView.frame.size.width-20, 0.5))
             lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
             
             let tapGesture=UITapGestureRecognizer(target:self, action:#selector(headerTapped))

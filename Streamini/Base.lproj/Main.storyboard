@@ -5336,9 +5336,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="170" height="222"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="voe-Z1-fYu">
-                                                                        <frame key="frameInset" width="170" height="222"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="voe-Z1-fYu">
                                                                         <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="electroNOW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrK-6k-yk0">
@@ -5361,9 +5359,13 @@
                                                             <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="bottom" secondItem="zkr-C7-HxY" secondAttribute="bottom" id="A5X-Zy-PYq"/>
+                                                                <constraint firstAttribute="bottom" secondItem="voe-Z1-fYu" secondAttribute="bottom" id="DWh-s5-9qk"/>
+                                                                <constraint firstItem="voe-Z1-fYu" firstAttribute="leading" secondItem="7S3-aL-cZF" secondAttribute="leading" id="Frh-oZ-7h0"/>
                                                                 <constraint firstItem="YrK-6k-yk0" firstAttribute="centerY" secondItem="7S3-aL-cZF" secondAttribute="centerY" id="KtH-Eh-QK3"/>
                                                                 <constraint firstItem="YrK-6k-yk0" firstAttribute="trailing" secondItem="zkr-C7-HxY" secondAttribute="trailing" id="Ldb-4A-9SQ"/>
                                                                 <constraint firstItem="YrK-6k-yk0" firstAttribute="leading" secondItem="7S3-aL-cZF" secondAttribute="leading" id="TdB-qE-Cwi"/>
+                                                                <constraint firstAttribute="trailing" secondItem="voe-Z1-fYu" secondAttribute="trailing" id="ZPP-j0-BQq"/>
+                                                                <constraint firstItem="voe-Z1-fYu" firstAttribute="top" secondItem="7S3-aL-cZF" secondAttribute="top" id="aHG-Ce-5vv"/>
                                                                 <constraint firstAttribute="trailing" secondItem="YrK-6k-yk0" secondAttribute="trailing" id="f1a-Z5-u2x"/>
                                                                 <constraint firstItem="zkr-C7-HxY" firstAttribute="top" secondItem="YrK-6k-yk0" secondAttribute="bottom" id="nL9-OK-3u5"/>
                                                                 <constraint firstItem="YrK-6k-yk0" firstAttribute="leading" secondItem="zkr-C7-HxY" secondAttribute="leading" id="qKY-qZ-CW6"/>

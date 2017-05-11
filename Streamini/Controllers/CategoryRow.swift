@@ -85,7 +85,7 @@ class CategoryRow: UITableViewCell
         
         if cellIdentifier=="weeklyCell"
         {
-            return CGSizeMake(width, 180)
+            return CGSizeMake(width, 157)
         }
         else
         {
