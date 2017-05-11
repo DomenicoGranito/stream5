@@ -68,13 +68,15 @@ class HomeViewController: BaseViewController
     
     func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
+        let width=(view.frame.size.width-25)/2
+        
         if indexPath.section==0
         {
-            return 177
+            return width+20
         }
         else
         {
-            return 242
+            return width+85
         }
     }
 
