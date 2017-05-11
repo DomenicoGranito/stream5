@@ -6,19 +6,20 @@
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate {
+class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, UISearchBarDelegate, UserStatusDelegate
+{
     var dataSource: PeopleDataSource?
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchBarTop: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyLabel: UILabel!
     
-    var isSearchMode = true
+    var isSearchMode=true
     
-    // MARK: - Actions
-    
-    func showSearch(animated: Bool) {
-        if !isSearchMode {
+    func showSearch(animated:Bool)
+    {
+        if !isSearchMode
+        {
             if animated {
                 UIView.animateWithDuration(0.15, animations: { () -> Void in
                     self.searchBarTop.constant = 0
@@ -33,8 +34,10 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         }
     }
     
-    func hideSearch(animated: Bool) {
-        if isSearchMode {
+    func hideSearch(animated:Bool)
+    {
+        if isSearchMode
+        {
             if animated {
                 UIView.animateWithDuration(0.15, animations: { () -> Void in
                     self.searchBarTop.constant = -self.searchBar.bounds.size.height
@@ -51,26 +54,24 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
         }
     }
     
-    // MARK: - UISearchBarDelegate
-    
     func searchBarCancelButtonClicked(searchBar:UISearchBar)
     {
         hideSearch(true)
         dataSource!.reload()
     }
     
-    // called when text changes (including clear)
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.characters.count > 1 {
-            let data = NSDictionary(dictionary: ["p" : 0, "q" : searchText])
-            dataSource!.isSearchMode = true
+    func searchBar(searchBar:UISearchBar, textDidChange searchText:String)
+    {
+        if searchText.characters.count>1
+        {
+            let data=NSDictionary(dictionary:["p":0, "q":searchText])
+            dataSource!.isSearchMode=true
             dataSource!.search(data)
         }
     }
-        
-    // MARK: - View life cycle
-
-    func configureView() {
+    
+    func configureView()
+    {
         emptyLabel.text = NSLocalizedString("table_no_data", comment: "")
         
         tableView.tableFooterView = UIView()
@@ -97,8 +98,6 @@ class PeopleViewController: BaseViewController, UserSelecting, ProfileDelegate, 
     {
         navigationController?.navigationBarHidden=false
     }
-    
-    // MARK: - ProfileDelegate
     
     func reload()
     {

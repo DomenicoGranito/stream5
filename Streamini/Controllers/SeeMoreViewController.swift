@@ -102,7 +102,6 @@ class SeeMoreViewController: UIViewController
         {
             let vc=storyBoard.instantiateViewControllerWithIdentifier("UserViewControllerId") as! UserViewController
             vc.user=users[indexPath.row]
-            vc.TBVC=TBVC
             navigationController?.pushViewController(vc, animated:true)
         }
     }

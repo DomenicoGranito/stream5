@@ -45,7 +45,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
     @IBOutlet var activityIndicator:UIActivityIndicatorView!
     
     var user:User?
-    var TBVC:TabBarViewController!
     var userStatisticsDelegate:UserStatisticsDelegate?
     var userStatusDelegate:UserStatusDelegate?
     var userSelectedDelegate:UserSelecting?
@@ -61,11 +60,6 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
         }
         
         configureView()
-        
-        if TBVC==nil
-        {
-            TBVC=tabBarController as! TabBarViewController
-        }
         
         update(user!.id)
         
@@ -228,7 +222,7 @@ class UserViewController: BaseViewController, ProfileDelegate, UIActionSheetDele
             {
                 let controller=segue.destinationViewController as! LinkedUsersViewController
                 controller.profileDelegate=self
-                controller.TBVC=TBVC
+                controller.TBVC=tabBarController as! TabBarViewController
                 self.userStatisticsDelegate=controller
             }
         }
