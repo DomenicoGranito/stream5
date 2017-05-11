@@ -260,6 +260,13 @@ class SearchViewController: UIViewController
                 SongManager.deleteSearchHistory()
                 historyTbl.hidden=true
             }
+            else
+            {
+                searchBar.text=searchHistroy[indexPath.row].valueForKey("title") as? String
+                historyTbl.hidden=true
+                tableView.hidden=false
+                StreamConnector().search(searchBar.text!, success:searchSuccess, failure:searchFailure)
+            }
         }
         else
         {
