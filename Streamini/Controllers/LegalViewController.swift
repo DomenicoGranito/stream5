@@ -1,33 +1,35 @@
 //
 //  LegalViewController.swift
-// Streamini
+//  Streamini
 //
 //  Created by Vasily Evreinov on 17/08/15.
 //  Copyright (c) 2015 UniProgy s.r.o. All rights reserved.
 //
 
-enum LegalViewControllerType
+enum LegalViewControllerType:Int
 {
-    case TermsOfService
+    case TermsOfService=0
     case PrivacyPolicy
 }
 
 class LegalViewController: BaseViewController, UIWebViewDelegate
 {
-    @IBOutlet weak var webView: UIWebView!
-    var type: LegalViewControllerType?
+    @IBOutlet var webView:UIWebView!
+    
+    var type:LegalViewControllerType?
     
     override func viewDidLoad()
     {
-        let urlString: String
+        let urlString:String
+        
         switch type!
         {
         case .TermsOfService:
-            urlString = Config.shared.legal().termsOfService
-            self.title = NSLocalizedString("profile_terms", comment: "")
+            urlString=Config.shared.legal().termsOfService
+            self.title=NSLocalizedString("profile_terms", comment:"")
         case .PrivacyPolicy:
-            urlString = Config.shared.legal().privacyPolicy
-            self.title = NSLocalizedString("profile_privacy", comment: "")
+            urlString=Config.shared.legal().privacyPolicy
+            self.title=NSLocalizedString("profile_privacy", comment:"")
         }
         
         webView.loadRequest(NSURLRequest(URL:NSURL(string:urlString)!))

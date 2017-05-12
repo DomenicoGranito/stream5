@@ -15,6 +15,7 @@
 		3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2674D51D7453DA00E33DCD /* Empty.swift */; };
 		3E356FA01E843583008FD8B9 /* libCCSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E356F9F1E843580008FD8B9 /* libCCSDK.a */; };
 		3E4B9D461E95E54700B80BA6 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */; };
+		3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */; };
 		3E5CB4541E9529CF007EB28D /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */; };
 		3E68E8F81E715D3F008AAB9E /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */; };
 		3E7192691E75701F00B7049B /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */; };
@@ -88,7 +89,6 @@
 		B67448591E2C96B90049890F /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67448571E2C96B90049890F /* UIViewController+Alert.swift */; };
 		B6782DDA1E1969F600289D8A /* ARNVTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */; };
 		B6A941CF1E48AB00003E2331 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */; };
-		B6A941D11E4AA98A003E2331 /* SubscriptionVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */; };
 		B6D198A51E23883F008B8604 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D198A41E23883F008B8604 /* ChartsViewController.swift */; };
 		B6D4134D1E141DBE001E8108 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D4134C1E141DBE001E8108 /* TabBarViewController.swift */; };
 		B6D4134F1E156829001E8108 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D4134E1E156829001E8108 /* DiscoverViewController.swift */; };
@@ -230,6 +230,7 @@
 		3E356F9E1E843580008FD8B9 /* DWVideoCompressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWVideoCompressController.h; path = DWSDK/DWVideoCompressController.h; sourceTree = "<group>"; };
 		3E356F9F1E843580008FD8B9 /* libCCSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCCSDK.a; path = DWSDK/libCCSDK.a; sourceTree = "<group>"; };
 		3E4B9D451E95E54700B80BA6 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
 		3E5CB4531E9529CF007EB28D /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		3E68E8F71E715D3F008AAB9E /* VideosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
 		3E7192681E75701F00B7049B /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
@@ -309,7 +310,6 @@
 		B67448571E2C96B90049890F /* UIViewController+Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Alert.swift"; path = "MediaLibrary/helper/extensions/UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		B6782DD91E1969F500289D8A /* ARNVTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ARNVTransitionAnimator.swift; path = ARNTransitionAnimator/ARNVTransitionAnimator.swift; sourceTree = "<group>"; };
 		B6A941CE1E48AB00003E2331 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionVewController.swift; sourceTree = "<group>"; };
 		B6D198A41E23883F008B8604 /* ChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
 		B6D4134C1E141DBE001E8108 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		B6D4134E1E156829001E8108 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -861,13 +861,13 @@
 				B6D4134E1E156829001E8108 /* DiscoverViewController.swift */,
 				3EFAD8921EB217E900038484 /* GradientTableView.swift */,
 				B79669841B821C5D0071AF91 /* LegalViewController.swift */,
-				B6A941D01E4AA98A003E2331 /* SubscriptionVewController.swift */,
 				B71BA5DA1B84A86C0055F427 /* ProfileStatisticsViewController.swift */,
 				3EF0032E1EAC78A70094BE96 /* ChannelsTableViewController.swift */,
 				3EF003301EACB83D0094BE96 /* VideosTableViewController.swift */,
 				A631E6311D378D95002C7F78 /* PasswordViewController.swift */,
 				3EC2E2D71EC052FA00E32565 /* SearchViewController.swift */,
 				3EC2E2D91EC19C1300E32565 /* SeeMoreViewController.swift */,
+				3E4E1A6C1EC5C00E00AE1F0E /* AboutTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1101,7 +1101,6 @@
 				A68B731D1BB28DBB00695C80 /* UIImage+imageWithColor.swift in Sources */,
 				3E20216D1D81A6530058DAAD /* HomeViewController.swift in Sources */,
 				B7E15E571B6A6C1B000C8C69 /* DefaultStreamPlayerDelegate.swift in Sources */,
-				B6A941D11E4AA98A003E2331 /* SubscriptionVewController.swift in Sources */,
 				B733B1F51B78CF04002FEAB6 /* PeopleViewController.swift in Sources */,
 				3EF1F02C1D7197310055A372 /* GetStartedViewController.swift in Sources */,
 				B79669851B821C5D0071AF91 /* LegalViewController.swift in Sources */,
@@ -1120,6 +1119,7 @@
 				A60F82ED1D49168E002E2CEA /* SearchStreamCell.swift in Sources */,
 				B6D198A51E23883F008B8604 /* ChartsViewController.swift in Sources */,
 				B70AB1321B73731200BAD62A /* LinkedUsersViewController.swift in Sources */,
+				3E4E1A6D1EC5C00E00AE1F0E /* AboutTableViewController.swift in Sources */,
 				B67448271E2C63CC0049890F /* TabBarController.swift in Sources */,
 				B714059B1B6235D500EAEC61 /* UIActionSheetExtensions.swift in Sources */,
 				3EF1F02E1D719B110055A372 /* RegisterViewController.swift in Sources */,
