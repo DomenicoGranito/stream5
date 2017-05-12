@@ -48,13 +48,10 @@ class CategoryRow: UITableViewCell
                 cell.videoTitleLbl?.hidden=true
                 cell.followersCountLbl?.hidden=true
                 cell.videoThumbnailImageView?.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream.id).jpg"))
-                
-                let cellRecognizer=UITapGestureRecognizer(target:self, action:#selector(cellTapped))
-                cell.tag=indexPath.row
-                cell.addGestureRecognizer(cellRecognizer)
             }
             else
             {
+                cell.backgroundColor=UIColor.clearColor()
                 cell.followersCountLbl?.text=stream.user.name
             }
         }

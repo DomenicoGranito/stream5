@@ -609,6 +609,8 @@
         <scene sceneID="CBb-OA-lCt">
             <objects>
                 <tabBarController storyboardIdentifier="TabBarViewController" id="hDB-Gb-oqN" customClass="TabBarViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Xqz-DH-rwJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -628,8 +630,8 @@
                         <segue destination="Ctm-DR-aZS" kind="relationship" relationship="viewControllers" id="Buo-jA-njN"/>
                         <segue destination="9RI-RH-9iW" kind="relationship" relationship="viewControllers" id="lHT-GB-7IT"/>
                         <segue destination="Ncv-1i-nGK" kind="relationship" relationship="viewControllers" id="BYz-25-82p"/>
-                        <segue destination="dl5-aR-JXz" kind="relationship" relationship="viewControllers" id="o5Z-O8-67w"/>
-                        <segue destination="1dm-ie-WdX" kind="relationship" relationship="viewControllers" id="ctf-cp-55N"/>
+                        <segue destination="GZ6-5k-kLM" kind="relationship" relationship="viewControllers" id="KsF-57-0w4"/>
+                        <segue destination="1dm-ie-WdX" kind="relationship" relationship="viewControllers" id="v6p-7b-gTS"/>
                     </connections>
                 </tabBarController>
                 <view contentMode="scaleToFill" id="WbR-XY-JoC" customClass="LineView" customModule="Streamini" customModuleProvider="target">
@@ -1053,10 +1055,10 @@
             </objects>
             <point key="canvasLocation" x="-4045" y="-2147"/>
         </scene>
-        <!--Search-->
+        <!--Search View Controller-->
         <scene sceneID="zoP-34-Emj">
             <objects>
-                <viewController storyboardIdentifier="SearchScreen" id="dl5-aR-JXz" customClass="SearchViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
+                <viewController id="dl5-aR-JXz" customClass="SearchViewController" customModule="Streamini" customModuleProvider="target" propertyAccessControl="none" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vf4-Rp-Pph"/>
                         <viewControllerLayoutGuide type="bottom" id="MQS-Ga-m4p"/>
@@ -1392,7 +1394,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="owk-uA-64I"/>
+                    <navigationItem key="navigationItem" id="kGV-fK-te0"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
@@ -1403,7 +1405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G2V-xC-SRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2078" y="-3755"/>
+            <point key="canvasLocation" x="-2078" y="-3219"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="Ujx-dN-57K">
@@ -5362,7 +5364,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="voe-Z1-fYu">
-                                                                        <color key="backgroundColor" red="0.1333333333" green="0.13725490200000001" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="electroNOW" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YrK-6k-yk0">
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -6460,6 +6462,25 @@
             </objects>
             <point key="canvasLocation" x="-3099" y="-2134"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="DeI-cU-6zL">
+            <objects>
+                <navigationController id="GZ6-5k-kLM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="IA7-vD-caz"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="URL-TE-AG4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dl5-aR-JXz" kind="relationship" relationship="rootViewController" id="7As-OY-Jpv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CCT-XU-iQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2078" y="-3756"/>
+        </scene>
         <!--See More View Controller-->
         <scene sceneID="F3c-ZM-HMp">
             <objects>
@@ -6633,7 +6654,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qZZ-0H-8dP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2078" y="-3246"/>
+            <point key="canvasLocation" x="-2557" y="-2742"/>
         </scene>
         <!--Charts View Controller-->
         <scene sceneID="Fwi-he-1LH">
@@ -6772,6 +6793,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ctm-DR-aZS" propertyAccessControl="none" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="5mN-Lk-m3p"/>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RuR-3E-7qf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
