@@ -36,14 +36,6 @@ class LoginViewController: BaseViewController
         passwordImageView?.image=passwordImageView?.image?.imageWithRenderingMode(.AlwaysTemplate)
         usernameImageView?.tintColor=UIColor.darkGrayColor()
         passwordImageView?.tintColor=UIColor.darkGrayColor()
-        
-        if let _=A0SimpleKeychain().stringForKey("PHPSESSID")
-        {
-            UserConnector().get(nil, success:successUser, failure:forgotFailure)
-            
-            let vc=storyBoard.instantiateViewControllerWithIdentifier("TabBarViewController")
-            navigationController?.pushViewController(vc, animated:false)
-        }
     }
     
     @IBAction func wechatLogin()

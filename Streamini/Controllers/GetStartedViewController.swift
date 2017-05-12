@@ -6,7 +6,7 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class GetStartedViewController: UIViewController
+class GetStartedViewController: BaseViewController
 {
     @IBOutlet var pageControl:UIPageControl?
     @IBOutlet var titleLbl:UILabel?
@@ -20,8 +20,6 @@ class GetStartedViewController: UIViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        
         backgroundPlayer=BackgroundVideo(onViewController:self,withVideoURL:"test.mp4")
         backgroundPlayer?.setUpBackground()
         
@@ -30,15 +28,37 @@ class GetStartedViewController: UIViewController
         
         timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(GetStartedViewController.swipeLeft), userInfo:nil, repeats:true)
         
-        let swipeLeft=UISwipeGestureRecognizer(target:self, action:#selector(GetStartedViewController.swipe(_:)))
+        let swipeLeft=UISwipeGestureRecognizer(target:self, action:#selector(swipe))
         swipeLeft.direction = .Left
         view.addGestureRecognizer(swipeLeft)
         
-        let swipeRight=UISwipeGestureRecognizer(target:self, action:#selector(GetStartedViewController.swipe(_:)))
+        let swipeRight=UISwipeGestureRecognizer(target:self, action:#selector(swipe))
         swipeRight.direction = .Right
         view.addGestureRecognizer(swipeRight)
     }
     
+    override func viewDidAppear(animated:Bool)
+    {
+        if let _=A0SimpleKeychain().stringForKey("PHPSESSID")
+        {
+            UserConnector().get(nil, success:successUser, failure:forgotFailure)
+            
+            let storyBoard=UIStoryboard(name:"Main", bundle:nil)
+            let vc=storyBoard.instantiateViewControllerWithIdentifier("TabBarViewController")
+            navigationController?.pushViewController(vc, animated:false)
+        }
+    }
+    
+    func successUser(user:User)
+    {
+        UserContainer.shared.setLogged(user)
+    }
+
+    func forgotFailure(error:NSError)
+    {
+        handleError(error)
+    }
+
     func swipe(recognizer:UISwipeGestureRecognizer)
     {
         if(recognizer.direction == .Left)
@@ -53,7 +73,7 @@ class GetStartedViewController: UIViewController
         }
         if(recognizer.state == .Ended)
         {
-            timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(GetStartedViewController.swipeLeft), userInfo:nil, repeats:true)
+            timer=NSTimer.scheduledTimerWithTimeInterval(5, target:self, selector:#selector(swipeLeft), userInfo:nil, repeats:true)
         }
     }
     
