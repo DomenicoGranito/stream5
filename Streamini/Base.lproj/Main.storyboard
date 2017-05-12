@@ -1476,17 +1476,17 @@
                                 </variation>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oOG-6f-XuL" firstAttribute="top" secondItem="ekt-FW-6zZ" secondAttribute="bottom" constant="8" id="4V6-Ra-qzx"/>
+                            <constraint firstItem="oOG-6f-XuL" firstAttribute="top" secondItem="ekt-FW-6zZ" secondAttribute="bottom" constant="10" id="4V6-Ra-qzx"/>
                             <constraint firstAttribute="trailing" secondItem="6Nc-tN-3v9" secondAttribute="trailing" constant="20" id="5ZH-sl-AYN"/>
                             <constraint firstItem="ekt-FW-6zZ" firstAttribute="leading" secondItem="gJX-hg-Kac" secondAttribute="leading" constant="20" id="6wM-N4-HS5"/>
                             <constraint firstItem="oOG-6f-XuL" firstAttribute="leading" secondItem="gJX-hg-Kac" secondAttribute="leading" constant="20" id="MWV-nh-fKy"/>
                             <constraint firstAttribute="trailing" secondItem="ekt-FW-6zZ" secondAttribute="trailing" constant="20" id="c4J-IH-X87"/>
-                            <constraint firstItem="ekt-FW-6zZ" firstAttribute="top" secondItem="vBE-qw-azu" secondAttribute="bottom" constant="8" id="fID-7t-qL1"/>
+                            <constraint firstItem="ekt-FW-6zZ" firstAttribute="top" secondItem="vBE-qw-azu" secondAttribute="bottom" constant="10" id="fID-7t-qL1"/>
                             <constraint firstItem="6Nc-tN-3v9" firstAttribute="leading" secondItem="gJX-hg-Kac" secondAttribute="leading" constant="20" id="qmI-Ye-3qt"/>
                             <constraint firstAttribute="trailing" secondItem="oOG-6f-XuL" secondAttribute="trailing" constant="20" id="sHc-fT-diE"/>
-                            <constraint firstItem="6Nc-tN-3v9" firstAttribute="top" secondItem="oOG-6f-XuL" secondAttribute="bottom" constant="8" id="uDj-aO-jiK"/>
+                            <constraint firstItem="6Nc-tN-3v9" firstAttribute="top" secondItem="oOG-6f-XuL" secondAttribute="bottom" constant="10" id="uDj-aO-jiK"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
@@ -1525,6 +1525,14 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="wyA-kD-H2y">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="Z92-5b-KDk" userLabel="My Profile">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doneButtonPressed" destination="qGt-9E-LLg" id="ggj-U7-QK3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="confirmPassword" destination="6Nc-tN-3v9" id="I6U-KS-3sK"/>
                         <outlet property="currentPassword" destination="ekt-FW-6zZ" id="hrP-D0-QBW"/>
@@ -7536,8 +7544,8 @@
                                             <frame key="frameInset" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Playback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UuZ-ko-7nw">
-                                                    <frame key="frameInset" minX="15" width="270" height="43.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UuZ-ko-7nw">
+                                                    <frame key="frameInset" minX="15" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -8913,7 +8921,7 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bjY-rG-Avh"/>
+        <segue reference="7Qu-7p-ztG"/>
         <segue reference="ybU-Cf-XEH"/>
     </inferredMetricsTieBreakers>
 </document>
