@@ -182,7 +182,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         
         player=DWMoviePlayerController(userId:"D43560320694466A", key:"WGbPBVI3075vGwA0AIW0SR9pDTsQR229")
         player?.controlStyle = .None
-        player?.scalingMode = .Fill
+        player?.scalingMode = .AspectFit
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(moviePlayerDurationAvailable), name:MPMovieDurationAvailableNotification, object:player!)
         
@@ -380,6 +380,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         informationView?.hidden=true
         bottomSpaceConstraint!.constant=75
         player!.view.frame=CGRectMake(-124, -7, view.frame.size.width, view.frame.size.height)
+        player?.scalingMode = .Fill
         carousel?.scrollEnabled=false
         view.bringSubviewToFront(topView!)
         playlistButton?.hidden=true
@@ -391,6 +392,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         informationView?.hidden=false
         bottomSpaceConstraint!.constant=0
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        player?.scalingMode = .AspectFit
         playlistButton?.hidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), forState:.Normal)
         
