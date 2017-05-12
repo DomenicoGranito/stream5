@@ -12,8 +12,10 @@ class MenuCell: UITableViewCell
     @IBOutlet var menuItemIconImageView:UIImageView?
 }
 
-class DiscoverViewController:BaseTableViewController
+class DiscoverViewController:BaseViewController
 {
+    @IBOutlet var tableView:UITableView!
+    
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
     
@@ -31,7 +33,7 @@ class DiscoverViewController:BaseTableViewController
         navigationController?.navigationBarHidden=false
     }
     
-    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         if indexPath.section==1&&indexPath.row==0
         {
@@ -39,17 +41,17 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    override func numberOfSectionsInTableView(tableView:UITableView)->Int
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
         return 3
     }
     
-    override func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
+    func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
         return section>1 ? 60 : 1
     }
     
-    override func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
+    func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
         if section==2
         {
@@ -75,7 +77,7 @@ class DiscoverViewController:BaseTableViewController
         }
     }
 
-    override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         if section==0
         {
@@ -91,7 +93,7 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    override func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
     {
         if indexPath.section==0
         {
@@ -107,7 +109,7 @@ class DiscoverViewController:BaseTableViewController
         }
     }
     
-    override func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         if indexPath.section==0&&featuredStreamsArray.count>0
         {
@@ -141,7 +143,7 @@ class DiscoverViewController:BaseTableViewController
         return UITableViewCell()
     }
     
-    override func tableView(tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(tableView:UITableView, willDisplayCell cell:UITableViewCell, forRowAtIndexPath indexPath:NSIndexPath)
     {
         if cell is AllCategoryRow
         {
