@@ -1120,12 +1120,17 @@
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="jd8-dE-w7z" propertyAccessControl="none">
+                                    <rect key="frame" x="0.0" y="247" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StreamCell" rowHeight="80" id="4XQ-Hw-IqW" customClass="SearchStreamCell" customModule="Streamini" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="56" width="320" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4XQ-Hw-IqW" id="1jg-Vt-m5D">
-                                            <frame key="frameInset" width="320" height="79"/>
+                                            <frame key="frameInset" width="320" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mG5-C5-Tf4">
@@ -1193,7 +1198,7 @@
                                         <rect key="frame" x="0.0" y="136" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z66-ll-kLE" id="MN3-Al-Bkr">
-                                            <frame key="frameInset" width="287" height="69"/>
+                                            <frame key="frameInset" width="287" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NWz-Ab-Woe">
@@ -1279,13 +1284,13 @@
                                     <outlet property="delegate" destination="dl5-aR-JXz" id="gUq-FQ-Pav"/>
                                 </connections>
                             </tableView>
-                            <tableView hidden="YES" clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="1" sectionHeaderHeight="28" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="AWq-Kz-xTY">
+                            <tableView hidden="YES" clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="1" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="AWq-Kz-xTY">
                                 <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="separatorColor" red="0.1450980392" green="0.14117647059999999" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SearchCell" textLabel="Jww-GV-tDK" rowHeight="40" style="IBUITableViewCellStyleDefault" id="NHe-ZQ-b1s">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NHe-ZQ-b1s" id="TCI-Y2-sLK">
                                             <frame key="frameInset" width="320" height="39"/>
@@ -1304,7 +1309,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClearCell" textLabel="UFa-8f-f81" rowHeight="40" style="IBUITableViewCellStyleDefault" id="PZa-iM-Yzp">
-                                        <rect key="frame" x="0.0" y="68" width="320" height="40"/>
+                                        <rect key="frame" x="0.0" y="96" width="320" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PZa-iM-Yzp" id="8L8-dR-HLg">
                                             <frame key="frameInset" width="320" height="39"/>
@@ -6980,9 +6985,9 @@
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="top" secondItem="sgD-1X-oHE" secondAttribute="top" id="6Jx-1p-jV7"/>
+                            <constraint firstItem="zmL-7u-ZX9" firstAttribute="top" secondItem="2pn-4Q-4ui" secondAttribute="bottom" id="HwL-zR-nCh"/>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="leading" secondItem="sgD-1X-oHE" secondAttribute="leading" id="OaI-Cr-ViK"/>
                             <constraint firstAttribute="trailing" secondItem="2pn-4Q-4ui" secondAttribute="trailing" id="b55-sp-6hs"/>
-                            <constraint firstItem="zmL-7u-ZX9" firstAttribute="top" secondItem="2pn-4Q-4ui" secondAttribute="bottom" constant="-49" id="obC-mT-VrB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Library" id="Wzz-T0-HKj">
@@ -7013,7 +7018,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vI7-Tl-ftY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1164" y="-3025"/>
+            <point key="canvasLocation" x="-1164.8" y="-3025.1874062968518"/>
         </scene>
         <!--Videos View Controller-->
         <scene sceneID="wLe-Hn-fc6">
@@ -8958,6 +8963,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="bjY-rG-Avh"/>
-        <segue reference="ybU-Cf-XEH"/>
+        <segue reference="AcD-60-gNs"/>
     </inferredMetricsTieBreakers>
 </document>
