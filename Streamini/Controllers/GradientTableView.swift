@@ -9,6 +9,7 @@
 class GradientTableView: UITableView
 {
     var gradientLayer:CAGradientLayer!
+    var titleLbl:UILabel!
     
     override func layoutSubviews()
     {
@@ -30,10 +31,17 @@ class GradientTableView: UITableView
         gradientLayer.colors=[colorTop, colorBottom]
         gradientLayer.locations=[0, 1]
         layer.insertSublayer(gradientLayer, atIndex:0)
+        
+        titleLbl=UILabel()
+        titleLbl.text="Celebrating Asian Pacific Heritage!"
+        titleLbl.textColor=UIColor.whiteColor()
+        titleLbl.textAlignment = .Center
+        gradientLayer.addSublayer(titleLbl.layer)
     }
     
     func updateGradientLayer()
     {
         gradientLayer.frame=rectForSection(0)
+        titleLbl.frame=CGRectMake(0, 0, gradientLayer.frame.size.width, 60)
     }
 }

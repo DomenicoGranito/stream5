@@ -44,26 +44,50 @@ class DiscoverViewController:BaseTableViewController
         return 3
     }
     
-    override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    override func tableView(tableView:UITableView, heightForHeaderInSection section:Int)->CGFloat
     {
-        if allCategoriesArray.count>0&&featuredStreamsArray.count>0
+        return section>1 ? 60 : 1
+    }
+    
+    override func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
+    {
+        if section==2
         {
-            if section==0
-            {
-                return 1
-            }
-            else if section==1
-            {
-                return 1
-            }
-            else
-            {
-                return allCategoriesArray.count
-            }
+            let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 60))
+            headerView.backgroundColor=UIColor(colorLiteralRed:18/255, green:19/255, blue:21/255, alpha:1)
+            
+            let titleLbl=UILabel(frame:CGRectMake(10, 30, 285, 20))
+            titleLbl.text="GENRES & MOODS"
+            titleLbl.font=UIFont.systemFontOfSize(24)
+            titleLbl.textColor=UIColor(colorLiteralRed:190/255, green:142/255, blue:64/255, alpha:1)
+            
+            let lineView=UIView(frame:CGRectMake(10, 59.5, tableView.frame.size.width-20, 0.5))
+            lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
+            
+            headerView.addSubview(lineView)
+            headerView.addSubview(titleLbl)
+            
+            return headerView
         }
         else
         {
-            return 0
+            return nil
+        }
+    }
+
+    override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    {
+        if section==0
+        {
+            return 1
+        }
+        else if section==1
+        {
+            return 1
+        }
+        else
+        {
+            return allCategoriesArray.count
         }
     }
     
@@ -71,7 +95,7 @@ class DiscoverViewController:BaseTableViewController
     {
         if indexPath.section==0
         {
-            return 270
+            return (view.frame.size.width-25)/2+125
         }
         else if indexPath.section==1
         {
@@ -79,7 +103,7 @@ class DiscoverViewController:BaseTableViewController
         }
         else
         {
-            return 160
+            return (view.frame.size.width-30)/2
         }
     }
     
@@ -135,6 +159,7 @@ class DiscoverViewController:BaseTableViewController
         parseFeaturedStreams(videos)
         parseCategories(categories)
         
+        tableView.hidden=false
         tableView.reloadData()
     }
     

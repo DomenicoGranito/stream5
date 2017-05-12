@@ -82,6 +82,13 @@ class CategoriesViewController: BaseViewController
         StreamConnector().categoryStreams(categoryID!, pageID:page, success:fetchMoreSuccess, failure:failureStream)
     }
     
+    func tableView(tableView:UITableView, heightForRowAtIndexPath indexPath:NSIndexPath)->CGFloat
+    {
+        let width=(view.frame.size.width-30)/2
+        
+        return width+75
+    }
+
     func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return allItemsArray.count

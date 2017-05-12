@@ -63,6 +63,6 @@ class AllCategoriesRow: UITableViewCell
     {
         let width=(collectionView.frame.size.width-30)/2
         
-        return CGSizeMake(width, 210)
+        return CGSizeMake(width, width+65)
     }
 }
