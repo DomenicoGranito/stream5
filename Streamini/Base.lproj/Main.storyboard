@@ -6938,10 +6938,11 @@
                                             <frame key="frameInset" width="287" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xz1-zb-OAc">
-                                                    <frame key="frameInset" minX="15" minY="5" width="110" height="70"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xz1-zb-OAc">
                                                     <color key="backgroundColor" red="0.89411764709999997" green="0.68235294120000001" blue="0.4941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="110" id="6XM-f3-GlJ"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="05:36" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Zb-Mk-Cm1">
                                                     <frame key="frameInset" minX="15" minY="55" width="40" height="20"/>
@@ -6951,21 +6952,32 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtF-V5-5tu">
-                                                    <frame key="frameInset" minX="130" minY="18" width="157" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtF-V5-5tu">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="zor-ll-7wm"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7n-lq-OnB">
-                                                    <frame key="frameInset" minX="130" minY="40" width="157" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7n-lq-OnB">
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xz1-zb-OAc" firstAttribute="top" secondItem="IVr-5K-NW8" secondAttribute="top" constant="5" id="5U1-Sm-UN9"/>
+                                                <constraint firstItem="KtF-V5-5tu" firstAttribute="top" secondItem="IVr-5K-NW8" secondAttribute="top" constant="18" id="7Df-Qv-rnj"/>
+                                                <constraint firstItem="KtF-V5-5tu" firstAttribute="leading" secondItem="Xz1-zb-OAc" secondAttribute="trailing" constant="5" id="9fJ-O0-y1F"/>
+                                                <constraint firstAttribute="trailing" secondItem="KtF-V5-5tu" secondAttribute="trailing" id="DGG-Hf-j5t"/>
+                                                <constraint firstAttribute="bottom" secondItem="j7n-lq-OnB" secondAttribute="bottom" constant="18" id="Ebx-Cz-g2u"/>
+                                                <constraint firstAttribute="trailing" secondItem="j7n-lq-OnB" secondAttribute="trailing" id="Mig-Ij-LFz"/>
+                                                <constraint firstItem="j7n-lq-OnB" firstAttribute="top" secondItem="KtF-V5-5tu" secondAttribute="bottom" id="Uxw-cz-v8U"/>
+                                                <constraint firstItem="Xz1-zb-OAc" firstAttribute="leading" secondItem="IVr-5K-NW8" secondAttribute="leading" constant="15" id="vlV-Qd-dtp"/>
+                                                <constraint firstItem="j7n-lq-OnB" firstAttribute="leading" secondItem="Xz1-zb-OAc" secondAttribute="trailing" constant="5" id="x1y-X6-AVz"/>
+                                                <constraint firstAttribute="bottom" secondItem="Xz1-zb-OAc" secondAttribute="bottom" constant="5" id="ymS-qR-YJY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
