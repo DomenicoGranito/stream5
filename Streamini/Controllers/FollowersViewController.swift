@@ -10,8 +10,11 @@ protocol SelectFollowersDelegate: class {
     func followersDidSelected(users: [User])
 }
 
-class FollowersViewController: BaseTableViewController, UISearchBarDelegate, UserSelecting {
-    @IBOutlet weak var searchBar: UISearchBar!
+class FollowersViewController: BaseViewController, UISearchBarDelegate, UserSelecting
+{
+    @IBOutlet var tableView:UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    
     var users: [User]           = []
     var selectedUsers: [User]   = []
     var page                    = 0
@@ -87,17 +90,17 @@ class FollowersViewController: BaseTableViewController, UISearchBarDelegate, Use
     
     // MARK: - UITableView Delegate & DataSource
     
-    override func numberOfSectionsInTableView(tableView:UITableView)->Int
+    func numberOfSectionsInTableView(tableView:UITableView)->Int
     {
         return 1
     }
     
-    override func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
+    func tableView(tableView:UITableView, numberOfRowsInSection section:Int)->Int
     {
         return users.count
     }
     
-    override func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
+    func tableView(tableView:UITableView, cellForRowAtIndexPath indexPath:NSIndexPath)->UITableViewCell
     {
         let user = users[indexPath.row]
         let cell = tableView.dequeueReusableCellWithIdentifier("followerCell", forIndexPath: indexPath) as! FollowerCell
@@ -107,7 +110,7 @@ class FollowersViewController: BaseTableViewController, UISearchBarDelegate, Use
         return cell        
     }
     
-    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let user = users[indexPath.row]
