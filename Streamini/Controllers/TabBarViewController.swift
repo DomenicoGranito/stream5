@@ -21,6 +21,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
     var animator:ARNTransitionAnimator!
     var modalVC:ModalViewController!
     let (host, _, _, _, _)=Config.shared.wowza()
+    var reachability:Reachability!
     
     override func viewDidLoad()
     {
@@ -34,6 +35,24 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(goToChannels), name:"goToChannels", object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(hideMiniPlayer), name:"hideMiniPlayer", object:nil)
+        
+        reachability=try! Reachability.reachabilityForInternetConnection()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reachabilityChanged), name:ReachabilityChangedNotification, object:nil)
+        
+        try! reachability.startNotifier()
+    }
+    
+    func reachabilityChanged()
+    {
+        if reachability.isReachable()
+        {
+            print("REACHABLE")
+        }
+        else
+        {
+            print("NOT REACHABLE")
+        }
     }
     
     func hideMiniPlayer()

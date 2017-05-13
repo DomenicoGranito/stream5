@@ -6,27 +6,6 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-extension UIFont {
-    
-    func withTraits(traits:UIFontDescriptorSymbolicTraits...) -> UIFont {
-        let descriptor = self.fontDescriptor().fontDescriptorWithSymbolicTraits(UIFontDescriptorSymbolicTraits(traits))
-        return UIFont(descriptor: descriptor!, size: 0)
-    }
-    
-    func bold() -> UIFont {
-        return withTraits(.TraitBold)
-    }
-    
-    func italic() -> UIFont {
-        return withTraits(.TraitItalic)
-    }
-    
-    func boldItalic() -> UIFont {
-        return withTraits(.TraitBold, .TraitItalic)
-    }
-    
-}
-
 class HomeViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView?
