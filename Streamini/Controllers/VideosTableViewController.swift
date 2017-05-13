@@ -6,7 +6,7 @@
 //  Copyright © 2017 Cedricm Video. All rights reserved.
 //
 
-class VideosTableViewController: BaseViewController, ProfileDelegate
+class VideosTableViewController: UITableViewController, ProfileDelegate
 {
     @IBOutlet var myLbl:UILabel!
     @IBOutlet var favouritesCountLbl:UILabel!
@@ -33,10 +33,10 @@ class VideosTableViewController: BaseViewController, ProfileDelegate
     
     func userFailure(error:NSError)
     {
-        handleError(error)
+        
     }
 
-    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         let identifier=indexPath.row==0 ? "GoToFavourites" : "GoToMy"
         
