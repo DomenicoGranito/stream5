@@ -174,7 +174,6 @@
 		B7AA932B1B3172740005972E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AA93291B3172740005972E /* Main.storyboard */; };
 		B7AA932D1B3172740005972E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7AA932C1B3172740005972E /* Images.xcassets */; };
 		B7AA93301B3172740005972E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7AA932E1B3172740005972E /* LaunchScreen.xib */; };
-		B7B737A51B972CCA00231BC3 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B737A41B972CCA00231BC3 /* BaseTableViewController.swift */; };
 		B7BFB2921B5D52B0002BEC63 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BFB2911B5D52B0002BEC63 /* UIImageExtension.swift */; };
 		B7C9BB2C1B4E7491005874A9 /* UIButton+tintImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9BB2B1B4E7491005874A9 /* UIButton+tintImage.m */; };
 		B7C9BB5D1B4E9FD5005874A9 /* GrowingTextViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C9BB5C1B4E9FD5005874A9 /* GrowingTextViewHandler.m */; };
@@ -399,7 +398,6 @@
 		B7AA932A1B3172740005972E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B7AA932C1B3172740005972E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B7AA932F1B3172740005972E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		B7B737A41B972CCA00231BC3 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		B7BFB2911B5D52B0002BEC63 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		B7C9BB2A1B4E7491005874A9 /* UIButton+tintImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+tintImage.h"; sourceTree = "<group>"; };
 		B7C9BB2B1B4E7491005874A9 /* UIButton+tintImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+tintImage.m"; sourceTree = "<group>"; };
@@ -828,7 +826,6 @@
 				3E2674D51D7453DA00E33DCD /* Empty.swift */,
 				B794AD961B592F6F0069C2A8 /* MessageControllers */,
 				B7D6F0B41B37F41F0070C36A /* BaseViewController.swift */,
-				B7B737A41B972CCA00231BC3 /* BaseTableViewController.swift */,
 				3EF1F02B1D7197300055A372 /* GetStartedViewController.swift */,
 				3EF1F02D1D719B100055A372 /* RegisterViewController.swift */,
 				B7D6F0B01B37F16C0070C36A /* LoginViewController.swift */,
@@ -1182,7 +1179,6 @@
 				B7316E0A1B5553030079D387 /* Animator.swift in Sources */,
 				B728153C1B5E633F0005BBC6 /* InfoView.swift in Sources */,
 				B7BFB2921B5D52B0002BEC63 /* UIImageExtension.swift in Sources */,
-				B7B737A51B972CCA00231BC3 /* BaseTableViewController.swift in Sources */,
 				B77AABDA1B3983B3007DE187 /* Stream.swift in Sources */,
 				3E2674D61D7453DB00E33DCD /* Empty.swift in Sources */,
 				B67448581E2C96B90049890F /* AVAssetAudio.swift in Sources */,

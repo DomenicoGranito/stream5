@@ -12,7 +12,7 @@ protocol ProfileDelegate:class
     func close()
 }
 
-class ChannelsTableViewController: BaseTableViewController, ProfileDelegate
+class ChannelsTableViewController: BaseViewController, ProfileDelegate
 {
     @IBOutlet var followingValueLabel:UILabel!
     @IBOutlet var followersValueLabel:UILabel!
@@ -41,7 +41,7 @@ class ChannelsTableViewController: BaseTableViewController, ProfileDelegate
         handleError(error)
     }
     
-    override func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         performSegueWithIdentifier("GoToUsers", sender:indexPath)
     }
