@@ -379,7 +379,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         informationView?.hidden=true
         bottomSpaceConstraint!.constant=75
-        player!.view.frame=CGRectMake(-124, -7, view.frame.size.width, view.frame.size.height)
+        player!.view.frame=CGRectMake(-(view.frame.size.width-view.frame.size.height)/2, -11, view.frame.size.width, view.frame.size.height)
         player?.scalingMode = .Fill
         carousel?.scrollEnabled=false
         view.bringSubviewToFront(topView!)
