@@ -17,6 +17,8 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
+        super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reload), name:"refreshAfterBlock", object:nil)
         
         reload()
