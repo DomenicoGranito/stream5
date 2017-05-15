@@ -8,29 +8,6 @@
 
 class BaseViewController: UIViewController
 {
-    var reachability:Reachability!
-    
-    override func viewDidLoad()
-    {
-        reachability=try! Reachability.reachabilityForInternetConnection()
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reachabilityChanged), name:ReachabilityChangedNotification, object:nil)
-        
-        try! reachability.startNotifier()
-    }
-    
-    func reachabilityChanged()
-    {
-        if reachability.isReachable()
-        {
-            print("REACHABLE")
-        }
-        else
-        {
-            print("NOT REACHABLE")
-        }
-    }
-
     func handleError(error:NSError)
     {
         if let userInfo=error.userInfo as? [NSObject:NSObject]

@@ -17,11 +17,24 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reload), name:"refreshAfterBlock", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
         
         reload()
+    }
+    
+    func updateUI()
+    {
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDelegate.reachability.isReachable()
+        {
+            print("Hide Offline View & Reload Table View")
+        }
+        else
+        {
+            print("Remove all other and Show offline View")
+        }
     }
     
     override func viewWillAppear(animated:Bool)

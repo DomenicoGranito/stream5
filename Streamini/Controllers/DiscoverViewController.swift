@@ -24,6 +24,8 @@ class DiscoverViewController:BaseViewController
     
     override func viewDidLoad()
     {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
+        
         ActivityIndicatorView.addActivityIndictorView(view)
         StreamConnector().discover(discoverSuccess, failure:discoverFailure)
     }
@@ -33,6 +35,20 @@ class DiscoverViewController:BaseViewController
         navigationController?.navigationBarHidden=false
     }
     
+    func updateUI()
+    {
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDelegate.reachability.isReachable()
+        {
+            print("Dis Hide Offline View & Reload Table View")
+        }
+        else
+        {
+            print("Dis Remove all other and Show offline View")
+        }
+    }
+
     func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
     {
         if indexPath.section==1&&indexPath.row==0
