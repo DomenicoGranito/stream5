@@ -37,6 +37,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     var timer:NSTimer?
     var selectedItemIndex=0
     var appDelegate:AppDelegate!
+    var fullScreenButton:UIButton!
     let storyBoard=UIStoryboard(name:"Main", bundle:nil)
     
     override func viewDidLoad()
@@ -329,7 +330,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-140)
         carousel!.currentItemView!.addSubview(player!.view)
         
-        let fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width-50, 50, 50))
+        fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width-47, 50, 50))
         fullScreenButton.setImage(UIImage(named:"fullscreen"), forState:.Normal)
         fullScreenButton.addTarget(self, action:#selector(rotateScreen), forControlEvents:.TouchUpInside)
         view.insertSubview(fullScreenButton, aboveSubview:player!.view)
@@ -380,6 +381,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         informationView?.hidden=true
         bottomSpaceConstraint!.constant=75
         player!.view.frame=CGRectMake(-(view.frame.size.width-view.frame.size.height)/2, -56, view.frame.size.width, view.frame.size.height)
+        fullScreenButton.frame=CGRectMake(0, 0, 0, 0)
         player?.scalingMode = .Fill
         carousel?.scrollEnabled=false
         view.bringSubviewToFront(topView!)
@@ -392,6 +394,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         informationView?.hidden=false
         bottomSpaceConstraint!.constant=0
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-140)
+        fullScreenButton.frame=CGRectMake(view.frame.size.width-50, player!.view.frame.size.width-47, 50, 50)
         player?.scalingMode = .AspectFit
         playlistButton?.hidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), forState:.Normal)
