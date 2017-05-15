@@ -9,6 +9,7 @@
 class HomeViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView?
+    @IBOutlet var internetView:UIView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -17,18 +18,33 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"refreshAfterBlock", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reload), name:"refreshAfterBlock", object:nil)
+        updateUI()
+    }
+    
+    func updateUI()
+    {
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
         
-        reload()
+        if appDelegate.reachability.isReachable()
+        {
+            internetView.hidden=true
+            reload()
+        }
+        else
+        {
+            itemsTbl!.hidden=true
+            internetView.hidden=false
+        }
     }
     
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=false
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
     }
     
     func reload()
@@ -225,6 +241,7 @@ class HomeViewController: BaseViewController
         }
         
         itemsTbl!.reloadData()
+        itemsTbl!.hidden=false
     }
     
     func failureStream(error:NSError)

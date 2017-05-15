@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
     var notificationsDelegate = NotificationsDelegate()
     var bgTask: UIBackgroundTaskIdentifier?
     var closeStream: Bool = false
+    var reachability:Reachability!
 
     //dominicg weixin login wx68aa08d12b601234 dgranito@gmail account
     //wx282a923ebe81d445 demo account
@@ -179,8 +180,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         }
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
+    func application(application:UIApplication, didFinishLaunchingWithOptions launchOptions:[NSObject:AnyObject]?)->Bool
     {
+        reachability=try! Reachability.reachabilityForInternetConnection()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reachabilityChanged), name:ReachabilityChangedNotification, object:nil)
+        
+        try! reachability.startNotifier()
+
         addCustomMenuItems()
            
         UITextField.appearance().tintColor=UIColor(colorLiteralRed:43/255, green:185/255, blue:86/255, alpha:1)
@@ -236,16 +243,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate
         return true
     }
 
-   // func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    //}
+    func reachabilityChanged()
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName("status", object:nil)
+    }
 
-   // func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-   // }
-
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(application:UIApplication)
+    {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
        if let task = self.bgTask {

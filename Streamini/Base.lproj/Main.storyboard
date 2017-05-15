@@ -23,9 +23,23 @@
                         <viewControllerLayoutGuide type="bottom" id="Rah-33-iIp"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Qc2-bS-Zkb">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="673"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v18-rl-7An">
+                                <frame key="frameInset" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVn-lo-RRi">
+                                        <frame key="frameInset" minX="49" minY="173" width="219" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <tableView hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" sectionIndexMinimumDisplayRowCount="3" rowHeight="200" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="sKk-q6-o1O" customClass="GradientTableView" customModule="Streamini" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="673"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -268,10 +282,12 @@
                             <constraint firstItem="sKk-q6-o1O" firstAttribute="leading" secondItem="Qc2-bS-Zkb" secondAttribute="leading" id="wL8-na-PQ5"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Discover" id="3ly-Gd-EIc"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="673"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
+                        <outlet property="internetView" destination="v18-rl-7An" id="5wr-7u-4kN"/>
                         <outlet property="tableView" destination="sKk-q6-o1O" id="zgZ-jX-tsR"/>
                         <segue destination="aek-ff-zgE" kind="show" identifier="Channels" id="9Y5-eH-QDA"/>
                     </connections>
@@ -380,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPY-0F-oE4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3099" y="-5948"/>
+            <point key="canvasLocation" x="-3099" y="-5934"/>
         </scene>
         <!--Master-->
         <scene sceneID="cUi-kZ-frf">
@@ -1626,6 +1642,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="confirmPassword" destination="6Nc-tN-3v9" id="I6U-KS-3sK"/>
                         <outlet property="currentPassword" destination="ekt-FW-6zZ" id="hrP-D0-QBW"/>
@@ -1686,6 +1704,8 @@
                             </mask>
                         </variation>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="webView" destination="Gq7-CP-bHc" id="hT0-oK-Epv"/>
                     </connections>
@@ -5232,6 +5252,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <outlet property="searchBar" destination="6pI-om-LZp" id="pgo-rJ-2SJ"/>
                         <outlet property="tableView" destination="KkN-0v-rjH" id="ugc-aE-E7r"/>
@@ -5528,6 +5550,18 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dks-yq-rCq">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Internet Connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2db-CV-t1X">
+                                        <frame key="frameInset" minX="49" minY="173" width="219" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="242" sectionHeaderHeight="20" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="kNM-n7-n2Q">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -5686,9 +5720,13 @@
                         <color key="backgroundColor" red="0.070588235289999995" green="0.074509803920000006" blue="0.08235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Dks-yq-rCq" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="3jb-Vz-HaU"/>
                             <constraint firstItem="kNM-n7-n2Q" firstAttribute="top" secondItem="ZXR-xg-HFQ" secondAttribute="top" id="7ZD-Cs-74B"/>
+                            <constraint firstItem="Dks-yq-rCq" firstAttribute="top" secondItem="NNx-TW-Max" secondAttribute="bottom" id="KBg-73-UWi"/>
                             <constraint firstAttribute="trailing" secondItem="kNM-n7-n2Q" secondAttribute="trailing" id="YWZ-U5-M3U"/>
+                            <constraint firstItem="OI2-k4-J8F" firstAttribute="top" secondItem="Dks-yq-rCq" secondAttribute="bottom" id="fPK-fk-tN3"/>
                             <constraint firstItem="kNM-n7-n2Q" firstAttribute="leading" secondItem="ZXR-xg-HFQ" secondAttribute="leading" id="tcI-bD-6hB"/>
+                            <constraint firstAttribute="trailing" secondItem="Dks-yq-rCq" secondAttribute="trailing" id="vFj-hR-hjV"/>
                             <constraint firstAttribute="bottom" secondItem="kNM-n7-n2Q" secondAttribute="bottom" id="xYi-ew-hvz"/>
                         </constraints>
                     </view>
@@ -5697,12 +5735,13 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
+                        <outlet property="internetView" destination="Dks-yq-rCq" id="HmN-R1-wSr"/>
                         <outlet property="itemsTbl" destination="kNM-n7-n2Q" id="RA4-rD-EIW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5h-cg-dE9" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4869" y="-2948"/>
+            <point key="canvasLocation" x="-4870.3999999999996" y="-2948.7256371814096"/>
         </scene>
         <!--Categories View Controller-->
         <scene sceneID="A2U-ts-yBU">
@@ -7139,7 +7178,7 @@
                         <viewControllerLayoutGuide type="bottom" id="zmL-7u-ZX9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sgD-1X-oHE" propertyAccessControl="none">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2pn-4Q-4ui" propertyAccessControl="none">
@@ -7317,10 +7356,11 @@
                         <constraints>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="top" secondItem="sgD-1X-oHE" secondAttribute="top" id="6Jx-1p-jV7"/>
                             <constraint firstItem="2pn-4Q-4ui" firstAttribute="leading" secondItem="sgD-1X-oHE" secondAttribute="leading" id="OaI-Cr-ViK"/>
+                            <constraint firstAttribute="bottom" secondItem="2pn-4Q-4ui" secondAttribute="bottom" id="aih-Ca-olV"/>
                             <constraint firstAttribute="trailing" secondItem="2pn-4Q-4ui" secondAttribute="trailing" id="b55-sp-6hs"/>
-                            <constraint firstItem="zmL-7u-ZX9" firstAttribute="top" secondItem="2pn-4Q-4ui" secondAttribute="bottom" id="vYt-lW-Ul1"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="My Library" id="Wzz-T0-HKj">
                         <rightBarButtonItems>
                             <barButtonItem image="profile" id="HBf-Kp-QhT" userLabel="My Profile">
@@ -7727,6 +7767,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Kkv-Gk-5us"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnO-5e-Kgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -7767,6 +7809,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <segue destination="x1i-Wy-zFZ" kind="show" identifier="PlaylistsToPlaylist" id="Edm-Cm-2sY"/>
                     </connections>
@@ -8032,6 +8076,8 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Settings" id="oDQ-nC-3vW"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHY-vf-Qpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8091,6 +8137,8 @@
                     <navigationItem key="navigationItem" title="Account" id="Uhe-Ki-IzD">
                         <barButtonItem key="backBarButtonItem" title=" " id="5gV-ow-TaK"/>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUX-A7-FMT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -8259,7 +8307,7 @@
                             <tableViewSection headerTitle="  " footerTitle="  " id="7GC-3K-Nop" userLabel="Table Section 1">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="1gC-u7-Bit" style="IBUITableViewCellStyleDefault" id="oAe-x7-FDW">
-                                        <rect key="frame" x="0.0" y="175" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oAe-x7-FDW" id="iwN-6M-wvQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -8334,6 +8382,8 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="About" id="l9h-jO-yE1"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                     <connections>
                         <segue destination="plk-1K-f5C" kind="show" identifier="Legal" id="fba-Pf-hX1"/>
                     </connections>
@@ -9278,7 +9328,7 @@
         <image name="user" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7Qu-7p-ztG"/>
+        <segue reference="bjY-rG-Avh"/>
         <segue reference="ybU-Cf-XEH"/>
     </inferredMetricsTieBreakers>
 </document>

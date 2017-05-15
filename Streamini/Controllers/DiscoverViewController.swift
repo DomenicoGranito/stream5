@@ -15,6 +15,7 @@ class MenuCell: UITableViewCell
 class DiscoverViewController:BaseViewController
 {
     @IBOutlet var tableView:UITableView!
+    @IBOutlet var internetView:UIView!
     
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
@@ -24,8 +25,9 @@ class DiscoverViewController:BaseViewController
     
     override func viewDidLoad()
     {
-        ActivityIndicatorView.addActivityIndictorView(view)
-        StreamConnector().discover(discoverSuccess, failure:discoverFailure)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
+        
+        updateUI()
     }
     
     override func viewWillAppear(animated:Bool)
@@ -33,11 +35,21 @@ class DiscoverViewController:BaseViewController
         navigationController?.navigationBarHidden=false
     }
     
-    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    func updateUI()
     {
-        if indexPath.section==1&&indexPath.row==0
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDelegate.reachability.isReachable()
         {
-            performSegueWithIdentifier("Channels", sender:nil)
+            internetView.hidden=true
+            
+            ActivityIndicatorView.addActivityIndictorView(view)
+            StreamConnector().discover(discoverSuccess, failure:discoverFailure)
+        }
+        else
+        {
+            tableView.hidden=true
+            internetView.hidden=false
         }
     }
     
@@ -151,6 +163,14 @@ class DiscoverViewController:BaseViewController
         }
     }
     
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        if indexPath.section==1&&indexPath.row==0
+        {
+            performSegueWithIdentifier("Channels", sender:nil)
+        }
+    }
+
     func discoverSuccess(data:NSDictionary)
     {
         ActivityIndicatorView.removeActivityIndicatorView()
