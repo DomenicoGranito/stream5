@@ -11,7 +11,7 @@ class PopUpViewController: BaseViewController
     @IBOutlet var backgroundImageView:UIImageView?
     
     let menuItemTitlesArray:NSMutableArray=["Share to friends", "Share on timeline", "Go to channels", "Report this video", "Add to favourite", "Block content from this channel"]
-    let menuItemIconsArray:NSMutableArray=["user.png", "time.png", "video.png", "user.png", "user.png", "user.png"]
+    let menuItemIconsArray:NSMutableArray=["upload", "upload", "share", "report", "add", "block"]
     
     var stream:Stream?
     let (host, _, _, _, _)=Config.shared.wowza()

@@ -21,7 +21,7 @@ class DiscoverViewController: UIViewController
     var featuredStreamsArray=NSMutableArray()
     
     var menuItemTitlesArray=["Channels"]
-    var menuItemIconsArray=["user.png"]
+    var menuItemIconsArray=["videochannel"]
     
     override func viewDidLoad()
     {
