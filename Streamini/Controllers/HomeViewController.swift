@@ -17,10 +17,10 @@ class HomeViewController: BaseViewController
     
     override func viewDidLoad()
     {
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(reload), name:"refreshAfterBlock", object:nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"refreshAfterBlock", object:nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
         
-        reload()
+        updateUI()
     }
     
     func updateUI()
@@ -29,11 +29,11 @@ class HomeViewController: BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
-            print("Hide Offline View & Reload Table View")
+            reload()
         }
         else
         {
-            print("Remove all other and Show offline View")
+            
         }
     }
     
@@ -41,7 +41,7 @@ class HomeViewController: BaseViewController
     {
         navigationController?.navigationBarHidden=false
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
     }
     
     func reload()

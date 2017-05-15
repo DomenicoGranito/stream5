@@ -26,8 +26,7 @@ class DiscoverViewController:BaseViewController
     {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(updateUI), name:"status", object:nil)
         
-        ActivityIndicatorView.addActivityIndictorView(view)
-        StreamConnector().discover(discoverSuccess, failure:discoverFailure)
+        updateUI()
     }
     
     override func viewWillAppear(animated:Bool)
@@ -41,19 +40,12 @@ class DiscoverViewController:BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
-            print("Dis Hide Offline View & Reload Table View")
+            ActivityIndicatorView.addActivityIndictorView(view)
+            StreamConnector().discover(discoverSuccess, failure:discoverFailure)
         }
         else
         {
-            print("Dis Remove all other and Show offline View")
-        }
-    }
-
-    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
-    {
-        if indexPath.section==1&&indexPath.row==0
-        {
-            performSegueWithIdentifier("Channels", sender:nil)
+            
         }
     }
     
@@ -167,6 +159,14 @@ class DiscoverViewController:BaseViewController
         }
     }
     
+    func tableView(tableView:UITableView, didSelectRowAtIndexPath indexPath:NSIndexPath)
+    {
+        if indexPath.section==1&&indexPath.row==0
+        {
+            performSegueWithIdentifier("Channels", sender:nil)
+        }
+    }
+
     func discoverSuccess(data:NSDictionary)
     {
         ActivityIndicatorView.removeActivityIndicatorView()
