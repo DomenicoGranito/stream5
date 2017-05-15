@@ -45,11 +45,28 @@ class HomeViewController: UIViewController
         }
     }
     
+    func reload()
+    {
+        let appDelegate=UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        if appDelegate.reachability.isReachable()
+        {
+            errorView.hidden=true
+            
+            StreamConnector().homeStreams(successStreams, failure:failureStream)
+        }
+        else
+        {
+            itemsTbl!.hidden=true
+            errorView.update("No Internet Connection", icon:"user")
+        }
+    }
+    
     override func viewWillAppear(animated:Bool)
     {
         navigationController?.navigationBarHidden=false
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(6, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(15, target:self, selector:#selector(reload), userInfo:nil, repeats:true)
     }
     
     override func viewWillDisappear(animated:Bool)

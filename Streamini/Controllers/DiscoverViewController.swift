@@ -43,8 +43,8 @@ class DiscoverViewController: UIViewController
         if appDelegate.reachability.isReachable()
         {
             errorView.hidden=true
-            
             activityView.hidden=false
+            
             StreamConnector().discover(discoverSuccess, failure:discoverFailure)
         }
         else
@@ -175,6 +175,7 @@ class DiscoverViewController: UIViewController
 
     func discoverSuccess(data:NSDictionary)
     {
+        errorView.hidden=true
         activityView.hidden=true
         
         let videos=data["data"]!["feat"] as! NSArray
