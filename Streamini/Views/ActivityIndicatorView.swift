@@ -8,18 +8,12 @@
 
 class ActivityIndicatorView:UIView
 {
-    static var activityIndicatorView:DGActivityIndicatorView!
+    @IBOutlet var activityIndicatorView:DGActivityIndicatorView!
     
-    class func addActivityIndictorView(view:UIView)
+    override func awakeFromNib()
     {
-        activityIndicatorView=DGActivityIndicatorView(type:.LineScalePulseOut, tintColor:UIColor.whiteColor())
-        activityIndicatorView.frame=CGRectMake(view.frame.size.width/2, view.frame.size.height/2, 0, 0)
-        view.addSubview(activityIndicatorView)
+        activityIndicatorView.type = .LineScalePulseOut
+        activityIndicatorView.tintColor=UIColor.whiteColor()
         activityIndicatorView.startAnimating()
-    }
-    
-    class func removeActivityIndicatorView()
-    {
-        activityIndicatorView.removeFromSuperview()
     }
 }

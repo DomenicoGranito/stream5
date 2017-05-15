@@ -10,6 +10,7 @@ class HomeViewController: UIViewController
 {
     @IBOutlet var itemsTbl:UITableView?
     @IBOutlet var errorView:ErrorView!
+    @IBOutlet var activityView:ActivityIndicatorView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -31,14 +32,16 @@ class HomeViewController: UIViewController
         if appDelegate.reachability.isReachable()
         {
             errorView.hidden=true
+            activityView.hidden=false
             
-            ActivityIndicatorView.addActivityIndictorView(view)
+            view.bringSubviewToFront(activityView)
             StreamConnector().homeStreams(successStreams, failure:failureStream)
         }
         else
         {
             itemsTbl!.hidden=true
-            errorView.update("No Internet Connection", icon:"setting")
+            activityView.hidden=true
+            errorView.update("No Internet Connection", icon:"user")
         }
     }
     
@@ -46,7 +49,7 @@ class HomeViewController: UIViewController
     {
         navigationController?.navigationBarHidden=false
         
-        timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
+        timer=NSTimer.scheduledTimerWithTimeInterval(6, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
     }
     
     override func viewWillDisappear(animated:Bool)
@@ -158,7 +161,8 @@ class HomeViewController: UIViewController
     
     func successStreams(data:NSDictionary)
     {
-        ActivityIndicatorView.removeActivityIndicatorView()
+        errorView.hidden=true
+        activityView.hidden=true
         
         categoryNamesArray=NSMutableArray()
         categoryIDsArray=NSMutableArray()
@@ -237,7 +241,7 @@ class HomeViewController: UIViewController
     
     func failureStream(error:NSError)
     {
-        ActivityIndicatorView.removeActivityIndicatorView()
-        errorView.update("An Error Occured", icon:"user")
+        activityView.hidden=true
+        errorView.update("An error occured", icon:"user")
     }
 }

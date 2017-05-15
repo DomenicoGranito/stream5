@@ -16,6 +16,6 @@ class ErrorView:UIView
         errorImageView.image=UIImage(named:icon)
         errorLbl.text=error
         
-        self.hidden = false
+        self.hidden=false
     }
 }

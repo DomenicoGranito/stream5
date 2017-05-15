@@ -16,6 +16,7 @@ class DiscoverViewController: UIViewController
 {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var errorView:ErrorView!
+    @IBOutlet var activityView:ActivityIndicatorView!
     
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
@@ -43,13 +44,14 @@ class DiscoverViewController: UIViewController
         {
             errorView.hidden=true
             
-            ActivityIndicatorView.addActivityIndictorView(view)
+            activityView.hidden=false
             StreamConnector().discover(discoverSuccess, failure:discoverFailure)
         }
         else
         {
             tableView.hidden=true
-            errorView.update("No Internet Connection", icon:"setting")
+            activityView.hidden=true
+            errorView.update("No Internet Connection", icon:"user")
         }
     }
     
@@ -173,10 +175,13 @@ class DiscoverViewController: UIViewController
 
     func discoverSuccess(data:NSDictionary)
     {
-        ActivityIndicatorView.removeActivityIndicatorView()
+        activityView.hidden=true
         
         let videos=data["data"]!["feat"] as! NSArray
         let categories=data["data"]!["cat"] as! NSArray
+        
+        featuredStreamsArray.removeAllObjects()
+        allCategoriesArray.removeAllObjects()
         
         parseFeaturedStreams(videos)
         parseCategories(categories)
@@ -267,7 +272,7 @@ class DiscoverViewController: UIViewController
     
     func discoverFailure(error:NSError)
     {
-        ActivityIndicatorView.removeActivityIndicatorView()
-        errorView.update("An Error Occured", icon:"user")
+        activityView.hidden=true
+        errorView.update("An error cccured", icon:"user")
     }
 }
