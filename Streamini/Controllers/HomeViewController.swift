@@ -9,6 +9,7 @@
 class HomeViewController: BaseViewController
 {
     @IBOutlet var itemsTbl:UITableView?
+    @IBOutlet var internetView:UIView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -29,11 +30,13 @@ class HomeViewController: BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
+            internetView.hidden=true
             reload()
         }
         else
         {
-            
+            itemsTbl!.hidden=true
+            internetView.hidden=false
         }
     }
     
@@ -238,6 +241,7 @@ class HomeViewController: BaseViewController
         }
         
         itemsTbl!.reloadData()
+        itemsTbl!.hidden=false
     }
     
     func failureStream(error:NSError)

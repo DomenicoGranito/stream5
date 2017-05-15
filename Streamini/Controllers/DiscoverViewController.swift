@@ -15,6 +15,7 @@ class MenuCell: UITableViewCell
 class DiscoverViewController:BaseViewController
 {
     @IBOutlet var tableView:UITableView!
+    @IBOutlet var internetView:UIView!
     
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
@@ -40,12 +41,15 @@ class DiscoverViewController:BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
+            internetView.hidden=true
+            
             ActivityIndicatorView.addActivityIndictorView(view)
             StreamConnector().discover(discoverSuccess, failure:discoverFailure)
         }
         else
         {
-            
+            tableView.hidden=true
+            internetView.hidden=false
         }
     }
     
