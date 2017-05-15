@@ -260,7 +260,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         stream=streamsArray![index] as? Stream
         
-        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-50))
+        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-140))
         thumbnailView.backgroundColor=UIColor.darkGrayColor()
         thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
@@ -315,7 +315,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     func showPlayer()
     {
         UIView.animateWithDuration(0.5, animations:{
-            self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-50)
+            self.carousel!.currentItemView!.frame=CGRectMake(-20, 0, self.view.frame.size.width, self.view.frame.size.width-140)
             }, completion:{(finished:Bool)->Void in
                 self.addPlayerAtIndex()
         })
@@ -326,17 +326,17 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         timer?.invalidate()
         addPlayer()
         
-        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-140)
         carousel!.currentItemView!.addSubview(player!.view)
         
-        let fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width, 50, 50))
+        let fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width-50, 50, 50))
         fullScreenButton.setImage(UIImage(named:"fullscreen"), forState:.Normal)
         fullScreenButton.addTarget(self, action:#selector(rotateScreen), forControlEvents:.TouchUpInside)
         view.insertSubview(fullScreenButton, aboveSubview:player!.view)
         
         if videoIDs[selectedItemIndex]==""
         {
-            let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-50)/2-10, view.frame.size.width, 20))
+            let label=UILabel(frame:CGRectMake(0, (view.frame.size.width-140)/2-10, view.frame.size.width, 20))
             label.text="Video not available"
             label.textColor=UIColor.whiteColor()
             label.textAlignment = .Center
@@ -379,7 +379,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         informationView?.hidden=true
         bottomSpaceConstraint!.constant=75
-        player!.view.frame=CGRectMake(-(view.frame.size.width-view.frame.size.height)/2, -11, view.frame.size.width, view.frame.size.height)
+        player!.view.frame=CGRectMake(-(view.frame.size.width-view.frame.size.height)/2, -56, view.frame.size.width, view.frame.size.height)
         player?.scalingMode = .Fill
         carousel?.scrollEnabled=false
         view.bringSubviewToFront(topView!)
@@ -391,7 +391,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         informationView?.hidden=false
         bottomSpaceConstraint!.constant=0
-        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-50)
+        player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-140)
         player?.scalingMode = .AspectFit
         playlistButton?.hidden=false
         closeButton?.setImage(UIImage(named:"arrow_down"), forState:.Normal)
