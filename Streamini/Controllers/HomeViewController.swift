@@ -6,10 +6,10 @@
 //  Copyright © 2016 UniProgy s.r.o. All rights reserved.
 //
 
-class HomeViewController: BaseViewController
+class HomeViewController: UIViewController
 {
     @IBOutlet var itemsTbl:UITableView?
-    @IBOutlet var internetView:UIView!
+    @IBOutlet var errorView:ErrorView!
     
     var categoryNamesArray=NSMutableArray()
     var categoryIDsArray=NSMutableArray()
@@ -30,13 +30,15 @@ class HomeViewController: BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
-            internetView.hidden=true
-            reload()
+            errorView.hidden=true
+            
+            ActivityIndicatorView.addActivityIndictorView(view)
+            StreamConnector().homeStreams(successStreams, failure:failureStream)
         }
         else
         {
             itemsTbl!.hidden=true
-            internetView.hidden=false
+            errorView.update("No Internet Connection", icon:"setting")
         }
     }
     
@@ -45,17 +47,6 @@ class HomeViewController: BaseViewController
         navigationController?.navigationBarHidden=false
         
         timer=NSTimer.scheduledTimerWithTimeInterval(60, target:self, selector:#selector(updateUI), userInfo:nil, repeats:true)
-    }
-    
-    func reload()
-    {
-        if ErrorView.errorView != nil
-        {
-            ErrorView.removeErrorView()
-        }
-        
-        ActivityIndicatorView.addActivityIndictorView(view)
-        StreamConnector().homeStreams(successStreams, failure:failureStream)
     }
     
     override func viewWillDisappear(animated:Bool)
@@ -247,6 +238,6 @@ class HomeViewController: BaseViewController
     func failureStream(error:NSError)
     {
         ActivityIndicatorView.removeActivityIndicatorView()
-        ErrorView.addErrorView(view)
+        errorView.update("An Error Occured", icon:"user")
     }
 }

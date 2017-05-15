@@ -8,28 +8,14 @@
 
 class ErrorView:UIView
 {
-    static var errorView:UIView!
+    @IBOutlet var errorImageView:UIImageView!
+    @IBOutlet var errorLbl:UILabel!
     
-    class func addErrorView(view:UIView)
+    func update(error:String, icon:String)
     {
-        errorView=UIView(frame:CGRectMake(0, view.frame.size.height/2-50, view.frame.size.height, 100))
+        errorImageView.image=UIImage(named:icon)
+        errorLbl.text=error
         
-        let imageView=UIImageView(frame:CGRectMake(view.frame.size.width/2-25, 0, 50, 50))
-        imageView.image=UIImage(named:"user.png")
-        
-        let label=UILabel(frame:CGRectMake(0, 50, view.frame.size.width, 50))
-        label.text="An error occured"
-        label.textColor=UIColor.whiteColor()
-        label.textAlignment = .Center
-        
-        errorView.addSubview(imageView)
-        errorView.addSubview(label)
-        
-        view.addSubview(errorView)
-    }
-    
-    class func removeErrorView()
-    {
-        errorView.removeFromSuperview()
+        self.hidden = false
     }
 }

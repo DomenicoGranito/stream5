@@ -12,10 +12,10 @@ class MenuCell: UITableViewCell
     @IBOutlet var menuItemIconImageView:UIImageView?
 }
 
-class DiscoverViewController:BaseViewController
+class DiscoverViewController: UIViewController
 {
     @IBOutlet var tableView:UITableView!
-    @IBOutlet var internetView:UIView!
+    @IBOutlet var errorView:ErrorView!
     
     var allCategoriesArray=NSMutableArray()
     var featuredStreamsArray=NSMutableArray()
@@ -41,7 +41,7 @@ class DiscoverViewController:BaseViewController
         
         if appDelegate.reachability.isReachable()
         {
-            internetView.hidden=true
+            errorView.hidden=true
             
             ActivityIndicatorView.addActivityIndictorView(view)
             StreamConnector().discover(discoverSuccess, failure:discoverFailure)
@@ -49,7 +49,7 @@ class DiscoverViewController:BaseViewController
         else
         {
             tableView.hidden=true
-            internetView.hidden=false
+            errorView.update("No Internet Connection", icon:"setting")
         }
     }
     
@@ -268,6 +268,6 @@ class DiscoverViewController:BaseViewController
     func discoverFailure(error:NSError)
     {
         ActivityIndicatorView.removeActivityIndicatorView()
-        ErrorView.addErrorView(view)
+        errorView.update("An Error Occured", icon:"user")
     }
 }
