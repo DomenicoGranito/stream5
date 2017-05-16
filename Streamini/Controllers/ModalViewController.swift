@@ -60,7 +60,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
             carousel?.pagingEnabled=true
             carousel?.type = .Rotary
             
-            carousel?.scrollToItemAtIndex(selectedItemIndex, animated:true)
+            carousel?.scrollToItemAtIndex(selectedItemIndex, animated:false)
         }
         else
         {
