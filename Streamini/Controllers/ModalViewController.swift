@@ -201,6 +201,8 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         videoDurationLbl?.text="-\(secondsToReadableTime(player!.duration))"
         seekBar?.maximumValue=Float(player!.duration)
+        
+        player!.view.hidden=false
     }
     
     @IBAction func shuffle()
@@ -254,7 +256,6 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     
     func carouselItemWidth(carousel:iCarousel)->CGFloat
     {
-       // return view.frame.size.width-40
         return view.frame.size.width-40
     }
     
@@ -262,8 +263,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
     {
         stream=streamsArray![index] as? Stream
         
-        //let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-50, self.view.frame.size.width-140))
-         let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-5, self.view.frame.size.width-140))
+        let thumbnailView=UIImageView(frame:CGRectMake(0, 0, self.view.frame.size.width-5, self.view.frame.size.width-140))
         thumbnailView.backgroundColor=UIColor.darkGrayColor()
         thumbnailView.sd_setImageWithURL(NSURL(string:"http://\(host)/thumb/\(stream!.id).jpg"))
         
@@ -330,6 +330,7 @@ class ModalViewController: UIViewController, ARNImageTransitionZoomable
         addPlayer()
         
         player!.view.frame=CGRectMake(0, 0, view.frame.size.width, view.frame.size.width-140)
+        player!.view.hidden=true
         carousel!.currentItemView!.addSubview(player!.view)
         
         fullScreenButton=UIButton(frame:CGRectMake(view.frame.size.width-50, player!.view.frame.size.width-47, 50, 50))
