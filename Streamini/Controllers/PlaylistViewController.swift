@@ -46,14 +46,15 @@ class PlaylistViewController: ARNModalImageTransitionViewController, ARNImageTra
     
     func tableView(tableView:UITableView, viewForHeaderInSection section:Int)->UIView?
     {
-        let headerView=UIView(frame:CGRectMake(0, 0, 30, tableView.frame.size.width))
+        let headerView=UIView(frame:CGRectMake(0, 0, tableView.frame.size.width, 30))
         
         let titleLbl=UILabel(frame:CGRectMake(10, 0, 300, 20))
         titleLbl.text=sectionTitlesArray[section] as? String
         titleLbl.font=UIFont.systemFontOfSize(10)
         titleLbl.textColor=UIColor.whiteColor()
         
-        let lineView=UIView(frame:CGRectMake(10, 29, tableView.frame.size.width-20, 1))
+        let lineView=UIView(frame:CGRectMake(10, 29.5, tableView.frame.size.width-20, 0.5))
+        lineView.backgroundColor=UIColor(colorLiteralRed:37/255, green:36/255, blue:41/255, alpha:1)
         
         headerView.addSubview(titleLbl)
         headerView.addSubview(lineView)
